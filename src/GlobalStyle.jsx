@@ -1,4 +1,8 @@
-body {
+import { createGlobalStyle } from 'styled-components';
+import 'normalize.css';
+
+const GlobalStyles = createGlobalStyle`
+  body {
   margin: 0;
   background-color: var(--board_bgc);
   font-family: 'Poppins', sans-serif;
@@ -43,3 +47,6 @@ button {
   cursor: pointer;
   padding: 0;
 }
+`;
+
+export default GlobalStyles;
