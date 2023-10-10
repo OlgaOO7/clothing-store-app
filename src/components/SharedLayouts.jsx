@@ -4,7 +4,7 @@ import { Link, Outlet } from "react-router-dom";
 export const SharedLayout = () => {
   return (
     <div>
-      <header style={{display: "flex", justifyContent: "space-between", padding: 10}}>
+      <header style={{display: "flex", justifyContent: "space-between", padding: "6px 10px"}}>
         <p>Logo</p>
         <nav>
           <Link to="/" end style={{padding: "6px 10px"}}>Home</Link>
