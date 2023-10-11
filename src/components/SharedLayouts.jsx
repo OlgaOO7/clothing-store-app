@@ -34,11 +34,11 @@ export const SharedLayout = () => {
           position: 'absolute',
           bottom: 0,
           width: '100%',
-          height: 70,
+          height: 80,
           background: 'grey',
         }}
       >
-        <div style={{ display: 'flex', gap: 100 }}>
+        <div style={{ display: 'flex', justifyContent: "space-between", padding: 10 }}>
           <p>Logo</p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             <p>Our contacts:</p>
@@ -46,6 +46,9 @@ export const SharedLayout = () => {
               <p>phone number</p>
               <p>email</p>
             </div>
+          </div>
+          <div>
+            <p>Social links</p>
           </div>
         </div>
       </footer>
