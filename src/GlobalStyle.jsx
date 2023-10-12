@@ -47,6 +47,14 @@ button {
   cursor: pointer;
   padding: 0;
 }
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: none;
+}
 `;
 
 export default GlobalStyles;
