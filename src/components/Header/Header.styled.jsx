@@ -7,7 +7,7 @@ export const HeaderWrapper = styled.div`
   padding-top: 46px;
   padding-left: 20px;
   padding-right: 20px;
-  /* background: 'grey'; */
+  background: 'grey';
 `;
 
 export const BtnWrapper = styled.div`
@@ -18,7 +18,7 @@ export const BtnWrapper = styled.div`
 export const MenuBtn = styled.button`
   padding: 0px;
   border: none;
-  background-color: transparent;
+  /* background-color: transparent; */
 `;
 
 export const MenuIcon = styled.svg`
@@ -34,7 +34,7 @@ export const MenuIcon = styled.svg`
 export const CartBtn = styled.button`
   padding: 0px;
   border: none;
-  background-color: transparent;
+  /* background-color: transparent; */
 `;
 
 export const CartIcon = styled.svg`
@@ -50,7 +50,7 @@ export const CartIcon = styled.svg`
 export const SearchBtn = styled.button`
   padding: 0px;
   border: none;
-  background-color: transparent;
+  /* background-color: transparent; */
 `;
 
 export const SearchIcon = styled.svg`

@@ -28,17 +28,17 @@ export const Header = () => {
       <Logo />
       <BtnWrapper>
         <SearchBtn type="button">
-          <SearchIcon width="24" height="24">
+          <SearchIcon width={24} height={24}>
             <use href={`${Sprite}#icon-search`} />
           </SearchIcon>
         </SearchBtn>
         <CartBtn type="button">
-          <CartIcon width="24" height="24">
+          <CartIcon width={24} height={24}>
             <use href={`${Sprite}#icon-cart`} />
           </CartIcon>
         </CartBtn>
         <MenuBtn type="button" onClick={toggleMenu}>
-          <MenuIcon width="24" height="24">
+          <MenuIcon width={24} height={24}>
             <use href={`${Sprite}#icon-burger-menu`} />
           </MenuIcon>
         </MenuBtn>
