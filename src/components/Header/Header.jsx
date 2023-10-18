@@ -44,7 +44,6 @@ export const Header = () => {
         </MenuBtn>
       </BtnWrapper>
       {isShowMenu && (<Modal closeModal={toggleMenu}><Navigation /></Modal>)}
-      {/* <Navigation /> */}
     </HeaderWrapper>
   );
 };
