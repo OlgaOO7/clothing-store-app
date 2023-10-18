@@ -4,7 +4,7 @@ export const Navigation = () => {
   return (
     <>
       <nav>
-        <Link to="/" end style={{ padding: '6px 10px' }}>
+        <Link to="/" end="true" style={{ padding: '6px 10px' }}>
           Головна
         </Link>
         <Link to="/catalog" style={{ padding: '6px 10px' }}>

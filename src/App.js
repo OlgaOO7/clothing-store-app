@@ -18,13 +18,13 @@ function App() {
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<MainPage />} />
-          <Route path="/catalog" element={<CatalogPage />} />
-          <Route path="/catalog/:productsId" element={<ProductDetailsPage />} />
+          <Route path="catalog" element={<CatalogPage />} />
+          <Route path="catalog/:productsId" element={<ProductDetailsPage />} />
 
           {/* <Route path="/cart" element={<CartPage />} /> */}
 
-          <Route path="/order" element={<OrderPage />} />
-          <Route path="/contacts" element={<ContactPage />} />
+          <Route path="order" element={<OrderPage />} />
+          <Route path="contacts" element={<ContactPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
