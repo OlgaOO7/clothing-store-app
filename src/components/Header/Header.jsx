@@ -1,32 +1,33 @@
-import { useState } from 'react';
 import { Logo } from 'components/Logo/Logo';
-import { Modal } from 'components/Modal/Modal'
+// import { Modal } from 'components/Modal/Modal'
 import { Navigation } from 'components/Navigation/Navigation';
 
-import Sprite from '../../images/sprite.svg';
+// import Sprite from '../../images/sprite.svg';
 
 import {
   HeaderWrapper,
-  BtnWrapper,
-  MenuBtn,
-  MenuIcon,
-  CartBtn,
-  CartIcon,
-  SearchBtn,
-  SearchIcon,
+  // BtnWrapper,
+  // MenuBtn,
+  // MenuIcon,
+  // CartBtn,
+  // CartIcon,
+  // SearchBtn,
+  // SearchIcon,
 } from './Header.styled';
 
 export const Header = () => {
-  const [isShowMenu, setIsShowMenu] = useState(false);
+  // const [isShowMenu, setIsShowMenu] = useState(false);
 
-  const toggleMenu = () => {
-    setIsShowMenu(!isShowMenu);
-  };
+  // const toggleMenu = () => {
+  //   setIsShowMenu(!isShowMenu);
+  // };
 
   return (
     <HeaderWrapper>
       <Logo />
-      <BtnWrapper>
+<Navigation />
+
+      {/* <BtnWrapper>
         <SearchBtn type="button">
           <SearchIcon width={24} height={24}>
             <use href={`${Sprite}#icon-search`} />
@@ -42,8 +43,8 @@ export const Header = () => {
             <use href={`${Sprite}#icon-burger-menu`} />
           </MenuIcon>
         </MenuBtn>
-      </BtnWrapper>
-      {isShowMenu && (<Modal closeModal={toggleMenu}><Navigation /></Modal>)}
+      </BtnWrapper> */}
+
     </HeaderWrapper>
   );
 };

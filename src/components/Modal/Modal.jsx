@@ -6,7 +6,7 @@ import Sprite from '../../images/sprite.svg';
 
 export const Modal = ({ children, closeModal }) => {
 
-  const handleCloseModal = useCallback (e => {
+  const handleKeyDown = useCallback (e => {
     if (e.code === 'Escape') {
       closeModal();
     }
@@ -19,10 +19,10 @@ export const Modal = ({ children, closeModal }) => {
   }, [closeModal])
 
   useEffect(() => {
-    window.addEventListener('keydown', handleCloseModal);
+    window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      window.removeEventListener('keydown', handleCloseModal);
+      window.removeEventListener('keydown', handleKeyDown);
     };
   });
 
