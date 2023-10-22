@@ -59,6 +59,7 @@ export const SubscriptionFormTitle = styled.h3`
 export const SubscriptionForm = styled.form`
   display: flex;
   justify-content: center;
+  flex-direction: column;
   @media screen and (min-width: 360px) {
     width: 304px;
   }
@@ -82,6 +83,7 @@ export const SubscriptionFormInput = styled.input`
   }
 `;
 export const SubscriptionFormButton = styled.button`
+  border: none;
   @media screen and (min-width: 360px) {
     padding: 11px 27px;
     background: #191919;
@@ -95,4 +97,8 @@ export const SubscriptionFormButton = styled.button`
     line-height: 28px;
     border: none;
   }
+`;
+export const SubscriptionFormContainer = styled.div`
+  display: flex;
+  width: 100%;
 `;
