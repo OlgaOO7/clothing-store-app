@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {
+  ErrorMessage,
   SubscriptionFormButton,
   SubscriptionFormContainer,
   SubscriptionFormContent,
@@ -8,6 +9,7 @@ import {
   SubscriptionFormSection,
   SubscriptionFormTitle,
   SubscriptionFormWrapper,
+  SuccessMessage,
 } from './SubscriptionForm.styled';
 
 export const SubscriptionForm = () => {
@@ -60,14 +62,14 @@ export const SubscriptionForm = () => {
               </SubscriptionFormButton>
             </SubscriptionFormContainer>
             {!isValid && (
-              <p style={{ color: 'red' }}>
+              <ErrorMessage>
                 Будь ласка, введіть дійсну адресу електронної пошти.
-              </p>
+              </ErrorMessage>
             )}
             {isSubscribed && (
-              <p style={{ color: 'green' }}>
+              <SuccessMessage>
                 Ви успішно підписалися на сповіщення!
-              </p>
+              </SuccessMessage>
             )}
           </SubscriptionForm>
         </SubscriptionFormContent>

@@ -102,3 +102,10 @@ export const SubscriptionFormContainer = styled.div`
   display: flex;
   width: 100%;
 `;
+export const ErrorMessage = styled.p`
+  color: red;
+`;
+
+export const SuccessMessage = styled.p`
+  color: green;
+`;
