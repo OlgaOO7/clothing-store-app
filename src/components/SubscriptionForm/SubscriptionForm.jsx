@@ -10,6 +10,7 @@ import {
   SubscriptionFormTitle,
   SubscriptionFormWrapper,
   SuccessMessage,
+  Form,
 } from './SubscriptionForm.styled';
 
 export const SubscriptionForm = () => {
@@ -46,7 +47,7 @@ export const SubscriptionForm = () => {
           <SubscriptionFormTitle>
             Підписуйся та будь в курсі усіх новинок та знижок!
           </SubscriptionFormTitle>
-          <SubscriptionForm onSubmit={handleFormSubmit}>
+          <Form onSubmit={handleFormSubmit}>
             <SubscriptionFormContainer>
               <SubscriptionFormInput
                 type="email"
@@ -71,7 +72,7 @@ export const SubscriptionForm = () => {
                 Ви успішно підписалися на сповіщення!
               </SuccessMessage>
             )}
-          </SubscriptionForm>
+          </Form>
         </SubscriptionFormContent>
       </SubscriptionFormWrapper>
     </SubscriptionFormSection>
