@@ -30,7 +30,7 @@ export const MobNavLinkItem = styled.li`
   @media (max-width: 1439px) {
     /* padding-left: 40px; */
     /* width: 100%; */
-    margin-bottom: 20px;
+    margin-top: 20px;
     flex-direction: column;
   }
 `;

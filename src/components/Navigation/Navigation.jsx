@@ -4,7 +4,6 @@ import { NavigationMenu } from './NavigationMenu';
 
 import Sprite from '../../images/sprite.svg';
 
-
 import {
   NavContainer,
   BtnWrapper,
@@ -18,6 +17,8 @@ import {
 
 export const Navigation = () => {
   const [isShowMenu, setIsShowMenu] = useState(false);
+
+  const closeMobMenu = () => setIsShowMenu(false);
 
   const toggleMenu = () => {
     setIsShowMenu(!isShowMenu);
@@ -39,18 +40,24 @@ export const Navigation = () => {
           </CartIcon>
         </CartBtn>
 
-        {isShowMenu ? (<MenuBtn type="button" onClick={toggleMenu}>
-          <MenuIcon width={24} height={24} style={{ fill: '#4C4B4B' }}>
-            <use href={`${Sprite}#icon-cross`} />
-          </MenuIcon>
-        </MenuBtn>) : (<MenuBtn type="button" onClick={toggleMenu}>
-          <MenuIcon width={24} height={24}>
-            <use href={`${Sprite}#icon-burger-menu`} />
-          </MenuIcon>
-        </MenuBtn>)}
+        {isShowMenu ? (
+          <MenuBtn type="button" onClick={toggleMenu}>
+            <MenuIcon width={24} height={24} style={{ fill: '#4C4B4B' }}>
+              <use href={`${Sprite}#icon-cross`} />
+            </MenuIcon>
+          </MenuBtn>
+        ) : (
+          <MenuBtn type="button" onClick={toggleMenu}>
+            <MenuIcon width={24} height={24}>
+              <use href={`${Sprite}#icon-burger-menu`} />
+            </MenuIcon>
+          </MenuBtn>
+        )}
       </BtnWrapper>
 
-      {isShowMenu && (<MobNavigationMenu />)}
+      {isShowMenu && (
+        <MobNavigationMenu isMobile={true} closeMobMenu={closeMobMenu} />
+      )}
     </NavContainer>
   );
 };
