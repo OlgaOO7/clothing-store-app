@@ -12,6 +12,7 @@ import {
   SuccessMessage,
   Form,
 } from './SubscriptionForm.styled';
+import { emailSchema } from './yupSchema';
 
 export const SubscriptionForm = () => {
   const [email, setEmail] = useState('');
@@ -22,20 +23,16 @@ export const SubscriptionForm = () => {
     setEmail(e.target.value);
   };
 
-  const handleFormSubmit = e => {
+  const handleFormSubmit = async e => {
     e.preventDefault();
-    if (
-      email === '' ||
-      !/^[a-zA-Z0-9_][a-zA-Z0-9_.-]*@[a-zA-Z0-9.-]+[a-zA-Z0-9-]*\.[a-zA-Z]{2,4}$/.test(
-        email
-      )
-    ) {
-      setIsValid(false);
-      setIsSubscribed(false);
-    } else {
+    try {
+      await emailSchema.validate({ email });
+      setIsValid(true);
       setIsSubscribed(true);
       setEmail('');
-      setIsValid(true);
+    } catch (error) {
+      setIsValid(false);
+      setIsSubscribed(false);
     }
   };
 
