@@ -1,4 +1,4 @@
-// import { SubscriptionForm } from 'components/SubscriptionForm/SubscriptionForm';
+import { SubscriptionForm } from 'components/SubscriptionForm/SubscriptionForm';
 
 export const MainPage = () => {
   return (
@@ -11,7 +11,7 @@ export const MainPage = () => {
       }}
     >
       <p>Online store under development ...</p>
-      {/* <SubscriptionForm /> */}
+      <SubscriptionForm />
     </div>
   );
 };
