@@ -56,7 +56,7 @@ export const SubscriptionFormTitle = styled.h3`
     line-height: 50px;
   }
 `;
-export const SubscriptionForm = styled.form`
+export const Form = styled.form`
   display: flex;
   justify-content: center;
   flex-direction: column;

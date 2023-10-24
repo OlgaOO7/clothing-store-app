@@ -10,7 +10,9 @@ import {
   SubscriptionFormTitle,
   SubscriptionFormWrapper,
   SuccessMessage,
+  Form,
 } from './SubscriptionForm.styled';
+import { emailSchema } from './yupSchema';
 
 export const SubscriptionForm = () => {
   const [email, setEmail] = useState('');
@@ -21,20 +23,16 @@ export const SubscriptionForm = () => {
     setEmail(e.target.value);
   };
 
-  const handleFormSubmit = e => {
+  const handleFormSubmit = async e => {
     e.preventDefault();
-    if (
-      email === '' ||
-      !/^[a-zA-Z0-9_][a-zA-Z0-9_.-]*@[a-zA-Z0-9.-]+[a-zA-Z0-9-]*\.[a-zA-Z]{2,4}$/.test(
-        email
-      )
-    ) {
-      setIsValid(false);
-      setIsSubscribed(false);
-    } else {
+    try {
+      await emailSchema.validate({ email });
+      setIsValid(true);
       setIsSubscribed(true);
       setEmail('');
-      setIsValid(true);
+    } catch (error) {
+      setIsValid(false);
+      setIsSubscribed(false);
     }
   };
 
@@ -46,7 +44,7 @@ export const SubscriptionForm = () => {
           <SubscriptionFormTitle>
             Підписуйся та будь в курсі усіх новинок та знижок!
           </SubscriptionFormTitle>
-          <SubscriptionForm onSubmit={handleFormSubmit}>
+          <Form onSubmit={handleFormSubmit}>
             <SubscriptionFormContainer>
               <SubscriptionFormInput
                 type="email"
@@ -71,7 +69,7 @@ export const SubscriptionForm = () => {
                 Ви успішно підписалися на сповіщення!
               </SuccessMessage>
             )}
-          </SubscriptionForm>
+          </Form>
         </SubscriptionFormContent>
       </SubscriptionFormWrapper>
     </SubscriptionFormSection>
