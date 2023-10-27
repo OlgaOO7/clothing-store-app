@@ -13,11 +13,19 @@ import {
   Form,
 } from './SubscriptionForm.styled';
 import { emailSchema } from './yupSchema';
+import { useDispatch, useSelector } from 'react-redux';
+import { subscription } from '../../redux/subscription/operations';
+import {
+  selectIsSubscribed,
+  selectIsValid,
+} from 'redux/subscription/selectors';
 
 export const SubscriptionForm = () => {
   const [email, setEmail] = useState('');
   const [isValid, setIsValid] = useState(true);
-  const [isSubscribed, setIsSubscribed] = useState(false);
+  const dispatch = useDispatch();
+  const isSubscribed = useSelector(selectIsSubscribed);
+  // const isValid = useSelector(selectIsValid);
 
   const handleEmailChange = e => {
     setEmail(e.target.value);
@@ -27,12 +35,12 @@ export const SubscriptionForm = () => {
     e.preventDefault();
     try {
       await emailSchema.validate({ email });
-      setIsValid(true);
-      setIsSubscribed(true);
+      dispatch(subscription({ subscriptionId: 1, email: email }));
       setEmail('');
+      setIsValid(true);
     } catch (error) {
+      console.log('Please enter a valid email address');
       setIsValid(false);
-      setIsSubscribed(false);
     }
   };
 
