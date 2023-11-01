@@ -2,7 +2,6 @@ import * as Yup from 'yup';
 
 export const emailSchema = Yup.object().shape({
   email: Yup.string()
-    .trim()
     .required('Будь ласка, введіть дійсну адресу електронної пошти.')
     .min(6, 'Будь ласка, введіть дійсну адресу електронної пошти.')
     .max(63, 'Будь ласка, введіть дійсну адресу електронної пошти.')
