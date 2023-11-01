@@ -14,8 +14,8 @@ export const subscription = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.post(
-        `/subscriptions?subscriptionId=${credentials.subscriptionId}&email=${credentials.email}`,
-        '',
+        `/subscriptions`,
+        credentials,
         config.headers
       );
       return res.data;

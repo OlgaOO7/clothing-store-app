@@ -21,13 +21,13 @@ import useFormPersist from 'react-hook-form-persist';
 
 import { subscription } from '../../redux/subscription/operations';
 import { selectIsSubscribed } from 'redux/subscription/selectors';
+import getButtonContent from 'utils/getMessageContent';
 
 export const SubscriptionForm = () => {
-  const [isValid, setIsValid] = useState(true);
-  const [isSubscribed, setisSubscribed] = useState(false);
+  const isSubscribed = useSelector(selectIsSubscribed);
   const dispatch = useDispatch();
-  // const isSubscribed = useSelector(selectIsSubscribed);
-  // const isValid = useSelector(selectIsValid);
+  const [isValid, setIsValid] = useState(true);
+
   const {
     register,
     handleSubmit,
@@ -40,6 +40,14 @@ export const SubscriptionForm = () => {
     resolver: yupResolver(emailSchema),
   });
 
+  const messageContent = getButtonContent(
+    isValid,
+    errors,
+    isSubscribed,
+    ErrorMessage,
+    SuccessMessage
+  );
+
   const STORAGE_KEY = 'contact_us_form';
 
   useFormPersist(STORAGE_KEY, {
@@ -48,22 +56,15 @@ export const SubscriptionForm = () => {
     setValue,
   });
 
-  // const handleInputChange = () => {
-  //   setisSubscribed(false);
-  // };
-
   const handleFormSubmit = async email => {
     try {
       await emailSchema.validate({ email: email.email });
-      console.log(errors);
-      // dispatch(subscription({ subscriptionId: 1, email: email.email }));
+      dispatch(subscription({ subscriptionId: 1, email: email.email }));
       reset();
-      setisSubscribed(true);
       setIsValid(true);
     } catch (error) {
       console.error(error);
       setIsValid(false);
-      setisSubscribed(false);
     }
   };
 
@@ -81,28 +82,14 @@ export const SubscriptionForm = () => {
                 type="email"
                 name="email"
                 placeholder="Email"
-                className={!isValid ? 'error' : ''}
                 {...register('email')}
                 autoComplete="true"
-                // onChange={handleInputChange}
               ></SubscriptionFormInput>
               <SubscriptionFormButton type="submit">
                 Надіслати
               </SubscriptionFormButton>
             </SubscriptionFormContainer>
-            {!isValid && (
-              <ErrorMessage>
-                Будь ласка, введіть дійсну адресу електронної пошти!
-              </ErrorMessage>
-            )}
-            {errors['email'] && (
-              <ErrorMessage>{errors['email'].message}</ErrorMessage>
-            )}
-            {isSubscribed && (
-              <SuccessMessage>
-                Ви успішно підписалися на сповіщення!
-              </SuccessMessage>
-            )}
+            {messageContent}
           </Form>
         </SubscriptionFormContent>
       </SubscriptionFormWrapper>
