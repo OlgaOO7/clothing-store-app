@@ -2,9 +2,15 @@ export default function getButtonContent(
   isValid,
   errors,
   isSubscribed,
+  isSubscriptionSuccess,
   ErrorMessage,
   SuccessMessage
 ) {
+  if (isSubscribed && isSubscriptionSuccess) {
+    return (
+      <SuccessMessage>Ви успішно підписалися на сповіщення!</SuccessMessage>
+    );
+  }
   if (!isValid) {
     return (
       <ErrorMessage>
@@ -15,12 +21,6 @@ export default function getButtonContent(
 
   if (errors['email']) {
     return <ErrorMessage>{errors['email'].message}</ErrorMessage>;
-  }
-
-  if (isSubscribed) {
-    return (
-      <SuccessMessage>Ви успішно підписалися на сповіщення!</SuccessMessage>
-    );
   }
 
   return '';

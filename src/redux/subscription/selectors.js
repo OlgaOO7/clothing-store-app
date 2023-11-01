@@ -1,1 +1,2 @@
-export const selectIsSubscribed = state => state.subscription.isSubscribed;
+export const selectIsSubscriptionSuccess = state =>
+  state.subscription.isSubscriptionSuccess;

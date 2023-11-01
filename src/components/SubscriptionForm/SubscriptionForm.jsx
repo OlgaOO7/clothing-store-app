@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import { emailSchema } from './yupSchema';
 import getButtonContent from 'utils/getMessageContent';
 import { subscription } from '../../redux/subscription/operations';
-import { selectIsSubscribed } from 'redux/subscription/selectors';
+import { selectIsSubscriptionSuccess } from 'redux/subscription/selectors';
 
 import {
   ErrorMessage,
@@ -24,7 +24,8 @@ import {
 } from './SubscriptionForm.styled';
 
 export const SubscriptionForm = () => {
-  const isSubscribed = useSelector(selectIsSubscribed);
+  const isSubscriptionSuccess = useSelector(selectIsSubscriptionSuccess);
+  const [isSubscribed, setIsSubscribed] = useState(false);
   const dispatch = useDispatch();
   const [isValid, setIsValid] = useState(true);
 
@@ -44,6 +45,7 @@ export const SubscriptionForm = () => {
     isValid,
     errors,
     isSubscribed,
+    isSubscriptionSuccess,
     ErrorMessage,
     SuccessMessage
   );
@@ -56,15 +58,20 @@ export const SubscriptionForm = () => {
     setValue,
   });
 
+  const handleChange = () => {
+    setIsSubscribed(false);
+  };
   const handleFormSubmit = async email => {
     try {
       await emailSchema.validate({ email: email.email });
       dispatch(subscription({ subscriptionId: 1, email: email.email }));
       reset();
+      setIsSubscribed(true);
       setIsValid(true);
     } catch (error) {
       console.error(error);
       setIsValid(false);
+      setIsSubscribed(false);
     }
   };
 
@@ -84,6 +91,7 @@ export const SubscriptionForm = () => {
                 placeholder="Email"
                 {...register('email')}
                 autoComplete="true"
+                onChange={handleChange}
               ></SubscriptionFormInput>
               <SubscriptionFormButton type="submit">
                 Надіслати
