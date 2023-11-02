@@ -6,11 +6,12 @@ export const ProductWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+  color: #000;
   @media (min-width: 1440px) {
     gap: 14px;
   }
 `;
-export const ProductImage = styled.div`
+export const ProductImage = styled.img`
   background-color: #ececec;
   width: 144px;
   height: 190px;

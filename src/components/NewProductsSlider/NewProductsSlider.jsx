@@ -24,8 +24,9 @@ export const NewProductsSlider = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProducts());
-  });
+  }, [dispatch]);
   const products = useSelector(state => state.products.products.content) || [];
+  console.log(products);
 
   return (
     <Section>
@@ -58,8 +59,8 @@ export const NewProductsSlider = () => {
           }}
           style={{ width: '100%', paddingBottom: '50px' }}
         >
-          {products.map((item, index) => (
-            <SwiperSlide key={index}>
+          {products.map(item => (
+            <SwiperSlide key={item.id}>
               <ProductComponent item={item} />
             </SwiperSlide>
           ))}
