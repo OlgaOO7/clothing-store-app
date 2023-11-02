@@ -287,6 +287,102 @@
           "url": "https://fashionista.ua/120197-large_default/shtani-dzhogeri-odnotonni-na-flisi.jpg"
         }
       ]
+    },
+    {
+      "id": 23,
+      "title": "TEST Новий товар 6",
+      "description": "TEST Новий товар 4 доданий POST",
+      "price": {
+        "value": 999,
+        "currency": {
+          "id": 1,
+          "code": "UAH",
+          "title": "Гривня"
+        }
+      },
+      "category": {
+        "id": 1,
+        "title": "Футболки"
+      },
+      "status": true,
+      "skuSet": [
+        {
+          "id": 23,
+          "characteristics": [
+            {
+              "id": 28,
+              "characteristic": {
+                "id": 1,
+                "title": "size"
+              },
+              "value": "TEST L"
+            },
+            {
+              "id": 27,
+              "characteristic": {
+                "id": 2,
+                "title": "color"
+              },
+              "value": "TEST СИНІЙ"
+            }
+          ],
+          "status": true
+        }
+      ],
+      "photos": [
+        {
+          "id": 18,
+          "url": "https://fashionista.ua/120197-large_default/shtani-dzhogeri-odnotonni-na-flisi.jpg"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "title": "TEST Новий товар 6",
+      "description": "TEST Новий товар 4 доданий POST",
+      "price": {
+        "value": 999,
+        "currency": {
+          "id": 1,
+          "code": "UAH",
+          "title": "Гривня"
+        }
+      },
+      "category": {
+        "id": 1,
+        "title": "Футболки"
+      },
+      "status": true,
+      "skuSet": [
+        {
+          "id": 23,
+          "characteristics": [
+            {
+              "id": 28,
+              "characteristic": {
+                "id": 1,
+                "title": "size"
+              },
+              "value": "TEST L"
+            },
+            {
+              "id": 27,
+              "characteristic": {
+                "id": 2,
+                "title": "color"
+              },
+              "value": "TEST СИНІЙ"
+            }
+          ],
+          "status": true
+        }
+      ],
+      "photos": [
+        {
+          "id": 18,
+          "url": "https://fashionista.ua/120197-large_default/shtani-dzhogeri-odnotonni-na-flisi.jpg"
+        }
+      ]
     }
   ],
   "pageable": {
