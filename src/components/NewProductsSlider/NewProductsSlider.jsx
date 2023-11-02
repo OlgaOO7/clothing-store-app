@@ -1,3 +1,14 @@
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Navigation } from 'swiper/modules';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProducts } from 'redux/products/operations';
+import { useEffect } from 'react';
+
+import { ProductComponent } from 'components/ProductComponent/ProductComponent';
+
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 import {
   Section,
   Wrapper,
@@ -5,17 +16,14 @@ import {
   PrevBtn,
   NextBtn,
 } from './NewProductsSlider.styled';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Navigation } from 'swiper/modules';
-import data from './data.json';
-
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import { ProductComponent } from 'components/ProductComponent/ProductComponent';
 
 export const NewProductsSlider = () => {
-  const { content } = data;
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getProducts());
+  });
+  const products = useSelector(state => state.products.products.content) || [];
+  console.log(products);
 
   return (
     <Section>
@@ -48,7 +56,7 @@ export const NewProductsSlider = () => {
           }}
           style={{ width: '100%', paddingBottom: '50px' }}
         >
-          {content.map((item, index) => (
+          {products.map((item, index) => (
             <SwiperSlide key={index}>
               <ProductComponent item={item} />
             </SwiperSlide>
