@@ -11,11 +11,7 @@ const config = {
 
 export const getProducts = createAsyncThunk('products', async (_, thunkAPI) => {
   try {
-    const res = await axios.get(
-      `/products?page=0&size=1&sort=title`,
-      '',
-      config.headers
-    );
+    const res = await axios.get(`/products`, '', config.headers);
     return res.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);

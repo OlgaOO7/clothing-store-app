@@ -27,8 +27,12 @@ export const ProductTitle = styled.h3`
   font-size: 16px;
   line-height: 18px;
   font-weight: 400;
-
+  width: 144px;
+  @media (min-width: 768px) {
+    width: 230px;
+  }
   @media (min-width: 1440px) {
+    width: 322px;
     font-size: 22px;
     line-height: 25px;
   }
