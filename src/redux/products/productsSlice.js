@@ -4,13 +4,14 @@ const initialState = { products: {} };
 const productsSlice = createSlice({
   name: 'products',
   initialState,
-  extraReducers: {
-    [getProducts.fulfilled](state, action) {
-      state.products = action.payload;
-    },
-    [getProducts.rejected](state) {
-      state.products = {};
-    },
+  extraReducers: builder => {
+    builder
+      .addCase(getProducts.fulfilled, (state, action) => {
+        state.products = action.payload;
+      })
+      .addCase(getProducts.rejected, state => {
+        state.products = {};
+      });
   },
 });
 
