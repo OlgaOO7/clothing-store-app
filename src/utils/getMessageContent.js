@@ -2,11 +2,10 @@ export default function getButtonContent(
   isValid,
   errors,
   isSubscribed,
-  isSubscriptionSuccess,
   ErrorMessage,
   SuccessMessage
 ) {
-  if (isSubscribed && isSubscriptionSuccess) {
+  if (isSubscribed) {
     return (
       <SuccessMessage>Ви успішно підписалися на сповіщення!</SuccessMessage>
     );

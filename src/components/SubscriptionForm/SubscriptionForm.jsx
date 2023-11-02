@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import useFormPersist from 'react-hook-form-persist';
 import { useForm } from 'react-hook-form';
 
 import { emailSchema } from './yupSchema';
 import getButtonContent from 'utils/getMessageContent';
 import { subscription } from '../../redux/subscription/operations';
-import { selectIsSubscriptionSuccess } from 'redux/subscription/selectors';
 
 import {
   ErrorMessage,
@@ -24,7 +23,6 @@ import {
 } from './SubscriptionForm.styled';
 
 export const SubscriptionForm = () => {
-  const isSubscriptionSuccess = useSelector(selectIsSubscriptionSuccess);
   const [isSubscribed, setIsSubscribed] = useState(false);
   const dispatch = useDispatch();
   const [isValid, setIsValid] = useState(true);
@@ -45,7 +43,6 @@ export const SubscriptionForm = () => {
     isValid,
     errors,
     isSubscribed,
-    isSubscriptionSuccess,
     ErrorMessage,
     SuccessMessage
   );

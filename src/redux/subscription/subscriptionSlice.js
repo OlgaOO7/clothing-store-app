@@ -1,18 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { subscription } from './operations';
-const initialState = {
-  isSubscriptionSuccess: false,
-};
+const initialState = {};
 const subscriptionSlice = createSlice({
   name: 'subscription',
   initialState,
   extraReducers: {
-    [subscription.fulfilled](state) {
-      state.isSubscriptionSuccess = true;
-    },
-    [subscription.rejected](state) {
-      state.isSubscriptionSuccess = false;
-    },
+    [subscription.fulfilled](state) {},
+    [subscription.rejected](state) {},
   },
 });
 
