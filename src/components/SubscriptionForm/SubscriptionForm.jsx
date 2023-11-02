@@ -1,4 +1,13 @@
 import React, { useState } from 'react';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useDispatch } from 'react-redux';
+import useFormPersist from 'react-hook-form-persist';
+import { useForm } from 'react-hook-form';
+
+import { emailSchema } from './yupSchema';
+import getButtonContent from 'utils/getMessageContent';
+import { subscription } from '../../redux/subscription/operations';
+
 import {
   ErrorMessage,
   SubscriptionFormButton,
@@ -12,25 +21,52 @@ import {
   SuccessMessage,
   Form,
 } from './SubscriptionForm.styled';
-import { emailSchema } from './yupSchema';
 
 export const SubscriptionForm = () => {
-  const [email, setEmail] = useState('');
-  const [isValid, setIsValid] = useState(true);
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const dispatch = useDispatch();
+  const [isValid, setIsValid] = useState(true);
 
-  const handleEmailChange = e => {
-    setEmail(e.target.value);
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    formState: { errors },
+    reset,
+  } = useForm({
+    mode: 'onSubmit',
+    resolver: yupResolver(emailSchema),
+  });
+
+  const messageContent = getButtonContent(
+    isValid,
+    errors,
+    isSubscribed,
+    ErrorMessage,
+    SuccessMessage
+  );
+
+  const STORAGE_KEY = 'contact_us_form';
+
+  useFormPersist(STORAGE_KEY, {
+    watch,
+    storage: typeof window !== 'undefined' ? window.localStorage : undefined,
+    setValue,
+  });
+
+  const handleChange = () => {
+    setIsSubscribed(false);
   };
-
-  const handleFormSubmit = async e => {
-    e.preventDefault();
+  const handleFormSubmit = async email => {
     try {
-      await emailSchema.validate({ email });
-      setIsValid(true);
+      await emailSchema.validate({ email: email.email });
+      dispatch(subscription({ subscriptionId: 1, email: email.email }));
+      reset();
       setIsSubscribed(true);
-      setEmail('');
+      setIsValid(true);
     } catch (error) {
+      console.error(error);
       setIsValid(false);
       setIsSubscribed(false);
     }
@@ -44,31 +80,21 @@ export const SubscriptionForm = () => {
           <SubscriptionFormTitle>
             Підписуйся та будь в курсі усіх новинок та знижок!
           </SubscriptionFormTitle>
-          <Form onSubmit={handleFormSubmit}>
+          <Form onSubmit={handleSubmit(handleFormSubmit)}>
             <SubscriptionFormContainer>
               <SubscriptionFormInput
                 type="email"
                 name="email"
                 placeholder="Email"
-                value={email}
-                onChange={handleEmailChange}
-                className={!isValid ? 'error' : ''}
+                {...register('email')}
                 autoComplete="true"
+                onChange={handleChange}
               ></SubscriptionFormInput>
               <SubscriptionFormButton type="submit">
                 Надіслати
               </SubscriptionFormButton>
             </SubscriptionFormContainer>
-            {!isValid && (
-              <ErrorMessage>
-                Будь ласка, введіть дійсну адресу електронної пошти.
-              </ErrorMessage>
-            )}
-            {isSubscribed && (
-              <SuccessMessage>
-                Ви успішно підписалися на сповіщення!
-              </SuccessMessage>
-            )}
+            {messageContent}
           </Form>
         </SubscriptionFormContent>
       </SubscriptionFormWrapper>
