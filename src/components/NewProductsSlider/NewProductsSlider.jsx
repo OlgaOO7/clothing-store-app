@@ -26,7 +26,6 @@ export const NewProductsSlider = () => {
     dispatch(getProducts());
   }, [dispatch]);
   const products = useSelector(state => state.products.products.content) || [];
-  console.log(products);
 
   return (
     <Section>
