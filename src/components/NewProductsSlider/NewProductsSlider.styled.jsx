@@ -65,3 +65,15 @@ export const NextBtn = styled.button`
     content: none;
   }
 `;
+export const PrevBtnIcon = styled.svg`
+  max-width: 23px;
+  @media (min-width: 1440px) {
+    min-width: 30px;
+  }
+`;
+export const NextBtnIcon = styled.svg`
+  max-width: 23px;
+  @media (min-width: 1440px) {
+    min-width: 30px;
+  }
+`;
