@@ -4,9 +4,10 @@ const initialState = {};
 const subscriptionSlice = createSlice({
   name: 'subscription',
   initialState,
-  extraReducers: {
-    [subscription.fulfilled](state) {},
-    [subscription.rejected](state) {},
+  extraReducers: builder => {
+    builder
+      .addCase(subscription.fulfilled, state => {})
+      .addCase(subscription.rejected, state => {});
   },
 });
 
