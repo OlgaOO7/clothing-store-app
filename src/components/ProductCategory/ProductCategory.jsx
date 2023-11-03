@@ -10,6 +10,7 @@ import {
   CategoryTitle,
   CategoryPrice,
   CategoryCount,
+  CategoryItem,
 } from './ProductCategory.styled';
 import { getCategories } from 'redux/category/operations';
 
@@ -25,11 +26,7 @@ export const ProductCategory = () => {
         <Title>Категорії</Title>
         <CategoryList>
           {categories.map(category => (
-            <li
-              className={category.id}
-              key={category.id}
-              style={{ width: '100%' }}
-            >
+            <CategoryItem key={category.id}>
               <CategoryImage></CategoryImage>
               <CategoryWrapper>
                 <CategoryTitle>
@@ -44,7 +41,7 @@ export const ProductCategory = () => {
                     : ''}
                 </CategoryPrice>
               </CategoryWrapper>
-            </li>
+            </CategoryItem>
           ))}
         </CategoryList>
       </Wrapper>

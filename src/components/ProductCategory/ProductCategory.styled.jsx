@@ -36,18 +36,24 @@ export const Title = styled.h2`
   }
 `;
 export const CategoryList = styled.ul`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 35px 24px;
+  justify-content: space-between;
 `;
 export const CategoryWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 `;
 export const CategoryImage = styled.div`
-  width: 320px;
-  height: 120px;
+  width: 144px;
+  height: 134px;
   background-color: #d9d9d9;
+  @media (min-width: 1440px) {
+    width: 437px;
+    height: 400px;
+  }
 `;
 export const CategoryTitle = styled.h3`
   font-weight: 400;
@@ -66,5 +72,33 @@ export const CategoryPrice = styled.p`
     font-weight: 400;
     line-height: 18px;
     color: #969696;
+  }
+`;
+export const CategoryItem = styled.li`
+  width: calc(50% - 24px);
+  & ${CategoryImage} {
+    width: 100%;
+  }
+  &:nth-last-child(3) {
+    flex-basis: 100%;
+    flex: 0 0 calc(100%);
+    & ${CategoryImage} {
+      width: 100%;
+    }
+  }
+  @media (min-width: 1440px) {
+    &:nth-last-child(3) {
+      &${CategoryImage} {
+        flex: auto;
+        width: 437px;
+      }
+    }
+    &:nth-last-child(-n + 2) {
+      flex-basis: 100%;
+      flex: 0 0 calc(50% - 24px);
+      & ${CategoryImage} {
+        width: 100%;
+      }
+    }
   }
 `;
