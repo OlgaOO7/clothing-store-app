@@ -55,6 +55,9 @@ a {
 a:visited {
   color: none;
 }
+.swiper-pagination-fraction, .swiper-pagination-custom, .swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal{
+  bottom:0;
+}
 `;
 
 export default GlobalStyles;

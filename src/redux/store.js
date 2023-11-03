@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
 import { subscriptionReducer } from './subscription/subscriptionSlice';
+import { productsReducer } from './products/productsSlice';
 
 import {
   persistStore,
@@ -22,6 +23,7 @@ const persistConfig = {
 export const store = configureStore({
   reducer: {
     subscription: persistReducer(persistConfig, subscriptionReducer),
+    products: persistReducer(persistConfig, productsReducer),
   },
   middleware(getDefaultMiddleware) {
     return getDefaultMiddleware({

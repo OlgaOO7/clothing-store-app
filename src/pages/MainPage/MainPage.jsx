@@ -1,3 +1,4 @@
+import { NewProductsSlider } from 'components/NewProductsSlider/NewProductsSlider';
 import { SubscriptionForm } from 'components/SubscriptionForm/SubscriptionForm';
 
 export const MainPage = () => {
@@ -11,6 +12,7 @@ export const MainPage = () => {
       }}
     >
       <p>Online store under development ...</p>
+      <NewProductsSlider />
       <SubscriptionForm />
     </div>
   );
