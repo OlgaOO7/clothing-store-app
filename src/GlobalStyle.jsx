@@ -54,6 +54,22 @@ a:visited {
 .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal{
   bottom:0;
 }
+@keyframes marquee {
+  0% {
+    transform: rotate(24deg) translateX(0);
+  }
+  100% {
+    transform: rotate(24deg) translateX(-100%);
+  }
+}
+@keyframes marqueeright {
+  0% {
+    transform: rotate(-20deg) translateX(-100%);
+  }
+  100% {
+    transform: rotate(-20deg) translateX(0);
+  }
+}
 `;
 
 export default GlobalStyles;

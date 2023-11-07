@@ -1,6 +1,7 @@
 import { ProductCategory } from 'components/ProductCategory/ProductCategory';
 import { NewProductsSlider } from 'components/NewProductsSlider/NewProductsSlider';
 import { SubscriptionForm } from 'components/SubscriptionForm/SubscriptionForm';
+import { MainSection } from 'components/MainSection/MainSection';
 import { InfoBlock } from 'components/InfoBlock/InfoBlock';
 
 export const MainPage = () => {
@@ -13,7 +14,7 @@ export const MainPage = () => {
         paddingTop: 100,
       }}
     >
-      <p>Online store under development ...</p>
+      <MainSection />
       <NewProductsSlider />
       <ProductCategory />
       <InfoBlock />
