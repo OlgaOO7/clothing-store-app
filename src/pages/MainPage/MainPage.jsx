@@ -1,4 +1,7 @@
+import { ProductCategory } from 'components/ProductCategory/ProductCategory';
+import { NewProductsSlider } from 'components/NewProductsSlider/NewProductsSlider';
 import { SubscriptionForm } from 'components/SubscriptionForm/SubscriptionForm';
+import { InfoBlock } from 'components/InfoBlock/InfoBlock';
 
 export const MainPage = () => {
   return (
@@ -11,6 +14,9 @@ export const MainPage = () => {
       }}
     >
       <p>Online store under development ...</p>
+      <NewProductsSlider />
+      <ProductCategory />
+      <InfoBlock />
       <SubscriptionForm />
     </div>
   );
