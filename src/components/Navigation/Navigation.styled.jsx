@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const NavContainer = styled.div`
@@ -35,6 +36,12 @@ export const MobNavLinkItem = styled.li`
     flex-direction: column;
   }
 `;
+
+export const StyledLink = styled(Link)`
+  color: #4C4B4B;
+  font-size: 16px;
+  text-align: center;
+`
 
 export const Nav = styled.nav`
   display: none;
