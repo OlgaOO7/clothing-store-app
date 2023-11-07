@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Section = styled.section`
@@ -98,7 +99,7 @@ export const ImageWrapper = styled.div`
     background: #d9d9d9;
   }
 `;
-export const LinkTo = styled.a`
+export const LinkTo = styled(Link)`
   display: inline-block;
   font-size: 16px;
   font-weight: 400;

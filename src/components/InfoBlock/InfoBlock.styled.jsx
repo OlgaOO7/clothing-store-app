@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Section = styled.section`
@@ -58,14 +59,14 @@ export const Description = styled.p`
     line-height: 36px;
   }
 `;
-export const Button = styled.button`
+export const LinkTo = styled(Link)`
   width: 192px;
-  height: 34px;
-  padding: 7px auto;
+  padding: 7px 0;
   margin-bottom: 30px;
   font-size: 14px;
-  font-weight: 400;
   line-height: 20px;
+  text-align: center;
+  color: #000;
 
   border: 1px solid #000000;
 

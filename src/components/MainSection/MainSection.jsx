@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import {
   ImageWrapper,
   LeftText,
@@ -33,9 +32,7 @@ export const MainSection = () => {
           <svg>
             <use href={`${Sprite}#icon-image`}></use>
           </svg>
-          <Link to="/catalog">
-            <LinkTo>Каталог</LinkTo>
-          </Link>
+          <LinkTo to="/catalog">Каталог</LinkTo>
         </ImageWrapper>
       </Wrapper>
     </Section>
