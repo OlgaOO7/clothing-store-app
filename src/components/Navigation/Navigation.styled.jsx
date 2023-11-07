@@ -15,12 +15,13 @@ export const MobNav = styled.nav`
     right: 0px;
     display: flex;
     gap: 10px;
-    background-color: green;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   }
 `;
 
 export const MobNavList = styled.ul`
   @media (max-width: 1439px) {
+    /* position: fixed; */
     padding-left: 20px;
     flex-direction: column;
   }
@@ -37,7 +38,6 @@ export const MobNavLinkItem = styled.li`
 
 export const Nav = styled.nav`
   display: none;
-  background-color: blue;
 
   @media (min-width: 1440px) {
     display: inline-block;
@@ -52,6 +52,7 @@ export const NavList = styled.nav`
 export const BtnWrapper = styled.div`
   display: flex;
   gap: 14px;
+  /* check margin-left when will be ready */
   margin-left: 230px;
 `;
 
@@ -74,7 +75,22 @@ export const MenuIcon = styled.svg`
 export const CartBtn = styled.button`
   padding: 0px;
   border: none;
+  /* font-size: 0; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   /* background-color: transparent; */
+  @media (min-width: 1440px) {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: normal;
+    color: #191919;
+  }
+  @media (max-width: 1439px) {
+    span {
+      display: none;
+    }
+  }
 `;
 
 export const CartIcon = styled.svg`

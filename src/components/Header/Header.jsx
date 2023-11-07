@@ -1,3 +1,5 @@
+// import { useState, useEffect } from 'react';
+// import { useLocation } from 'react-router-dom';
 import { Logo } from 'components/Logo/Logo';
 // import { Modal } from 'components/Modal/Modal'
 import { Navigation } from 'components/Navigation/Navigation';
@@ -14,8 +16,18 @@ import {
   // SearchBtn,
   // SearchIcon,
 } from './Header.styled';
+import React from 'react';
 
 export const Header = () => {
+
+    // const [searchQuery, setSearchQuery] = useState('');
+    // const location = useLocation();
+  
+    // useEffect(() => {
+    //   // Reset the search input when the location changes
+    //   setSearchQuery('');
+    // }, [location]);
+
   // const [isShowMenu, setIsShowMenu] = useState(false);
 
   // const toggleMenu = () => {
@@ -25,6 +37,7 @@ export const Header = () => {
   return (
     <HeaderWrapper>
       <Logo />
+{/* <Navigation searchQuery={searchQuery} setSearchQuery={setSearchQuery} /> */}
 <Navigation />
 
       {/* <BtnWrapper>
