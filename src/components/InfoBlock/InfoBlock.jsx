@@ -3,7 +3,7 @@ import {
   Wrapper,
   Title,
   Description,
-  Button,
+  LinkTo,
   Image,
 } from './InfoBlock.styled';
 
@@ -18,7 +18,7 @@ export const InfoBlock = () => {
             нас і про тебе.
           </Description>
         </div>
-        <Button>Познайомитись з брендом</Button>
+        <LinkTo to="/">Познайомитись з брендом</LinkTo>
         <Image></Image>
       </Wrapper>
     </Section>
