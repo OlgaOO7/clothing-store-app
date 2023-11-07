@@ -8,8 +8,10 @@ import { CartPage } from "pages/CartPage/CartPage";
 import { OrderPage } from "pages/OrderPage/OrderPage";
 import { AboutPage } from "pages/AboutPage/AboutPage";
 import { NotFoundPage } from "pages/NotFoundPage/NotFoundPage";
+import { SearchedProductPage } from "pages/SearchedProductPage/SearchedProductPage";
 
 import GlobalStyle from './GlobalStyle.jsx';
+
 
 function App() {
   return (
@@ -23,6 +25,7 @@ function App() {
           <Route path="/cart" element={<CartPage />} />
           <Route path="order" element={<OrderPage />} />
           <Route path="about" element={<AboutPage />} />
+          <Route path="search" element={<SearchedProductPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

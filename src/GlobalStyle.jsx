@@ -4,10 +4,6 @@ import 'normalize.css';
 const GlobalStyles = createGlobalStyle`
   body {
   margin: 0;
-  background-color: var(--board_bgc);
-  font-family: 'Poppins', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 code {

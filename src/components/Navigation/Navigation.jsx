@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { MobNavigationMenu } from './MobNavigationMenu';
 import { NavigationMenu } from './NavigationMenu';
+import { SearchBar } from '../SearchBar/SearchBar';
 
 import Sprite from '../../images/sprite.svg';
 
@@ -11,11 +12,12 @@ import {
   MenuIcon,
   CartBtn,
   CartIcon,
-  SearchBtn,
-  SearchIcon,
+  // SearchBtn,
+  // SearchIcon,
 } from './Navigation.styled';
 
 export const Navigation = () => {
+// export const Navigation = ({searchQuery, setSearchQuery}) => {
   const [isShowMenu, setIsShowMenu] = useState(false);
 
   const closeMobMenu = () => setIsShowMenu(false);
@@ -23,36 +25,42 @@ export const Navigation = () => {
   const toggleMenu = () => {
     setIsShowMenu(!isShowMenu);
   };
+
   return (
     <NavContainer>
       <NavigationMenu />
 
       <BtnWrapper>
-        <SearchBtn type="button">
-          <SearchIcon width={24} height={24}>
-            <use href={`${Sprite}#icon-search`} />
-          </SearchIcon>
-        </SearchBtn>
+        {/* <SearchBar searchQuery={searchQuery}  setSearchQuery={setSearchQuery} /> */}
+        <SearchBar />
+        {/* <div>
+          <SearchBtn type="button">
+            <SearchIcon width={24} height={24}>
+              <use href={`${Sprite}#icon-search`} />
+            </SearchIcon>
+          </SearchBtn>
+        </div> */}
 
-        <CartBtn type="button">
-          <CartIcon width={24} height={24}>
-            <use href={`${Sprite}#icon-cart`} />
-          </CartIcon>
-        </CartBtn>
+        <div style={{ display: 'flex' }}>
+          <CartBtn type="button">
+            <CartIcon width={24} height={24}>
+              <use href={`${Sprite}#icon-cart`} />
+            </CartIcon>
+            <span>Кошик</span>
+          </CartBtn>
+        </div>
 
-        {isShowMenu ? (
-          <MenuBtn type="button" onClick={toggleMenu}>
+        <MenuBtn type="button" onClick={toggleMenu}>
+          {isShowMenu ? (
             <MenuIcon width={24} height={24} style={{ fill: '#4C4B4B' }}>
               <use href={`${Sprite}#icon-cross`} />
             </MenuIcon>
-          </MenuBtn>
-        ) : (
-          <MenuBtn type="button" onClick={toggleMenu}>
+          ) : (
             <MenuIcon width={24} height={24}>
               <use href={`${Sprite}#icon-burger-menu`} />
             </MenuIcon>
-          </MenuBtn>
-        )}
+          )}
+        </MenuBtn>
       </BtnWrapper>
 
       {isShowMenu && (

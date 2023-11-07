@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
-export const HeaderWrapper = styled.div`
+export const HeaderWrapper = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
   /* width: 100%; */
-  padding-top: 46px;
+  padding: 48px  20px 19px;
+  /* padding-top: 46px;
   padding-left: 20px;
-  padding-right: 20px;
+  padding-right: 20px; */
   background: 'grey';
 `;
 

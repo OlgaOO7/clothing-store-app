@@ -1,6 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
 
 export const CatalogPage = () => {
+
+  //  ----------- test code -----------
   const getProductLink = productsId => `/catalog/${productsId}`;
   const location = useLocation();
 
@@ -53,4 +55,5 @@ export const CatalogPage = () => {
       </ul>
     </div>
   );
+  //  ----------- test code -----------
 };
