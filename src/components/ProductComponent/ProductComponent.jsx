@@ -5,6 +5,7 @@ import {
   ProductTitle,
   ProductWrapper,
 } from './ProductComponent.styled';
+import noImage from '../../images/no-image.jpg';
 
 export const ProductComponent = ({ item }) => {
   const maxLength = 40;
@@ -12,11 +13,7 @@ export const ProductComponent = ({ item }) => {
     <Link to={`/catalog/${item.id}`}>
       <ProductWrapper>
         <ProductImage
-          src={`${
-            item.photos.url
-              ? item.photos.url
-              : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png'
-          }`}
+          src={`${item.photos.url ? item.photos.url : noImage}`}
         ></ProductImage>
         {item.title.length > maxLength ? (
           <ProductTitle>{item.title.slice(0, maxLength)}...</ProductTitle>

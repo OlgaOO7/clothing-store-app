@@ -4,13 +4,14 @@ const initialState = { categories: [] };
 const categoriesSlice = createSlice({
   name: 'categories',
   initialState,
-  extraReducers: {
-    [getCategories.fulfilled](state, action) {
-      state.categories = action.payload;
-    },
-    [getCategories.rejected](state) {
-      state.categories = [];
-    },
+  extraReducers: builder => {
+    builder
+      .addCase(getCategories.fulfilled, (state, action) => {
+        state.categories = action.payload;
+      })
+      .addCase(getCategories.rejected, state => {
+        state.categories = [];
+      });
   },
 });
 
