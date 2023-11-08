@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 axios.defaults.baseURL =
-  'http://onlinestoreprojectbackend-env.eba-y62nm3qd.eu-central-1.elasticbeanstalk.com/api/v1';
+  'http://onlinestoreprojectbackend.eu-central-1.elasticbeanstalk.com/api/v1';
 const config = {
   headers: {
     Accept: '*/*',
