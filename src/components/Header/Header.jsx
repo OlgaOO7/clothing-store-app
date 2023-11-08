@@ -19,14 +19,13 @@ import {
 import React from 'react';
 
 export const Header = () => {
+  // const [searchQuery, setSearchQuery] = useState('');
+  // const location = useLocation();
 
-    // const [searchQuery, setSearchQuery] = useState('');
-    // const location = useLocation();
-  
-    // useEffect(() => {
-    //   // Reset the search input when the location changes
-    //   setSearchQuery('');
-    // }, [location]);
+  // useEffect(() => {
+  //   // Reset the search input when the location changes
+  //   setSearchQuery('');
+  // }, [location]);
 
   // const [isShowMenu, setIsShowMenu] = useState(false);
 
@@ -37,8 +36,8 @@ export const Header = () => {
   return (
     <HeaderWrapper>
       <Logo />
-{/* <Navigation searchQuery={searchQuery} setSearchQuery={setSearchQuery} /> */}
-<Navigation />
+      {/* <Navigation searchQuery={searchQuery} setSearchQuery={setSearchQuery} /> */}
+      <Navigation />
 
       {/* <BtnWrapper>
         <SearchBtn type="button">
@@ -57,7 +56,6 @@ export const Header = () => {
           </MenuIcon>
         </MenuBtn>
       </BtnWrapper> */}
-
     </HeaderWrapper>
   );
 };

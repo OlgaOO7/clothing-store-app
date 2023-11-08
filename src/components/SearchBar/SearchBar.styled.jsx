@@ -20,11 +20,21 @@ export const SearchMobWrapper = styled.div`
   }
 `;
 
+export const MobSearchWrapper = styled.div`
+    display: flex;
+  @media (min-width: 1440px) {
+    display: none;
+  }
+`
+
 export const SearchBtn = styled.button`
   padding: 0px;
-  margin-right: 16px;
+  /* margin-right: 16px; */
   border: none;
   /* background-color: transparent; */
+  @media (min-width: 1440px) {
+    margin-right: 16px;
+  }
 `;
 
 export const SearchCloseBtn = styled.div`
@@ -45,6 +55,7 @@ export const SearchInputListWrapper = styled.div`
   position: absolute;
   top: 100%;
   right: 0%;
+  z-index: 999;
   padding: 10px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-bottom-left-radius: 10px;

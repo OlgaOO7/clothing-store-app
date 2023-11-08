@@ -1,11 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
-import {
-  Link,
-  useLocation,
-  useNavigate,
-} from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { fetchProducts } from '../../services/search-product.js';
+// import { SearchBarMob } from './SearchBarMob.jsx';
 import Sprite from '../../images/sprite.svg';
 
 import {
@@ -19,15 +16,21 @@ import {
   SearchInput,
   SearchCloseIcon,
   SearchList,
-  SearchItem
+  SearchItem,
+  MobSearchWrapper,
 } from './SearchBar.styled';
 
-  export const SearchBar = () => {
+export const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isEmpty, setIsEmpty] = useState(false);
   const [productsBySearch, setProductsBySearch] = useState([]);
   const [isCloseBtn, setIsCloseBtn] = useState(false);
   const [isSearchListVisible, setIsSearchListVisible] = useState(false);
+  const [isShowSearch, setIsShowSearch] = useState(false);
+
+  const toggleSearch = () => {
+    setIsShowSearch(!isShowSearch);
+  };
 
   const showSearchList = searchQuery && isSearchListVisible;
 
@@ -70,16 +73,17 @@ import {
     // eslint-disable-next-line
   }, [location]);
 
-
   const clearSearchInput = () => {
     setSearchQuery('');
     setIsCloseBtn(false);
+    toggleSearch();
   };
+
+  const trimmedSearchQuerry = searchQuery.trim();
 
   const handleSubmit = e => {
     e.preventDefault();
-    const trimmedSearchQuerry = searchQuery.trim();
-    
+    // const trimmedSearchQuerry = searchQuery.trim();
     if (trimmedSearchQuerry === '') {
       setIsEmpty(true);
       setIsSearchListVisible(false);
@@ -96,6 +100,7 @@ import {
   };
 
   const handleSearchChange = e => {
+    console.log(searchQuery.length);
     const inputValue = e.target.value.toLowerCase();
     setSearchQuery(inputValue);
     setIsCloseBtn(inputValue.length > 0);
@@ -108,6 +113,13 @@ import {
     }
     if (searchQuery) {
       setIsEmpty(false);
+    }
+  };
+
+  const searchHandler = e => {
+    e.preventDefault();
+    if (e.key === 'Enter' && searchQuery.length > 0) {
+      navigate(`/search?s=${encodeURIComponent(trimmedSearchQuerry)}`);
     }
   };
 
@@ -135,6 +147,7 @@ import {
             autoFocus
             placeholder="Шукати"
             onChange={handleSearchChange}
+            onKeyUp={searchHandler}
           />
 
           {isCloseBtn && (
@@ -153,7 +166,7 @@ import {
 
       <SearchInputListWrapper>
         {isEmpty && !searchQuery && <p>Будь ласка, введіть ваш запит!</p>}
-        {productsBySearch.length > 0 && showSearchList  && (
+        {productsBySearch.length > 0 && showSearchList && (
           <div>
             <SearchList>
               {productsBySearch.map(
@@ -191,11 +204,54 @@ import {
       {/* (<p>За вашим запитом нічого не знайдено!</p>) */}
 
       <SearchMobWrapper>
-        <SearchBtn type="button">
-          <SearchIcon width={24} height={24}>
-            <use href={`${Sprite}#icon-search`} />
-          </SearchIcon>
-        </SearchBtn>
+        <div>
+          {isShowSearch ? (
+            <MobSearchWrapper>
+              <form
+                onSubmit={handleSubmit}
+                style={{
+                  display: 'flex',
+                  width: 184,
+                  borderBottom: '2px solid #000',
+                }}
+              >
+                <SearchBtn type="submit">
+                  <SearchIcon width={24} height={24}>
+                    <use href={`${Sprite}#icon-search`} />
+                  </SearchIcon>
+                </SearchBtn>
+
+                <SearchInput
+                  type="text"
+                  value={searchQuery}
+                  autoComplete="off"
+                  autoFocus
+                  placeholder="Шукати"
+                  onChange={handleSearchChange}
+                  onKeyUp={searchHandler}
+                />
+
+                {isCloseBtn && (
+                  <SearchCloseBtn type="button" onClick={clearSearchInput}>
+                    <SearchCloseIcon
+                      width={24}
+                      height={24}
+                      style={{ fill: '#4C4B4B' }}
+                    >
+                      <use href={`${Sprite}#icon-cross`} />
+                    </SearchCloseIcon>
+                  </SearchCloseBtn>
+                )}
+              </form>
+            </MobSearchWrapper>
+          ) : (
+            <SearchBtn type="button" onClick={toggleSearch}>
+              <SearchIcon width={24} height={24}>
+                <use href={`${Sprite}#icon-search`} />
+              </SearchIcon>
+            </SearchBtn>
+          )}
+        </div>
       </SearchMobWrapper>
     </Wrapper>
   );
