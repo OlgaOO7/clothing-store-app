@@ -48,6 +48,9 @@ import {
         const visibleProducts = content.filter(product =>
           product.title.toLowerCase().includes(searchQuery.toLowerCase())
         );
+        console.log({
+          data: { content },
+        });
         setProductsBySearch(visibleProducts);
       };
       getSearchProduct();
