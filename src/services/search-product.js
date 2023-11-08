@@ -1,7 +1,9 @@
 import axios from 'axios';
 
 // const BASE_URL = 'http://onlinestoreprojectbackend-env.eba-y62nm3qd.eu-central-1.elasticbeanstalk.com/api/v1';
-const BASE_URL = 'http://onlinestoreprojectbackend.eu-central-1.elasticbeanstalk.com/api/v1';
+// const BASE_URL = 'http://onlinestoreprojectbackend.eu-central-1.elasticbeanstalk.com/api/v1';
+
+const BASE_URL = 'https://online-store-project-backend.onrender.com/api/v1';
 
 const fetchProducts = async () => {
   try {
