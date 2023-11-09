@@ -18,6 +18,7 @@ import {
   SearchList,
   SearchItem,
   MobSearchWrapper,
+  SearchListWrapper,
 } from './SearchBar.styled';
 
 export const SearchBar = () => {
@@ -28,15 +29,17 @@ export const SearchBar = () => {
   const [isSearchListVisible, setIsSearchListVisible] = useState(false);
   const [isShowSearch, setIsShowSearch] = useState(false);
 
+  const location = useLocation();
+  const navigate = useNavigate();
+  const previousLocation = useRef();
+
   const toggleSearch = () => {
     setIsShowSearch(!isShowSearch);
   };
 
   const showSearchList = searchQuery && isSearchListVisible;
 
-  const location = useLocation();
-  const navigate = useNavigate();
-  const previousLocation = useRef();
+  const trimmedSearchQuerry = searchQuery.trim();
 
   useEffect(() => {
     if (searchQuery.length < 3) {
@@ -78,8 +81,6 @@ export const SearchBar = () => {
     setIsCloseBtn(false);
     toggleSearch();
   };
-
-  const trimmedSearchQuerry = searchQuery.trim();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -167,7 +168,7 @@ export const SearchBar = () => {
       <SearchInputListWrapper>
         {isEmpty && !searchQuery && <p>Будь ласка, введіть ваш запит!</p>}
         {productsBySearch.length > 0 && showSearchList && (
-          <div>
+          <SearchListWrapper>
             <SearchList>
               {productsBySearch.map(
                 ({
@@ -197,7 +198,7 @@ export const SearchBar = () => {
                 Дивитись всі
               </Link>
             )}
-          </div>
+          </SearchListWrapper>
         )}
       </SearchInputListWrapper>
 

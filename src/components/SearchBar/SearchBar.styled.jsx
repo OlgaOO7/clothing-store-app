@@ -56,6 +56,9 @@ export const SearchInputListWrapper = styled.div`
   top: 100%;
   right: 0%;
   z-index: 999;
+`;
+
+export const SearchListWrapper = styled.div`
   padding: 10px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-bottom-left-radius: 10px;
