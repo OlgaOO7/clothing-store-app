@@ -16,26 +16,29 @@ import {
   NavWrapper,
   ButtonGray,
   ButtonsWrapper,
+  Icon,
 } from './ProductCatalog.styled';
 
 export const ProductCatalog = () => {
   const [page, setCurrentPage] = useState(0);
   const dispatch = useDispatch();
-  const handlePageChange = page => {
-    setCurrentPage(page);
-  };
+  const totalPage = useSelector(selectTotalPages) || 1;
+  const products = useSelector(selectProducts) || [];
+
   useEffect(() => {
     dispatch(getProductsPagination({ page: page }));
   }, [dispatch, page]);
+
+  const handlePageChange = page => {
+    setCurrentPage(page);
+  };
+
   const handleNextPage = () => {
     if (page < totalPage - 1) {
       handlePageChange(page + 1);
     }
   };
-  const totalPage = useSelector(selectTotalPages) || 1;
-  console.log(totalPage);
-  const products = useSelector(selectProducts) || [];
-  console.log(products);
+
   return (
     <>
       <NavWrapper>
@@ -72,9 +75,9 @@ export const ProductCatalog = () => {
               onClick={handleNextPage}
               disabled={totalPage === 1 ? true : false}
             >
-              <svg style={{ width: '11px', height: '10px' }}>
+              <Icon>
                 <use href={`${Sprite}#icon-next-page`}></use>
-              </svg>
+              </Icon>
             </Button>
           </ButtonsWrapper>
         </Wrapper>

@@ -95,3 +95,7 @@ export const ButtonGray = styled.button`
     line-height: 21px;
   }
 `;
+export const Icon = styled.svg`
+  width: 11px;
+  height: 10px;
+`;
