@@ -3,19 +3,20 @@ import { Link } from 'react-router-dom';
 
 export const Section = styled.section`
   width: 100%;
-  padding: 60px 0;
+  padding: 32px 0 65px;
+  @media (min-width: 1440px) {
+    padding: 40px 0 81px;
+  }
 `;
 
 export const NavWrapper = styled.div`
   display: flex;
   flex-direction: row;
   gap: 31px;
-  padding-left: 28px;
-  padding-right: 28px;
+  padding: 29px 28px 28px;
   @media (min-width: 1440px) {
     max-width: 1360px;
-    padding-left: 40px;
-    padding-right: 40px;
+    padding: 75px 40px 69px;
   }
 `;
 export const Wrapper = styled.div`
@@ -98,4 +99,7 @@ export const ButtonGray = styled.button`
 export const Icon = styled.svg`
   width: 11px;
   height: 10px;
+`;
+export const Message = styled.p`
+  text-align: center;
 `;
