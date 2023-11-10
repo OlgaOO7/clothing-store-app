@@ -1,4 +1,11 @@
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProductsPagination } from 'redux/products/operations';
+import { selectTotalPages, selectProducts } from 'redux/products/selectors';
+
 import { ProductComponent } from 'components/ProductComponent/ProductComponent';
+import Sprite from '../../images/sprite.svg';
+
 import {
   LinkTo,
   Wrapper,
@@ -8,12 +15,8 @@ import {
   ListOfButtons,
   NavWrapper,
   ButtonGray,
+  ButtonsWrapper,
 } from './ProductCatalog.styled';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getProductsPagination } from 'redux/products/operations';
-import { selectTotalPages, selectProducts } from 'redux/products/selectors';
-import Sprite from '../../images/sprite.svg';
 
 export const ProductCatalog = () => {
   const [page, setCurrentPage] = useState(0);
@@ -30,6 +33,7 @@ export const ProductCatalog = () => {
     }
   };
   const totalPage = useSelector(selectTotalPages) || 1;
+  console.log(totalPage);
   const products = useSelector(selectProducts) || [];
   console.log(products);
   return (
@@ -48,26 +52,31 @@ export const ProductCatalog = () => {
               </li>
             ))}
           </List>
-          <ListOfButtons>
-            {Array.from({ length: totalPage }).map((_, index) => (
-              <li key={index}>
-                {page === index ? (
-                  <Button onClick={() => handlePageChange(index)}>
-                    {index + 1}
-                  </Button>
-                ) : (
-                  <ButtonGray onClick={() => handlePageChange(index)}>
-                    {index + 1}
-                  </ButtonGray>
-                )}
-              </li>
-            ))}
-            <Button onClick={handleNextPage}>
+          <ButtonsWrapper>
+            <ListOfButtons>
+              {Array.from({ length: totalPage }).map((_, index) => (
+                <li key={index}>
+                  {page === index ? (
+                    <Button onClick={() => handlePageChange(index)}>
+                      {index + 1}
+                    </Button>
+                  ) : (
+                    <ButtonGray onClick={() => handlePageChange(index)}>
+                      {index + 1}
+                    </ButtonGray>
+                  )}
+                </li>
+              ))}
+            </ListOfButtons>
+            <Button
+              onClick={handleNextPage}
+              disabled={totalPage === 1 ? true : false}
+            >
               <svg style={{ width: '11px', height: '10px' }}>
                 <use href={`${Sprite}#icon-next-page`}></use>
               </svg>
             </Button>
-          </ListOfButtons>
+          </ButtonsWrapper>
         </Wrapper>
       </Section>
     </>

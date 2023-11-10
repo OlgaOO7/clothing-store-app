@@ -1,7 +1,5 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-// axios.defaults.baseURL =
-//   'https://online-store-project-backend.onrender.com/api/v1';
 
 axios.defaults.baseURL = 'https://online-store.ddns.net/api/v1';
 
@@ -28,7 +26,7 @@ export const getProductsPagination = createAsyncThunk(
   async (page, thunkAPI) => {
     try {
       const res = await axios.get(
-        `/products?page=${page.page}&size=3&sort=title`,
+        `/products?page=${page.page}&size=12&sort=title`,
         '',
         config.headers
       );

@@ -51,6 +51,14 @@ export const List = styled.ul`
     gap: 58px 24px;
   }
 `;
+export const ButtonsWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  @media (min-width: 1440px) {
+    gap: 24px;
+  }
+`;
 export const ListOfButtons = styled.ul`
   display: flex;
   gap: 24px;
