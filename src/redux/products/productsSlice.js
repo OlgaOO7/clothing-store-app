@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getProducts } from './operations';
-const initialState = { products: {} };
+import { getProducts, getProductsPagination } from './operations';
+const initialState = { products: null, productsCategory: null };
 const productsSlice = createSlice({
   name: 'products',
   initialState,
@@ -11,6 +11,12 @@ const productsSlice = createSlice({
       })
       .addCase(getProducts.rejected, state => {
         state.products = {};
+      })
+      .addCase(getProductsPagination.fulfilled, (state, action) => {
+        state.productsCategory = action.payload;
+      })
+      .addCase(getProductsPagination.rejected, state => {
+        state.productsCategory = {};
       });
   },
 });

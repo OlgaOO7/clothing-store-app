@@ -20,3 +20,18 @@ export const getProducts = createAsyncThunk('products', async (_, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+export const getProductsPagination = createAsyncThunk(
+  'products/getAll',
+  async (page, thunkAPI) => {
+    try {
+      const res = await axios.get(
+        `/products?page=${page.page}&size=3&sort=title`,
+        '',
+        config.headers
+      );
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
