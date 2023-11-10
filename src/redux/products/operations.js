@@ -21,6 +21,7 @@ export const getProducts = createAsyncThunk(
     }
   }
 );
+
 export const getProductsPagination = createAsyncThunk(
   'products/getAll',
   async (page, thunkAPI) => {
@@ -36,12 +37,30 @@ export const getProductsPagination = createAsyncThunk(
     }
   }
 );
+
 export const getProductsFilterByCategory = createAsyncThunk(
   'products/getFilteredProducts',
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.get(
         `/products?page=${credentials.page}&size=12&sort=title&categoryId=${credentials.categoryId}`,
+        '',
+        config.headers
+      );
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getProductsSortByPrice = createAsyncThunk(
+  'products/getSortedProducts',
+  async (credentials, thunkAPI) => {
+    try {
+      console.log(credentials.page);
+      const res = await axios.get(
+        `/products?page=${credentials.page}&size=12&sort=${credentials.sort}`,
         '',
         config.headers
       );

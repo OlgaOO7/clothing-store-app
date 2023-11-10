@@ -9,11 +9,12 @@ export const Section = styled.section`
 `;
 export const Wrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 78px;
+  flex-direction: column-reverse;
+  gap: 26px;
   padding-left: 28px;
   padding-right: 28px;
   @media (min-width: 1440px) {
+    flex-direction: row;
     gap: 112px;
     max-width: 1360px;
     padding-left: 40px;
@@ -22,6 +23,7 @@ export const Wrapper = styled.div`
 `;
 export const CatalogButtonList = styled.ul`
   display: flex;
+  flex-wrap: wrap;
   gap: 16px 14px;
 
   @media (min-width: 1440px) {

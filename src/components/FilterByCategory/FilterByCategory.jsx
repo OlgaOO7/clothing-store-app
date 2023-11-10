@@ -7,6 +7,7 @@ import {
   getProductsPagination,
 } from 'redux/products/operations';
 
+import { SortByPrice } from 'components/SortByPrice/SortByPrice';
 import {
   CatalogButton,
   CatalogButtonList,
@@ -25,9 +26,11 @@ export const FilterByCategory = ({ page }) => {
   }, [dispatch]);
 
   const handleCategoryChange = categoryId => {
-    dispatch(
-      getProductsFilterByCategory({ page: page, categoryId: categoryId })
-    );
+    if (categoryId === selectedCategory) {
+      return;
+    }
+
+    dispatch(getProductsFilterByCategory({ page, categoryId }));
     setSelectedCategory(categoryId);
   };
   return (
@@ -63,6 +66,7 @@ export const FilterByCategory = ({ page }) => {
             </li>
           ))}
         </CatalogButtonList>
+        <SortByPrice page={page} />
       </Wrapper>
     </Section>
   );
