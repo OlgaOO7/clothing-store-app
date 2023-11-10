@@ -12,12 +12,9 @@ import {
   MenuIcon,
   CartBtn,
   CartIcon,
-  // SearchBtn,
-  // SearchIcon,
 } from './Navigation.styled';
 
 export const Navigation = () => {
-// export const Navigation = ({searchQuery, setSearchQuery}) => {
   const [isShowMenu, setIsShowMenu] = useState(false);
 
   const closeMobMenu = () => setIsShowMenu(false);
@@ -31,16 +28,7 @@ export const Navigation = () => {
       <NavigationMenu />
 
       <BtnWrapper>
-        {/* <SearchBar searchQuery={searchQuery}  setSearchQuery={setSearchQuery} /> */}
         <SearchBar />
-        {/* <div>
-          <SearchBtn type="button">
-            <SearchIcon width={24} height={24}>
-              <use href={`${Sprite}#icon-search`} />
-            </SearchIcon>
-          </SearchBtn>
-        </div> */}
-
         <div style={{ display: 'flex' }}>
           <CartBtn type="button">
             <CartIcon width={24} height={24}>

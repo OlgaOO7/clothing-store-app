@@ -41,6 +41,9 @@ export const SearchBar = () => {
 
   const trimmedSearchQuerry = searchQuery.trim();
 
+  // TO DO: when the product base will be imorted, it is needed to cut visibleProducts and show only max 4 product items in 'SearchList',
+  // all list of searched products will be displayed by clicking on link 'Дивитись всі' at 'SearchProductPage' page
+
   useEffect(() => {
     if (searchQuery.length < 3) {
       setProductsBySearch([]);
@@ -190,6 +193,8 @@ export const SearchBar = () => {
                 )
               )}
             </SearchList>
+
+            {/* TO DO: change condition for 'productsBySearch.length' on 'productsBySearch.length >= 4', when product base with all goods will be imported  */}
             {productsBySearch.length > 2 && (
               <Link
                 to={`/search?s=${searchQuery.trim()}`}
