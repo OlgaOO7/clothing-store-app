@@ -1,14 +1,16 @@
 import { Link } from 'react-router-dom';
+
+import noImage from '../../images/no-image.jpg';
+
 import {
   ProductDescription,
   ProductImage,
   ProductTitle,
   ProductWrapper,
 } from './ProductComponent.styled';
-import noImage from '../../images/no-image.jpg';
 
 export const ProductComponent = ({ item }) => {
-  const maxLength = 40;
+  const maxLength = 25;
   return (
     <Link to={`/catalog/${item.id}`}>
       <ProductWrapper>

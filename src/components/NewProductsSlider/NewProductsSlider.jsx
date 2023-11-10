@@ -1,6 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from 'swiper/modules';
 import { useDispatch, useSelector } from 'react-redux';
+import { selectNewProducts } from 'redux/products/selectors';
 import { getProducts } from 'redux/products/operations';
 import { useEffect } from 'react';
 
@@ -21,11 +22,12 @@ import {
 } from './NewProductsSlider.styled';
 
 export const NewProductsSlider = () => {
+  const products = useSelector(selectNewProducts) || [];
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getProducts());
   }, [dispatch]);
-  const products = useSelector(state => state.products.products.content) || [];
 
   return (
     <Section>
