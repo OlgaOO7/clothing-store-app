@@ -12,14 +12,17 @@ const config = {
   },
 };
 
-export const getProducts = createAsyncThunk('products', async (_, thunkAPI) => {
-  try {
-    const res = await axios.get(`/products`, '', config.headers);
-    return res.data;
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+export const getProducts = createAsyncThunk(
+  'products/getNews',
+  async (_, thunkAPI) => {
+    try {
+      const res = await axios.get(`/products`, '', config.headers);
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
-});
+);
 export const getProductsPagination = createAsyncThunk(
   'products/getAll',
   async (page, thunkAPI) => {

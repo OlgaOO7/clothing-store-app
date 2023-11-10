@@ -25,7 +25,7 @@ export const NewProductsSlider = () => {
   useEffect(() => {
     dispatch(getProducts());
   }, [dispatch]);
-  const products = useSelector(state => state.products.products.content) || [];
+  const products = useSelector(state => state.products.products?.content) || [];
 
   return (
     <Section>
