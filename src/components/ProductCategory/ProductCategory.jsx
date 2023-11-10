@@ -13,13 +13,14 @@ import {
   CategoryItem,
 } from './ProductCategory.styled';
 import { getCategories } from 'redux/category/operations';
+import { selectCategory } from 'redux/category/selectors';
 
 export const ProductCategory = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCategories());
   }, [dispatch]);
-  const categories = useSelector(state => state.categories.categories) || [];
+  const categories = useSelector(selectCategory) || [];
   return (
     <Section>
       <Wrapper>

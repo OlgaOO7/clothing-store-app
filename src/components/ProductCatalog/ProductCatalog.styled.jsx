@@ -12,6 +12,7 @@ export const Section = styled.section`
 export const NavWrapper = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 31px;
   padding: 29px 28px 28px;
   @media (min-width: 1440px) {

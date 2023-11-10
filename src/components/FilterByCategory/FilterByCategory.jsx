@@ -1,4 +1,12 @@
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCategories } from 'redux/category/operations';
+import { selectCategory } from 'redux/category/selectors';
+import {
+  getProductsFilterByCategory,
+  getProductsPagination,
+} from 'redux/products/operations';
+
 import {
   CatalogButton,
   CatalogButtonList,
@@ -6,21 +14,16 @@ import {
   SelectedCatalogButton,
   Wrapper,
 } from './FilterByCategory.styled';
-import { getCategories } from 'redux/category/operations';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  getProductsFilterByCategory,
-  getProductsPagination,
-} from 'redux/products/operations';
 
 export const FilterByCategory = ({ page }) => {
-  const categories = useSelector(state => state.categories.categories) || [];
-
   const dispatch = useDispatch();
   const [selectedCategory, setSelectedCategory] = useState(0);
+  const categories = useSelector(selectCategory) || [];
+
   useEffect(() => {
     dispatch(getCategories());
   }, [dispatch]);
+
   const handleCategoryChange = categoryId => {
     dispatch(
       getProductsFilterByCategory({ page: page, categoryId: categoryId })
