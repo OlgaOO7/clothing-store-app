@@ -4,6 +4,7 @@ import { getProductsPagination } from 'redux/products/operations';
 import { selectTotalPages, selectProducts } from 'redux/products/selectors';
 
 import { ProductComponent } from 'components/ProductComponent/ProductComponent';
+import { FilterByCategory } from 'components/FilterByCategory/FilterByCategory';
 import Sprite from '../../images/sprite.svg';
 
 import {
@@ -17,6 +18,7 @@ import {
   ButtonGray,
   ButtonsWrapper,
   Icon,
+  Message,
 } from './ProductCatalog.styled';
 
 export const ProductCatalog = () => {
@@ -46,40 +48,47 @@ export const ProductCatalog = () => {
         <span>|</span>
         <LinkTo to={'/catalog'}>Каталог</LinkTo>
       </NavWrapper>
+      <FilterByCategory page={page} />
       <Section>
         <Wrapper>
-          <List>
-            {products.map(product => (
-              <li key={product.id}>
-                <ProductComponent item={product} />
-              </li>
-            ))}
-          </List>
-          <ButtonsWrapper>
-            <ListOfButtons>
-              {Array.from({ length: totalPage }).map((_, index) => (
-                <li key={index}>
-                  {page === index ? (
-                    <Button onClick={() => handlePageChange(index)}>
-                      {index + 1}
-                    </Button>
-                  ) : (
-                    <ButtonGray onClick={() => handlePageChange(index)}>
-                      {index + 1}
-                    </ButtonGray>
-                  )}
-                </li>
-              ))}
-            </ListOfButtons>
-            <Button
-              onClick={handleNextPage}
-              disabled={totalPage === 1 ? true : false}
-            >
-              <Icon>
-                <use href={`${Sprite}#icon-next-page`}></use>
-              </Icon>
-            </Button>
-          </ButtonsWrapper>
+          {products.length !== 0 ? (
+            <>
+              <List>
+                {products.map(product => (
+                  <li key={product.id}>
+                    <ProductComponent item={product} />
+                  </li>
+                ))}
+              </List>
+              <ButtonsWrapper>
+                <ListOfButtons>
+                  {Array.from({ length: totalPage }).map((_, index) => (
+                    <li key={index}>
+                      {page === index ? (
+                        <Button onClick={() => handlePageChange(index)}>
+                          {index + 1}
+                        </Button>
+                      ) : (
+                        <ButtonGray onClick={() => handlePageChange(index)}>
+                          {index + 1}
+                        </ButtonGray>
+                      )}
+                    </li>
+                  ))}
+                </ListOfButtons>
+                <Button
+                  onClick={handleNextPage}
+                  disabled={totalPage === 1 ? true : false}
+                >
+                  <Icon>
+                    <use href={`${Sprite}#icon-next-page`}></use>
+                  </Icon>
+                </Button>
+              </ButtonsWrapper>
+            </>
+          ) : (
+            <Message>Sorry, but this category is not available yet</Message>
+          )}
         </Wrapper>
       </Section>
     </>
