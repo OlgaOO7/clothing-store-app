@@ -58,9 +58,12 @@ export const getProductsSortByPrice = createAsyncThunk(
   'products/getSortedProducts',
   async (credentials, thunkAPI) => {
     try {
-      console.log(credentials.page);
       const res = await axios.get(
-        `/products?page=${credentials.page}&size=12&sort=${credentials.sort}`,
+        `/products?page=${credentials.page}&size=12&sort=${credentials.sort}${
+          credentials.selectedCategory >= 1
+            ? `&categoryId=${credentials.selectedCategory}`
+            : ''
+        }`,
         '',
         config.headers
       );

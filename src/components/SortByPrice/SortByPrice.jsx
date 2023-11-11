@@ -4,7 +4,7 @@ import { getProductsSortByPrice } from 'redux/products/operations';
 import { Select } from './SortByPrice.styled';
 import { useCallback } from 'react';
 
-export const SortByPrice = ({ page }) => {
+export const SortByPrice = ({ page, selectedCategory }) => {
   const dispatch = useDispatch();
 
   const handleSortChange = useCallback(
@@ -16,10 +16,11 @@ export const SortByPrice = ({ page }) => {
             order === 'lowestToHighest'
               ? 'price.value,asc'
               : 'price.value,desc',
+          selectedCategory,
         })
       );
     },
-    [dispatch, page]
+    [dispatch, page, selectedCategory]
   );
   return (
     <div>

@@ -66,7 +66,7 @@ export const FilterByCategory = ({ page }) => {
             </li>
           ))}
         </CatalogButtonList>
-        <SortByPrice page={page} />
+        <SortByPrice page={page} selectedCategory={selectedCategory} />
       </Wrapper>
     </Section>
   );

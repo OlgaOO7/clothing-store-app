@@ -16,6 +16,7 @@ export const Wrapper = styled.div`
   @media (min-width: 1440px) {
     flex-direction: row;
     gap: 112px;
+    justify-content: space-between;
     max-width: 1360px;
     padding-left: 40px;
     padding-right: 40px;
@@ -47,7 +48,7 @@ export const CatalogButton = styled.button`
   }
 `;
 export const SelectedCatalogButton = styled.button`
-  padding: 6px 18px;
+  padding: 7px 18px;
   background: #000000;
   border: none;
 

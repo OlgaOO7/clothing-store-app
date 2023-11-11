@@ -49,11 +49,7 @@ export const ProductCatalog = () => {
         <span>|</span>
         <LinkTo to={'/catalog'}>Каталог</LinkTo>
       </NavWrapper>
-      <Section>
-        <Wrapper>
-          <FilterByCategory page={page} />
-        </Wrapper>
-      </Section>
+      <FilterByCategory page={page} />
       <Section>
         <Wrapper>
           {products.length !== 0 ? (
