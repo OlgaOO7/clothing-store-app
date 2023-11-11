@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Page Not Found</title>
+  <meta charset="utf-8" />
+    <title>Not Found Page</title>
     <script type="text/javascript">
-      if (window.location.href.indexOf('/my-clothing-store-app/') > -1) {
-        window.location.href = '/my-clothing-store-app/';
-      } else {
-        window.location.href = '/';
-      }
+      var pathSegmentsToKeep = 1;
+
+      var l = window.location;
+      l.replace(
+        l.protocol +
+          '//' +
+          l.hostname +
+          (l.port ? ':' + l.port : '') +
+          l.pathname
+            .split('/')
+            .slice(0, 1 + pathSegmentsToKeep)
+            .join('/') +
+          '/?/' +
+          l.pathname
+            .slice(1)
+            .split('/')
+            .slice(pathSegmentsToKeep)
+            .join('/')
+            .replace(/&/g, '~and~') +
+          (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+          l.hash
+      );
     </script>
   </head>
   <body>
-    This page does not exist. <a href="/">Go back to the homepage.</a>
   </body>
 </html>
