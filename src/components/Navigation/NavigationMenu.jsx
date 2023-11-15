@@ -2,10 +2,10 @@ import navigationLinks from '../../data/navigationLinks';
 
 import { Nav, NavList, StyledLink  } from './Navigation.styled';
 
-export const NavigationMenu = () => {
+export const NavigationMenu = ({type}) => {
   return (
-    <Nav>
-      <NavList>
+    <Nav type={type}>
+      <NavList type={type}>
         {navigationLinks.map(({ id, url, label }) => (
           <li key={id}>
             <StyledLink  to={url}>{label}</StyledLink>

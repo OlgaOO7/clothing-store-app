@@ -15,7 +15,7 @@ import {
   CartIcon,
 } from './Navigation.styled';
 
-export const Navigation = () => {
+export const Navigation = ({type}) => {
   const [isShowMenu, setIsShowMenu] = useState(false);
 
   const closeMobMenu = () => setIsShowMenu(false);
@@ -26,7 +26,7 @@ export const Navigation = () => {
 
   return (
     <NavContainer>
-      <NavigationMenu />
+      <NavigationMenu type={type} />
 
       <BtnWrapper>
         <SearchBar />

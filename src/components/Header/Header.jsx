@@ -10,7 +10,7 @@ export const Header = () => {
   return (
     <HeaderWrapper>
       <Logo />
-      <Navigation />
+      <Navigation type="header" />
     </HeaderWrapper>
   );
 };
