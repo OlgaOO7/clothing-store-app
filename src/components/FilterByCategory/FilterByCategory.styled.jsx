@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
   gap: 26px;
   padding-left: 28px;
   padding-right: 28px;
+  margin: 0 auto;
   @media (min-width: 1440px) {
     flex-direction: row;
     gap: 112px;
