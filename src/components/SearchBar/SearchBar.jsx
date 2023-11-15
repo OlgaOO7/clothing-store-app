@@ -28,6 +28,7 @@ export const SearchBar = () => {
   const [isCloseBtn, setIsCloseBtn] = useState(false);
   const [isSearchListVisible, setIsSearchListVisible] = useState(false);
   const [isShowSearch, setIsShowSearch] = useState(false);
+  const [notFoundProduct, setNotFoundProduct] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -47,6 +48,7 @@ export const SearchBar = () => {
   useEffect(() => {
     if (searchQuery.length < 3) {
       setProductsBySearch([]);
+      setNotFoundProduct(false);
       return;
     }
     try {
@@ -57,9 +59,14 @@ export const SearchBar = () => {
         const visibleProducts = content.filter(product =>
           product.title.toLowerCase().includes(searchQuery.toLowerCase())
         );
-        console.log({
-          data: { content },
-        });
+        if (visibleProducts.length === 0) {
+          setNotFoundProduct(true);
+        } else {
+          setNotFoundProduct(false);
+        }
+        // console.log({
+        //   data: { content },
+        // });
         setProductsBySearch(visibleProducts);
       };
       getSearchProduct();
@@ -71,6 +78,7 @@ export const SearchBar = () => {
   useEffect(() => {
     setIsSearchListVisible(false);
     setIsEmpty(false);
+    setNotFoundProduct(false);
     if (location.pathname !== '/search') {
       setSearchQuery('');
       setIsCloseBtn(false);
@@ -169,7 +177,8 @@ export const SearchBar = () => {
       </SearchWrapper>
 
       <SearchInputListWrapper>
-        {isEmpty && !searchQuery && <p>Будь ласка, введіть ваш запит!</p>}
+        {isEmpty && !searchQuery && <SearchListWrapper><p>Будь ласка, введіть ваш запит!</p></SearchListWrapper>}
+        {notFoundProduct && showSearchList && (<SearchListWrapper><p>За вашим запитом нічого не знайдено!</p></SearchListWrapper>) }
         {productsBySearch.length > 0 && showSearchList && (
           <SearchListWrapper>
             <SearchList>
