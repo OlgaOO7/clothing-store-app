@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { MobNavigationMenu } from './MobNavigationMenu';
 import { NavigationMenu } from './NavigationMenu';
 import { SearchBar } from '../SearchBar/SearchBar';
@@ -10,7 +11,7 @@ import {
   BtnWrapper,
   MenuBtn,
   MenuIcon,
-  CartBtn,
+  // CartBtn,
   CartIcon,
 } from './Navigation.styled';
 
@@ -29,14 +30,37 @@ export const Navigation = () => {
 
       <BtnWrapper>
         <SearchBar />
-        <div style={{ display: 'flex' }}>
-          <CartBtn type="button">
-            <CartIcon width={24} height={24}>
-              <use href={`${Sprite}#icon-cart`} />
-            </CartIcon>
-            <span>Кошик</span>
-          </CartBtn>
-        </div>
+
+
+          <Link to="/cart"  style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}>
+            <div style={{ display: 'flex', position: 'relative', marginRight: '4px' }}>
+              <CartIcon width={24} height={24}>
+                <use href={`${Sprite}#icon-cart`} />
+              </CartIcon>
+              <div
+                style={{
+                  position: 'absolute',
+                  top: '-0.48rem',
+                  right: 0,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontWeight: 500,
+                  fontSize: '12px',
+                }}
+              >
+                <span style={{color: '#191919'}}>0</span>
+              </div>
+            </div>
+            <div>
+              <span style={{color: '#191919'}}>Кошик</span>
+            </div>
+          </Link>
 
         <MenuBtn type="button" onClick={toggleMenu}>
           {isShowMenu ? (
