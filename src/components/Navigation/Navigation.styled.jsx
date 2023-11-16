@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import styled,{ css } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const NavContainer = styled.div`
   display: flex;
@@ -41,6 +41,18 @@ export const StyledLink = styled(Link)`
   color: #4c4b4b;
   font-size: 16px;
   text-align: center;
+  ${props =>
+    props.type === 'footer' &&
+    css`
+      color: #000;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 160%;
+      @media (min-width: 1440px) {
+        font-size: 18px;
+      }
+    `}
 `;
 
 export const Nav = styled.nav`
@@ -50,8 +62,17 @@ export const Nav = styled.nav`
       display: none;
 
       @media (min-width: 1440px) {
-    display: inline-block;
-  }
+        display: inline-block;
+      }
+    `}
+
+  ${props =>
+    props.type === 'footer' &&
+    css`
+      margin-top: 37px;
+      @media (min-width: 1440px) {
+        margin-top: 0;
+      }
     `}
 `;
 
@@ -60,7 +81,19 @@ export const NavList = styled.nav`
     props.type === 'header' &&
     css`
       display: flex;
-  gap: 40px;
+      gap: 40px;
+    `}
+
+  ${props =>
+    props.type === 'footer' &&
+    css`
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      @media (min-width: 1440px) {
+        gap: 12px;
+      }
     `}
 `;
 
