@@ -3,8 +3,12 @@ import {
   getProducts,
   getProductsPagination,
   getProductsFilterByCategory,
+  getProductsSortByPrice,
 } from './operations';
-const initialState = { products: null, productsCategory: null };
+const initialState = {
+  products: null,
+  productsCategory: null,
+};
 const productsSlice = createSlice({
   name: 'products',
   initialState,
@@ -26,6 +30,12 @@ const productsSlice = createSlice({
         state.productsCategory = action.payload;
       })
       .addCase(getProductsFilterByCategory.rejected, state => {
+        state.productsCategory = {};
+      })
+      .addCase(getProductsSortByPrice.fulfilled, (state, action) => {
+        state.productsCategory = action.payload;
+      })
+      .addCase(getProductsSortByPrice.rejected, state => {
         state.productsCategory = {};
       });
   },

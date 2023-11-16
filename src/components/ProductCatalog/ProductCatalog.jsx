@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductsPagination } from 'redux/products/operations';
 import { selectTotalPages, selectProducts } from 'redux/products/selectors';
@@ -26,14 +26,15 @@ export const ProductCatalog = () => {
   const dispatch = useDispatch();
   const totalPage = useSelector(selectTotalPages) || 1;
   const products = useSelector(selectProducts) || [];
+  console.log(products);
 
   useEffect(() => {
     dispatch(getProductsPagination({ page: page }));
   }, [dispatch, page]);
 
-  const handlePageChange = page => {
+  const handlePageChange = useCallback(page => {
     setCurrentPage(page);
-  };
+  }, []);
 
   const handleNextPage = () => {
     if (page < totalPage - 1) {
