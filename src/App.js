@@ -22,7 +22,7 @@ function App() {
           <Route index element={<MainPage />} />
           <Route path="catalog" element={<CatalogPage />} />
           <Route path="catalog/:productsId" element={<ProductDetailsPage />} />
-          <Route path="/cart" element={<CartPage />} />
+          <Route path="cart" element={<CartPage />} />
           <Route path="order" element={<OrderPage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="search" element={<SearchedProductPage />} />

@@ -1,10 +1,13 @@
+import { SubscriptionForm } from 'components/SubscriptionForm/SubscriptionForm';
+import { InfoBlock } from 'components/InfoBlock/InfoBlock';
 export const SearchedProductPage = () => {
 
   return (
-    //  ----------- test code -----------
+
     <div>
-      <p>.......Here should be a list of searched products........</p>
+      <InfoBlock />
+      <SubscriptionForm />
     </div>
   );
-  //  ----------- test code -----------
+
 };
