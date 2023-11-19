@@ -32,35 +32,47 @@ export const AboutUs = () => {
                 <ContentTitle>Про нас</ContentTitle>
                 <TextWrapper>
                   <ContentText>
-                    Lorem ipsum dolor sit amet consectetur. Orci netus nisl
-                    purus scelerisque quis a in. In habitant pretium ornare
-                    tristique ac. Ac non lacus aliquam nullam fermentum eget.
-                    Sit lacus nec nisi tempor interdum proin semper. Magna
-                    malesuada odio nec tellus commodo cras suspendisse ipsum
-                    platea. Ultricies enim sed egestas egestas euismod accumsan
-                    in. Risus sagittis sem lectus quam.
+                    Zatyshna - це про комфорт у поєднанні зі стилем, про одяг, в
+                    якому ти почуваєшся затишно. Наш бренд народився з
+                    пристрасті до забезпечення жінок зручним і універсальним
+                    одягом, який легко впишеться в їхній активний і повсякденний
+                    спосіб життя.
                   </ContentText>
                   <ContentText>
-                    Lorem ipsum dolor sit amet consectetur. Orci netus nisl
-                    purus scelerisque quis a in. In habitant pretium ornare
-                    tristique ac. Ac non lacus aliquam nullam fermentum eget.
-                    Sit lacus nec nisi tempor interdum proin semper.
+                    У Zatyshna ми розуміємо важливість відчуття невимушеності в
+                    одязі, виражаючи свій унікальний стиль. Наша місія полягає в
+                    тому, щоб запропонувати підібрану колекцію повсякденного
+                    трикотажу, яка втілює ідеальний баланс зручності, комфорту
+                    та простоти без шкоди для якості.
+                  </ContentText>
+                  <ContentText>
+                    Кожна річ створена з прискіпливою увагою до деталей і
+                    прагненням постачати високоякісний одяг. Ми віримо, що
+                    справжній стиль поза часом і що комфортом ніколи не можна
+                    жертвувати модою. Наша колекція створена для плавного
+                    переходу від активних днів до невимушених вечорів, щоб ви
+                    завжди виглядали та почувалися якнайкраще.
                   </ContentText>
                 </TextWrapper>
               </div>
               <div>
                 <ContentTitle>Історія створення</ContentTitle>
-                <ContentText>
-                  Magna malesuada odio nec tellus commodo cras suspendisse ipsum
-                  platea. Ultricies enim sed egestas egestas euismod accumsan
-                  in. Risus sagittis sem lectus quam.Lorem ipsum dolor sit amet
-                  consectetur. Orci netus nisl purus scelerisque quis a in. In
-                  habitant pretium ornare tristique ac. Ac non lacus aliquam
-                  nullam fermentum eget. Sit lacus nec nisi tempor interdum
-                  proin semper. Magna malesuada odio nec tellus commodo cras
-                  suspendisse ipsum platea. Ultricies enim sed egestas egestas
-                  euismod accumsan in. Risus sagittis sem lectus quam.
-                </ContentText>
+                <TextWrapper>
+                  <ContentText>
+                    Історія бренду Zatyshna починається з бачення переосмислення
+                    повсякденного трикотажу для жінок, що поєднує в собі комфорт
+                    і стиль в ідеальній гармонії. Наш шлях розпочався з простої
+                    ідеї - створити бренд, який оспівує сутність повсякденного
+                    комфорту без шкоди для елегантності стилю.
+                  </ContentText>
+                  <ContentText>
+                    Zatyshna виникла як відповідь на постійно мінливі потреби
+                    сучасної жінки. Усвідомлюючи попит на одяг, який органічно
+                    вписується в стрімкий ритм сучасного життя, ми поставили
+                    собі за мету створити колекцію, що відображає дух легкості
+                    та універсальності.
+                  </ContentText>
+                </TextWrapper>
               </div>
             </TextContent>
             <Image></Image>
