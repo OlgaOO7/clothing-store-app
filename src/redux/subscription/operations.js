@@ -27,3 +27,22 @@ export const subscription = createAsyncThunk(
     }
   }
 );
+export const contactUs = createAsyncThunk(
+  'contactUs',
+  async (credentials, thunkAPI) => {
+    try {
+      const res = await axios.post(
+        `/contact_information/send_email`,
+        {
+          name: credentials.name,
+          email: credentials.email,
+          textMessage: credentials.message,
+        },
+        config.headers
+      );
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

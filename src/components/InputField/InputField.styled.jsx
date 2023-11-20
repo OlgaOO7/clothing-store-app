@@ -18,6 +18,8 @@ export const Textarea = styled.textarea`
   padding: 19px 16px;
   border: 1px solid #000000;
   width: 100%;
+  height: 156px;
+  resize: none;
   @media (min-width: 1440px) {
     font-size: 14px;
     line-height: 16px;

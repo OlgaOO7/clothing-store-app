@@ -9,11 +9,15 @@ import {
   ContactsForm,
   FormTitle,
   FormButton,
+  SuccessMessage,
 } from './Form.styled';
 import { InputField } from 'components/InputField/InputField';
+import { useDispatch } from 'react-redux';
+import { contactUs } from 'redux/subscription/operations';
 
 export const Form = () => {
   const [formStatus, setFormStatus] = useState(null);
+  const dispatch = useDispatch();
 
   const {
     register,
@@ -41,7 +45,7 @@ export const Form = () => {
       setTimeout(() => {
         setFormStatus(null);
       }, 3000);
-
+      dispatch(contactUs(formData));
       reset();
     } catch (error) {
       console.error(error);
@@ -55,6 +59,11 @@ export const Form = () => {
   return (
     <ContactsForm onSubmit={handleSubmit(onSubmit)}>
       <FormTitle>Зв’язатись з нами</FormTitle>
+      {formStatus === 'success' && (
+        <SuccessMessage>
+          Дякуємо, ми переглянемо ваш лист і зв'яжемось з вами найближчим часом!
+        </SuccessMessage>
+      )}
       <ContactsFormWrapper>
         <InputField
           label={'Імʼя'}
