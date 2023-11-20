@@ -1,17 +1,17 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from 'react-router-dom';
 
-import { SharedLayout } from "components/SharedLayouts/SharedLayouts";
-import { MainPage } from "./pages/MainPage/MainPage";
-import { CatalogPage } from "./pages/CatalogPage/CatalogPage";
-import { ProductDetailsPage } from "pages/ProductDetailsPage/ProductDetailsPage";
-import { CartPage } from "pages/CartPage/CartPage";
-import { OrderPage } from "pages/OrderPage/OrderPage";
-import { AboutPage } from "pages/AboutPage/AboutPage";
-import { NotFoundPage } from "pages/NotFoundPage/NotFoundPage";
-import { SearchedProductPage } from "pages/SearchedProductPage/SearchedProductPage";
+import { SharedLayout } from 'components/SharedLayouts/SharedLayouts';
+import { MainPage } from './pages/MainPage/MainPage';
+import { CatalogPage } from './pages/CatalogPage/CatalogPage';
+import { ProductDetailsPage } from 'pages/ProductDetailsPage/ProductDetailsPage';
+import { CartPage } from 'pages/CartPage/CartPage';
+import { OrderPage } from 'pages/OrderPage/OrderPage';
+import { AboutPage } from 'pages/AboutPage/AboutPage';
+import { NotFoundPage } from 'pages/NotFoundPage/NotFoundPage';
+import { SearchedProductPage } from 'pages/SearchedProductPage/SearchedProductPage';
+import { ContactsPage } from 'pages/ContactsPage/ContactsPage';
 
 import GlobalStyle from './GlobalStyle.jsx';
-
 
 function App() {
   return (
@@ -25,6 +25,7 @@ function App() {
           <Route path="cart" element={<CartPage />} />
           <Route path="order" element={<OrderPage />} />
           <Route path="about" element={<AboutPage />} />
+          <Route path="contacts" element={<ContactsPage />} />
           <Route path="search" element={<SearchedProductPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>

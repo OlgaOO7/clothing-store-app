@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import useFormPersist from 'react-hook-form-persist';
 import { useForm } from 'react-hook-form';
 
-import { emailSchema } from './yupSchema';
+import { emailSchema } from '../../utils/yupSchema';
 import getButtonContent from 'utils/getMessageContent';
 import { subscription } from '../../redux/subscription/operations';
 
@@ -47,7 +47,7 @@ export const SubscriptionForm = () => {
     SuccessMessage
   );
 
-  const STORAGE_KEY = 'contact_us_form';
+  const STORAGE_KEY = 'subscription_email_form';
 
   useFormPersist(STORAGE_KEY, {
     watch,
