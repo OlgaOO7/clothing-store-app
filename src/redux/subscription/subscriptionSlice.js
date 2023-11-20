@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { subscription } from './operations';
+import { subscription, contactUs } from './operations';
 const initialState = {};
 const subscriptionSlice = createSlice({
   name: 'subscription',
@@ -7,7 +7,9 @@ const subscriptionSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(subscription.fulfilled, state => {})
-      .addCase(subscription.rejected, state => {});
+      .addCase(subscription.rejected, state => {})
+      .addCase(contactUs.fulfilled, state => {})
+      .addCase(contactUs.rejected, state => {});
   },
 });
 

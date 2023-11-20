@@ -45,3 +45,10 @@ export const FormButton = styled.button`
     margin-bottom: 22px;
   }
 `;
+export const SuccessMessage = styled.p`
+  color: #029907;
+  margin-bottom: 16px;
+  @media (min-width: 1440px) {
+    margin-bottom: 22px;
+  }
+`;
