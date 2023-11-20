@@ -46,6 +46,10 @@ export const SearchBar = () => {
   // all list of searched products will be displayed by clicking on link 'Дивитись всі' at 'SearchProductPage' page
 
   useEffect(() => {
+    if (searchQuery === '') {
+      return;
+    }
+    
     if (searchQuery.length < 3) {
       setProductsBySearch([]);
       setNotFoundProduct(false);

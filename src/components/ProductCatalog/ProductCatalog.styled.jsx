@@ -15,9 +15,11 @@ export const NavWrapper = styled.div`
   align-items: center;
   gap: 31px;
   padding: 29px 28px 28px;
+  margin: 0;
   @media (min-width: 1440px) {
-    max-width: 1360px;
+    width: 1360px;
     padding: 75px 40px 69px;
+    margin: 0 auto;
   }
 `;
 export const Wrapper = styled.div`
@@ -26,6 +28,7 @@ export const Wrapper = styled.div`
   gap: 78px;
   padding-left: 28px;
   padding-right: 28px;
+  margin: 0 auto;
   @media (min-width: 1440px) {
     gap: 112px;
     max-width: 1360px;
@@ -48,9 +51,11 @@ export const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 26px 15px;
+  justify-content: center;
 
   @media (min-width: 1440px) {
     gap: 58px 24px;
+    justify-content: normal;
   }
 `;
 export const ButtonsWrapper = styled.div`

@@ -160,3 +160,10 @@ export const SearchIcon = styled.svg`
     height: 24px;
   }
 `;
+
+export const TextContainer = styled.div`
+  display: none;
+  @media (min-width: 1440px) {
+    display: block;
+  }
+`;

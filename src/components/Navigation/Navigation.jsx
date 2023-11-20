@@ -13,6 +13,7 @@ import {
   MenuIcon,
   // CartBtn,
   CartIcon,
+  TextContainer
 } from './Navigation.styled';
 
 export const Navigation = ({type}) => {
@@ -57,9 +58,9 @@ export const Navigation = ({type}) => {
                 <span style={{color: '#191919'}}>0</span>
               </div>
             </div>
-            <div>
+            <TextContainer>
               <span style={{color: '#191919'}}>Кошик</span>
-            </div>
+            </TextContainer>
           </Link>
 
         <MenuBtn type="button" onClick={toggleMenu}>
