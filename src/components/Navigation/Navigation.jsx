@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Logo } from 'components/Logo/Logo';
 import { MobNavigationMenu } from './MobNavigationMenu';
 import { NavigationMenu } from './NavigationMenu';
 import { SearchBar } from '../SearchBar/SearchBar';
@@ -27,6 +28,7 @@ export const Navigation = ({type}) => {
 
   return (
     <NavContainer>
+      <Logo />
       <NavigationMenu type={type} />
 
       <BtnWrapper>

@@ -1,4 +1,4 @@
-import { Logo } from 'components/Logo/Logo';
+// import { Logo } from 'components/Logo/Logo';
 import { Navigation } from 'components/Navigation/Navigation';
 
 import {
@@ -9,7 +9,7 @@ import React from 'react';
 export const Header = () => {
   return (
     <HeaderWrapper>
-      <Logo />
+    {/* <Logo />   */}
       <Navigation type="header" />
     </HeaderWrapper>
   );

@@ -101,7 +101,7 @@ export const BtnWrapper = styled.div`
   display: flex;
   gap: 14px;
   /* check margin-left when will be ready */
-  margin-left: 230px;
+  /* margin-left: 230px; */
 `;
 
 export const MenuBtn = styled.button`
