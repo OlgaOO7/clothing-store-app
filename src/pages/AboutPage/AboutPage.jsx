@@ -1,7 +1,8 @@
+import { AboutUs } from '../../components/AboutUs/AboutUs';
 export const AboutPage = () => {
   return (
     <div>
-      <h2>Про нас</h2>
+      <AboutUs />
     </div>
-  )
-}
+  );
+};
