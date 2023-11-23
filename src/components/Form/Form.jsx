@@ -10,6 +10,7 @@ import {
   FormTitle,
   FormButton,
   SuccessMessage,
+  SuccessMessageWrapper,
 } from './Form.styled';
 import { InputField } from 'components/InputField/InputField';
 import { useDispatch } from 'react-redux';
@@ -44,7 +45,7 @@ export const Form = () => {
       setFormStatus('success');
       setTimeout(() => {
         setFormStatus(null);
-      }, 3000);
+      }, 5000);
       dispatch(contactUs(formData));
       reset();
     } catch (error) {
@@ -52,54 +53,60 @@ export const Form = () => {
       setFormStatus('error');
       setTimeout(() => {
         setFormStatus(null);
-      }, 3000);
+      }, 5000);
     } finally {
     }
   };
   return (
-    <ContactsForm onSubmit={handleSubmit(onSubmit)}>
-      <FormTitle>Зв’язатись з нами</FormTitle>
-      {formStatus === 'success' && (
-        <SuccessMessage>
-          Дякуємо, ми переглянемо ваш лист і зв'яжемось з вами найближчим часом!
-        </SuccessMessage>
+    <>
+      {formStatus === 'success' ? (
+        <SuccessMessageWrapper>
+          <SuccessMessage>
+            Дякуємо, ми переглянемо ваш лист і зв'яжемось з вами найближчим
+            часом!
+          </SuccessMessage>
+        </SuccessMessageWrapper>
+      ) : (
+        <ContactsForm onSubmit={handleSubmit(onSubmit)}>
+          <FormTitle>Зв’язатись з нами</FormTitle>
+          <ContactsFormWrapper>
+            <InputField
+              label={'Імʼя'}
+              type="text"
+              name="name"
+              register={register}
+              errors={errors}
+              placeholder={'Імʼя'}
+            />
+            <InputField
+              label={'E-mail'}
+              type="email"
+              name="email"
+              register={register}
+              errors={errors}
+              placeholder={'E-mail'}
+            />
+            <InputField
+              label={'Повідомлення'}
+              type="textarea"
+              name="message"
+              register={register}
+              errors={errors}
+              placeholder={'Повідомлення'}
+            />
+          </ContactsFormWrapper>
+          <FormButton
+            type="submit"
+            disabled={formStatus === 'error' || formStatus === 'success'}
+          >
+            {formStatus === 'error'
+              ? 'Помилка'
+              : formStatus === 'success'
+              ? 'Відправлено'
+              : 'Відправити'}
+          </FormButton>
+        </ContactsForm>
       )}
-      <ContactsFormWrapper>
-        <InputField
-          label={'Імʼя'}
-          type="text"
-          name="name"
-          register={register}
-          errors={errors}
-          placeholder={'Імʼя'}
-        />
-        <InputField
-          label={'E-mail'}
-          type="email"
-          name="email"
-          register={register}
-          errors={errors}
-          placeholder={'E-mail'}
-        />
-        <InputField
-          label={'Повідомлення'}
-          type="textarea"
-          name="message"
-          register={register}
-          errors={errors}
-          placeholder={'Повідомлення'}
-        />
-      </ContactsFormWrapper>
-      <FormButton
-        type="submit"
-        disabled={formStatus === 'error' || formStatus === 'success'}
-      >
-        {formStatus === 'error'
-          ? 'Помилка'
-          : formStatus === 'success'
-          ? 'Відправлено'
-          : 'Відправити'}
-      </FormButton>
-    </ContactsForm>
+    </>
   );
 };

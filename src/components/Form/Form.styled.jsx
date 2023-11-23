@@ -45,10 +45,18 @@ export const FormButton = styled.button`
     margin-bottom: 22px;
   }
 `;
+export const SuccessMessageWrapper = styled.div`
+  width: 100%;
+  background-color: #c9c9c9;
+  padding: 27px 0;
+  height: max-content;
+`;
 export const SuccessMessage = styled.p`
-  color: #029907;
-  margin-bottom: 16px;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
   @media (min-width: 1440px) {
-    margin-bottom: 22px;
+    font-size: 24px;
+    line-height: 28px;
   }
 `;
