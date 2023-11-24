@@ -194,10 +194,11 @@ export const SearchBar = () => {
                     value,
                     currency: { code },
                   },
+                  photos
                 }) => (
                   <SearchItem key={id}>
                     <Link to={`/catalog/${id}`} state={{ from: location }}>
-                      <img alt={title} width={60} />
+                      <img src={photos[0].url} alt={title} width={60} />
                       <p>{title}</p>
                       <p>{value}</p>
                       <p>{code}</p>
