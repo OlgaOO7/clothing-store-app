@@ -15,14 +15,9 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-const persistConfig = {
-  key: 'subscription',
-  storage,
-};
-
 export const store = configureStore({
   reducer: {
-    subscription: persistReducer(persistConfig, subscriptionReducer),
+    subscription: subscriptionReducer,
     categories: categoriesReducer,
     products: productsReducer,
   },
