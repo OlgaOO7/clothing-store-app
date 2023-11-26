@@ -21,6 +21,7 @@ import {
   SuccessMessage,
   Form,
 } from './SubscriptionForm.styled';
+import { getRandomId } from 'utils/getRandomId';
 
 export const SubscriptionForm = () => {
   const [isSubscribed, setIsSubscribed] = useState(false);
@@ -61,7 +62,10 @@ export const SubscriptionForm = () => {
   const handleFormSubmit = async email => {
     try {
       await emailSchema.validate({ email: email.email });
-      dispatch(subscription({ subscriptionId: 1, email: email.email }));
+      const subscriptionId = getRandomId(3);
+      dispatch(
+        subscription({ subscriptionId: subscriptionId, email: email.email })
+      );
       reset();
       setIsSubscribed(true);
       setIsValid(true);
