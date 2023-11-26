@@ -11,7 +11,7 @@ export const ContactsFormWrapper = styled.div`
   min-width: 303px;
   width: 50%;
   margin-bottom: 12px;
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     margin-bottom: 18px;
     gap: 18px;
     width: 438px;
@@ -22,7 +22,7 @@ export const FormTitle = styled.h3`
   font-weight: 400;
   line-height: 21px;
   margin-bottom: 16px;
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     font-size: 24px;
     font-weight: 600;
     line-height: 29px;
@@ -38,7 +38,7 @@ export const FormButton = styled.button`
   color: #fff;
   border: none;
   width: 186px;
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     width: 253px;
     font-size: 22px;
     line-height: 25px;
@@ -55,7 +55,7 @@ export const SuccessMessage = styled.p`
   font-size: 24px;
   line-height: 28px;
   text-align: center;
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     font-size: 24px;
     line-height: 28px;
   }

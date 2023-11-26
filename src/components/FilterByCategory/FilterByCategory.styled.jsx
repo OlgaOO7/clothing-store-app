@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Section = styled.section`
   width: 100%;
   padding: 13px 0 32px;
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     padding: 69px 0 40px;
   }
 `;
@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
   padding-left: 28px;
   padding-right: 28px;
   margin: 0 auto;
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     flex-direction: row;
     gap: 112px;
     justify-content: space-between;
@@ -28,7 +28,7 @@ export const CatalogButtonList = styled.ul`
   flex-wrap: wrap;
   gap: 16px 14px;
 
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     gap: 14px;
   }
 `;
@@ -41,7 +41,7 @@ export const CatalogButton = styled.button`
   line-height: 16px;
   color: #000000;
 
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     padding: 8px 24px;
 
     font-size: 18px;
@@ -57,7 +57,7 @@ export const SelectedCatalogButton = styled.button`
   line-height: 16px;
   color: #ffffff;
 
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     padding: 10px 24px;
 
     font-size: 18px;

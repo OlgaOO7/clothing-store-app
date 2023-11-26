@@ -8,7 +8,7 @@ export const Section = styled.section`
   position: relative;
   overflow: hidden;
   height: 532px;
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     background: #ececec;
     height: 650px;
     border-radius: inherit;
@@ -25,7 +25,7 @@ export const Wrapper = styled.div`
   padding-right: 28px;
   position: relative;
   height: 100%;
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     max-width: 1360px;
     padding-left: 40px;
     padding-right: 40px;
@@ -33,7 +33,7 @@ export const Wrapper = styled.div`
 `;
 export const LeftText = styled.p`
   display: none;
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     font-size: 120px;
     font-style: italic;
     font-weight: 700;
@@ -46,7 +46,7 @@ export const LeftText = styled.p`
 `;
 export const RightText = styled.p`
   display: none;
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     font-size: 120px;
     font-style: italic;
     font-weight: 700;
@@ -59,7 +59,7 @@ export const RightText = styled.p`
 `;
 export const LeftTextWrapper = styled.div`
   display: none;
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     left: -35px;
     top: 460px;
     animation: marquee 10s infinite linear;
@@ -71,7 +71,7 @@ export const LeftTextWrapper = styled.div`
 `;
 export const RightTextWrapper = styled.div`
   display: none;
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     position: absolute;
     left: 795px;
     top: 330px;
@@ -92,7 +92,7 @@ export const ImageWrapper = styled.div`
   z-index: 999;
   height: 100%;
   border-radius: 30px;
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     width: 701px;
     height: 650px;
     border-radius: 60px;
@@ -110,7 +110,7 @@ export const LinkTo = styled(Link)`
   background-color: transparent;
   text-align: center;
   color: #000000;
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     width: 186px;
     font-size: 18px;
     font-weight: 400;

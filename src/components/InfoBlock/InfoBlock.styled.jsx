@@ -6,7 +6,7 @@ export const Section = styled.section`
   padding: 60px 0;
   background: #ececec;
   border-radius: 63px;
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     padding: 40px 0;
   }
 `;
@@ -20,11 +20,18 @@ export const Wrapper = styled.div`
   padding-left: 28px;
   padding-right: 28px;
   position: relative;
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     flex-direction: row;
     max-width: 1360px;
     padding-left: 40px;
     padding-right: 40px;
+  }
+`;
+export const Container = styled.div`
+  width: 100%;
+  text-align: center;
+  @media (min-width: 768px) {
+    text-align: left;
   }
 `;
 export const Title = styled.h2`
@@ -35,8 +42,8 @@ export const Title = styled.h2`
   font-weight: 700;
   line-height: 24px;
   letter-spacing: 0.21em;
-  @media (min-width: 1440px) {
-    width: 923px;
+  @media (min-width: 768px) {
+    max-width: 923px;
     margin-bottom: 29px;
     font-size: 40px;
     font-style: italic;
@@ -51,8 +58,8 @@ export const Description = styled.p`
   font-weight: 400;
   line-height: 17px;
 
-  @media (min-width: 1440px) {
-    width: 757px;
+  @media (min-width: 768px) {
+    max-width: 757px;
     margin-bottom: 0;
     font-size: 26px;
     font-weight: 400;
@@ -70,7 +77,7 @@ export const LinkTo = styled(Link)`
 
   border: 1px solid #000000;
 
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     display: none;
   }
 `;
@@ -79,7 +86,7 @@ export const Image = styled.div`
   height: 205px;
   background: #c7c7c7;
 
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     width: 311px;
     height: 263px;
   }

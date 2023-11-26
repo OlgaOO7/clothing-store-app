@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
   padding-left: 28px;
   padding-right: 28px;
   position: relative;
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     max-width: 1360px;
     padding-left: 40px;
     padding-right: 40px;
@@ -27,7 +27,7 @@ export const Title = styled.h2`
   font-weight: 600;
   line-height: 19px;
   letter-spacing: 0.05em;
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     margin-bottom: 67px;
     font-size: 26px;
     font-weight: 600;
@@ -43,9 +43,6 @@ export const PrevBtn = styled.button`
   @media (min-width: 768px) {
     left: 20%;
   }
-  @media (min-width: 1440px) {
-    left: 30%;
-  }
   &:after {
     content: none;
   }
@@ -58,22 +55,19 @@ export const NextBtn = styled.button`
   @media (min-width: 768px) {
     right: 20%;
   }
-  @media (min-width: 1440px) {
-    right: 30%;
-  }
   &:after {
     content: none;
   }
 `;
 export const PrevBtnIcon = styled.svg`
   max-width: 23px;
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     min-width: 30px;
   }
 `;
 export const NextBtnIcon = styled.svg`
   max-width: 23px;
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     min-width: 30px;
   }
 `;
