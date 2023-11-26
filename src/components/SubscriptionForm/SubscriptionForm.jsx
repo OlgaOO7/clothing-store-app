@@ -62,10 +62,11 @@ export const SubscriptionForm = () => {
   const handleFormSubmit = async email => {
     try {
       await emailSchema.validate({ email: email.email });
-      const subscriptionId = getRandomId(3);
+      const subscriptionId = getRandomId(1, 3);
       dispatch(
         subscription({ subscriptionId: subscriptionId, email: email.email })
       );
+      console.log(subscriptionId);
       reset();
       setIsSubscribed(true);
       setIsValid(true);

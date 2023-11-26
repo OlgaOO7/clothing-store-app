@@ -18,14 +18,13 @@ import {
 const persistConfig = {
   key: 'subscription',
   storage,
-  whitelist: ['theme'],
 };
 
 export const store = configureStore({
   reducer: {
     subscription: persistReducer(persistConfig, subscriptionReducer),
-    categories: persistReducer(persistConfig, categoriesReducer),
-    products: persistReducer(persistConfig, productsReducer),
+    categories: categoriesReducer,
+    products: productsReducer,
   },
   middleware(getDefaultMiddleware) {
     return getDefaultMiddleware({
