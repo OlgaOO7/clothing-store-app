@@ -30,7 +30,7 @@ export const NavWrapper = styled.div`
   padding: 60px 28px 31px;
   margin: 0;
   @media (min-width: 768px) {
-    width: 1360px;
+    max-width: 1360px;
     padding: 82px 40px 34px;
     margin: 0 auto;
   }
@@ -73,10 +73,15 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: 34px;
+  justify-content: center;
   @media (min-width: 768px) {
+    flex-wrap: wrap;
     flex-direction: row;
     gap: 69px;
     align-items: flex-end;
+  }
+  @media (min-width: 1440px) {
+    flex-wrap: nowrap;
   }
 `;
 export const ContentTitle = styled.h3`
