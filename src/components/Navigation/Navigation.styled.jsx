@@ -4,27 +4,46 @@ import styled, { css } from 'styled-components';
 export const NavContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+`;
+
+export const MobNavContainer = styled.div`
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  top: 88px;
+  right: 0;
+  background: #fff;
+`;
+
+export const NavWrapper = styled.div`
+  padding: 32px 28px 22px;
 `;
 
 export const MobNav = styled.nav`
   display: none;
 
   @media (max-width: 1439px) {
-    position: absolute;
-    width: 100%;
-    top: 88px;
-    right: 0px;
+    /* position: absolute;
+    z-index: 10000; */
+    /* width: 100%; */
+    /* top: 88px; */
+    /* right: 0px; */
     display: flex;
-    gap: 10px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    flex-direction: column;
+    /* gap: 20px; */
+    /* transition: bottom;
+    transition-duration: 2s; */
+    /* box-shadow: rgba(28, 28, 41, 0.2) 0px 7px 29px 0px; */
   }
 `;
 
 export const MobNavList = styled.ul`
   @media (max-width: 1439px) {
-    /* position: fixed; */
-    padding-left: 20px;
+    display: flex;
     flex-direction: column;
+    gap: 20px;
   }
 `;
 
@@ -41,8 +60,9 @@ export const StyledLink = styled(Link)`
   color: #4c4b4b;
   font-size: 16px;
   text-align: center;
+
   ${props =>
-    props.type === 'footer' &&
+    props.$sectionType === 'footer' &&
     css`
       color: #000;
       font-size: 14px;
@@ -56,19 +76,15 @@ export const StyledLink = styled(Link)`
 `;
 
 export const Nav = styled.nav`
-  ${props =>
-    props.type === 'header' &&
-    css`
-      display: none;
-
-      @media (min-width: 1440px) {
-        display: inline-block;
-      }
-    `}
+  display: none;
+  @media (min-width: 1440px) {
+    display: flex;
+  }
 
   ${props =>
-    props.type === 'footer' &&
+    props.$sectionType === 'footer' &&
     css`
+      display: inline-block;
       margin-top: 37px;
       @media (min-width: 1440px) {
         margin-top: 0;
@@ -76,16 +92,12 @@ export const Nav = styled.nav`
     `}
 `;
 
-export const NavList = styled.nav`
-  ${props =>
-    props.type === 'header' &&
-    css`
-      display: flex;
-      gap: 40px;
-    `}
+export const NavList = styled.ul`
+  display: flex;
+  gap: 40px;
 
   ${props =>
-    props.type === 'footer' &&
+    props.$sectionType === 'footer' &&
     css`
       display: flex;
       flex-direction: column;
@@ -99,15 +111,19 @@ export const NavList = styled.nav`
 
 export const BtnWrapper = styled.div`
   display: flex;
-  gap: 14px;
+  justify-content: center;
+  align-items: center;
+  /* gap: 14px; */
   /* check margin-left when will be ready */
   /* margin-left: 230px; */
 `;
 
 export const MenuBtn = styled.button`
+  width: 24px;
+  height: 24px;
   padding: 0px;
   border: none;
-  /* background-color: transparent; */
+  background-color: transparent;
 `;
 
 export const MenuIcon = styled.svg`
@@ -120,26 +136,26 @@ export const MenuIcon = styled.svg`
   }
 `;
 
-export const CartBtn = styled.button`
-  padding: 0px;
-  border: none;
-  /* font-size: 0; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* background-color: transparent; */
-  @media (min-width: 1440px) {
-    font-weight: 400;
-    font-size: 14px;
-    line-height: normal;
-    color: #191919;
-  }
-  @media (max-width: 1439px) {
-    span {
-      display: none;
-    }
-  }
-`;
+// export const CartBtn = styled.button`
+//   padding: 0px;
+//   border: none;
+//   /* font-size: 0; */
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   /* background-color: transparent; */
+//   @media (min-width: 1440px) {
+//     font-weight: 400;
+//     font-size: 14px;
+//     line-height: normal;
+//     color: #191919;
+//   }
+//   @media (max-width: 1439px) {
+//     span {
+//       display: none;
+//     }
+//   }
+// `;
 
 export const CartIcon = styled.svg`
   @media screen and (min-width: 360px) {
@@ -148,22 +164,73 @@ export const CartIcon = styled.svg`
   }
 `;
 
-export const SearchBtn = styled.button`
-  padding: 0px;
-  border: none;
-  /* background-color: transparent; */
-`;
+// export const SearchBtn = styled.button`
+//   padding: 0px;
+//   border: none;
+//   background-color: transparent;
+// `;
 
-export const SearchIcon = styled.svg`
-  @media screen and (min-width: 360px) {
-    width: 24px;
-    height: 24px;
-  }
-`;
+// export const SearchIcon = styled.svg`
+//   @media screen and (min-width: 360px) {
+//     width: 24px;
+//     height: 24px;
+//   }
+// `;
 
 export const TextContainer = styled.div`
   display: none;
   @media (min-width: 1440px) {
     display: block;
   }
+`;
+
+export const CartLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+`;
+
+export const CartIconWrapper = styled.div`
+  display: flex;
+  position: relative;
+  margin-right: 4px;
+`;
+
+export const CartQuantityWrapper = styled.div`
+  position: absolute;
+  top: -0.48rem;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 12px;
+`;
+
+export const TextCart = styled.span`
+  color: #191919;
+  font-size: 14px;
+`;
+
+export const CartProductQuantity = styled.span`
+  color: #191919;
+  font-weight: 500;
+  font-size: 12px;
+`;
+
+export const MobMenuContainer = styled.div`
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  top: 88px;
+  right: 0;
+  background: #fff;
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

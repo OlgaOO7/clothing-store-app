@@ -1,6 +1,11 @@
 import styled, { css } from 'styled-components';
 
 export const IconWrapper = styled.div`
+  margin-top: 19px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
   ${props =>
     props.type === 'mobile' &&
     css`
@@ -27,7 +32,18 @@ export const IconWrapper = styled.div`
 `;
 
 export const MenuIcon = styled.svg`
-  ${props =>
+  display: inline-block;
+  fill: #000000;
+  width: 24px;
+  height: 24px;
+
+    @media (min-width: 1440px) {
+    ${props =>
+    (props.type === 'mobile' && 'display: none;') ||
+    (props.type === 'desktop' && 'display: inline-block;')}
+    }
+
+  /* ${props =>
     props.type === 'mobile' &&
     css`
       display: inline-block;
@@ -49,6 +65,6 @@ export const MenuIcon = styled.svg`
         width: 24px;
         height: 24px;
       }
-    `}
+    `} */
 `;
 export const LinkIcon = styled.a``;
