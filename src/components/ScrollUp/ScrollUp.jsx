@@ -1,5 +1,11 @@
+import Sprite from '../../images/sprite.svg';
+import { Scroll, ScrollIcon } from './ScrollUp.styled';
 export const ScrollUp = () => {
   return (
-    <div style={{ width: '10px', height: '10px', background: 'gray' }}></div>
+    <Scroll>
+      <ScrollIcon>
+        <use href={`${Sprite}#icon-up`}></use>
+      </ScrollIcon>
+    </Scroll>
   );
 };
