@@ -94,8 +94,7 @@ export const Form = ({ formType }) => {
     }
   };
 
-  const STORAGE_KEY =
-    formType === 'subscription' ? 'subscription_form' : 'contact_us_form';
+  const STORAGE_KEY = formType === 'subscription' ? null : 'contact_us_form';
 
   useFormPersist(STORAGE_KEY, {
     watch,
