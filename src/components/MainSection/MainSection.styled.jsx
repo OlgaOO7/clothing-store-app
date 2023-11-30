@@ -89,7 +89,7 @@ export const ImageWrapper = styled.div`
   justify-content: space-evenly;
   width: 100%;
   background: #ececec;
-  z-index: 999;
+  z-index: 998;
   height: 100%;
   border-radius: 30px;
   @media (min-width: 1440px) {
