@@ -57,7 +57,7 @@ export const Contacts = () => {
               </IconsWrapper>
             </ContactsWrapper>
           </ContactsContent>
-          <Form />
+          <Form formType="contact_us" />
         </Wrapper>
       </Section>
     </>

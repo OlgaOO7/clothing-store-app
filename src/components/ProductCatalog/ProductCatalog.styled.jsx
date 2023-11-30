@@ -18,7 +18,7 @@ export const NavWrapper = styled.div`
   margin: 0;
   @media (min-width: 768px) {
     max-width: 1360px;
-    padding: 75px 40px 69px;
+    padding: 155px 40px 69px;
   }
 `;
 export const Wrapper = styled.div`
