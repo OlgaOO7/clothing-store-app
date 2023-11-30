@@ -15,7 +15,7 @@ export const ProductComponent = ({ item }) => {
     <Link to={`/catalog/${item.id}`}>
       <ProductWrapper>
         <ProductImage
-          src={`${item.photos.url ? item.photos.url : noImage}`}
+          src={`${item.photos ? item.photos[0].url : noImage}`}
         ></ProductImage>
         {item.title.length > maxLength ? (
           <ProductTitle>{item.title.slice(0, maxLength)}...</ProductTitle>

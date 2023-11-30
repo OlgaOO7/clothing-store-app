@@ -15,14 +15,14 @@ import { productsReducer } from './products/productsSlice';
 //   REGISTER,
 // } from 'redux-persist';
 
-const persistConfig = {
-  key: 'subscription',
-  storage,
-};
+// const persistConfig = {
+//   key: 'subscription',
+//   storage,
+// };
 
 export const store = configureStore({
   reducer: {
-    subscription: persistReducer(persistConfig, subscriptionReducer),
+    subscription: subscriptionReducer,
     categories: categoriesReducer,
     products: productsReducer,
   },
