@@ -1,4 +1,3 @@
-import { Logo } from 'components/Logo/Logo';
 import { Navigation } from 'components/Navigation/Navigation';
 
 import {
@@ -9,8 +8,7 @@ import React from 'react';
 export const Header = () => {
   return (
     <HeaderWrapper>
-      <Logo />
-      <Navigation type="header" />
+      <Navigation sectionType='header' />
     </HeaderWrapper>
   );
 };

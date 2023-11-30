@@ -142,7 +142,7 @@ export const SearchBar = () => {
   return (
     <Wrapper>
       <SearchWrapper>
-        <form
+        {/* <form
           onSubmit={handleSubmit}
           style={{
             display: 'flex',
@@ -177,7 +177,12 @@ export const SearchBar = () => {
               </SearchCloseIcon>
             </SearchCloseBtn>
           )}
-        </form>
+        </form> */}
+                  <SearchBtn type="button">
+            <SearchIcon width={24} height={24}>
+              <use href={`${Sprite}#icon-search`} />
+            </SearchIcon>
+          </SearchBtn>
       </SearchWrapper>
 
       <SearchInputListWrapper>
@@ -194,10 +199,11 @@ export const SearchBar = () => {
                     value,
                     currency: { code },
                   },
+                  photos
                 }) => (
                   <SearchItem key={id}>
                     <Link to={`/catalog/${id}`} state={{ from: location }}>
-                      <img alt={title} width={60} />
+                      <img src={photos[0].url} alt={title} width={60} />
                       <p>{title}</p>
                       <p>{value}</p>
                       <p>{code}</p>
@@ -208,7 +214,7 @@ export const SearchBar = () => {
             </SearchList>
 
             {/* TO DO: change condition for 'productsBySearch.length' on 'productsBySearch.length >= 4', when product base with all goods will be imported  */}
-            {productsBySearch.length > 2 && (
+            {productsBySearch.length > 3 && (
               <Link
                 to={`/search?s=${searchQuery.trim()}`}
                 state={{ from: location }}
@@ -223,7 +229,7 @@ export const SearchBar = () => {
       {/* (<p>За вашим запитом нічого не знайдено!</p>) */}
 
       <SearchMobWrapper>
-        <div>
+        <div style={{alignItems: 'center', justifyContent: 'center'}}>
           {isShowSearch ? (
             <MobSearchWrapper>
               <form
@@ -264,11 +270,13 @@ export const SearchBar = () => {
               </form>
             </MobSearchWrapper>
           ) : (
+            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
             <SearchBtn type="button" onClick={toggleSearch}>
               <SearchIcon width={24} height={24}>
                 <use href={`${Sprite}#icon-search`} />
               </SearchIcon>
             </SearchBtn>
+            </div>
           )}
         </div>
       </SearchMobWrapper>

@@ -1,19 +1,19 @@
 import { configureStore } from '@reduxjs/toolkit';
-import storage from 'redux-persist/lib/storage';
+// import storage from 'redux-persist/lib/storage';
 import { subscriptionReducer } from './subscription/subscriptionSlice';
 import { categoriesReducer } from './category/categorySlice';
 import { productsReducer } from './products/productsSlice';
 
-import {
-  persistStore,
-  persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from 'redux-persist';
+// import {
+//   persistStore,
+//   persistReducer,
+//   FLUSH,
+//   REHYDRATE,
+//   PAUSE,
+//   PERSIST,
+//   PURGE,
+//   REGISTER,
+// } from 'redux-persist';
 
 const persistConfig = {
   key: 'subscription',
@@ -26,13 +26,13 @@ export const store = configureStore({
     categories: categoriesReducer,
     products: productsReducer,
   },
-  middleware(getDefaultMiddleware) {
-    return getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
-    });
-  },
+  // middleware(getDefaultMiddleware) {
+  //   return getDefaultMiddleware({
+  //     serializableCheck: {
+  //       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+  //     },
+  //   });
+  // },
 });
 
-export const persistor = persistStore(store);
+// export const persistor = persistStore(store);
