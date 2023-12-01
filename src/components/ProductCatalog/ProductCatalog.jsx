@@ -20,8 +20,12 @@ import {
   Icon,
   Message,
 } from './ProductCatalog.styled';
+import { useLocation } from 'react-router';
 
 export const ProductCatalog = () => {
+  const location = useLocation();
+  console.log(location);
+  console.log(location.state);
   const [page, setCurrentPage] = useState(0);
   const dispatch = useDispatch();
   const totalPage = useSelector(selectTotalPages) || 1;
