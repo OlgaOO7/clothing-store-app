@@ -49,7 +49,7 @@ export const NewProductsSlider = () => {
           }}
           modules={[Pagination, Navigation]}
           breakpoints={{
-            768: {
+            940: {
               slidesPerView: 3,
               spaceBetween: 20,
             },

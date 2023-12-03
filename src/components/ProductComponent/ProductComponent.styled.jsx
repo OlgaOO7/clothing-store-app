@@ -7,7 +7,7 @@ export const ProductWrapper = styled.div`
   flex-direction: column;
   gap: 12px;
   color: #000;
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     gap: 14px;
   }
 `;
@@ -19,7 +19,7 @@ export const ProductImage = styled.img`
     width: 230px;
     height: 280px;
   }
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     width: 322px;
     height: 416px;
   }
@@ -32,7 +32,7 @@ export const ProductTitle = styled.h3`
   @media (min-width: 768px) {
     width: 230px;
   }
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     width: 322px;
     font-size: 22px;
     line-height: 25px;
@@ -43,7 +43,7 @@ export const ProductDescription = styled.p`
   font-weight: 300;
   line-height: 16px;
 
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     font-size: 16px;
     font-weight: 300;
     line-height: 18px;

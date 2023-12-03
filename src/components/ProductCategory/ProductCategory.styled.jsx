@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
   padding-left: 28px;
   padding-right: 28px;
   position: relative;
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     max-width: 1360px;
     padding-left: 40px;
     padding-right: 40px;
@@ -27,7 +27,7 @@ export const Title = styled.h2`
   font-weight: 600;
   line-height: 19px;
   letter-spacing: 0.05em;
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     margin-bottom: 67px;
     font-size: 26px;
     font-weight: 600;
@@ -50,7 +50,7 @@ export const CategoryImage = styled.div`
   width: 144px;
   height: 134px;
   background-color: #d9d9d9;
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     width: 437px;
     height: 400px;
   }
@@ -60,13 +60,13 @@ export const CategoryTitle = styled.h3`
 `;
 export const CategoryCount = styled.span`
   display: none;
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     display: inline-block;
   }
 `;
 export const CategoryPrice = styled.p`
   display: none;
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     display: inline-block;
     font-size: 16px;
     font-weight: 400;
@@ -86,7 +86,7 @@ export const CategoryItem = styled.li`
       width: 100%;
     }
   }
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     &:nth-last-child(3) {
       &${CategoryImage} {
         flex: auto;

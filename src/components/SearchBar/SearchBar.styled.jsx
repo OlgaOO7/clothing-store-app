@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   position: relative;
+  margin-right: 14px;
 `;
 
 export const SearchWrapper = styled.div`
@@ -15,6 +16,8 @@ export const SearchWrapper = styled.div`
 
 export const SearchMobWrapper = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
   @media (min-width: 1440px) {
     display: none;
   }
@@ -29,9 +32,11 @@ export const MobSearchWrapper = styled.div`
 
 export const SearchBtn = styled.button`
   padding: 0px;
+  width: 24px;
+  height: 24px;
   /* margin-right: 16px; */
   border: none;
-  /* background-color: transparent; */
+  background-color: transparent;
   @media (min-width: 1440px) {
     margin-right: 16px;
   }

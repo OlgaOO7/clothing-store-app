@@ -1,14 +1,11 @@
-import { SubscriptionForm } from 'components/SubscriptionForm/SubscriptionForm';
 import { InfoBlock } from 'components/InfoBlock/InfoBlock';
+import { Form } from 'components/Form/Form';
 
 export const SearchedProductPage = () => {
-
   return (
-
     <div>
       <InfoBlock />
-      <SubscriptionForm />
+      <Form formType="subscription" />
     </div>
   );
-
 };

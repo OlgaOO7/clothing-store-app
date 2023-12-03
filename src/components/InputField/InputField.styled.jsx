@@ -6,7 +6,7 @@ export const Input = styled.input`
   padding: 12px 16px;
   border: 1px solid #000000;
   width: 100%;
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     font-size: 14px;
     line-height: 16px;
     padding: 16px;
@@ -18,7 +18,9 @@ export const Textarea = styled.textarea`
   padding: 19px 16px;
   border: 1px solid #000000;
   width: 100%;
-  @media (min-width: 1440px) {
+  height: 156px;
+  resize: none;
+  @media (min-width: 768px) {
     font-size: 14px;
     line-height: 16px;
     padding: 18px 16px;

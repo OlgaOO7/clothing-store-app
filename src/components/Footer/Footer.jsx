@@ -13,9 +13,9 @@ export const Footer = () => {
           <Logo />
           <SocialNetworks type="desktop" />
         </div>
-        <NavigationMenu type="footer" />
+        <NavigationMenu sectionType="footer" />
         <div>
-          <Contacts />
+          <Contacts sectionType="footer" />
           <SocialNetworks type="mobile" />
         </div>
       </FooterWrapper>

@@ -26,7 +26,6 @@ export const ProductCatalog = () => {
   const dispatch = useDispatch();
   const totalPage = useSelector(selectTotalPages) || 1;
   const products = useSelector(selectProducts) || [];
-  console.log(products);
 
   useEffect(() => {
     dispatch(getProductsPagination({ page: page }));
