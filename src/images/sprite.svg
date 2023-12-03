@@ -67,6 +67,9 @@
 <symbol id="icon-up" viewBox="0 0 20 32">
 <path fill="#fff" style="fill: var(--color1, #fff)" d="M8.96 30.72c0 0.707 0.573 1.28 1.28 1.28s1.28-0.573 1.28-1.28h-2.56zM11.145 0.375c-0.5-0.5-1.31-0.5-1.81 0l-8.146 8.146c-0.5 0.5-0.5 1.31 0 1.81s1.31 0.5 1.81 0l7.241-7.241 7.241 7.241c0.5 0.5 1.31 0.5 1.81 0s0.5-1.31 0-1.81l-8.146-8.146zM11.52 30.72v-29.44h-2.56v29.44h2.56z"></path>
 </symbol>
+<symbol id="icon-btn-close" viewBox="0 0 32 32">
+<path fill="none" stroke="#fff" style="stroke: var(--color2, #fff)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="1.3333" d="M8 8l8 8M16 16l8 8M16 16l-8 8M16 16l8-8"></path>
+</symbol>
 
 </defs>
 </svg>

@@ -6,6 +6,9 @@ const GlobalStyles = createGlobalStyle`
   margin: 0;
 }
 
+body.modal-open {
+  overflow: hidden;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

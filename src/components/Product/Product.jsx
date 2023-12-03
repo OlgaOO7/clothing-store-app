@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import { Modal } from 'components/Modal/Modal';
+import { Modal } from './Modal/Modal';
 import { Breadcrumbs } from './Breadcrumbs/Breadcrumbs';
 import { ImageSlider } from './ImageSlider/ImageSlider';
 import { SimilarProducts } from './SimilarProducts/SimilarProducts';
@@ -10,6 +10,7 @@ import { ColorOptions } from './ColorOptions/ColorOptions';
 import { SizeOptions } from './SizeOptions/SizeOptions';
 import { QuantityControls } from './QuantityControls/QuantityControls';
 import { ProductImage } from './ProductImage/ProductImage';
+import { SizeGridproducts } from './SizeGridProducts/SizeGridproducts';
 
 import {
   Container,
@@ -117,9 +118,7 @@ export const Product = ({ productsId }) => {
   );
 
   // відкриття модалки
-  const isOpenModal = () => {
-    setOpenModal(!openModal);
-  };
+  const toggleModal = () => setOpenModal(prevState => !prevState);
 
   // дававання та зменшення кількості товару
   const decreaseQuantity = () => {
@@ -158,84 +157,92 @@ export const Product = ({ productsId }) => {
   // console.log(similarProducts.content);
 
   return (
-    <Container>
-      <Breadcrumbs category={product.category} />
-      <ProductWrap>
-        <ImageWrap>
-          {/* photo */}
-          <ProductImage filterPhoto={filterPhoto} clickedIndex={clickedIndex} />
-          {/* слайдер */}
-          {filterPhoto.length > 1 && (
-            <SliderList>
-              <ImageSlider
-                photos={filterPhoto}
-                renderPhotos={setClickedIndex}
-              />
-            </SliderList>
-          )}
-        </ImageWrap>
-
-        {/* info */}
-
-        <InfoWrap>
-          <Title>{product.title}</Title>
-          <Money>
-            {product.price.value} {product.price.currency.code}
-          </Money>
-          <Text>{product.description}</Text>
-          {/* Кольори */}
-          <ColorOptions
-            uniqueColors={uniqueColors}
-            colorValue={colorValue}
-            setClickedIndex={setClickedIndex}
-            setColorValue={setColorValue}
-          />
-          <SizeWrap>
-            {/* Розміри */}
-            <SizeOptions
-              sizesForSelectedColor={sizesForSelectedColor}
-              selectSize={selectSize}
-              activeSizeId={activeSizeId}
+    <>
+      <Container>
+        <Breadcrumbs category={product.category} />
+        <ProductWrap>
+          <ImageWrap>
+            {/* photo */}
+            <ProductImage
+              filterPhoto={filterPhoto}
+              clickedIndex={clickedIndex}
             />
-
-            {/* модалка */}
-            <SizeGridButton onClick={() => setOpenModal(true)}>
-              Розмірна сітка
-            </SizeGridButton>
-            {openModal && (
-              <Modal closeModal={isOpenModal}>Розмірна сітка</Modal>
+            {/* слайдер */}
+            {filterPhoto.length > 1 && (
+              <SliderList>
+                <ImageSlider
+                  photos={filterPhoto}
+                  renderPhotos={setClickedIndex}
+                />
+              </SliderList>
             )}
-          </SizeWrap>
+          </ImageWrap>
 
-          {/* кількіcть */}
-          {amount <= 0 ? (
-            <TextQuantity>Немає в наявності</TextQuantity>
-          ) : (
-            <QuantityControls
-              decreaseQuantity={decreaseQuantity}
-              increaseQuantity={increaseQuantity}
-              quantity={quantity}
+          {/* info */}
+          <InfoWrap>
+            <Title>{product.title}</Title>
+            <Money>
+              {product.price.value} {product.price.currency.code}
+            </Money>
+            <Text>{product.description}</Text>
+            {/* Кольори */}
+            <ColorOptions
+              uniqueColors={uniqueColors}
+              colorValue={colorValue}
+              setClickedIndex={setClickedIndex}
+              setColorValue={setColorValue}
             />
-          )}
+            <SizeWrap>
+              {/* Розміри */}
+              <SizeOptions
+                sizesForSelectedColor={sizesForSelectedColor}
+                selectSize={selectSize}
+                activeSizeId={activeSizeId}
+              />
 
-          {/* додати в кошик */}
-          <BuyButton type="button" onClick={addToCart} disabled={amount <= 0}>
-            Додати в кошик
-          </BuyButton>
+              {/* відкрити модалку */}
+              <SizeGridButton onClick={toggleModal}>
+                Розмірна сітка
+              </SizeGridButton>
+            </SizeWrap>
 
-          {/* додаткова інформація */}
-          <AdditionalInformation />
-        </InfoWrap>
-      </ProductWrap>
+            {/* кількіcть */}
+            {amount <= 0 ? (
+              <TextQuantity>Немає в наявності</TextQuantity>
+            ) : (
+              <QuantityControls
+                decreaseQuantity={decreaseQuantity}
+                increaseQuantity={increaseQuantity}
+                quantity={quantity}
+              />
+            )}
 
-      {/* схожі товари */}
-      {similarProducts.content.length !== 0 && (
-        <SimilarProducts
-          setQuantity={setQuantity}
-          similarProducts={similarProducts}
-          setClickedIndex={setClickedIndex}
-        />
+            {/* додати в кошик */}
+            <BuyButton type="button" onClick={addToCart} disabled={amount <= 0}>
+              Додати в кошик
+            </BuyButton>
+
+            {/* додаткова інформація */}
+            <AdditionalInformation />
+          </InfoWrap>
+        </ProductWrap>
+
+        {/* схожі товари */}
+        {similarProducts.content.length !== 0 && (
+          <SimilarProducts
+            setQuantity={setQuantity}
+            similarProducts={similarProducts}
+            setClickedIndex={setClickedIndex}
+          />
+        )}
+      </Container>
+
+      {/* модалка */}
+      {openModal && (
+        <Modal toggleModal={toggleModal} openModal={openModal}>
+          <SizeGridproducts />
+        </Modal>
       )}
-    </Container>
+    </>
   );
 };
