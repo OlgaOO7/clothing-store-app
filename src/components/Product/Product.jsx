@@ -72,6 +72,8 @@ export const Product = ({ productsId }) => {
     };
     getProductId();
     getSimilarProductId();
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [productsId]);
 
   // Loder
