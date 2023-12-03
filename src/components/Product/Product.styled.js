@@ -127,6 +127,15 @@ export const TextQuantity = styled.p`
     font-size: 32px;
   }
 `;
+export const InfoMessage = styled.p`
+  position: absolute;
+  font-size: 10px;
+
+  color: #ff0000;
+  @media (min-width: 1024px) {
+    font-size: 18px;
+  }
+`;
 
 export const BuyButton = styled.button`
   display: flex;

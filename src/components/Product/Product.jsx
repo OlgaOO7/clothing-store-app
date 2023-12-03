@@ -25,6 +25,7 @@ import {
   ProductWrap,
   SizeWrap,
   TextQuantity,
+  InfoMessage,
 } from './Product.styled';
 
 export const Product = ({ productsId }) => {
@@ -37,6 +38,7 @@ export const Product = ({ productsId }) => {
   const [skuIdProduct, setSkuIdProduct] = useState(null);
   const [openModal, setOpenModal] = useState(false);
   const [amount, setAmount] = useState(null);
+  const [message, setMessage] = useState(false);
 
   useEffect(() => {
     // Продукт
@@ -126,11 +128,15 @@ export const Product = ({ productsId }) => {
       return;
     }
     setQuantity(prevState => prevState - 1);
+    setMessage(false);
   };
 
   const increaseQuantity = () => {
     if (amount > quantity) {
       setQuantity(prevState => prevState + 1);
+      setMessage(false);
+    } else {
+      setMessage(true);
     }
   };
 
@@ -194,6 +200,7 @@ export const Product = ({ productsId }) => {
             />
             <SizeWrap>
               {/* Розміри */}
+
               <SizeOptions
                 sizesForSelectedColor={sizesForSelectedColor}
                 selectSize={selectSize}
@@ -210,11 +217,18 @@ export const Product = ({ productsId }) => {
             {amount <= 0 ? (
               <TextQuantity>Немає в наявності</TextQuantity>
             ) : (
-              <QuantityControls
-                decreaseQuantity={decreaseQuantity}
-                increaseQuantity={increaseQuantity}
-                quantity={quantity}
-              />
+              <div>
+                <QuantityControls
+                  decreaseQuantity={decreaseQuantity}
+                  increaseQuantity={increaseQuantity}
+                  quantity={quantity}
+                />
+                {message && (
+                  <InfoMessage>
+                    Дана кількість цього товару недоступна
+                  </InfoMessage>
+                )}
+              </div>
             )}
 
             {/* додати в кошик */}

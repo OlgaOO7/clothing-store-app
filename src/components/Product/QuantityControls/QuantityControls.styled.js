@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrap = styled.div`
+  position: relative;
   display: flex;
   width: 122px;
   height: 42px;
