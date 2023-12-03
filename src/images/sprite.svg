@@ -48,5 +48,17 @@
 <path d="M22.933 10.541c0.792 0 1.433-0.642 1.433-1.433s-0.642-1.433-1.433-1.433c-0.792 0-1.433 0.642-1.433 1.433s0.642 1.433 1.433 1.433z"></path>
 </symbol>
 
+<symbol id="icon-vector-13" viewBox="0 0 54 32">
+<path stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="3.2" d="M3.2 3.2l24 25.6 24-25.6"></path>
+</symbol>
+
+<symbol id="icon-minus" viewBox="0 0 75 32">
+<path d="M4.917 5.792h62.25v24.375h-62.25v-24.375z"></path>
+</symbol>
+
+<symbol id="icon-plus" viewBox="0 0 32 32">
+<path d="M13.567 30.087v-11.596h-11.51v-4.846h11.51v-11.51h4.904v11.51h11.51v4.846h-11.51v11.596h-4.904z"></path>
+</symbol>
+
 </defs>
 </svg>

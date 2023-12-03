@@ -1,0 +1,57 @@
+import noImage from '../../../images/no-image.jpg';
+
+import {
+  Aside,
+  AsideLink,
+  AsideList,
+  AsideTitle,
+  SimilarProductsIText,
+  SimilarProductsITitle,
+  SimilarProductsImg,
+} from './SimilarProducts.styled';
+
+export const SimilarProducts = ({
+  similarProducts,
+  setClickedIndex,
+  setQuantity,
+}) => {
+  const limitedProducts = similarProducts.content.slice(0, 4);
+  const cleaningValues = () => {
+    setClickedIndex(0);
+    setQuantity(1);
+  };
+  return (
+    <Aside>
+      <AsideTitle>Вам може сподобатись</AsideTitle>
+
+      <AsideList>
+        {limitedProducts.map(({ id, title, photos, price }) => (
+          <li key={id}>
+            <AsideLink to={`/catalog/${id}`} onClick={cleaningValues}>
+              {photos.length !== 0 ? (
+                <SimilarProductsImg
+                  src={photos[0].url}
+                  alt={title}
+                  width="322"
+                  height="402"
+                />
+              ) : (
+                <SimilarProductsImg
+                  src={noImage}
+                  alt="no image"
+                  width="322"
+                  height="402"
+                />
+              )}
+
+              <SimilarProductsITitle>{title}</SimilarProductsITitle>
+              <SimilarProductsIText>
+                {price.value} {price.currency.code}
+              </SimilarProductsIText>
+            </AsideLink>
+          </li>
+        ))}
+      </AsideList>
+    </Aside>
+  );
+};
