@@ -1,6 +1,9 @@
 import { ProductCatalog } from 'components/ProductCatalog/ProductCatalog';
+import { useLocation } from 'react-router-dom';
 
 export const CatalogPage = () => {
+  const { state } = useLocation();
+  console.log(state);
   return (
     <div
       style={{
