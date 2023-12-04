@@ -1,4 +1,4 @@
-export const MOBILE_SCREEN = 375;
+export const MOBILE_SCREEN = 360;
 export const MOBILE_TYPE = 'mobile';
 
 export const TABLET_SCREEN = 768;

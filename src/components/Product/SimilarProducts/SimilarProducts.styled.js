@@ -3,6 +3,10 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const Aside = styled.aside`
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 86px;
   @media (min-width: 1024px) {
     margin-top: 88px;
@@ -11,7 +15,6 @@ export const Aside = styled.aside`
 
 export const AsideTitle = styled.h3`
   color: #000;
-
   font-family: Gill Sans;
   font-size: 22px;
   font-style: normal;
@@ -23,11 +26,12 @@ export const AsideTitle = styled.h3`
 `;
 export const AsideList = styled.ul`
   display: grid;
+  grid-template-columns: repeat(2, 1fr);
   column-gap: 15px;
   row-gap: 26px;
   margin-top: 28px;
-  grid-template-columns: repeat(2, 1fr);
-
+  margin-left: auto;
+  margin-right: auto;
   @media (min-width: 1028px) {
     grid-template-columns: repeat(4, 1fr);
     margin-top: 48px;

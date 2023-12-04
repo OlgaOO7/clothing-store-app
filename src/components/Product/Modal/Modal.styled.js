@@ -47,6 +47,7 @@ export const ButtonClose = styled.button`
 `;
 
 export const IconClose = styled.svg`
+  stroke-width: 3px;
   width: 24px;
   height: 24px;
 
