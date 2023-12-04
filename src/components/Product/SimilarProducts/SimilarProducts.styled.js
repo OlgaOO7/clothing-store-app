@@ -38,8 +38,14 @@ export const AsideList = styled.ul`
     column-gap: 24px;
     row-gap: 26px;
   }
+  @media (min-width: 1440px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
 `;
-
+export const AsideItem = styled.li`
+  max-width: 322px;
+`;
 export const AsideLink = styled(Link)`
   height: 100%;
   display: flex;
