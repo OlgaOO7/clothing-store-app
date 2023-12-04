@@ -1,14 +1,11 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  max-width: 1440px;
   margin: 0 auto;
-
-  padding: 19px 28px 128px;
-
+  padding: 106px 28px 128px;
   @media (min-width: 1024px) {
-    padding: 0 40px 162px;
-
-    max-width: 1440px;
+    padding: 162px 40px 162px;
   }
 `;
 
@@ -16,11 +13,13 @@ export const ProductWrap = styled.div`
   @media (min-width: 768px) {
     display: grid;
     grid-template-columns: 50% 50%;
+    grid-template-rows: 1fr;
   }
 `;
 export const ImageWrap = styled.div`
-  @media (min-width: 768px) {
-    max-width: 692px;
+  max-width: 692px;
+  @media (min-width: 1440px) {
+    width: 692px;
   }
 `;
 
@@ -85,6 +84,7 @@ export const Text = styled.p`
 `;
 
 export const SizeWrap = styled.div`
+  position: relative;
   margin-top: 32px;
   @media (min-width: 1024px) {
     margin-top: 47px;
@@ -130,10 +130,12 @@ export const TextQuantity = styled.p`
 export const InfoMessage = styled.p`
   position: absolute;
   font-size: 10px;
+  bottom: -15px;
 
   color: #ff0000;
   @media (min-width: 1024px) {
     font-size: 18px;
+    bottom: -25px;
   }
 `;
 

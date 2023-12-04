@@ -18,7 +18,6 @@ export const AdditionalInformation = () => {
         </Icon>
       </Wrap>
       <Underline />
-
       <Wrap>
         <CharacteristicsProduct>Правила догляду </CharacteristicsProduct>
         <Icon>

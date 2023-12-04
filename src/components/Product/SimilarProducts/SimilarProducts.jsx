@@ -2,6 +2,7 @@ import noImage from '../../../images/no-image.jpg';
 
 import {
   Aside,
+  AsideItem,
   AsideLink,
   AsideList,
   AsideTitle,
@@ -26,7 +27,7 @@ export const SimilarProducts = ({
 
       <AsideList>
         {limitedProducts.map(({ id, title, photos, price }) => (
-          <li key={id}>
+          <AsideItem key={id}>
             <AsideLink to={`/catalog/${id}`} onClick={cleaningValues}>
               {photos.length !== 0 ? (
                 <SimilarProductsImg
@@ -49,7 +50,7 @@ export const SimilarProducts = ({
                 {price.value} {price.currency.code}
               </SimilarProductsIText>
             </AsideLink>
-          </li>
+          </AsideItem>
         ))}
       </AsideList>
     </Aside>

@@ -12,7 +12,6 @@ export const Breadcrumbs = ({ category }) => {
       <span>|</span>
       <StyleLink to={'/catalog'}>Каталог</StyleLink>
       <span>|</span>
-
       <button onClick={() => navigate('/catalog', { state: id })}>
         {title}
       </button>

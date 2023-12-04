@@ -12,6 +12,8 @@ import { QuantityControls } from './QuantityControls/QuantityControls';
 import { ProductImage } from './ProductImage/ProductImage';
 import { SizeGridproducts } from './SizeGridProducts/SizeGridproducts';
 
+import { useMedia } from '../../hooks/useMedia';
+
 import {
   Container,
   Title,
@@ -39,6 +41,8 @@ export const Product = ({ productsId }) => {
   const [openModal, setOpenModal] = useState(false);
   const [amount, setAmount] = useState(null);
   const [message, setMessage] = useState(false);
+  const [messageSize, setMessageSize] = useState(false);
+  const { isMobileScreen } = useMedia();
 
   useEffect(() => {
     // Продукт
@@ -110,6 +114,7 @@ export const Product = ({ productsId }) => {
     } else {
       setActiveSizeId(id);
       setSkuIdProduct(skuId);
+      setMessageSize(false);
     }
   };
 
@@ -144,20 +149,18 @@ export const Product = ({ productsId }) => {
 
   //додавання в кошик
   const addToCart = () => {
-    if (!skuIdProduct) {
-      alert('Виберіть розмір!');
-      return;
+    if (skuIdProduct) {
+      const productToBasket = {
+        sessionId: productsId,
+        skuId: skuIdProduct,
+        price: product.price.value,
+        quantity,
+        amount: product.price.value * quantity,
+      };
+      console.log(productToBasket);
+    } else {
+      setMessageSize(true);
     }
-
-    const productToBasket = {
-      sessionId: productsId,
-      skuId: skuIdProduct,
-      price: product.price.value,
-      quantity,
-      amount: product.price.value * quantity,
-    };
-
-    console.log(productToBasket);
   };
 
   // console.log(filterPhoto);
@@ -167,7 +170,8 @@ export const Product = ({ productsId }) => {
   return (
     <>
       <Container>
-        <Breadcrumbs category={product.category} />
+        {!isMobileScreen && <Breadcrumbs category={product.category} />}
+
         <ProductWrap>
           <ImageWrap>
             {/* photo */}
@@ -208,6 +212,7 @@ export const Product = ({ productsId }) => {
                 selectSize={selectSize}
                 activeSizeId={activeSizeId}
               />
+              {messageSize && <InfoMessage>Виберіть розмір</InfoMessage>}
 
               {/* відкрити модалку */}
               <SizeGridButton onClick={toggleModal}>
@@ -219,7 +224,7 @@ export const Product = ({ productsId }) => {
             {amount <= 0 ? (
               <TextQuantity>Немає в наявності</TextQuantity>
             ) : (
-              <div>
+              <div style={{ position: 'relative' }}>
                 <QuantityControls
                   decreaseQuantity={decreaseQuantity}
                   increaseQuantity={increaseQuantity}
