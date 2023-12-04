@@ -32,7 +32,7 @@ export const AsideList = styled.ul`
   margin-top: 28px;
   margin-left: auto;
   margin-right: auto;
-  @media (min-width: 1028px) {
+  @media (min-width: 1024px) {
     grid-template-columns: repeat(4, 1fr);
     margin-top: 48px;
     column-gap: 24px;
@@ -66,7 +66,7 @@ export const SimilarProductsITitle = styled.h4`
   font-weight: 400;
   line-height: normal;
   margin-top: 12px;
-  @media (min-width: 1028px) {
+  @media (min-width: 1024px) {
     margin-top: 18px;
     font-size: 24px;
   }
@@ -80,7 +80,7 @@ export const SimilarProductsIText = styled.p`
   font-weight: 300;
   line-height: normal;
   margin-top: 6px;
-  @media (min-width: 1028px) {
+  @media (min-width: 1024px) {
     margin-top: 12px;
     font-size: 24px;
   }

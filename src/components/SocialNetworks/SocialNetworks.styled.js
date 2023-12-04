@@ -14,7 +14,7 @@ export const IconWrapper = styled.div`
       align-items: center;
       gap: 14px;
 
-      @media (min-width: 1440px) {
+      @media (min-width: 768px) {
         display: none;
       }
     `}
@@ -22,7 +22,7 @@ export const IconWrapper = styled.div`
     props.type === 'desktop' &&
     css`
       display: none;
-      @media (min-width: 1440px) {
+      @media (min-width: 768px) {
         margin-top: 27px;
         display: flex;
         align-items: center;
@@ -37,11 +37,11 @@ export const MenuIcon = styled.svg`
   width: 24px;
   height: 24px;
 
-    @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     ${props =>
-    (props.type === 'mobile' && 'display: none;') ||
-    (props.type === 'desktop' && 'display: inline-block;')}
-    }
+      (props.type === 'mobile' && 'display: none;') ||
+      (props.type === 'desktop' && 'display: inline-block;')}
+  }
 
   /* ${props =>
     props.type === 'mobile' &&
