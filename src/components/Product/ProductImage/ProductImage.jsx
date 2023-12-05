@@ -1,10 +1,10 @@
 import noImage from '../../../images/no-image.jpg';
 
-import { Image } from './ProductImage.styled';
+import { Image, WrapImg } from './ProductImage.styled';
 
 export const ProductImage = ({ filterPhoto, clickedIndex }) => {
   return (
-    <>
+    <WrapImg>
       {filterPhoto.length !== 0 ? (
         <Image
           src={filterPhoto[clickedIndex].url}
@@ -13,6 +13,6 @@ export const ProductImage = ({ filterPhoto, clickedIndex }) => {
       ) : (
         <Image src={noImage} alt="no image" />
       )}
-    </>
+    </WrapImg>
   );
 };
