@@ -57,6 +57,21 @@ export const SimilarProductsImg = styled.img`
   max-height: 100%;
   max-width: 100%;
   object-fit: cover;
+
+  @media (max-width: 360px) {
+    max-width: 144px;
+    height: 190px;
+
+    object-fit: cover;
+    object-position: center;
+  }
+
+  @media (min-width: 1440px) {
+    width: 322px;
+    height: 416px;
+    object-fit: cover;
+    object-position: center;
+  }
 `;
 export const SimilarProductsITitle = styled.h4`
   color: #000;
