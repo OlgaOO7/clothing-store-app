@@ -16,7 +16,7 @@ import {
   Wrapper,
 } from './FilterByCategory.styled';
 
-export const FilterByCategory = ({ page, categoryId }) => {
+export const FilterByCategory = ({ page, categoryId, handlePageChange }) => {
   const dispatch = useDispatch();
   const [selectedCategory, setSelectedCategory] = useState(null);
   const categories = useSelector(selectCategory) || [];
@@ -50,6 +50,7 @@ export const FilterByCategory = ({ page, categoryId }) => {
 
   const handleCategoryChange = newCategoryId => {
     if (newCategoryId !== selectedCategory) {
+      handlePageChange(0);
       dispatch(
         getProductsFilterByCategory({ page, categoryId: newCategoryId })
       );
@@ -66,6 +67,7 @@ export const FilterByCategory = ({ page, categoryId }) => {
             <CatalogButton
               onClick={() => {
                 setSelectedCategory(0);
+                handlePageChange(0);
               }}
             >
               Всі

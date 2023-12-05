@@ -37,3 +37,6 @@ export const Button = styled.button`
     line-height: 21px;
   }
 `;
+export const Ellips = styled.span`
+  color: #b4b4b4;
+`;

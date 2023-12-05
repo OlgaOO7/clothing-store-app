@@ -1,4 +1,4 @@
-import { ListOfButtons, ButtonGray, Button } from './Pagination.styled';
+import { ListOfButtons, ButtonGray, Button, Ellips } from './Pagination.styled';
 export const Pagination = ({ totalPage, page, handlePageChange }) => {
   return (
     <ListOfButtons>
@@ -8,7 +8,7 @@ export const Pagination = ({ totalPage, page, handlePageChange }) => {
         const end = Math.min(totalPage - 1, page + range);
 
         if (index === start && start > 0) {
-          return <span key="startEllipsis">...</span>;
+          return <Ellips key="startEllipsis">...</Ellips>;
         }
 
         if (index >= start && index <= end) {
@@ -28,7 +28,7 @@ export const Pagination = ({ totalPage, page, handlePageChange }) => {
         }
 
         if (index === end + 1 && end < totalPage - 4) {
-          return <span key="endEllipsis">...</span>;
+          return <Ellips key="endEllipsis">...</Ellips>;
         }
 
         if (index > totalPage - 4) {

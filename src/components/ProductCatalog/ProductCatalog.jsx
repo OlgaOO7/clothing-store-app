@@ -40,7 +40,11 @@ export const ProductCatalog = ({ categoryId }) => {
         <span>|</span>
         <LinkTo to={'/catalog'}>Каталог</LinkTo>
       </NavWrapper>
-      <FilterByCategory page={page} categoryId={categoryId} />
+      <FilterByCategory
+        page={page}
+        categoryId={categoryId}
+        handlePageChange={handlePageChange}
+      />
       <Section>
         <Wrapper>
           {products.length !== 0 ? (
