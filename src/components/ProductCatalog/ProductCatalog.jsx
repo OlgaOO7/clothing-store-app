@@ -24,16 +24,18 @@ import { useLocation } from 'react-router';
 
 export const ProductCatalog = () => {
   const location = useLocation();
-  console.log(location);
-  console.log(location.state);
   const [page, setCurrentPage] = useState(0);
   const dispatch = useDispatch();
   const totalPage = useSelector(selectTotalPages) || 1;
   const products = useSelector(selectProducts) || [];
+  console.log(products);
 
-  useEffect(() => {
-    dispatch(getProductsPagination({ page: page }));
-  }, [dispatch, page]);
+  const categoryId = location.state ? location.state.categoryId : null;
+
+  // useEffect(() => {
+  //   dispatch(getProductsPagination({ page, categoryId }));
+  // }, [dispatch, page, categoryId]);
+  // console.log(categoryId);
 
   const handlePageChange = useCallback(page => {
     setCurrentPage(page);
@@ -52,7 +54,7 @@ export const ProductCatalog = () => {
         <span>|</span>
         <LinkTo to={'/catalog'}>Каталог</LinkTo>
       </NavWrapper>
-      <FilterByCategory page={page} />
+      <FilterByCategory page={page} categoryId={categoryId} />
       <Section>
         <Wrapper>
           {products.length !== 0 ? (

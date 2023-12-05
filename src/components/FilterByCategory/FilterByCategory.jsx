@@ -16,22 +16,26 @@ import {
   Wrapper,
 } from './FilterByCategory.styled';
 
-export const FilterByCategory = ({ page }) => {
+export const FilterByCategory = ({ page, categoryId }) => {
   const dispatch = useDispatch();
   const [selectedCategory, setSelectedCategory] = useState(0);
   const categories = useSelector(selectCategory) || [];
-
   useEffect(() => {
     dispatch(getCategories());
-  }, [dispatch]);
-
-  const handleCategoryChange = categoryId => {
-    if (categoryId === selectedCategory) {
-      return;
+    console.log(categoryId);
+    if (categoryId !== null && categoryId !== undefined) {
+      dispatch(getProductsFilterByCategory({ page, categoryId }));
+      setSelectedCategory(categoryId);
+    } else {
+      dispatch(getProductsPagination({ page }));
     }
+  }, [dispatch, page, categoryId]);
 
-    dispatch(getProductsFilterByCategory({ page, categoryId }));
-    setSelectedCategory(categoryId);
+  const handleCategoryChange = category => {
+    if (category !== selectedCategory) {
+      dispatch(getProductsFilterByCategory({ page, categoryId: category }));
+      setSelectedCategory(category);
+    }
   };
   return (
     <Section>
