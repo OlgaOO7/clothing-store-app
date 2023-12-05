@@ -30,14 +30,13 @@ export const ListColor = styled.ul`
 `;
 
 export const ColorElips = styled.div`
+  box-sizing: border-box;
   background: ${p => p.color && p.color};
   width: 25px;
   height: 25px;
   border-radius: 25px;
   border: 1px solid #d9d9d9;
-
   cursor: pointer;
-
   &.active {
     border-color: #000000;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px 3px;
