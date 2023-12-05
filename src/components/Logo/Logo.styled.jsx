@@ -10,7 +10,7 @@ export const LogoLink = styled(Link)`
   font-weight: 700;
   line-height: normal;
   letter-spacing: 3.78px;
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     font-size: 32px;
     letter-spacing: 6.72px;
   }
