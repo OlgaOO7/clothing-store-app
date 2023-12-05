@@ -19,9 +19,9 @@ export const WrapTable = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
 export const Table = styled.table`
   width: 853px;
-
   height: auto;
   border: 0.5px solid #000;
   border-collapse: collapse;
@@ -29,7 +29,6 @@ export const Table = styled.table`
     width: 303px;
     height: 103px;
   }
-
   @media (min-width: 768px) {
     border-bottom: 1px solid #000;
   }
@@ -68,7 +67,6 @@ export const Table = styled.table`
 
 export const SizeGridLogo = styled.p`
   color: #eaeaea;
-
   text-align: center;
   font-family: Roboto;
   font-size: 22px;
