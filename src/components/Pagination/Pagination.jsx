@@ -3,7 +3,7 @@ export const Pagination = ({ totalPage, page, handlePageChange }) => {
   return (
     <ListOfButtons>
       {Array.from({ length: totalPage }).map((_, index) => {
-        const range = 2;
+        const range = 4;
         const start = Math.max(0, page - range);
         const end = Math.min(totalPage - 1, page + range);
 

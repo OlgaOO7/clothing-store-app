@@ -22,23 +22,31 @@ export const FilterByCategory = ({ page, categoryId }) => {
   const categories = useSelector(selectCategory) || [];
   useEffect(() => {
     dispatch(getCategories());
-    console.log(categoryId);
-    if (categoryId !== null && categoryId !== undefined) {
-      dispatch(getProductsFilterByCategory({ page, categoryId }));
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (categoryId !== null && categoryId !== undefined && categoryId !== 0) {
+      console.log(categoryId);
       setSelectedCategory(categoryId);
-    } else {
+      dispatch(getProductsFilterByCategory({ page, categoryId }));
+    } else if (selectedCategory) {
       dispatch(
-        getProductsFilterByCategory({ page, categoryId: categoryId || '' })
+        getProductsFilterByCategory({ page, categoryId: selectedCategory })
+      );
+    } else {
+      setSelectedCategory(0);
+      dispatch(getProductsPagination({ page }));
+    }
+  }, [dispatch, page, categoryId, selectedCategory]);
+
+  const handleCategoryChange = newCategoryId => {
+    if (newCategoryId !== selectedCategory) {
+      dispatch(
+        getProductsFilterByCategory({ page, categoryId: newCategoryId })
       );
     }
-  }, [dispatch, page, categoryId]);
-  console.log(page);
-  const handleCategoryChange = category => {
-    if (category !== selectedCategory) {
-      dispatch(getProductsFilterByCategory({ page, categoryId: category }));
-      setSelectedCategory(category);
-    }
   };
+
   return (
     <Section>
       <Wrapper>
@@ -55,22 +63,26 @@ export const FilterByCategory = ({ page, categoryId }) => {
               Всі
             </CatalogButton>
           )}
-          {categories.map(category => (
-            <li key={category.id}>
-              {selectedCategory === category.id ? (
-                <SelectedCatalogButton key={category.id}>
-                  {category.title}
-                </SelectedCatalogButton>
-              ) : (
-                <CatalogButton
-                  onClick={() => handleCategoryChange(category.id)}
-                  key={category.id}
-                >
-                  {category.title}
-                </CatalogButton>
-              )}
-            </li>
-          ))}
+          {categories.length > 0 &&
+            categories.map(category => (
+              <li key={category.id}>
+                {selectedCategory === category.id ? (
+                  <SelectedCatalogButton key={category.id}>
+                    {category.title}
+                  </SelectedCatalogButton>
+                ) : (
+                  <CatalogButton
+                    onClick={() => {
+                      handleCategoryChange(category.id);
+                      setSelectedCategory(category.id);
+                    }}
+                    key={category.id}
+                  >
+                    {category.title}
+                  </CatalogButton>
+                )}
+              </li>
+            ))}
         </CatalogButtonList>
         <SortByPrice page={page} selectedCategory={selectedCategory} />
       </Wrapper>

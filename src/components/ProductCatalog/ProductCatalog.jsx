@@ -1,6 +1,5 @@
-import { useCallback, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getProductsFilterByCategory } from 'redux/products/operations';
+import { useCallback, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { selectTotalPages, selectProducts } from 'redux/products/selectors';
 
 import { ProductComponent } from 'components/ProductComponent/ProductComponent';
@@ -13,34 +12,17 @@ import {
   Section,
   List,
   Button,
-  ListOfButtons,
   NavWrapper,
-  ButtonGray,
   ButtonsWrapper,
   Icon,
   Message,
 } from './ProductCatalog.styled';
-import { useLocation } from 'react-router';
 import { Pagination } from 'components/Pagination/Pagination';
 
-export const ProductCatalog = () => {
-  const location = useLocation();
+export const ProductCatalog = ({ categoryId }) => {
   const [page, setCurrentPage] = useState(0);
-  const dispatch = useDispatch();
   const totalPage = useSelector(selectTotalPages) || 1;
   const products = useSelector(selectProducts) || [];
-  // console.log(products);
-  // console.log(location.state);
-  const categoryId = location.state?.categoryId
-    ? location.state.categoryId
-    : null;
-  console.log(categoryId);
-
-  useEffect(() => {
-    dispatch(
-      getProductsFilterByCategory({ page, categoryId: categoryId || '' })
-    );
-  }, [dispatch, page, categoryId]);
 
   const handlePageChange = useCallback(page => {
     setCurrentPage(page);
@@ -51,8 +33,6 @@ export const ProductCatalog = () => {
       handlePageChange(page + 1);
     }
   };
-  console.log(totalPage);
-
   return (
     <>
       <NavWrapper>
