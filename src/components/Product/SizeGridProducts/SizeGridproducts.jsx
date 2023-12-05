@@ -4,9 +4,9 @@ import {
   SizeGridTitle,
   Table,
   WrapTable,
-} from './SizeGridproducts.styled';
+} from './SizeGridProducts.styled';
 
-export const SizeGridproducts = () => {
+export const SizeGridProducts = () => {
   return (
     <>
       <SizeGridTitle> Розмірна сітка</SizeGridTitle>

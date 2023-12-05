@@ -25,8 +25,16 @@ export const Table = styled.table`
   height: auto;
   border: 0.5px solid #000;
   border-collapse: collapse;
+  @media (max-width: 360px) {
+    width: 303px;
+    height: 103px;
+  }
+
   @media (min-width: 768px) {
     border-bottom: 1px solid #000;
+  }
+  @media (min-width: 1440px) {
+    height: 240px;
   }
   th {
     text-align: left;
