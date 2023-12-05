@@ -43,7 +43,7 @@ export const getProductsFilterByCategory = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.get(
-        `/products?page=${credentials.page}&size=2&sort=title&categoryId=${credentials.categoryId}`,
+        `/products?page=${credentials.page}&size=12&sort=title&categoryId=${credentials.categoryId}`,
         '',
         config.headers
       );

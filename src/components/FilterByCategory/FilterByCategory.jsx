@@ -18,21 +18,30 @@ import {
 
 export const FilterByCategory = ({ page, categoryId }) => {
   const dispatch = useDispatch();
-  const [selectedCategory, setSelectedCategory] = useState(0);
+  const [selectedCategory, setSelectedCategory] = useState(null);
   const categories = useSelector(selectCategory) || [];
   useEffect(() => {
     dispatch(getCategories());
   }, [dispatch]);
 
   useEffect(() => {
-    if (categoryId !== null && categoryId !== undefined && categoryId !== 0) {
-      console.log(categoryId);
-      setSelectedCategory(categoryId);
-      dispatch(getProductsFilterByCategory({ page, categoryId }));
-    } else if (selectedCategory) {
+    if (
+      selectedCategory !== null &&
+      selectedCategory !== undefined &&
+      selectedCategory !== 0
+    ) {
       dispatch(
         getProductsFilterByCategory({ page, categoryId: selectedCategory })
       );
+    } else if (selectedCategory === 0) {
+      dispatch(getProductsPagination({ page: page }));
+    } else if (
+      categoryId !== null &&
+      categoryId !== undefined &&
+      categoryId !== 0
+    ) {
+      setSelectedCategory(categoryId);
+      dispatch(getProductsFilterByCategory({ page, categoryId }));
     } else {
       setSelectedCategory(0);
       dispatch(getProductsPagination({ page }));
@@ -56,7 +65,6 @@ export const FilterByCategory = ({ page, categoryId }) => {
           ) : (
             <CatalogButton
               onClick={() => {
-                dispatch(getProductsPagination({ page: page }));
                 setSelectedCategory(0);
               }}
             >
