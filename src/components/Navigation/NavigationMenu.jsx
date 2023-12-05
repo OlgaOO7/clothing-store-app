@@ -4,7 +4,7 @@ import { Nav, NavList, StyledLink } from './Navigation.styled';
 
 export const NavigationMenu = ({ sectionType }) => {
   return (
-    <div style={{display: 'flex'}}>
+    <div style={{ display: 'flex' }}>
       <Nav $sectionType={sectionType}>
         <NavList $sectionType={sectionType}>
           {navigationLinks.map(({ id, url, label }) => (
