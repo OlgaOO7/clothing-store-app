@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProductsPagination } from 'redux/products/operations';
+import { getProductsFilterByCategory } from 'redux/products/operations';
 import { selectTotalPages, selectProducts } from 'redux/products/selectors';
 
 import { ProductComponent } from 'components/ProductComponent/ProductComponent';
@@ -21,6 +21,7 @@ import {
   Message,
 } from './ProductCatalog.styled';
 import { useLocation } from 'react-router';
+import { Pagination } from 'components/Pagination/Pagination';
 
 export const ProductCatalog = () => {
   const location = useLocation();
@@ -28,14 +29,18 @@ export const ProductCatalog = () => {
   const dispatch = useDispatch();
   const totalPage = useSelector(selectTotalPages) || 1;
   const products = useSelector(selectProducts) || [];
-  console.log(products);
+  // console.log(products);
+  // console.log(location.state);
+  const categoryId = location.state?.categoryId
+    ? location.state.categoryId
+    : null;
+  console.log(categoryId);
 
-  const categoryId = location.state ? location.state.categoryId : null;
-
-  // useEffect(() => {
-  //   dispatch(getProductsPagination({ page, categoryId }));
-  // }, [dispatch, page, categoryId]);
-  // console.log(categoryId);
+  useEffect(() => {
+    dispatch(
+      getProductsFilterByCategory({ page, categoryId: categoryId || '' })
+    );
+  }, [dispatch, page, categoryId]);
 
   const handlePageChange = useCallback(page => {
     setCurrentPage(page);
@@ -46,6 +51,7 @@ export const ProductCatalog = () => {
       handlePageChange(page + 1);
     }
   };
+  console.log(totalPage);
 
   return (
     <>
@@ -67,21 +73,11 @@ export const ProductCatalog = () => {
                 ))}
               </List>
               <ButtonsWrapper>
-                <ListOfButtons>
-                  {Array.from({ length: totalPage }).map((_, index) => (
-                    <li key={index}>
-                      {page === index ? (
-                        <Button onClick={() => handlePageChange(index)}>
-                          {index + 1}
-                        </Button>
-                      ) : (
-                        <ButtonGray onClick={() => handlePageChange(index)}>
-                          {index + 1}
-                        </ButtonGray>
-                      )}
-                    </li>
-                  ))}
-                </ListOfButtons>
+                <Pagination
+                  totalPage={totalPage}
+                  page={page}
+                  handlePageChange={handlePageChange}
+                />
                 <Button
                   onClick={handleNextPage}
                   disabled={totalPage === 1 ? true : false}

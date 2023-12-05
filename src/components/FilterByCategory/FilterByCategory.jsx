@@ -27,10 +27,12 @@ export const FilterByCategory = ({ page, categoryId }) => {
       dispatch(getProductsFilterByCategory({ page, categoryId }));
       setSelectedCategory(categoryId);
     } else {
-      dispatch(getProductsPagination({ page }));
+      dispatch(
+        getProductsFilterByCategory({ page, categoryId: categoryId || '' })
+      );
     }
   }, [dispatch, page, categoryId]);
-
+  console.log(page);
   const handleCategoryChange = category => {
     if (category !== selectedCategory) {
       dispatch(getProductsFilterByCategory({ page, categoryId: category }));
