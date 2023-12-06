@@ -10,7 +10,7 @@ import { ColorOptions } from './ColorOptions/ColorOptions';
 import { SizeOptions } from './SizeOptions/SizeOptions';
 import { QuantityControls } from './QuantityControls/QuantityControls';
 import { ProductImage } from './ProductImage/ProductImage';
-import { SizeGridproducts } from './SizeGridProducts/SizeGridproducts';
+import { SizeGridProducts } from './SizeGridProducts/SizeGridProducts';
 
 import { useMedia } from '../../hooks/useMedia';
 
@@ -261,7 +261,7 @@ export const Product = ({ productsId }) => {
       {/* модалка */}
       {openModal && (
         <Modal toggleModal={toggleModal} openModal={openModal}>
-          <SizeGridproducts />
+          <SizeGridProducts />
         </Modal>
       )}
     </>

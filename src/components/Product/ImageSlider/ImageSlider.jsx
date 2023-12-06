@@ -7,6 +7,8 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
+import { Image } from './ImageSlider.styled';
+
 export const ImageSlider = ({ photos, renderPhotos }) => {
   const { isMobileScreen } = useMedia();
 
@@ -17,7 +19,7 @@ export const ImageSlider = ({ photos, renderPhotos }) => {
         '--swiper-pagination-color': '#fff',
       }}
       slidesPerView={3}
-      spaceBetween={isMobileScreen ? 10 : 24}
+      spaceBetween={isMobileScreen ? 10 : 23}
       pagination={{
         clickable: true,
       }}
@@ -28,7 +30,7 @@ export const ImageSlider = ({ photos, renderPhotos }) => {
       {photos.map((item, index) => (
         <SwiperSlide key={index}>
           <li>
-            <img
+            <Image
               src={item.url}
               alt={item.color}
               onClick={() => {
