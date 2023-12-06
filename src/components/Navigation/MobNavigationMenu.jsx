@@ -9,7 +9,7 @@ import {
   MobNavList,
   MobNavLinkItem,
   StyledLink,
-  NavWrapper
+  NavWrapper,
 } from './Navigation.styled';
 
 export const MobNavigationMenu = ({ isMobile, closeMobMenu, sectionType }) => {
@@ -17,17 +17,19 @@ export const MobNavigationMenu = ({ isMobile, closeMobMenu, sectionType }) => {
     <MobNavContainer>
       <MobNav>
         <NavWrapper>
-        <MobNavList>
-          {navigationLinks.map(({ id, url, label }) => (
-            <MobNavLinkItem key={id} onClick={() => isMobile && closeMobMenu()}>
-              <StyledLink to={url}>{label}</StyledLink>
-            </MobNavLinkItem>
-          ))}
-        </MobNavList>
-        <Contacts />
-        <SocialNetworks />
+          <MobNavList>
+            {navigationLinks.map(({ id, url, label }) => (
+              <MobNavLinkItem
+                key={id}
+                onClick={() => isMobile && closeMobMenu()}
+              >
+                <StyledLink to={url}>{label}</StyledLink>
+              </MobNavLinkItem>
+            ))}
+          </MobNavList>
+          <Contacts />
+          <SocialNetworks />
         </NavWrapper>
-
       </MobNav>
     </MobNavContainer>
   );
