@@ -84,4 +84,5 @@ export const Icon = styled.svg`
 `;
 export const Message = styled.p`
   text-align: center;
+  font-size: 20px;
 `;
