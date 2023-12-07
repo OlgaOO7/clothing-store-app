@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { SubscriptionForm } from 'components/SubscriptionForm/SubscriptionForm';
 import { InfoBlock } from 'components/InfoBlock/InfoBlock';
+import { Form } from 'components/Form/Form';
 
 export const CartPage = () => {
   return (
@@ -18,7 +18,7 @@ export const CartPage = () => {
         <Link to="/cart">Кошик</Link>
       </div>
       <InfoBlock />
-      <SubscriptionForm />
+      <Form formType="subscription" />
     </div>
   );
 };

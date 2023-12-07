@@ -1,4 +1,5 @@
 import { ProductCatalog } from 'components/ProductCatalog/ProductCatalog';
+import { useLocation } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
 
@@ -8,6 +9,8 @@ import {
 
 export const CatalogPage = () => {
     const products = useSelector(selectProducts) || [];
+  const { state } = useLocation();
+  console.log(state);
   return (
     <div
       style={{

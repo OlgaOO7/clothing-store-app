@@ -1,8 +1,13 @@
 import { InfoBlock } from 'components/InfoBlock/InfoBlock';
-import { SubscriptionForm } from 'components/SubscriptionForm/SubscriptionForm';
 // import { NewProductsSlider } from 'components/NewProductsSlider/NewProductsSlider';
 
-import { PageWrapper, ContentWrrapper, ErrorCode, ErrorText  } from './NotFoundPage.styled';
+import {
+  PageWrapper,
+  ContentWrrapper,
+  ErrorCode,
+  ErrorText,
+} from './NotFoundPage.styled';
+import { Form } from 'components/Form/Form';
 
 export const NotFoundPage = () => {
   return (
@@ -15,7 +20,7 @@ export const NotFoundPage = () => {
       </ContentWrrapper>
       {/* <NewProductsSlider /> */}
       <InfoBlock />
-      <SubscriptionForm />
+      <Form formType="subscription" />
     </PageWrapper>
   );
 };

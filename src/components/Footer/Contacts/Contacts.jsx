@@ -1,23 +1,27 @@
 import {
   ContactsWrapper,
-  Button,
   Text,
   LinkWrapper,
-  Link,
+  LinkTel,
+  StyleLink,
 } from './Contacts.styled';
 
 export const Contacts = ({ sectionType }) => {
   return (
     <ContactsWrapper $sectionType={sectionType}>
-      <Button type="button" $sectionType={sectionType}>Зв’язатися з нами</Button>
+      <StyleLink to="/contacts" $sectionType={sectionType}>
+        Зв’язатися з нами
+      </StyleLink>
       <Text $sectionType={sectionType}>
         Звертайтесь до нас з будь-яких
         <br />
         додаткових питань
       </Text>
       <LinkWrapper $sectionType={sectionType}>
-        <Link href="tel:380743748270" $sectionType={sectionType}>+380743748270</Link>
+        <LinkTel href="tel:380743748270" $sectionType={sectionType}>
+          +380743748270
+        </LinkTel>
       </LinkWrapper>
-    </ContactsWrapper >
+    </ContactsWrapper>
   );
 };

@@ -15,6 +15,11 @@ import { productsReducer } from './products/productsSlice';
 //   REGISTER,
 // } from 'redux-persist';
 
+// const persistConfig = {
+//   key: 'subscription',
+//   storage,
+// };
+
 export const store = configureStore({
   reducer: {
     subscription: subscriptionReducer,

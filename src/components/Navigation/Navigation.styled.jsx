@@ -69,7 +69,7 @@ export const StyledLink = styled(Link)`
       font-style: normal;
       font-weight: 400;
       line-height: 160%;
-      @media (min-width: 1440px) {
+      @media (min-width: 768px) {
         font-size: 18px;
       }
     `}
@@ -86,7 +86,7 @@ export const Nav = styled.nav`
     css`
       display: inline-block;
       margin-top: 37px;
-      @media (min-width: 1440px) {
+      @media (min-width: 768px) {
         margin-top: 0;
       }
     `}
@@ -103,7 +103,7 @@ export const NavList = styled.ul`
       flex-direction: column;
       gap: 8px;
 
-      @media (min-width: 1440px) {
+      @media (min-width: 768px) {
         gap: 12px;
       }
     `}
