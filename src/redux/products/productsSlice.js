@@ -52,11 +52,11 @@ const productsSlice = createSlice({
         state.productsBySearch = action.payload;
         state.productsFound = action.payload.length > 0;
         state.visibleSearchList = true;
-        console.log(state.productsFound);
       })
       .addCase(getSearchedProducts.rejected, (state, action) => {
         state.error = action.payload;
         state.productsFound = false;
+        state.visibleSearchList = false;
       })
   },
 });

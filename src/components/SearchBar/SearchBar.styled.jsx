@@ -104,16 +104,35 @@ export const SearchList = styled.ul`
 export const SearchItem = styled.li``;
 
 export const LinkWrapper = styled.div`
-/* position: absolute; */
-/* width: 299px; */
-/* z-index: 1004; */
-display: flex;
-justify-content: center;
-padding: 10px 12px;
+  /* position: absolute; */
+  /* width: 299px; */
+  /* z-index: 1004; */
+  display: flex;
+  justify-content: center;
+  padding: 10px 12px;
   background: black;
 `;
 
 export const ProductsLink = styled(Link)`
   font-size: 16px;
   color: #fff;
+`;
+
+export const Container = styled.div`
+  position: absolute;
+  z-index: 1002;
+  top: 3rem;
+  right: 0;
+`;
+
+export const FormContainer = styled.div`
+  position: relative;
+`;
+
+export const SearchForm = styled.form`
+  display: flex;
+  width: 287px;
+  padding: 10px 18px;
+  background: #292929;
+  border-radius: 2px 2px 0px 0px;
 `;
