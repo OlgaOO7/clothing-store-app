@@ -20,7 +20,6 @@ export const CatalogPage = () => {
       }}
     >
       <ProductCatalog data={products} categoryId={categoryId}/>
-      {/* <ProductCatalog categoryId={categoryId} /> */}
     </div>
   );
 };
