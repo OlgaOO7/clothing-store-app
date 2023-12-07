@@ -27,11 +27,11 @@ export const NavWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   gap: 31px;
-  padding: 60px 28px 31px;
+  padding: 115px 28px 31px;
   margin: 0;
   @media (min-width: 768px) {
     max-width: 1360px;
-    padding: 82px 40px 34px;
+    padding: 155px 40px 34px;
     margin: 0 auto;
   }
 `;
