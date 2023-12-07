@@ -1,5 +1,5 @@
-import { Underline } from 'components/Product/AdditionalInformation/AdditionalInformation.styled';
+import { Unsubscribe } from 'components/Unsubscribe/Unsubscribe';
 
 export const UnsubscribePage = () => {
-  return <Underline />;
+  return <Unsubscribe />;
 };

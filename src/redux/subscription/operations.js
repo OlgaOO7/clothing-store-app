@@ -46,3 +46,19 @@ export const contactUs = createAsyncThunk(
     }
   }
 );
+
+export const unsubscribe = createAsyncThunk(
+  'unsubscribe',
+  async (credentials, thunkAPI) => {
+    try {
+      const res = await axios.delete(
+        `/subscriptions`,
+        credentials,
+        config.headers
+      );
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
