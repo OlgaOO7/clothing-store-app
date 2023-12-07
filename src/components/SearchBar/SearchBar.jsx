@@ -283,7 +283,7 @@ export const SearchBar = () => {
                   </SearchListWrapper>
                 )}
                 {visibleProducts.length > 4 && showSearchList && (
-                  <LinkWrapper onClick={toggleSearch}>
+                  <LinkWrapper onClick={clearSearchInput}>
                     <ProductsLink
                       to={`/search?s=${searchQuery.trim()}`}
                       state={{ from: location }}
