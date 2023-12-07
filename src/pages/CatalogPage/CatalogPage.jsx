@@ -10,7 +10,7 @@ import {
 export const CatalogPage = () => {
     const products = useSelector(selectProducts) || [];
   const { state } = useLocation();
-  console.log(state);
+  const categoryId = state ? state?.categoryId : null;
   return (
     <div
       style={{
@@ -19,7 +19,8 @@ export const CatalogPage = () => {
         flexDirection: 'column',
       }}
     >
-      <ProductCatalog data={products}/>
+      <ProductCatalog data={products} categoryId={categoryId}/>
+      {/* <ProductCatalog categoryId={categoryId} /> */}
     </div>
   );
 };

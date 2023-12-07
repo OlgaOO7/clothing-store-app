@@ -16,23 +16,47 @@ import {
   Wrapper,
 } from './FilterByCategory.styled';
 
-export const FilterByCategory = ({ page }) => {
+export const FilterByCategory = ({ page, categoryId, handlePageChange }) => {
   const dispatch = useDispatch();
-  const [selectedCategory, setSelectedCategory] = useState(0);
+  const [selectedCategory, setSelectedCategory] = useState(null);
   const categories = useSelector(selectCategory) || [];
-
   useEffect(() => {
     dispatch(getCategories());
   }, [dispatch]);
 
-  const handleCategoryChange = categoryId => {
-    if (categoryId === selectedCategory) {
-      return;
+  useEffect(() => {
+    if (
+      selectedCategory !== null &&
+      selectedCategory !== undefined &&
+      selectedCategory !== 0
+    ) {
+      dispatch(
+        getProductsFilterByCategory({ page, categoryId: selectedCategory })
+      );
+    } else if (selectedCategory === 0) {
+      dispatch(getProductsPagination({ page: page }));
+    } else if (
+      categoryId !== null &&
+      categoryId !== undefined &&
+      categoryId !== 0
+    ) {
+      setSelectedCategory(categoryId);
+      dispatch(getProductsFilterByCategory({ page, categoryId }));
+    } else {
+      setSelectedCategory(0);
+      dispatch(getProductsPagination({ page }));
     }
+  }, [dispatch, page, categoryId, selectedCategory]);
 
-    dispatch(getProductsFilterByCategory({ page, categoryId }));
-    setSelectedCategory(categoryId);
+  const handleCategoryChange = newCategoryId => {
+    if (newCategoryId !== selectedCategory) {
+      handlePageChange(0);
+      dispatch(
+        getProductsFilterByCategory({ page, categoryId: newCategoryId })
+      );
+    }
   };
+
   return (
     <Section>
       <Wrapper>
@@ -42,29 +66,33 @@ export const FilterByCategory = ({ page }) => {
           ) : (
             <CatalogButton
               onClick={() => {
-                dispatch(getProductsPagination({ page: page }));
                 setSelectedCategory(0);
+                handlePageChange(0);
               }}
             >
               Всі
             </CatalogButton>
           )}
-          {categories.map(category => (
-            <li key={category.id}>
-              {selectedCategory === category.id ? (
-                <SelectedCatalogButton key={category.id}>
-                  {category.title}
-                </SelectedCatalogButton>
-              ) : (
-                <CatalogButton
-                  onClick={() => handleCategoryChange(category.id)}
-                  key={category.id}
-                >
-                  {category.title}
-                </CatalogButton>
-              )}
-            </li>
-          ))}
+          {categories.length > 0 &&
+            categories.map(category => (
+              <li key={category.id}>
+                {selectedCategory === category.id ? (
+                  <SelectedCatalogButton key={category.id}>
+                    {category.title}
+                  </SelectedCatalogButton>
+                ) : (
+                  <CatalogButton
+                    onClick={() => {
+                      handleCategoryChange(category.id);
+                      setSelectedCategory(category.id);
+                    }}
+                    key={category.id}
+                  >
+                    {category.title}
+                  </CatalogButton>
+                )}
+              </li>
+            ))}
         </CatalogButtonList>
         <SortByPrice page={page} selectedCategory={selectedCategory} />
       </Wrapper>

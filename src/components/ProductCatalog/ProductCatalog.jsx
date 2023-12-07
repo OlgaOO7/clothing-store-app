@@ -1,43 +1,21 @@
-import { useCallback, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getProductsPagination } from 'redux/products/operations';
+import { useCallback, useState } from 'react';
+import { useSelector } from 'react-redux';
 import {
   selectTotalPages,
-  // selectProducts,
-  // selectSearchedProducts,
 } from 'redux/products/selectors';
-
-// import { ProductComponent } from 'components/ProductComponent/ProductComponent';
 import { FilterByCategory } from 'components/FilterByCategory/FilterByCategory';
-// import Sprite from '../../images/sprite.svg';
-
 import { ProductCatalogComponent } from './ProductCatalogComponent';
 
 import {
   LinkTo,
   Wrapper,
   Section,
-  // List,
-  // Button,
-  // ListOfButtons,
   NavWrapper,
-  // ButtonGray,
-  // ButtonsWrapper,
-  // Icon,
-  // Message,
 } from './ProductCatalog.styled';
 
-export const ProductCatalog = ({ type, data }) => {
+export const ProductCatalog = ({ type, data, categoryId }) => {
   const [page, setCurrentPage] = useState(0);
-  const dispatch = useDispatch();
   const totalPage = useSelector(selectTotalPages) || 1;
-  // const products = useSelector(selectProducts) || [];
-  // const searchedProducts = useSelector(selectSearchedProducts);
-  // console.log(products);
-
-  useEffect(() => {
-    dispatch(getProductsPagination({ page: page }));
-  }, [dispatch, page]);
 
   const handlePageChange = useCallback(page => {
     setCurrentPage(page);
@@ -48,7 +26,6 @@ export const ProductCatalog = ({ type, data }) => {
       handlePageChange(page + 1);
     }
   };
-
   return (
     <>
       <NavWrapper>
@@ -57,7 +34,7 @@ export const ProductCatalog = ({ type, data }) => {
         <LinkTo to={'/catalog'}>Каталог</LinkTo>
       </NavWrapper>
       {
-        type !== 'searchpage' && <FilterByCategory page={page} />
+        type !== 'searchpage' && <FilterByCategory page={page} categoryId={categoryId} handlePageChange={handlePageChange} />
       }
             <Section>
         <Wrapper>

@@ -32,7 +32,9 @@ export const MainSection = () => {
           <svg>
             <use href={`${Sprite}#icon-image`}></use>
           </svg>
-          <LinkTo to="/catalog">Каталог</LinkTo>
+          <LinkTo to="/catalog" state={{ from: 'Головна' }}>
+            Каталог
+          </LinkTo>
         </ImageWrapper>
       </Wrapper>
     </Section>
