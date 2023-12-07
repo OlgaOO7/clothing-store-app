@@ -58,7 +58,6 @@ export const Form = ({ formType }) => {
   );
 
   const handleChange = () => {
-    console.log(watch());
     setIsSubscribed(false);
   };
 
@@ -121,7 +120,6 @@ export const Form = ({ formType }) => {
                     placeholder="Email"
                     {...register('email')}
                     autoComplete="true"
-                    errors={errors}
                     onChange={handleChange}
                   ></SubscriptionFormInput>
                   <SubscriptionFormButton type="submit">
