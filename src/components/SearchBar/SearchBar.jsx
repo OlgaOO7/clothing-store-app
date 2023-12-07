@@ -26,6 +26,9 @@ import {
   SearchListWrapper,
   ProductsLink,
   LinkWrapper,
+  Container,
+  FormContainer,
+  SearchForm,
 } from './SearchBar.styled';
 // import { log } from 'util';
 
@@ -232,24 +235,10 @@ export const SearchBar = () => {
           )}
         </SearchBtn>
         {isShowSearch && (
-          <div
-            style={{
-              position: 'absolute',
-              zIndex: '1002',
-              top: '3rem',
-              right: '0',
-            }}
-          >
-            <div style={{ position: 'relative' }}>
-              <form
+          <Container>
+            <FormContainer>
+              <SearchForm
                 onSubmit={handleSubmit}
-                style={{
-                  display: 'flex',
-                  width: 287,
-                  padding: '10px 18px',
-                  background: '#292929',
-                  borderRadius: '2px 2px 0px 0px',
-                }}
               >
                 <SearchInput
                   type="text"
@@ -266,7 +255,7 @@ export const SearchBar = () => {
                     <use href={`${Sprite}#icon-search`} />
                   </SearchIcon>
                 </SearchBtn>
-              </form>
+              </SearchForm>
 
               <SearchInputListWrapper>
                 {isEmpty && !searchQuery && (
@@ -294,7 +283,7 @@ export const SearchBar = () => {
                   </SearchListWrapper>
                 )}
                 {visibleProducts.length > 4 && showSearchList && (
-                  <LinkWrapper onClick={toggleSearch}>
+                  <LinkWrapper onClick={clearSearchInput}>
                     <ProductsLink
                       to={`/search?s=${searchQuery.trim()}`}
                       state={{ from: location }}
@@ -304,8 +293,8 @@ export const SearchBar = () => {
                   </LinkWrapper>
                 )}
               </SearchInputListWrapper>
-            </div>
-          </div>
+            </FormContainer>
+          </Container>
         )}
       </SearchWrapper>
 
