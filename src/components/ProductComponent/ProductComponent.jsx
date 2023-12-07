@@ -16,12 +16,14 @@ export const ProductComponent = ({ item, type }) => {
     <Link to={`/catalog/${item.id}`}>
       <ProductWrapper type={type}>
         <ProductImage
-          src={`${item.photos.url ? item.photos.url : noImage}`}
+          src={`${item?.photos ? item?.photos[0]?.url : noImage}`}
           type={type}
         ></ProductImage>
         <ProductTextWrapper type={type}>
           {item.title.length > maxLength ? (
-            <ProductTitle type={type}>{item.title.slice(0, maxLength)}...</ProductTitle>
+            <ProductTitle type={type}>
+              {item.title.slice(0, maxLength)}...
+            </ProductTitle>
           ) : (
             <ProductTitle type={type}>{item.title}</ProductTitle>
           )}
