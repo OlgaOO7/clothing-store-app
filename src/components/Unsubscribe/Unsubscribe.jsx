@@ -23,6 +23,8 @@ export const Unsubscribe = () => {
       <Wrapper>
         {unsubscription === 'success' ? (
           <Title>Вітаємо! Ви успішно відписались!</Title>
+        ) : unsubscription === 'error' ? (
+          <Title>Упс, сталась якась помилка :(</Title>
         ) : (
           <>
             <Title>Відписка від розсилки</Title>
