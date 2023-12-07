@@ -1,28 +1,21 @@
 import { useCallback, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectTotalPages, selectProducts } from 'redux/products/selectors';
-
-import { ProductComponent } from 'components/ProductComponent/ProductComponent';
+import {
+  selectTotalPages,
+} from 'redux/products/selectors';
 import { FilterByCategory } from 'components/FilterByCategory/FilterByCategory';
-import Sprite from '../../images/sprite.svg';
+import { ProductCatalogComponent } from './ProductCatalogComponent';
 
 import {
   LinkTo,
   Wrapper,
   Section,
-  List,
-  Button,
   NavWrapper,
-  ButtonsWrapper,
-  Icon,
-  Message,
 } from './ProductCatalog.styled';
-import { Pagination } from 'components/Pagination/Pagination';
 
-export const ProductCatalog = ({ categoryId }) => {
+export const ProductCatalog = ({ type, data, categoryId }) => {
   const [page, setCurrentPage] = useState(0);
   const totalPage = useSelector(selectTotalPages) || 1;
-  const products = useSelector(selectProducts) || [];
 
   const handlePageChange = useCallback(page => {
     setCurrentPage(page);
@@ -40,41 +33,19 @@ export const ProductCatalog = ({ categoryId }) => {
         <span>|</span>
         <LinkTo to={'/catalog'}>Каталог</LinkTo>
       </NavWrapper>
-      <FilterByCategory
-        page={page}
-        categoryId={categoryId}
-        handlePageChange={handlePageChange}
-      />
-      <Section>
+      {
+        type !== 'searchpage' && <FilterByCategory page={page} categoryId={categoryId} handlePageChange={handlePageChange} />
+      }
+            <Section>
         <Wrapper>
-          {products.length !== 0 ? (
-            <>
-              <List>
-                {products.map(product => (
-                  <li key={product.id}>
-                    <ProductComponent item={product} />
-                  </li>
-                ))}
-              </List>
-              <ButtonsWrapper>
-                <Pagination
-                  totalPage={totalPage}
-                  page={page}
-                  handlePageChange={handlePageChange}
-                />
-                <Button
-                  onClick={handleNextPage}
-                  disabled={totalPage === 1 ? true : false}
-                >
-                  <Icon>
-                    <use href={`${Sprite}#icon-next-page`}></use>
-                  </Icon>
-                </Button>
-              </ButtonsWrapper>
-            </>
-          ) : (
-            <Message>Sorry, but this category is not available yet</Message>
-          )}
+          <ProductCatalogComponent
+            data={data}
+            type={type}
+            handleNextPage={handleNextPage}
+            page={page}
+            totalPage={totalPage}
+            handlePageChange={handlePageChange}
+          />
         </Wrapper>
       </Section>
     </>

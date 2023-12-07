@@ -1,11 +1,15 @@
-import { InfoBlock } from 'components/InfoBlock/InfoBlock';
-import { Form } from 'components/Form/Form';
+import { useSelector } from 'react-redux';
+
+import { ProductCatalog } from 'components/ProductCatalog/ProductCatalog';
+import { selectSearchedProducts } from 'redux/products/selectors';
+
 
 export const SearchedProductPage = () => {
+  const searchedProducts = useSelector(selectSearchedProducts);
+
   return (
     <div>
-      <InfoBlock />
-      <Form formType="subscription" />
+      <ProductCatalog type='searchpage' data={searchedProducts} />
     </div>
   );
 };

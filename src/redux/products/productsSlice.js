@@ -4,14 +4,24 @@ import {
   getProductsPagination,
   getProductsFilterByCategory,
   getProductsSortByPrice,
+  getSearchedProducts
 } from './operations';
+
 const initialState = {
   products: null,
   productsCategory: null,
+  productsBySearch: [],
+  productsFound: false,
+  visibleSearchList: false,
 };
 const productsSlice = createSlice({
   name: 'products',
   initialState,
+  // reducers: {
+  //   setSearchQuery: (state, action) => {
+  //     state.searchQuery = action.payload;
+  //   },
+  // },
   extraReducers: builder => {
     builder
       .addCase(getProducts.fulfilled, (state, action) => {
@@ -37,7 +47,17 @@ const productsSlice = createSlice({
       })
       .addCase(getProductsSortByPrice.rejected, state => {
         state.productsCategory = {};
-      });
+      })
+      .addCase(getSearchedProducts.fulfilled, (state, action) => {
+        state.productsBySearch = action.payload;
+        state.productsFound = action.payload.length > 0;
+        state.visibleSearchList = true;
+        console.log(state.productsFound);
+      })
+      .addCase(getSearchedProducts.rejected, (state, action) => {
+        state.error = action.payload;
+        state.productsFound = false;
+      })
   },
 });
 

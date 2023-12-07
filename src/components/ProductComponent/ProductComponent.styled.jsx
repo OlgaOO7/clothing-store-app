@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const ProductWrapper = styled.div`
   width: max-content;
@@ -8,8 +8,15 @@ export const ProductWrapper = styled.div`
   gap: 12px;
   color: #000;
   @media (min-width: 768px) {
-    gap: 14px;
+    gap: 10px;
   }
+
+  ${props =>
+    props.type === 'search' &&
+    css`
+      flex-direction: row;
+      gap: 10px;
+    `}
 `;
 export const ProductImage = styled.img`
   background-color: #ececec;
@@ -23,6 +30,15 @@ export const ProductImage = styled.img`
     width: 322px;
     height: 416px;
   }
+
+  ${props =>
+    props.type === 'search' &&
+    css`
+      @media (min-width: 768px) {
+        width: 48px;
+        height: 64px;
+      }
+    `}
 `;
 export const ProductTitle = styled.h3`
   font-size: 16px;
@@ -37,6 +53,16 @@ export const ProductTitle = styled.h3`
     font-size: 22px;
     line-height: 25px;
   }
+
+  ${props =>
+    props.type === 'search' &&
+    css`
+      @media (min-width: 768px) {
+        width: 242px;
+        font-size: 14px;
+        line-height: normal;
+      }
+    `}
 `;
 export const ProductDescription = styled.p`
   font-size: 14px;
@@ -48,4 +74,25 @@ export const ProductDescription = styled.p`
     font-weight: 300;
     line-height: 18px;
   }
+
+  ${props =>
+    props.type === 'search' &&
+    css`
+      @media (min-width: 768px) {
+        font-size: 10px;
+        font-weight: 300;
+        line-height: normal;
+      }
+    `}
+`;
+
+export const ProductTextWrapper = styled.div`
+  ${props =>
+    props.type === 'search' &&
+    css`
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+    `}
 `;

@@ -4,10 +4,12 @@ import axios from 'axios';
 
 const BASE_URL = 'https://online-store.ddns.net/api/v1';
 
-const fetchProducts = async () => {
+
+
+const fetchProducts = async (searchQuery) => {
   try {
     return await axios.get(
-      `${BASE_URL}/products`
+      `${BASE_URL}/products?title=${searchQuery}`
     );
   } catch (error) {
     console.log(error);

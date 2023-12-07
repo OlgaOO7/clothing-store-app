@@ -59,10 +59,9 @@ export const getProductsSortByPrice = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.get(
-        `/products?page=${credentials.page}&size=12&sort=${credentials.sort}${
-          credentials.selectedCategory >= 1
-            ? `&categoryId=${credentials.selectedCategory}`
-            : ''
+        `/products?page=${credentials.page}&size=12&sort=${credentials.sort}${credentials.selectedCategory >= 1
+          ? `&categoryId=${credentials.selectedCategory}`
+          : ''
         }`,
         '',
         config.headers
@@ -73,3 +72,27 @@ export const getProductsSortByPrice = createAsyncThunk(
     }
   }
 );
+
+export const getSearchedProducts = createAsyncThunk(
+  'products/getProductsBySearch',
+  async (searchQuery, thunkAPI) => {
+    try {
+      const res = await axios.get(`products?title=${searchQuery}`, config.headers);
+      return res.data.content;
+
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+// export const setSearchQuery = createAsyncThunk(
+//   'products/setSearchQuery',
+//   async (searchQuery, thunkAPI) => {
+//     try {
+//       return searchQuery;
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );

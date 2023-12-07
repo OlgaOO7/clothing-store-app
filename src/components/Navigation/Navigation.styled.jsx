@@ -195,6 +195,9 @@ export const CartIconWrapper = styled.div`
   display: flex;
   position: relative;
   margin-right: 4px;
+  @media (min-width: 1440px) {
+    margin-right: 29px;
+  }
 `;
 
 export const CartQuantityWrapper = styled.div`
