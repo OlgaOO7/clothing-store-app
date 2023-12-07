@@ -12,6 +12,7 @@ import { SearchedProductPage } from 'pages/SearchedProductPage/SearchedProductPa
 import { ContactsPage } from 'pages/ContactsPage/ContactsPage';
 
 import GlobalStyle from './GlobalStyle.jsx';
+import { UnsubscribePage } from 'pages/UnsubscribePage/UnsubscribePage';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="about" element={<AboutPage />} />
           <Route path="contacts" element={<ContactsPage />} />
           <Route path="search" element={<SearchedProductPage />} />
+          <Route path="unsubscribe" element={<UnsubscribePage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
