@@ -79,6 +79,15 @@ export const CategoryItem = styled.li`
   & ${CategoryImage} {
     width: 100%;
   }
+
+  &:nth-last-child(4) {
+    flex-basis: 100%;
+    flex: 0 0 calc(100%);
+    & ${CategoryImage} {
+      width: 100%;
+    }
+  }
+
   &:nth-last-child(3) {
     flex-basis: 100%;
     flex: 0 0 calc(100%);
@@ -87,6 +96,12 @@ export const CategoryItem = styled.li`
     }
   }
   @media (min-width: 768px) {
+    &:nth-last-child(4) {
+      &${CategoryImage} {
+        flex: auto;
+        width: 437px;
+      }
+    }
     &:nth-last-child(3) {
       &${CategoryImage} {
         flex: auto;

@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 export const CatalogPage = () => {
   const { state } = useLocation();
-  console.log(state);
+  const categoryId = state ? state?.categoryId : null;
   return (
     <div
       style={{
@@ -12,7 +12,7 @@ export const CatalogPage = () => {
         flexDirection: 'column',
       }}
     >
-      <ProductCatalog />
+      <ProductCatalog categoryId={categoryId} />
     </div>
   );
 };
