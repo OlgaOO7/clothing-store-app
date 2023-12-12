@@ -23,10 +23,6 @@ export const ProductImage = styled.img`
   width: 144px;
   height: 190px;
   @media (min-width: 768px) {
-    width: 230px;
-    height: 280px;
-  }
-  @media (min-width: 768px) {
     width: 322px;
     height: 416px;
   }
