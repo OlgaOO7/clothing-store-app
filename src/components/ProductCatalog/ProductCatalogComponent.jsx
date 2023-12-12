@@ -1,3 +1,5 @@
+import { useLocation } from 'react-router-dom';
+
 import { ProductComponent } from 'components/ProductComponent/ProductComponent';
 import { Pagination } from 'components/Pagination/Pagination';
 import Sprite from '../../images/sprite.svg';
@@ -8,15 +10,22 @@ import {
   ButtonsWrapper,
   Icon,
   Message,
+  SearchWord,
 } from './ProductCatalog.styled';
 
 export const ProductCatalogComponent = ({
   data,
+  type,
   handleNextPage,
   page,
   totalPage,
   handlePageChange,
+  isLoading,
 }) => {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const searchQuery = searchParams.get('s');
+
   return data.length !== 0 ? (
     <>
       <List>
@@ -42,7 +51,14 @@ export const ProductCatalogComponent = ({
         </Button>
       </ButtonsWrapper>
     </>
-  ) : (
+  ) : type !== 'searchpage' ? (
     <Message>Sorry, but this category is not available yet</Message>
+  ) : (
+    type === 'searchpage' &&
+    isLoading && (
+      <Message>
+        За запитом <SearchWord>"{searchQuery}"</SearchWord> нічого не знайдено
+      </Message>
+    )
   );
 };

@@ -10,7 +10,7 @@ import {
   ProductTextWrapper,
 } from './ProductComponent.styled';
 
-export const ProductComponent = ({ item, type }) => {
+export const ProductComponent = ({ item, type, sectionType }) => {
   const maxLength = 25;
   return (
     <Link to={`/catalog/${item.id}`}>
@@ -18,6 +18,7 @@ export const ProductComponent = ({ item, type }) => {
         <ProductImage
           src={`${item?.photos ? item?.photos[0]?.url : noImage}`}
           type={type}
+          $sectionType={sectionType}
         ></ProductImage>
         <ProductTextWrapper type={type}>
           {item.title.length > maxLength ? (

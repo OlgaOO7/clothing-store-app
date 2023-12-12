@@ -1,19 +1,12 @@
 import { useCallback, useState } from 'react';
 import { useSelector } from 'react-redux';
-import {
-  selectTotalPages,
-} from 'redux/products/selectors';
+import { selectTotalPages } from 'redux/products/selectors';
 import { FilterByCategory } from 'components/FilterByCategory/FilterByCategory';
 import { ProductCatalogComponent } from './ProductCatalogComponent';
 
-import {
-  LinkTo,
-  Wrapper,
-  Section,
-  NavWrapper,
-} from './ProductCatalog.styled';
+import { LinkTo, Wrapper, Section, NavWrapper } from './ProductCatalog.styled';
 
-export const ProductCatalog = ({ type, data, categoryId }) => {
+export const ProductCatalog = ({ type, data, categoryId, isLoading }) => {
   const [page, setCurrentPage] = useState(0);
   const totalPage = useSelector(selectTotalPages) || 1;
 
@@ -31,12 +24,20 @@ export const ProductCatalog = ({ type, data, categoryId }) => {
       <NavWrapper>
         <LinkTo to={'/'}>Головна</LinkTo>
         <span>|</span>
-        <LinkTo to={'/catalog'}>Каталог</LinkTo>
+        {type !== 'searchpage' ? (
+          <LinkTo to={'/catalog'}>Каталог</LinkTo>
+        ) : (
+          <p>Пошук</p>
+        )}
       </NavWrapper>
-      {
-        type !== 'searchpage' && <FilterByCategory page={page} categoryId={categoryId} handlePageChange={handlePageChange} />
-      }
-            <Section>
+      {type !== 'searchpage' && (
+        <FilterByCategory
+          page={page}
+          categoryId={categoryId}
+          handlePageChange={handlePageChange}
+        />
+      )}
+      <Section>
         <Wrapper>
           <ProductCatalogComponent
             data={data}

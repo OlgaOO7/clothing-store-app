@@ -1,7 +1,9 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { resetSearchedProducts } from './productsSlice';
 
 axios.defaults.baseURL = 'https://online-store.ddns.net/api/v1';
+
 
 const config = {
   headers: {
@@ -86,13 +88,30 @@ export const getSearchedProducts = createAsyncThunk(
   }
 );
 
-// export const setSearchQuery = createAsyncThunk(
-//   'products/setSearchQuery',
-//   async (searchQuery, thunkAPI) => {
-//     try {
-//       return searchQuery;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
+export const getSearchedProductsPage = createAsyncThunk(
+  'products/getProductsBySearchPage',
+  async (searchQuery, thunkAPI) => {
+    try {
+      const res = await axios.get(`products?title=${searchQuery}`, config.headers);
+      return res.data.content;
+
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const clearSearchedProducts = createAsyncThunk(
+  'products/clearSearchedProducts',
+  async (_, { dispatch }) => {
+    dispatch(resetSearchedProducts());
+  }
+);
+
+// export const clearSearchedProductsPage = createAsyncThunk(
+//   'products/clearSearchedProductsPage',
+//   async (_, { dispatch }) => {
+//     dispatch(resetSearchedProducts());
 //   }
 // );
+

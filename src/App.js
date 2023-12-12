@@ -1,3 +1,6 @@
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
 import { Routes, Route } from 'react-router-dom';
 
 import { SharedLayout } from 'components/SharedLayouts/SharedLayouts';
@@ -14,6 +17,12 @@ import { ContactsPage } from 'pages/ContactsPage/ContactsPage';
 import GlobalStyle from './GlobalStyle.jsx';
 
 function App() {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   return (
     <div className="App">
       <GlobalStyle />

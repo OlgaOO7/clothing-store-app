@@ -37,7 +37,14 @@ export const ProductImage = styled.img`
       @media (min-width: 768px) {
         width: 48px;
         height: 64px;
-      }
+    `}
+
+  ${props =>
+    props.$sectionTtype === 'search' &&
+    css`
+      @media (max-width: 767px) {
+        width: 48px;
+        height: 64px;
     `}
 `;
 export const ProductTitle = styled.h3`

@@ -4,24 +4,29 @@ import {
   getProductsPagination,
   getProductsFilterByCategory,
   getProductsSortByPrice,
-  getSearchedProducts
+  getSearchedProducts,
+  clearSearchedProducts,
+  getSearchedProductsPage,
+  // clearSearchedProductsPage
 } from './operations';
 
 const initialState = {
   products: null,
   productsCategory: null,
   productsBySearch: [],
-  productsFound: false,
-  visibleSearchList: false,
+  searchedProducts: [],
 };
 const productsSlice = createSlice({
   name: 'products',
   initialState,
-  // reducers: {
-  //   setSearchQuery: (state, action) => {
-  //     state.searchQuery = action.payload;
-  //   },
-  // },
+  reducers: {
+    resetSearchedProducts: state => {
+      state.productsBySearch = [];
+    },
+    setSearchedProducts: (state, action) => {
+      state.productsBySearch = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(getProducts.fulfilled, (state, action) => {
@@ -50,15 +55,24 @@ const productsSlice = createSlice({
       })
       .addCase(getSearchedProducts.fulfilled, (state, action) => {
         state.productsBySearch = action.payload;
-        state.productsFound = action.payload.length > 0;
-        state.visibleSearchList = true;
       })
       .addCase(getSearchedProducts.rejected, (state, action) => {
         state.error = action.payload;
-        state.productsFound = false;
-        state.visibleSearchList = false;
       })
+      .addCase(clearSearchedProducts.fulfilled, (state) => {
+        state.productsBySearch = [];
+        state.error = null;
+      })
+      .addCase(getSearchedProductsPage.fulfilled, (state, action) => {
+        state.searchedProducts = action.payload;
+      })
+    // .addCase(clearSearchedProductsPage.fulfilled, (state) => {
+    //   state.searchedProducts = [];
+    //   state.error = null;
+    // })
   },
 });
+
+export const { resetSearchedProducts, setSearchedProducts } = productsSlice.actions;
 
 export const productsReducer = productsSlice.reducer;

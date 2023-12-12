@@ -2,27 +2,25 @@ import { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-// import { fetchProducts } from '../../services/search-product.js';
 import { getSearchedProducts } from 'redux/products/operations';
-import { ProductComponent } from 'components/ProductComponent/ProductComponent.jsx';
-// import { SearchBarMob } from './SearchBarMob.jsx';
-import Sprite from '../../images/sprite.svg';
-
 import { selectSearchedProducts } from 'redux/products/selectors';
+import {
+  resetSearchedProducts,
+  setSearchedProducts,
+} from 'redux/products/productsSlice';
+import { ProductComponent } from 'components/ProductComponent/ProductComponent.jsx';
+
+import Sprite from '../../images/sprite.svg';
 
 import {
   Wrapper,
   SearchWrapper,
   SearchBtn,
-  SearchCloseBtn,
   SearchIcon,
-  SearchMobWrapper,
   SearchInputListWrapper,
   SearchInput,
-  SearchCloseIcon,
   SearchList,
   SearchItem,
-  MobSearchWrapper,
   SearchListWrapper,
   ProductsLink,
   LinkWrapper,
@@ -30,16 +28,14 @@ import {
   FormContainer,
   SearchForm,
 } from './SearchBar.styled';
-// import { log } from 'util';
 
 export const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isEmpty, setIsEmpty] = useState(false);
-  // const [productsBySearch, setProductsBySearch] = useState([]);
-  const [isCloseBtn, setIsCloseBtn] = useState(false);
+  // const [isCloseBtn, setIsCloseBtn] = useState(false);
   const [isSearchListVisible, setIsSearchListVisible] = useState(false);
   const [isShowSearch, setIsShowSearch] = useState(false);
-  const [notFoundProduct, setNotFoundProduct] = useState(false);
+  // const [notFoundProduct, setNotFoundProduct] = useState(false);
   const [closeSearchBtn, setCloseSearchBtn] = useState(false);
 
   const location = useLocation();
@@ -51,14 +47,8 @@ export const SearchBar = () => {
   // const searchRef = useRef(null);
 
   const visibleProducts = useSelector(selectSearchedProducts) || [];
-  // const productsFound = useSelector(selectProductsFound);
 
-
-  if (visibleProducts.length === 0) {
-    console.log('The array is empty.');
-  } else {
-    console.log('The array is not empty.');
-  }
+  // const notFound = searchQuery.length >= 3 && visibleProducts.length === 0;
 
   const toggleSearch = () => {
     setIsShowSearch(!isShowSearch);
@@ -67,81 +57,51 @@ export const SearchBar = () => {
   };
 
   const showSearchList = searchQuery && isSearchListVisible;
-
   const trimmedSearchQuerry = searchQuery.trim();
 
-  // const title = searchQuery;
-  // TO DO: when the product base will be imorted, it is needed to cut visibleProducts and show only max 4 product items in 'SearchList',
-  // all list of searched products will be displayed by clicking on link 'Дивитись всі' at 'SearchProductPage' page
+  if (visibleProducts.length === 0) {
+    console.log('The array is empty.');
+  } else {
+    console.log('The array is not empty.');
+  }
 
   useEffect(() => {
     if (searchQuery === '') {
-      // dispatch(setSearchQuery(''));
       setSearchQuery('');
       return;
     }
 
     if (searchQuery.length < 3) {
-      setNotFoundProduct(false);
+      // setNotFoundProduct(false);
       return;
     }
-
-    // if (searchQuery.length < 3) {
-    //   // dispatch(setSearchQuery('')); 
-    //   // setNotFoundProduct(false);
-    //   // dispatch(productsFound(false));
-    //   return;
-    // }
-
-    // try {
-    //   // dispatch(setSearchQuery(searchQuery)); 
-    //     dispatch(getSearchedProducts(searchQuery));
-    // } catch (error) {
-    //   console.log(error);
-    // }
-        // eslint-disable-next-line
+    // eslint-disable-next-line
   }, [searchQuery, dispatch]);
 
   console.log(visibleProducts);
-        // // const getSearchProduct = async () => {
-        //   dispatch(getSearchedProducts(searchQuery));
-        //   console.log(dispatch(getSearchedProducts('фут')));
-        //   // const {
-        //   //   data: { content },
-        //   // } = await getSearchedProducts(searchQuery);
-        //   // const visibleProducts = content.filter(product =>
-        //   //   product.title.toLowerCase().includes(searchQuery.toLowerCase())
-        //   // );
-        //   // if (visibleProducts.length === 0) {
-        //   //   setNotFoundProduct(true);
-        //   // } else {
-        //   //   setNotFoundProduct(false);
-        //   // }
-        //   // console.log({
-        //   //   data: { content },
-        //   // });
-        //   // setProductsBySearch(visibleProducts);
-        // // };
-        // // getSearchProduct();
 
   useEffect(() => {
     setIsSearchListVisible(false);
     setIsEmpty(false);
-    setNotFoundProduct(false);
+    // setNotFoundProduct(false);
     if (location.pathname !== '/search') {
       setSearchQuery('');
-      setIsCloseBtn(false);
+      // setIsCloseBtn(false);
       setIsShowSearch(false);
       previousLocation.current = location.pathname;
     }
     // eslint-disable-next-line
   }, [location]);
 
-
+  useEffect(() => {
+    return () => {
+      dispatch(resetSearchedProducts());
+    };
+  }, [dispatch]);
 
   // FOR CLOSE OUTSIDE DIV
   // useEffect(() => {
-  //   const handleClickOutside = (event) => {
+  //   const handleClickOutside = event => {
   //     if (searchRef.current && !searchRef.current.contains(event.target)) {
   //       setIsShowSearch(false);
   //     }
@@ -152,30 +112,23 @@ export const SearchBar = () => {
   //   return () => {
   //     document.removeEventListener('click', handleClickOutside);
   //   };
-  // }, [searchRef]);
+  // }, [searchRef, dispatch]);
 
   const clearSearchInput = () => {
     setSearchQuery('');
-    setIsCloseBtn(false);
+    // setIsCloseBtn(false);
     toggleSearch();
     setIsEmpty(false);
     console.log(isEmpty);
+    dispatch(resetSearchedProducts());
   };
-
-  // const closeSearch = () => {
-  //   clearSearchInput();
-  //   setCloseSearchBtn(false);
-  // };
 
   const handleSubmit = e => {
     e.preventDefault();
-    // const trimmedSearchQuerry = searchQuery.trim();
     if (trimmedSearchQuerry === '') {
       setIsEmpty(true);
       setIsSearchListVisible(false);
     } else {
-      // setSearchQuery('');
-      // setProductsBySearch([]);
       setIsSearchListVisible(false);
       setIsShowSearch(false);
       setTimeout(() => {
@@ -191,21 +144,27 @@ export const SearchBar = () => {
     console.log(searchQuery.length);
     const inputValue = e.target.value.toLowerCase();
     setSearchQuery(inputValue);
-    setIsCloseBtn(inputValue.length > 0);
+    // setIsCloseBtn(inputValue.length > 0);
+    if (searchQuery) {
+      setIsEmpty(false);
+    }
+
     if (inputValue.length < 3) {
       setIsEmpty(false);
     } else if (inputValue === '') {
       setSearchQuery('');
-    } else if (inputValue.length >= 3) {
+    }
+
+    if (inputValue.length >= 3) {
       setIsSearchListVisible(true);
       try {
-        dispatch(getSearchedProducts(searchQuery));
-    } catch (error) {
-      console.log(error);
-    }
-    }
-    if (searchQuery) {
-      setIsEmpty(false);
+        dispatch(getSearchedProducts(inputValue));
+      } catch (error) {
+        console.log(error);
+      }
+      dispatch(setSearchedProducts(visibleProducts));
+    } else {
+      dispatch(resetSearchedProducts());
     }
   };
 
@@ -216,16 +175,17 @@ export const SearchBar = () => {
     }
   };
 
-
-
-// Wrapper ref={searchRef} for close outside div
+  // Wrapper ref={searchRef} for close outside div
 
   return (
     <Wrapper>
       <SearchWrapper>
-        <SearchBtn type="button" onClick={closeSearchBtn ? clearSearchInput : toggleSearch}>
+        <SearchBtn
+          type="button"
+          onClick={closeSearchBtn ? clearSearchInput : toggleSearch}
+        >
           {isShowSearch ? (
-            <SearchIcon width={24} height={24}>
+            <SearchIcon width={24} height={24} style={{ fill: '#4c4b4b' }}>
               <use href={`${Sprite}#icon-cross`} />
             </SearchIcon>
           ) : (
@@ -237,9 +197,7 @@ export const SearchBar = () => {
         {isShowSearch && (
           <Container>
             <FormContainer>
-              <SearchForm
-                onSubmit={handleSubmit}
-              >
+              <SearchForm onSubmit={handleSubmit}>
                 <SearchInput
                   type="text"
                   value={searchQuery}
@@ -263,11 +221,11 @@ export const SearchBar = () => {
                     <p>Будь ласка, введіть ваш запит!</p>
                   </SearchListWrapper>
                 )}
-                {notFoundProduct && showSearchList && (
+                {/* {notFound && (
                   <SearchListWrapper>
-                    <p>За вашим запитом нічого не знайдено!</p>
+                    <p>За запитом нічого не знайдено!</p>
                   </SearchListWrapper>
-                )}
+                )} */}
                 {visibleProducts.length > 5 && showSearchList && (
                   <SearchListWrapper>
                     <SearchList>
@@ -279,7 +237,6 @@ export const SearchBar = () => {
                         ))
                         .slice(0, 4)}
                     </SearchList>
-
                   </SearchListWrapper>
                 )}
                 {visibleProducts.length > 4 && showSearchList && (
@@ -297,65 +254,6 @@ export const SearchBar = () => {
           </Container>
         )}
       </SearchWrapper>
-
-      <SearchMobWrapper>
-        <div style={{ alignItems: 'center', justifyContent: 'center' }}>
-          {isShowSearch ? (
-            <MobSearchWrapper>
-              <form
-                onSubmit={handleSubmit}
-                style={{
-                  display: 'flex',
-                  width: 184,
-                  borderBottom: '2px solid #000',
-                }}
-              >
-                <SearchBtn type="submit">
-                  <SearchIcon width={24} height={24}>
-                    <use href={`${Sprite}#icon-search`} />
-                  </SearchIcon>
-                </SearchBtn>
-
-                <SearchInput
-                  type="text"
-                  value={searchQuery}
-                  autoComplete="off"
-                  autoFocus
-                  placeholder="Шукати"
-                  onChange={handleSearchChange}
-                  onKeyUp={searchHandler}
-                />
-
-                {isCloseBtn && (
-                  <SearchCloseBtn type="button" onClick={clearSearchInput}>
-                    <SearchCloseIcon
-                      width={24}
-                      height={24}
-                      style={{ fill: '#4C4B4B' }}
-                    >
-                      <use href={`${Sprite}#icon-cross`} />
-                    </SearchCloseIcon>
-                  </SearchCloseBtn>
-                )}
-              </form>
-            </MobSearchWrapper>
-          ) : (
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <SearchBtn type="button" onClick={toggleSearch}>
-                <SearchIcon width={24} height={24}>
-                  <use href={`${Sprite}#icon-search`} />
-                </SearchIcon>
-              </SearchBtn>
-            </div>
-          )}
-        </div>
-      </SearchMobWrapper>
     </Wrapper>
   );
 };

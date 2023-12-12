@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 export const NavContainer = styled.div`
+  position: relative;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,17 +27,8 @@ export const MobNav = styled.nav`
   display: none;
 
   @media (max-width: 1439px) {
-    /* position: absolute;
-    z-index: 10000; */
-    /* width: 100%; */
-    /* top: 88px; */
-    /* right: 0px; */
     display: flex;
     flex-direction: column;
-    /* gap: 20px; */
-    /* transition: bottom;
-    transition-duration: 2s; */
-    /* box-shadow: rgba(28, 28, 41, 0.2) 0px 7px 29px 0px; */
   }
 `;
 
@@ -49,8 +42,6 @@ export const MobNavList = styled.ul`
 
 export const MobNavLinkItem = styled.li`
   @media (max-width: 1439px) {
-    /* padding-left: 40px; */
-    /* width: 100%; */
     margin-top: 20px;
     flex-direction: column;
   }
@@ -113,9 +104,6 @@ export const BtnWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* gap: 14px; */
-  /* check margin-left when will be ready */
-  /* margin-left: 230px; */
 `;
 
 export const MenuBtn = styled.button`
@@ -136,46 +124,12 @@ export const MenuIcon = styled.svg`
   }
 `;
 
-// export const CartBtn = styled.button`
-//   padding: 0px;
-//   border: none;
-//   /* font-size: 0; */
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   /* background-color: transparent; */
-//   @media (min-width: 1440px) {
-//     font-weight: 400;
-//     font-size: 14px;
-//     line-height: normal;
-//     color: #191919;
-//   }
-//   @media (max-width: 1439px) {
-//     span {
-//       display: none;
-//     }
-//   }
-// `;
-
 export const CartIcon = styled.svg`
   @media screen and (min-width: 360px) {
     width: 24px;
     height: 24px;
   }
 `;
-
-// export const SearchBtn = styled.button`
-//   padding: 0px;
-//   border: none;
-//   background-color: transparent;
-// `;
-
-// export const SearchIcon = styled.svg`
-//   @media screen and (min-width: 360px) {
-//     width: 24px;
-//     height: 24px;
-//   }
-// `;
 
 export const TextContainer = styled.div`
   display: none;
@@ -195,9 +149,6 @@ export const CartIconWrapper = styled.div`
   display: flex;
   position: relative;
   margin-right: 4px;
-  @media (min-width: 1440px) {
-    margin-right: 29px;
-  }
 `;
 
 export const CartQuantityWrapper = styled.div`
@@ -236,4 +187,24 @@ export const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const SearchBtn = styled.button`
+  padding: 0px;
+  width: 24px;
+  height: 24px;
+  margin-right: 14px;
+  border: none;
+  background-color: transparent;
+  @media (min-width: 1440px) {
+    display: none;
+  }
+`;
+
+export const SearchIcon = styled.svg`
+  @media screen and (min-width: 360px) {
+    width: 24px;
+    height: 24px;
+    fill: #4c4b4b;
+  }
 `;

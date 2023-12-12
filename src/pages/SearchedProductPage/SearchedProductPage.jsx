@@ -1,15 +1,9 @@
-import { useSelector } from 'react-redux';
-
-import { ProductCatalog } from 'components/ProductCatalog/ProductCatalog';
-import { selectSearchedProducts } from 'redux/products/selectors';
-
+import { SearchedProduct } from 'components/SearchedProduct/SearchedProduct';
 
 export const SearchedProductPage = () => {
-  const searchedProducts = useSelector(selectSearchedProducts);
-
   return (
     <div>
-      <ProductCatalog type='searchpage' data={searchedProducts} />
+      <SearchedProduct />
     </div>
   );
 };

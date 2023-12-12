@@ -86,3 +86,8 @@ export const Message = styled.p`
   text-align: center;
   font-size: 20px;
 `;
+
+export const SearchWord = styled.span`
+  color: grey; 
+  font-weight: 600;
+`
