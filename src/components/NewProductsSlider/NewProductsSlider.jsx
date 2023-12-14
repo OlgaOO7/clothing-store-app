@@ -17,8 +17,7 @@ import {
   Title,
   PrevBtn,
   NextBtn,
-  PrevBtnIcon,
-  NextBtnIcon,
+  BtnIcon,
 } from './NewProductsSlider.styled';
 
 export const NewProductsSlider = () => {
@@ -67,14 +66,14 @@ export const NewProductsSlider = () => {
           ))}
         </Swiper>
         <NextBtn className="swiper-button-next">
-          <PrevBtnIcon>
+          <BtnIcon>
             <use href={`${Sprite}#icon-next`}></use>
-          </PrevBtnIcon>
+          </BtnIcon>
         </NextBtn>
         <PrevBtn className="swiper-button-prev">
-          <NextBtnIcon>
+          <BtnIcon>
             <use href={`${Sprite}#icon-prev`}></use>
-          </NextBtnIcon>
+          </BtnIcon>
         </PrevBtn>
       </Wrapper>
     </Section>
