@@ -28,7 +28,6 @@ export const ProductCatalogComponent = ({
   const searchQuery = searchParams.get('s');
 
   useEffect(() => {
-    // При изменении страницы пагинации, переместить пользователя вверх страницы
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [page]);
 
