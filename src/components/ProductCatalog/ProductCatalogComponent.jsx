@@ -12,6 +12,7 @@ import {
   Message,
   SearchWord,
 } from './ProductCatalog.styled';
+import { useEffect } from 'react';
 
 export const ProductCatalogComponent = ({
   data,
@@ -26,6 +27,11 @@ export const ProductCatalogComponent = ({
   const searchParams = new URLSearchParams(location.search);
   const searchQuery = searchParams.get('s');
 
+  useEffect(() => {
+    // При изменении страницы пагинации, переместить пользователя вверх страницы
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [page]);
+
   return data.length !== 0 ? (
     <>
       <List>
@@ -35,21 +41,25 @@ export const ProductCatalogComponent = ({
           </li>
         ))}
       </List>
-      <ButtonsWrapper>
-        <Pagination
-          totalPage={totalPage}
-          page={page}
-          handlePageChange={handlePageChange}
-        />
-        <Button
-          onClick={handleNextPage}
-          disabled={totalPage === 1 ? true : false}
-        >
-          <Icon>
-            <use href={`${Sprite}#icon-next-page`}></use>
-          </Icon>
-        </Button>
-      </ButtonsWrapper>
+      {data.length >= 12 ? (
+        <ButtonsWrapper>
+          <Pagination
+            totalPage={totalPage}
+            page={page}
+            handlePageChange={handlePageChange}
+          />
+          <Button
+            onClick={handleNextPage}
+            disabled={totalPage === 1 ? true : false}
+          >
+            <Icon>
+              <use href={`${Sprite}#icon-next-page`}></use>
+            </Icon>
+          </Button>
+        </ButtonsWrapper>
+      ) : (
+        <></>
+      )}
     </>
   ) : type !== 'searchpage' ? (
     <Message>Sorry, but this category is not available yet</Message>
