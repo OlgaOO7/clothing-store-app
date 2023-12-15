@@ -39,21 +39,27 @@ export const Contacts = () => {
           <ContactsContent>
             <ContactsWrapper>
               <ContactTitle>Зв’язок з менеджером</ContactTitle>
-              <ContactText>+380930000000</ContactText>
+              <ContactText href="tel:+380930000000">+380930000000</ContactText>
             </ContactsWrapper>
             <ContactsWrapper>
               <ContactTitle>Email</ContactTitle>
-              <ContactText>zatyshna@kmail.com</ContactText>
+              <ContactText href="mailto:zatyshna@kmail.com">
+                zatyshna@kmail.com
+              </ContactText>
             </ContactsWrapper>
             <ContactsWrapper>
               <ContactTitle>Соц.мережі</ContactTitle>
               <IconsWrapper>
-                <IconInstagram>
-                  <use href={`${Sprite}#icon-circum_instagram`}></use>
-                </IconInstagram>
-                <IconFacebook>
-                  <use href={`${Sprite}#icon-fe_facebook`}></use>
-                </IconFacebook>
+                <a href="https://www.instagram.com/">
+                  <IconInstagram>
+                    <use href={`${Sprite}#icon-circum_instagram`}></use>
+                  </IconInstagram>
+                </a>
+                <a href="https://www.facebook.com/">
+                  <IconFacebook>
+                    <use href={`${Sprite}#icon-fe_facebook`}></use>
+                  </IconFacebook>
+                </a>
               </IconsWrapper>
             </ContactsWrapper>
           </ContactsContent>

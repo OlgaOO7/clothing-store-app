@@ -122,10 +122,11 @@ export const ContactTitle = styled.h3`
     width: 243px;
   }
 `;
-export const ContactText = styled.p`
+export const ContactText = styled.a`
   font-size: 16px;
   font-weight: 400;
   line-height: 18px;
+  color: inherit;
   @media (min-width: 768px) {
     font-size: 24px;
     line-height: 28px;
