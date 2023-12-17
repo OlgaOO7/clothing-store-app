@@ -135,10 +135,10 @@ export const Form = ({ formType }) => {
         <>
           {formStatus === 'success' ? (
             <SuccessMessageWrapper>
-              <SuccessMessage>
+              <p>
                 Дякуємо, ми переглянемо ваш лист і зв'яжемось з вами найближчим
                 часом!
-              </SuccessMessage>
+              </p>
             </SuccessMessageWrapper>
           ) : (
             <ContactsForm onSubmit={handleSubmit(onSubmitContactUs)}>

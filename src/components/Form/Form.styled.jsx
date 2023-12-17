@@ -48,8 +48,10 @@ export const FormButton = styled.button`
 export const SuccessMessageWrapper = styled.div`
   width: 100%;
   background-color: #c9c9c9;
-  padding: 27px 0;
+  padding: 27px 30px;
   height: max-content;
+  text-align: center;
+  max-width: 688px;
 `;
 export const SuccessContainer = styled.p`
   font-size: 24px;
