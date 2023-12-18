@@ -26,6 +26,7 @@ export const ProductCatalogComponent = ({
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const searchQuery = searchParams.get('s');
+  console.log(totalPage);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -40,7 +41,7 @@ export const ProductCatalogComponent = ({
           </li>
         ))}
       </List>
-      {data.length >= 12 ? (
+      {totalPage > 1 ? (
         <ButtonsWrapper>
           <Pagination
             totalPage={totalPage}

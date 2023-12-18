@@ -24,16 +24,15 @@ export const Wrapper = styled.div`
   padding-right: 28px;
   margin: 0 auto;
   @media (min-width: 768px) {
-    flex-wrap: wrap;
     flex-direction: row;
     gap: 95px;
-    max-width: 1360px;
+    max-width: 1245px;
     padding-left: 40px;
     padding-right: 40px;
   }
   @media (min-width: 1440px) {
     flex-wrap: nowrap;
-    gap: 189px;
+    gap: 81px;
   }
 `;
 export const MainWrapper = styled.div`
