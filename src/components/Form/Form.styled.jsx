@@ -2,19 +2,20 @@ import styled from 'styled-components';
 
 export const ContactsForm = styled.form`
   width: 100%;
+  max-width: 303px;
+  @media (min-width: 768px) {
+    max-width: 438px;
+  }
 `;
 export const ContactsFormWrapper = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  min-width: 303px;
-  width: 50%;
   margin-bottom: 12px;
   @media (min-width: 768px) {
     margin-bottom: 18px;
     gap: 18px;
-    width: 438px;
+    max-width: 438px;
   }
 `;
 export const FormTitle = styled.h3`
