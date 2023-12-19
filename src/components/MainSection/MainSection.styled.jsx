@@ -110,6 +110,12 @@ export const LinkTo = styled(Link)`
   background-color: transparent;
   text-align: center;
   color: #000000;
+  transition: all 0.5s ease-out;
+  &:hover,
+  &:focus {
+    background-color: #000000;
+    color: #ffffff;
+  }
   @media (min-width: 768px) {
     width: 186px;
     font-size: 18px;
