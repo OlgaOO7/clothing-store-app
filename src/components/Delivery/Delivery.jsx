@@ -220,7 +220,7 @@ export const Delivery = () => {
     }
     const dataToSendWarehouse = `${searchCityName}, ${searchWarehouses}`;
     console.log(dataToSendWarehouse);
-    setIsSubmitting(false);
+    // setIsSubmitting(false);
   };
 
   return (
