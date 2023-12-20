@@ -14,7 +14,7 @@ export const NavWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   gap: 31px;
-  padding: 29px 28px 28px;
+  padding: 105px 28px 28px;
   margin: 0;
   @media (min-width: 768px) {
     max-width: 1360px;
@@ -88,6 +88,6 @@ export const Message = styled.p`
 `;
 
 export const SearchWord = styled.span`
-  color: grey; 
+  color: grey;
   font-weight: 600;
-`
+`;
