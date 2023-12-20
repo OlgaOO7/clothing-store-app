@@ -23,6 +23,7 @@ export const Wrapper = styled.div`
   padding-left: 28px;
   padding-right: 28px;
   margin: 0 auto;
+  flex-wrap: wrap;
   @media (min-width: 768px) {
     flex-direction: row;
     gap: 95px;

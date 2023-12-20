@@ -145,7 +145,6 @@ export const Form = ({ formType }) => {
               <FormTitle>Зв’язатись з нами</FormTitle>
               <ContactsFormWrapper>
                 <InputField
-                  label={'Імʼя'}
                   type="text"
                   name="name"
                   register={register}
@@ -153,7 +152,6 @@ export const Form = ({ formType }) => {
                   placeholder={'Імʼя'}
                 />
                 <InputField
-                  label={'E-mail'}
                   type="email"
                   name="email"
                   register={register}
@@ -161,12 +159,12 @@ export const Form = ({ formType }) => {
                   placeholder={'E-mail'}
                 />
                 <InputField
-                  label={'Повідомлення'}
                   type="textarea"
                   name="message"
                   register={register}
                   errors={errors}
                   placeholder={'Повідомлення'}
+                  maxLength={1000}
                 />
               </ContactsFormWrapper>
               <FormButton
