@@ -182,6 +182,19 @@ export const Item = styled.li`
     line-height: normal;
   }
 `;
+
+export const Text = styled.p`
+  font-family: Gill Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  cursor: pointer;
+  @media (min-width: 1024px) {
+    font-size: 16px;
+    line-height: normal;
+  }
+`;
 export const Message = styled.p`
   color: ${p => (p.$error ? 'red' : 'black')};
 `;

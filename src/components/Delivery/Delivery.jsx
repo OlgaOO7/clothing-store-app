@@ -17,6 +17,7 @@ import {
   WrapList,
   WrapRadio,
   WrapTitle,
+  Text,
 } from './Delivery.styled';
 
 const APIKEY = '4cfd344a4e40e9fab712995825eeaef4';
@@ -84,7 +85,7 @@ export const Delivery = () => {
   };
 
   useEffect(() => {
-    if (searchCityName) {
+    if (searchCityName.length !== 0) {
       handleСityName();
 
       if (searchCities.length === 0) {
@@ -106,13 +107,13 @@ export const Delivery = () => {
     }
 
     // eslint-disable-next-line
-  }, [searchCityName, searchCities.length]);
+  }, [searchCityName.length, searchCities.length]);
 
   const handleSearchTextChange = throttle(e => {
     const value = e.target.value;
-    setSearchCityName(value);
+    setSearchCityName(value.trim());
 
-    if (value.length > 2) {
+    if (value.length > 0) {
       setDropdownCityVisible(true);
     } else {
       setDropdownCityVisible(false);
@@ -247,7 +248,7 @@ export const Delivery = () => {
               value={searchCityName}
               onChange={handleSearchTextChange}
               onClick={() => {
-                setDropdownCityVisible(true);
+                !searchCityName === '' && setDropdownCityVisible(true);
               }}
               onBlur={() => {
                 setTimeout(() => {
@@ -275,7 +276,7 @@ export const Delivery = () => {
                           );
                         }}
                       >
-                        <span>{searchCity.Present},</span>
+                        <Text>{searchCity.Present},</Text>
                       </Item>
                     ))
                   )}
@@ -327,7 +328,7 @@ export const Delivery = () => {
                             handleWarehouseSelect(warehouse.Description)
                           }
                         >
-                          <span>{warehouse.Description}</span>
+                          <Text>{warehouse.Description}</Text>
                         </Item>
                       ))
                   )}
