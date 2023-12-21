@@ -2,24 +2,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   LinkTo,
   NavWrapper,
-  OrderImage,
   OrderWrapper,
   Section,
   Wrapper,
-  ItemWrapper,
   Title,
-  OrderContent,
-  OrderTitle,
 } from './Order.styled';
 import { selectNewProducts } from 'redux/products/selectors';
 import { useEffect, useState } from 'react';
 import { getProducts } from 'redux/products/operations';
+import { OrderItem } from 'components/OrderItem/OrderItem';
 
 export const Order = () => {
   const products = useSelector(selectNewProducts) || [];
   const [isMobileNav, setIsMobileNav] = useState(false);
   const dispatch = useDispatch();
-  console.log(products);
 
   const handleResize = () => {
     setIsMobileNav(window.innerWidth <= 768);
@@ -60,14 +56,7 @@ export const Order = () => {
           <Title>Ваше замовлення</Title>
           <OrderWrapper>
             {products.map(item => (
-              <ItemWrapper key={item.id}>
-                <OrderImage
-                  src={`${item?.photos ? item?.photos[0]?.url : 'noImage'}`}
-                ></OrderImage>
-                <OrderContent>
-                  <OrderTitle>{item.title.slice(0, 18)}...</OrderTitle>
-                </OrderContent>
-              </ItemWrapper>
+              <OrderItem key={item.id} item={item} />
             ))}
           </OrderWrapper>
         </Wrapper>
