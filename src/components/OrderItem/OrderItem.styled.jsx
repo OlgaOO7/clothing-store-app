@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  display: flex;
-  align-items: center;
-`;
 export const ItemWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -18,6 +14,10 @@ export const ItemWrapper = styled.div`
       border: none;
     }
   }
+`;
+export const Container = styled.div`
+  display: flex;
+  align-items: center;
 `;
 export const OrderImage = styled.img`
   width: 44px;
@@ -59,7 +59,9 @@ export const OrderTitle = styled.h3`
   }
 `;
 export const OrderDescription = styled.div`
-  display: none;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
   @media (min-width: 768px) {
     display: flex;
     gap: 10px;
@@ -72,15 +74,9 @@ export const OrderText = styled.p`
   font-size: 12px;
   line-height: 17px;
   @media (min-width: 768px) {
-    display: none;
-  }
-`;
-export const OrderQuantity = styled.p`
-  font-family: Inter;
-  font-size: 12px;
-  line-height: 14px;
-  @media (min-width: 768px) {
-    display: none;
+    font-size: 18px;
+    line-height: 25px;
+    color: #4c4b4b;
   }
 `;
 export const OrderPrice = styled.p`
@@ -93,21 +89,8 @@ export const OrderPrice = styled.p`
   }
 `;
 export const OrderColor = styled.div`
-  display: none;
-  @media (min-width: 768px) {
-    display: block;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: #d9d9d9;
-  }
-`;
-export const OrderSize = styled.p`
-  display: none;
-  @media (min-width: 768px) {
-    display: block;
-    font-size: 18px;
-    line-height: 25px;
-    color: #4c4b4b;
-  }
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #d9d9d9;
 `;
