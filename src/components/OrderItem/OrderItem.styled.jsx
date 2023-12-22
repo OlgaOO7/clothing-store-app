@@ -14,7 +14,9 @@ export const ItemWrapper = styled.div`
   }
   @media (min-width: 768px) {
     padding: 0;
-    border: none;
+    &:not(:last-child) {
+      border: none;
+    }
   }
 `;
 export const OrderImage = styled.img`

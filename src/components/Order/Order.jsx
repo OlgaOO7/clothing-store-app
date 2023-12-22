@@ -6,6 +6,14 @@ import {
   Section,
   Wrapper,
   Title,
+  OrderResultMobile,
+  OrderResultMobileTitle,
+  OrderResultMobileDeliveryFirst,
+  OrderResultMobileDeliverySec,
+  OrderResultList,
+  OrderResultDestTitle,
+  OrderResultListItem,
+  OrderResultDestTotal,
 } from './Order.styled';
 import { selectNewProducts } from 'redux/products/selectors';
 import { useEffect, useState } from 'react';
@@ -61,6 +69,29 @@ export const Order = () => {
           </OrderWrapper>
         </Wrapper>
       </Section>
+      <OrderResultMobile>
+        <Wrapper>
+          <OrderResultMobileTitle>Всього</OrderResultMobileTitle>
+          <OrderResultList>
+            <OrderResultListItem>
+              <p>3 товари на суму</p>
+              <p>2100 UAH</p>
+            </OrderResultListItem>
+            <OrderResultListItem>
+              <OrderResultMobileDeliveryFirst>
+                Вартість доставки
+              </OrderResultMobileDeliveryFirst>
+              <OrderResultMobileDeliverySec>
+                За тарифами перевізника
+              </OrderResultMobileDeliverySec>
+            </OrderResultListItem>
+            <OrderResultListItem>
+              <OrderResultDestTitle>Разом:</OrderResultDestTitle>
+              <OrderResultDestTotal>2100 UAH</OrderResultDestTotal>
+            </OrderResultListItem>
+          </OrderResultList>
+        </Wrapper>
+      </OrderResultMobile>
     </>
   );
 };
