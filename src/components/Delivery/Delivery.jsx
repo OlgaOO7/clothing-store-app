@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { throttle } from 'lodash';
 import { nanoid } from '@reduxjs/toolkit';
 import {
-  Container,
   ElipsRadio,
   ElipsTitle,
   InputStyle,
@@ -225,7 +224,7 @@ export const Delivery = () => {
   };
 
   return (
-    <Container>
+    <>
       <WrapTitle>
         <ElipsTitle>2</ElipsTitle>
         <Title>Інформація про доставку</Title>
@@ -347,6 +346,6 @@ export const Delivery = () => {
           Для перевірки
         </button>
       </form>
-    </Container>
+    </>
   );
 };

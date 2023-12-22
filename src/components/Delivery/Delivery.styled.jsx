@@ -1,12 +1,5 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  padding: 116px 28px 61px;
-  @media (min-width: 1024px) {
-    padding: 162px 40px 152px;
-  }
-`;
-
 export const WrapTitle = styled.div`
   display: flex;
   align-items: center;

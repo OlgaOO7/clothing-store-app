@@ -14,6 +14,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { orderFormSchema } from 'utils/yupSchema';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectNewProducts } from 'redux/products/selectors';
+import { Delivery } from 'components/Delivery/Delivery';
 
 export const OrderForm = () => {
   const { register, handleSubmit, reset } = useForm({
@@ -72,6 +73,9 @@ export const OrderForm = () => {
               placeholder={'E-mail'}
             />
           </Form>
+        </div>
+        <div>
+          <Delivery />
         </div>
         <div>
           <WrapTitle>
