@@ -20,6 +20,7 @@ import { useEffect } from 'react';
 import { getProducts } from 'redux/products/operations';
 import { OrderItem } from 'components/OrderItem/OrderItem';
 import { useMedia } from 'hooks/useMedia';
+import { OrderForm } from 'components/OrderForm/OrderForm';
 
 export const Order = () => {
   const products = useSelector(selectNewProducts) || [];
@@ -102,6 +103,7 @@ export const Order = () => {
           )}
         </Wrapper>
       </OrderResultSection>
+      <OrderForm />
     </>
   );
 };

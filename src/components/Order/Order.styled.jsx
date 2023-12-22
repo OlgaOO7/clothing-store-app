@@ -69,6 +69,7 @@ export const OrderWrapper = styled.div`
 `;
 export const OrderResultSection = styled.section`
   padding: 14px 0 29px;
+  width: 100%;
   background: #f2f2f2;
   @media (min-width: 768px) {
     padding: 38px 0;
