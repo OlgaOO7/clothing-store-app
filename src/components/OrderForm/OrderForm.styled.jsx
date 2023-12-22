@@ -7,19 +7,21 @@ export const OrderFormSection = styled.section`
     padding: 56px 0 430px;
   }
 `;
-export const Wrapper = styled.div`
+export const Wrapper = styled.form`
   display: flex;
   flex-direction: column;
   padding-left: 28px;
   padding-right: 28px;
   margin: 0 auto;
+  gap: 29px;
   @media (min-width: 768px) {
+    gap: 39px;
     max-width: 1360px;
     padding-left: 40px;
     padding-right: 40px;
   }
 `;
-export const Form = styled.form`
+export const Form = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -72,5 +74,35 @@ export const ElipsTitle = styled.div`
     border-radius: 16px;
     font-size: 18px;
     line-height: normal;
+  }
+`;
+export const RadioForm = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  &:not(:last-child) {
+    margin-bottom: 14px;
+  }
+  @media (min-width: 768px) {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+    gap: 8px;
+  }
+`;
+export const OrderBtn = styled.button`
+  max-width: 189px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21px;
+  padding: 8.5px 0;
+  background: #000000;
+  color: #ffffff;
+  border: none;
+  @media (min-width: 768px) {
+    max-width: 362px;
+    padding: 10px 0;
+    font-size: 26px;
+    line-height: 36px;
   }
 `;

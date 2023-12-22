@@ -8,6 +8,22 @@ export const WrapInput = styled.div`
     gap: 10px;
   }
 `;
+export const WrapRadioInput = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  @media (min-width: 768px) {
+    gap: 8px;
+  }
+`;
+export const WrapCheckboxInput = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  @media (min-width: 768px) {
+    gap: 6px;
+  }
+`;
 export const LabelStyle = styled.label`
   color: #000;
   font-family: Gill Sans;
@@ -15,7 +31,6 @@ export const LabelStyle = styled.label`
   font-style: normal;
   font-weight: 400;
   line-height: 140%;
-  margin-bottom: 6px;
   @media (min-width: 768px) {
     font-size: 16px;
     line-height: normal;
@@ -47,5 +62,28 @@ export const InputStyle = styled.input`
     height: 48px;
     font-size: 16px;
     line-height: normal;
+  }
+`;
+export const RadioLabel = styled.label`
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 20px;
+  @media (min-width: 768px) {
+    gap: 12px;
+    font-size: 16px;
+    line-height: 22px;
+  }
+`;
+export const CheckboxLabel = styled.label`
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #00000066;
+  @media (min-width: 768px) {
+    gap: 12px;
+    font-size: 16px;
+    line-height: 22px;
   }
 `;
