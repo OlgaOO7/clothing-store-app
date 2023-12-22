@@ -9,8 +9,8 @@ import {
 } from './OrderPaymentForm.styled';
 import { OrderInput } from 'components/OrderInput/OrderInput';
 
-export const OrderPaymentForm = () => {
-  const { register, handleSubmit, reset } = useForm({
+export const OrderPaymentForm = ({ register }) => {
+  const { handleSubmit, reset } = useForm({
     mode: 'onSubmit',
     resolver: yupResolver(orderFormSchema),
   });

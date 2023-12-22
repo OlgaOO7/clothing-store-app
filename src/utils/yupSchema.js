@@ -72,5 +72,5 @@ export const orderFormSchema = Yup.object().shape({
       /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
       'Будь ласка, введіть дійсний номер телефону.'
     ),
-  agreement: Yup.string().required('Required'),
+  agreement: Yup.boolean().oneOf([true], 'Message'),
 });

@@ -21,7 +21,7 @@ import {
 
 const APIKEY = '4cfd344a4e40e9fab712995825eeaef4';
 
-export const Delivery = () => {
+export const Delivery = ({ register, watch, setValue }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [searchCityName, setSearchCityName] = useState('');
   const [searchCities, setSearchCities] = useState([]);
@@ -220,6 +220,9 @@ export const Delivery = () => {
     }
     const dataToSendWarehouse = `${searchCityName}, ${searchWarehouses}`;
     console.log(dataToSendWarehouse);
+    setValue('city', searchCityName);
+    setValue('warehouse', searchWarehouses);
+
     // setIsSubmitting(false);
   };
 
@@ -233,7 +236,7 @@ export const Delivery = () => {
         <ElipsRadio />
         <NameRadio>Доставка Новою поштою</NameRadio>
       </WrapRadio>
-      <form onSubmit={handleFormSubmit}>
+      <div>
         <WrapForm>
           <WrapInput>
             <LabelStyle htmlFor="city">Оберіть місто доставки *</LabelStyle>
@@ -241,6 +244,7 @@ export const Delivery = () => {
               type="text"
               id="city"
               name="city"
+              {...register('city')}
               autoComplete="off"
               placeholder="Оберіть місто доставки"
               $error={placeholder}
@@ -289,6 +293,7 @@ export const Delivery = () => {
               type="text"
               id="warehouse"
               name="warehouse"
+              {...register('warehouse')}
               value={searchWarehouses}
               autoComplete="off"
               placeholder="Оберіть відділення"
@@ -340,12 +345,12 @@ export const Delivery = () => {
         {/* тимчасово */}
         <button
           style={{ margin: '50px 0', padding: '10px' }}
-          type="submit"
+          onClick={handleFormSubmit}
           disabled={isSubmitting}
         >
           Для перевірки
         </button>
-      </form>
+      </div>
     </>
   );
 };

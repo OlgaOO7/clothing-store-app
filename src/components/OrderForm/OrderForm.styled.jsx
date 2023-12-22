@@ -7,7 +7,7 @@ export const OrderFormSection = styled.section`
     padding: 56px 0 430px;
   }
 `;
-export const Wrapper = styled.div`
+export const Wrapper = styled.form`
   display: flex;
   flex-direction: column;
   padding-left: 28px;

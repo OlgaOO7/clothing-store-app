@@ -1,27 +1,7 @@
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useForm } from 'react-hook-form';
-import { orderFormSchema } from 'utils/yupSchema';
 import { ElipsTitle, Form, Title, WrapTitle } from './OrderCustomerForm.styled';
 import { OrderInput } from 'components/OrderInput/OrderInput';
 
-export const OrderCustomerForm = () => {
-  const { register, handleSubmit, reset } = useForm({
-    mode: 'onSubmit',
-    resolver: yupResolver(orderFormSchema),
-  });
-
-  const onSubmit = (formData, e) => {
-    console.log(e);
-    e.preventDefault();
-    console.log(formData);
-    try {
-      console.log(formData);
-      reset();
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
+export const OrderCustomerForm = ({ register }) => {
   return (
     <>
       <WrapTitle>
