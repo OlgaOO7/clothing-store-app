@@ -6,46 +6,35 @@ import {
   Section,
   Wrapper,
   Title,
-  OrderResultMobile,
-  OrderResultMobileTitle,
-  OrderResultMobileDeliveryFirst,
-  OrderResultMobileDeliverySec,
+  OrderResultSection,
+  OrderResultTitle,
+  OrderResultDeliveryFirst,
+  OrderResultDeliverySec,
   OrderResultList,
-  OrderResultDestTitle,
   OrderResultListItem,
   OrderResultDestTotal,
+  OrderResultTotal,
 } from './Order.styled';
 import { selectNewProducts } from 'redux/products/selectors';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { getProducts } from 'redux/products/operations';
 import { OrderItem } from 'components/OrderItem/OrderItem';
+import { useMedia } from 'hooks/useMedia';
 
 export const Order = () => {
   const products = useSelector(selectNewProducts) || [];
-  const [isMobileNav, setIsMobileNav] = useState(false);
   const dispatch = useDispatch();
-
-  const handleResize = () => {
-    setIsMobileNav(window.innerWidth <= 768);
-  };
+  const { isMobileScreen } = useMedia();
 
   useEffect(() => {
     dispatch(getProducts());
   }, [dispatch]);
 
-  useEffect(() => {
-    window.addEventListener('resize', handleResize);
-    handleResize();
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
   return (
     <>
       <NavWrapper>
         <LinkTo to={'/'}>Головна</LinkTo>
-        {!isMobileNav ? (
+        {!isMobileScreen ? (
           <>
             <span>|</span>
             <LinkTo to={'/order'}>Кошик</LinkTo>
@@ -69,29 +58,50 @@ export const Order = () => {
           </OrderWrapper>
         </Wrapper>
       </Section>
-      <OrderResultMobile>
+      <OrderResultSection>
         <Wrapper>
-          <OrderResultMobileTitle>Всього</OrderResultMobileTitle>
-          <OrderResultList>
-            <OrderResultListItem>
-              <p>3 товари на суму</p>
-              <p>2100 UAH</p>
-            </OrderResultListItem>
-            <OrderResultListItem>
-              <OrderResultMobileDeliveryFirst>
-                Вартість доставки
-              </OrderResultMobileDeliveryFirst>
-              <OrderResultMobileDeliverySec>
-                За тарифами перевізника
-              </OrderResultMobileDeliverySec>
-            </OrderResultListItem>
-            <OrderResultListItem>
-              <OrderResultDestTitle>Разом:</OrderResultDestTitle>
-              <OrderResultDestTotal>2100 UAH</OrderResultDestTotal>
-            </OrderResultListItem>
-          </OrderResultList>
+          {isMobileScreen ? (
+            <>
+              <OrderResultTitle>Всього</OrderResultTitle>
+              <OrderResultList>
+                <OrderResultListItem>
+                  <OrderResultTotal>3 товари на суму</OrderResultTotal>
+                  <OrderResultTotal>2100 UAH</OrderResultTotal>
+                </OrderResultListItem>
+                <OrderResultListItem>
+                  <OrderResultDeliveryFirst>
+                    Вартість доставки
+                  </OrderResultDeliveryFirst>
+                  <OrderResultDeliverySec>
+                    За тарифами перевізника
+                  </OrderResultDeliverySec>
+                </OrderResultListItem>
+              </OrderResultList>
+            </>
+          ) : (
+            <>
+              <OrderResultList>
+                <OrderResultListItem>
+                  <OrderResultTotal>3 товари на суму</OrderResultTotal>
+                  <OrderResultTotal>2100 UAH</OrderResultTotal>
+                </OrderResultListItem>
+                <OrderResultListItem>
+                  <OrderResultDeliveryFirst>
+                    Вартість доставки
+                  </OrderResultDeliveryFirst>
+                  <OrderResultDeliverySec>
+                    За тарифами перевізника
+                  </OrderResultDeliverySec>
+                </OrderResultListItem>
+                <OrderResultListItem>
+                  <OrderResultTitle>Разом:</OrderResultTitle>
+                  <OrderResultDestTotal>2100 UAH</OrderResultDestTotal>
+                </OrderResultListItem>
+              </OrderResultList>
+            </>
+          )}
         </Wrapper>
-      </OrderResultMobile>
+      </OrderResultSection>
     </>
   );
 };

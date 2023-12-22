@@ -67,7 +67,7 @@ export const OrderWrapper = styled.div`
     max-height: 472px;
   }
 `;
-export const OrderResultMobile = styled.section`
+export const OrderResultSection = styled.section`
   padding: 14px 0 29px;
   background: #f2f2f2;
   @media (min-width: 768px) {
@@ -77,16 +77,19 @@ export const OrderResultMobile = styled.section`
     border-bottom: 1px solid #acacac;
   }
 `;
-export const OrderResultMobileTitle = styled.h3`
+export const OrderResultTitle = styled.h3`
   font-size: 18px;
   font-weight: 400;
   line-height: 25px;
   margin-bottom: 7px;
   @media (min-width: 768px) {
-    display: none;
+    margin: 0;
+    font-size: 32px;
+    line-height: 45px;
+    color: #030516;
   }
 `;
-export const OrderResultMobileDeliveryFirst = styled.p`
+export const OrderResultDeliveryFirst = styled.p`
   font-size: 12px;
   line-height: 17px;
   color: #00000066;
@@ -96,7 +99,7 @@ export const OrderResultMobileDeliveryFirst = styled.p`
     width: auto;
   }
 `;
-export const OrderResultMobileDeliverySec = styled.p`
+export const OrderResultDeliverySec = styled.p`
   font-size: 12px;
   line-height: 17px;
   color: #00000066;
@@ -123,18 +126,15 @@ export const OrderResultListItem = styled.li`
     margin-bottom: 6px;
   }
 `;
-export const OrderResultDestTitle = styled.h3`
-  display: none;
+export const OrderResultTotal = styled.p`
+  font-size: 14px;
+  line-height: 20px;
   @media (min-width: 768px) {
-    display: block;
-    font-family: Gill Sans;
-    font-size: 32px;
-    font-weight: 400;
-    line-height: 45px;
+    font-size: 18px;
+    line-height: 25px;
   }
 `;
 export const OrderResultDestTotal = styled.p`
-  display: none;
   @media (min-width: 768px) {
     display: block;
     font-family: Inter;
