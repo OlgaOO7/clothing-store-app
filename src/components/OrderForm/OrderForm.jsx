@@ -7,16 +7,18 @@ import { useForm } from 'react-hook-form';
 import { orderFormSchema } from 'utils/yupSchema';
 
 export const OrderForm = () => {
-  const { register, handleSubmit, watch, reset, setValue } = useForm({
+  const { register, handleSubmit, reset, setValue } = useForm({
     mode: 'onSubmit',
     resolver: yupResolver(orderFormSchema),
     defaultValues: {
       agreement: false,
+      'payment online': false,
     },
   });
-  console.log(watch());
-  const onSubmit = formData => {
-    console.log(formData);
+
+  const onSubmit = e => {
+    console.log(e);
+    reset();
   };
   return (
     <OrderFormSection>
@@ -25,7 +27,7 @@ export const OrderForm = () => {
           <OrderCustomerForm register={register} />
         </div>
         <div>
-          <Delivery register={register} watch={watch} setValue={setValue} />
+          <Delivery register={register} setValue={setValue} />
         </div>
         <div>
           <OrderPaymentForm register={register} />

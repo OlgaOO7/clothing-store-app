@@ -21,7 +21,7 @@ import {
 
 const APIKEY = '4cfd344a4e40e9fab712995825eeaef4';
 
-export const Delivery = ({ register, watch, setValue }) => {
+export const Delivery = ({ register, setValue }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [searchCityName, setSearchCityName] = useState('');
   const [searchCities, setSearchCities] = useState([]);

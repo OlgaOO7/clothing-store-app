@@ -1,6 +1,3 @@
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useForm } from 'react-hook-form';
-import { orderFormSchema } from 'utils/yupSchema';
 import {
   ElipsTitle,
   RadioForm,
@@ -10,10 +7,6 @@ import {
 import { OrderInput } from 'components/OrderInput/OrderInput';
 
 export const OrderPaymentForm = ({ register }) => {
-  const { handleSubmit, reset } = useForm({
-    mode: 'onSubmit',
-    resolver: yupResolver(orderFormSchema),
-  });
   return (
     <>
       <WrapTitle>
