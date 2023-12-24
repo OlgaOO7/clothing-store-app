@@ -7,18 +7,22 @@ export const OrderFormSection = styled.section`
     padding: 56px 0 430px;
   }
 `;
-export const Wrapper = styled.form`
-  display: flex;
-  flex-direction: column;
+export const Wrapper = styled.div`
   padding-left: 28px;
   padding-right: 28px;
   margin: 0 auto;
-  gap: 29px;
   @media (min-width: 768px) {
-    gap: 39px;
     max-width: 1360px;
     padding-left: 40px;
     padding-right: 40px;
+  }
+`;
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 29px;
+  @media (min-width: 768px) {
+    gap: 39px;
   }
 `;
 export const OrderBtn = styled.button`

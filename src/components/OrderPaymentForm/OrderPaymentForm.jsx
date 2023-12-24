@@ -6,7 +6,7 @@ import {
 } from './OrderPaymentForm.styled';
 import { OrderInput } from 'components/OrderInput/OrderInput';
 
-export const OrderPaymentForm = ({ register }) => {
+export const OrderPaymentForm = ({ register, errors }) => {
   return (
     <>
       <WrapTitle>
@@ -19,6 +19,7 @@ export const OrderPaymentForm = ({ register }) => {
           type="radio"
           name="payment online"
           register={register}
+          errors={errors}
           disabled
         />
         <OrderInput
@@ -26,6 +27,7 @@ export const OrderPaymentForm = ({ register }) => {
           type="radio"
           name="payment"
           register={register}
+          errors={errors}
           defaultChecked
         />
       </RadioForm>
@@ -34,12 +36,14 @@ export const OrderPaymentForm = ({ register }) => {
           label={'Я погоджуюсь з договором оферти і політикою конфіденційності'}
           type="checkbox"
           name="agreement"
+          errors={errors}
           register={register}
         />
         <OrderInput
           label={'Зателефонуйте мені для уточнення деталей замовлення'}
           type="checkbox"
           name="newsletter"
+          errors={errors}
           register={register}
         />
       </RadioForm>

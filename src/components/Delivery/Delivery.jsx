@@ -170,6 +170,7 @@ export const Delivery = ({ register, setValue }) => {
     setSearchWarehouses('');
     setSearchCityName(`${city}`);
     setWarehouseSearchType(deliveryCity);
+    setValue('city', city);
 
     if (deliveryCity && city) {
       handleWarehousesChange();
@@ -186,6 +187,7 @@ export const Delivery = ({ register, setValue }) => {
     setSearchWarehouses(`${warehouse}`);
     setNameWarehous(`${warehouse}`);
     setDropdownWarehouseVisible(false);
+    setValue('warehouse', warehouse);
   };
   useEffect(() => {
     if (warehouseSearchType) {
@@ -203,28 +205,26 @@ export const Delivery = ({ register, setValue }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchWarehouses, searchCities.length]);
 
-  const handleFormSubmit = async e => {
-    e.preventDefault();
+  // const handleFormSubmit = async e => {
+  //   e.preventDefault();
 
-    setIsSubmitting(true);
-    if (!searchCityName || !searchWarehouses) {
-      setPlaceholder(true);
+  //   setIsSubmitting(true);
+  //   if (!searchCityName || !searchWarehouses) {
+  //     setPlaceholder(true);
 
-      setIsSubmitting(false);
-      return;
-    } else if (searchWarehouses !== nameWarehous) {
-      setPlaceholder(true);
-      setSearchWarehouses('');
-      setIsSubmitting(false);
-      return;
-    }
-    const dataToSendWarehouse = `${searchCityName}, ${searchWarehouses}`;
-    console.log(dataToSendWarehouse);
-    setValue('city', searchCityName);
-    setValue('warehouse', searchWarehouses);
+  //     setIsSubmitting(false);
+  //     return;
+  //   } else if (searchWarehouses !== nameWarehous) {
+  //     setPlaceholder(true);
+  //     setSearchWarehouses('');
+  //     setIsSubmitting(false);
+  //     return;
+  //   }
+  //   const dataToSendWarehouse = `${searchCityName}, ${searchWarehouses}`;
+  //   console.log(dataToSendWarehouse);
 
-    // setIsSubmitting(false);
-  };
+  //   // setIsSubmitting(false);
+  // };
 
   return (
     <>
@@ -341,15 +341,6 @@ export const Delivery = ({ register, setValue }) => {
             )}
           </WrapInput>
         </WrapForm>
-
-        {/* тимчасово */}
-        <button
-          style={{ margin: '50px 0', padding: '10px' }}
-          onClick={handleFormSubmit}
-          disabled={isSubmitting}
-        >
-          Для перевірки
-        </button>
       </div>
     </>
   );

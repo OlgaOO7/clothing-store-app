@@ -16,12 +16,12 @@ export const OrderInput = ({
   placeholder,
   defaultChecked,
   disabled,
+  errors,
 }) => {
   return (
     <>
       {type === 'radio' ? (
         <WrapRadioInput>
-          {' '}
           <RadioLabel htmlFor={name}>
             <input
               type={type}
@@ -32,11 +32,11 @@ export const OrderInput = ({
             />
             {label}
           </RadioLabel>
+          {errors[name] && <p>{errors[name].message}</p>}
         </WrapRadioInput>
       ) : type === 'checkbox' ? (
         <WrapCheckboxInput>
-          {' '}
-          <CheckboxLabel>
+          <CheckboxLabel htmlFor={name}>
             <input
               type={type}
               id={name}
@@ -46,6 +46,7 @@ export const OrderInput = ({
             />
             {label}
           </CheckboxLabel>
+          {errors[name] && <p>{errors[name].message}</p>}
         </WrapCheckboxInput>
       ) : (
         <WrapInput>
@@ -57,6 +58,9 @@ export const OrderInput = ({
             placeholder={placeholder}
             autoComplete="true"
           ></InputStyle>
+          {errors[name] && (
+            <p style={{ color: 'red' }}>{errors[name].message}</p>
+          )}
         </WrapInput>
       )}
     </>
