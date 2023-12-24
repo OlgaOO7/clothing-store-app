@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'react-redux';
 import useFormPersist from 'react-hook-form-persist';
@@ -32,7 +32,24 @@ export const Form = ({ formType }) => {
   const [formStatus, setFormStatus] = useState(null);
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [isValid, setIsValid] = useState(true);
+  const [charCount, setCharCount] = useState(0);
+  const [isApproachingMax, setIsApproachingMax] = useState(false);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const storedData = localStorage.getItem('contact_us_form');
+    if (storedData) {
+      const messageValue = JSON.parse(storedData).message || '';
+      setCharCount(messageValue.length);
+      setIsApproachingMax(messageValue.length >= 1000 - 10);
+    }
+  }, []);
+
+  const handleInputChange = event => {
+    const length = event.target.value.length;
+    setCharCount(length);
+    setIsApproachingMax(length >= 100 - 10);
+  };
 
   const {
     register,
@@ -82,6 +99,7 @@ export const Form = ({ formType }) => {
         setFormStatus(null);
       }, 5000);
       dispatch(contactUs(formData));
+      setCharCount(0);
       reset();
     } catch (error) {
       console.error(error);
@@ -165,6 +183,9 @@ export const Form = ({ formType }) => {
                   errors={errors}
                   placeholder={'Повідомлення'}
                   maxLength={1000}
+                  handleInputChange={handleInputChange}
+                  isApproachingMax={isApproachingMax}
+                  charCount={charCount}
                 />
               </ContactsFormWrapper>
               <FormButton
