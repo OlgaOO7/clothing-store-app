@@ -39,7 +39,6 @@ export const Delivery = ({ register, setValue, errors }) => {
     messege: 'Loading...',
     error: false,
   });
-  const [nameWarehous, setNameWarehous] = useState('');
 
   const handleСityName = async () => {
     try {
@@ -183,7 +182,6 @@ export const Delivery = ({ register, setValue, errors }) => {
 
   const handleWarehouseSelect = warehouse => {
     setSearchWarehouses(`${warehouse}`);
-    setNameWarehous(`${warehouse}`);
     setDropdownWarehouseVisible(false);
     setValue('warehouse', warehouse);
   };
