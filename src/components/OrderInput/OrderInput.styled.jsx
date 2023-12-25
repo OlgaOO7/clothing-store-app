@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import InputMask from 'react-input-mask';
 
 export const WrapInput = styled.div`
   display: flex;
@@ -39,34 +38,6 @@ export const LabelStyle = styled.label`
 `;
 
 export const InputStyle = styled.input`
-  box-sizing: border-box;
-  display: flex;
-  width: 304px;
-  height: 37px;
-  padding: 10px 16px;
-  border: 1px solid #000;
-  color: #000;
-  font-family: Gill Sans;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 140%;
-  border-color: ${p => p.$errors && 'red'};
-  &:focus {
-    outline: none;
-    border: 2px solid #000;
-  }
-  &::placeholder {
-    color: ${p => p.$errors && 'red'};
-  }
-  @media (min-width: 768px) {
-    width: 403px;
-    height: 48px;
-    font-size: 16px;
-    line-height: normal;
-  }
-`;
-export const InputMaskStyle = styled(InputMask)`
   box-sizing: border-box;
   display: flex;
   width: 304px;

@@ -28,7 +28,7 @@ export const OrderCustomerForm = ({ register, errors }) => {
         <OrderInput
           label={'Номер телефону *'}
           name="phoneNumber"
-          type="tel"
+          type="number"
           register={register}
           placeholder={'+38(0__)___-__-__'}
           errors={errors}

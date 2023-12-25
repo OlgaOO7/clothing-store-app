@@ -1,6 +1,5 @@
 import {
   CheckboxLabel,
-  InputMaskStyle,
   InputStyle,
   LabelStyle,
   RadioLabel,
@@ -47,20 +46,6 @@ export const OrderInput = ({
             {label}
           </CheckboxLabel>
         </WrapCheckboxInput>
-      ) : name === 'phoneNumber' ? (
-        <WrapInput>
-          {' '}
-          <LabelStyle htmlFor={name}>{label}</LabelStyle>{' '}
-          <InputMaskStyle
-            {...register(name)}
-            mask="+3\8(\099)999-99-99"
-            id={name}
-            type={type}
-            placeholder={placeholder}
-            maskChar={null}
-            autoComplete="true"
-          />
-        </WrapInput>
       ) : (
         <WrapInput>
           <LabelStyle htmlFor={name}>{label}</LabelStyle>
