@@ -122,6 +122,7 @@ export const InputStyle = styled.input`
   font-style: normal;
   font-weight: 400;
   line-height: 140%;
+  border-color: ${p => p.$error && 'red'};
   &:focus {
     outline: none;
     border: 2px solid #000;

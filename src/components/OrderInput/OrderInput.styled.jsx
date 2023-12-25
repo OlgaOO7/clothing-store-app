@@ -50,12 +50,13 @@ export const InputStyle = styled.input`
   font-style: normal;
   font-weight: 400;
   line-height: 140%;
+  border-color: ${p => p.$errors && 'red'};
   &:focus {
     outline: none;
     border: 2px solid #000;
   }
   &::placeholder {
-    color: ${p => p.$error && 'red'};
+    color: ${p => p.$errors && 'red'};
   }
   @media (min-width: 768px) {
     width: 403px;
@@ -69,6 +70,7 @@ export const RadioLabel = styled.label`
   gap: 10px;
   font-size: 14px;
   line-height: 20px;
+  color: ${p => p.$errors && 'red'};
   @media (min-width: 768px) {
     gap: 12px;
     font-size: 16px;
@@ -81,6 +83,7 @@ export const CheckboxLabel = styled.label`
   font-size: 14px;
   line-height: 20px;
   color: #00000066;
+  color: ${p => p.$errors && 'red'};
   @media (min-width: 768px) {
     gap: 12px;
     font-size: 16px;

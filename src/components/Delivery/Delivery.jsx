@@ -21,8 +21,7 @@ import {
 
 const APIKEY = '4cfd344a4e40e9fab712995825eeaef4';
 
-export const Delivery = ({ register, setValue }) => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+export const Delivery = ({ register, setValue, errors }) => {
   const [searchCityName, setSearchCityName] = useState('');
   const [searchCities, setSearchCities] = useState([]);
   const [dropdownCityVisible, setDropdownCityVisible] = useState(false);
@@ -41,7 +40,6 @@ export const Delivery = ({ register, setValue }) => {
     error: false,
   });
   const [nameWarehous, setNameWarehous] = useState('');
-  const [placeholder, setPlaceholder] = useState(false);
 
   const handleСityName = async () => {
     try {
@@ -247,7 +245,7 @@ export const Delivery = ({ register, setValue }) => {
               {...register('city')}
               autoComplete="off"
               placeholder="Оберіть місто доставки"
-              $error={placeholder}
+              $error={errors['city']}
               value={searchCityName}
               onChange={handleSearchTextChange}
               onClick={() => {
@@ -297,7 +295,7 @@ export const Delivery = ({ register, setValue }) => {
               value={searchWarehouses}
               autoComplete="off"
               placeholder="Оберіть відділення"
-              $error={placeholder}
+              $error={errors['warehouse']}
               onChange={handleSearchTextChangeWarehose}
               onClick={() => {
                 setDropdownWarehouseVisible(true);

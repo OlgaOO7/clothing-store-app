@@ -40,7 +40,7 @@ export const OrderForm = () => {
             <OrderCustomerForm register={register} errors={errors} />
           </div>
           <div>
-            <Delivery register={register} setValue={setValue} />
+            <Delivery register={register} setValue={setValue} errors={errors} />
           </div>
           <div>
             <OrderPaymentForm register={register} errors={errors} />

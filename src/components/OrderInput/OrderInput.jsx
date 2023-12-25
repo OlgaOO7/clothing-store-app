@@ -22,7 +22,7 @@ export const OrderInput = ({
     <>
       {type === 'radio' ? (
         <WrapRadioInput>
-          <RadioLabel htmlFor={name}>
+          <RadioLabel htmlFor={name} $errors={errors[name]}>
             <input
               type={type}
               id={name}
@@ -32,11 +32,10 @@ export const OrderInput = ({
             />
             {label}
           </RadioLabel>
-          {errors[name] && <p>{errors[name].message}</p>}
         </WrapRadioInput>
       ) : type === 'checkbox' ? (
         <WrapCheckboxInput>
-          <CheckboxLabel htmlFor={name}>
+          <CheckboxLabel htmlFor={name} $errors={errors[name]}>
             <input
               type={type}
               id={name}
@@ -46,7 +45,6 @@ export const OrderInput = ({
             />
             {label}
           </CheckboxLabel>
-          {errors[name] && <p>{errors[name].message}</p>}
         </WrapCheckboxInput>
       ) : (
         <WrapInput>
@@ -56,11 +54,9 @@ export const OrderInput = ({
             {...register(name)}
             type={type}
             placeholder={placeholder}
+            $errors={errors[name]}
             autoComplete="true"
           ></InputStyle>
-          {errors[name] && (
-            <p style={{ color: 'red' }}>{errors[name].message}</p>
-          )}
         </WrapInput>
       )}
     </>

@@ -33,7 +33,9 @@ export const OrderPaymentForm = ({ register, errors }) => {
       </RadioForm>
       <RadioForm>
         <OrderInput
-          label={'Я погоджуюсь з договором оферти і політикою конфіденційності'}
+          label={
+            'Я погоджуюсь з договором оферти і політикою конфіденційності *'
+          }
           type="checkbox"
           name="agreement"
           errors={errors}
@@ -42,7 +44,7 @@ export const OrderPaymentForm = ({ register, errors }) => {
         <OrderInput
           label={'Зателефонуйте мені для уточнення деталей замовлення'}
           type="checkbox"
-          name="newsletter"
+          name="phone call"
           errors={errors}
           register={register}
         />
