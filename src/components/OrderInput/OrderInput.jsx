@@ -58,6 +58,7 @@ export const OrderInput = ({
             placeholder={placeholder}
             autoComplete="true"
             $errors={errors[name]}
+            autoClear={false}
           />
         </WrapInput>
       ) : (
