@@ -5,8 +5,10 @@ import { OrderCustomerForm } from 'components/OrderCustomerForm/OrderCustomerFor
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { orderFormSchema } from 'utils/yupSchema';
+import { useState } from 'react';
 
 export const OrderForm = () => {
+  const [successDelivery, setSuccessDelivery] = useState(false);
   const {
     register,
     handleSubmit,
@@ -21,13 +23,15 @@ export const OrderForm = () => {
       'payment online': false,
     },
   });
+
   const onSubmitSubscription = async formData => {
-    console.log(formData);
     try {
       console.log(formData);
+      setSuccessDelivery(true);
       reset();
     } catch (error) {
       console.error(error);
+      setSuccessDelivery(false);
     } finally {
     }
   };
@@ -40,7 +44,12 @@ export const OrderForm = () => {
             <OrderCustomerForm register={register} errors={errors} />
           </div>
           <div>
-            <Delivery register={register} setValue={setValue} errors={errors} />
+            <Delivery
+              register={register}
+              setValue={setValue}
+              errors={errors}
+              successDelivery={successDelivery}
+            />
           </div>
           <div>
             <OrderPaymentForm register={register} errors={errors} />

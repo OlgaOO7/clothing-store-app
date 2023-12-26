@@ -49,16 +49,15 @@ export const OrderInput = ({
         </WrapCheckboxInput>
       ) : name === 'phoneNumber' ? (
         <WrapInput>
-          {' '}
-          <LabelStyle htmlFor={name}>{label}</LabelStyle>{' '}
+          <LabelStyle htmlFor={name}>{label}</LabelStyle>
           <InputMaskStyle
             {...register(name)}
-            mask="+3\8(\099)999-99-99"
+            mask="+38(099)999-99-99"
             id={name}
             type={type}
             placeholder={placeholder}
-            maskChar={null}
             autoComplete="true"
+            $errors={errors[name]}
           />
         </WrapInput>
       ) : (

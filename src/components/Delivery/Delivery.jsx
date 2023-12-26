@@ -21,7 +21,7 @@ import {
 
 const APIKEY = '4cfd344a4e40e9fab712995825eeaef4';
 
-export const Delivery = ({ register, setValue, errors }) => {
+export const Delivery = ({ register, setValue, errors, successDelivery }) => {
   const [searchCityName, setSearchCityName] = useState('');
   const [searchCities, setSearchCities] = useState([]);
   const [dropdownCityVisible, setDropdownCityVisible] = useState(false);
@@ -39,6 +39,13 @@ export const Delivery = ({ register, setValue, errors }) => {
     messege: 'Loading...',
     error: false,
   });
+
+  useEffect(() => {
+    if (successDelivery === true) {
+      setSearchCityName('');
+      setSearchWarehouses('');
+    }
+  }, [successDelivery]);
 
   const handleСityName = async () => {
     try {
