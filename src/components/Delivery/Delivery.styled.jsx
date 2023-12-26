@@ -84,7 +84,7 @@ export const InputStyle = styled.input`
   &::placeholder {
     font-size: 14px;
     line-height: 20px;
-    color: ${p => p.$errors && 'red'};
+    color: ${p => p.$error && 'red'};
   }
   @media (min-width: 768px) {
     max-width: 403px;
