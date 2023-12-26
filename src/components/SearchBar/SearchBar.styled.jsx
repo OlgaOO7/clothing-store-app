@@ -27,7 +27,7 @@ export const SearchMobWrapper = styled.div`
   right: 1px;
   transition: top 0.3s ease;
   /* display: flex; */
-  display: ${({ isVisible }) => (isVisible ? 'flex' : 'none')};
+  display: ${({ $isVisible }) => ($isVisible ? 'flex' : 'none')};
   justify-content: center;
   align-items: center;
   /* box-sizing: border-box; */

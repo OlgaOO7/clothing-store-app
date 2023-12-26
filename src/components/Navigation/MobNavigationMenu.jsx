@@ -28,7 +28,7 @@ export const MobNavigationMenu = ({ isMobile, closeMobMenu, sectionType }) => {
             ))}
           </MobNavList>
           <Contacts />
-          <SocialNetworks />
+          <SocialNetworks $sectionType={sectionType} />
         </NavWrapper>
       </MobNav>
     </MobNavContainer>

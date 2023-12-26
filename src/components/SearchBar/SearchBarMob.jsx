@@ -153,7 +153,7 @@ export const SearchBarMob = ({
   };
 
   return (
-    <SearchMobWrapper isVisible={isShowSearching}>
+    <SearchMobWrapper $isVisible={isShowSearching}>
       <div
         style={{
           display: 'flex',
@@ -175,7 +175,7 @@ export const SearchBarMob = ({
               <SearchForm
                 onSubmit={handleSubmit}
                 type="search"
-                isVisible={isShowSearching}
+                $isVisible={isShowSearching}
               >
                 <SearchInput
                   type="text"

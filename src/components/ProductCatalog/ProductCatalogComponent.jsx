@@ -54,7 +54,8 @@ export const ProductCatalogComponent = ({
   ) : type !== 'searchpage' ? (
     <Message>Sorry, but this category is not available yet</Message>
   ) : (
-    type === 'searchpage' && (
+    type === 'searchpage' &&
+    data.length === 0 && (
       <Message>
         За запитом <SearchWord>"{searchQuery}"</SearchWord> нічого не знайдено
       </Message>

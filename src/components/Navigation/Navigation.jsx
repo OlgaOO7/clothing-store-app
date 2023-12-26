@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Logo } from 'components/Logo/Logo';
 import { MobNavigationMenu } from './MobNavigationMenu';
 import { NavigationMenu } from './NavigationMenu';
 import { SearchBar } from '../SearchBar/SearchBar';
+import { getCart } from 'redux/cart/operations';
+import { selectTotalQunaity } from 'redux/cart/selectors';
 
 import Sprite from '../../images/sprite.svg';
 
@@ -26,6 +29,28 @@ import {
 
 export const Navigation = ({ sectionType, toggleShowSearch }) => {
   const [isShowMenu, setIsShowMenu] = useState(false);
+  const [totalQuantity, setTotalQuantity] = useState(0);
+
+  const dispatch = useDispatch();
+  const cartTotalQuantity = useSelector(selectTotalQunaity);
+
+  useEffect(() => {
+    try {
+      // dispatch(getCart());
+      dispatch(getCart()).then(action => {
+        if (
+          action.payload.totalQuantity !== undefined &&
+          action.payload.totalQuantity !== null
+        ) {
+          setTotalQuantity(action.payload.totalQuantity);
+        } else {
+          setTotalQuantity(0);
+        }
+      });
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }, [dispatch]);
 
   const closeMobMenu = () => setIsShowMenu(false);
 
@@ -51,7 +76,9 @@ export const Navigation = ({ sectionType, toggleShowSearch }) => {
               <use href={`${Sprite}#icon-cart`} />
             </CartIcon>
             <CartQuantityWrapper>
-              <CartProductQuantity>0</CartProductQuantity>
+              <CartProductQuantity>
+                {cartTotalQuantity || totalQuantity}
+              </CartProductQuantity>
             </CartQuantityWrapper>
           </CartIconWrapper>
           <TextContainer>

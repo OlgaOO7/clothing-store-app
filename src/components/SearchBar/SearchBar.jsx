@@ -59,11 +59,11 @@ export const SearchBar = () => {
   const showSearchList = searchQuery && isSearchListVisible;
   const trimmedSearchQuerry = searchQuery.trim();
 
-  if (visibleProducts.length === 0) {
-    console.log('The array is empty.');
-  } else {
-    console.log('The array is not empty.');
-  }
+  // if (visibleProducts.length === 0) {
+  //   console.log('The array is empty.');
+  // } else {
+  //   console.log('The array is not empty.');
+  // }
 
   useEffect(() => {
     if (searchQuery === '') {
@@ -78,7 +78,7 @@ export const SearchBar = () => {
     // eslint-disable-next-line
   }, [searchQuery, dispatch]);
 
-  console.log(visibleProducts);
+  // console.log(visibleProducts);
 
   useEffect(() => {
     setIsSearchListVisible(false);
