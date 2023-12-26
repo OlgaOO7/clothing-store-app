@@ -3,14 +3,12 @@ import { throttle } from 'lodash';
 import { nanoid } from '@reduxjs/toolkit';
 import {
   ElipsRadio,
-  ElipsTitle,
   InputStyle,
   Item,
   LabelStyle,
   List,
   Message,
   NameRadio,
-  Title,
   WrapForm,
   WrapInput,
   WrapList,
@@ -18,6 +16,7 @@ import {
   WrapTitle,
   Text,
 } from './Delivery.styled';
+import { Title, ElipsTitle } from 'components/OrderForm/OrderForm.styled';
 
 const APIKEY = '4cfd344a4e40e9fab712995825eeaef4';
 

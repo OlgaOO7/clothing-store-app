@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const OrderFormSection = styled.section`
   width: 100%;
   padding: 39px 0 61px;
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     padding: 56px 0 430px;
   }
 `;
@@ -18,6 +18,38 @@ export const Wrapper = styled.div`
     max-width: 1360px;
     padding-left: 40px;
     padding-right: 40px;
+  }
+`;
+export const Title = styled.h3`
+  color: #000;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  text-transform: uppercase;
+  @media (min-width: 768px) {
+    font-size: 16px;
+    line-height: 21px;
+  }
+`;
+export const ElipsTitle = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 26px;
+  height: 26px;
+  background: #d9d9d9;
+  border-radius: 13px;
+  border: none;
+  color: #000;
+  font-size: 14px;
+  line-height: 18px;
+
+  @media (min-width: 768px) {
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+    font-size: 18px;
+    line-height: 23px;
   }
 `;
 export const Form = styled.form`

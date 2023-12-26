@@ -27,30 +27,23 @@ export const WrapCheckboxInput = styled.div`
 `;
 export const LabelStyle = styled.label`
   color: #000;
-  font-family: Gill Sans;
   font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 140%;
+  line-height: 20px;
   @media (min-width: 768px) {
     font-size: 16px;
-    line-height: normal;
+    line-height: 22px;
   }
 `;
 
 export const InputStyle = styled.input`
   box-sizing: border-box;
   display: flex;
-  width: 304px;
-  height: 37px;
-  padding: 10px 16px;
+  width: 100%;
+  padding: 8.5px 16px;
   border: 1px solid #000;
   color: #000;
-  font-family: Gill Sans;
   font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 140%;
+  line-height: 20px;
   border-color: ${p => p.$errors && 'red'};
   &:focus {
     outline: none;
@@ -60,38 +53,37 @@ export const InputStyle = styled.input`
     color: ${p => p.$errors && 'red'};
   }
   @media (min-width: 768px) {
-    width: 403px;
-    height: 48px;
+    max-width: 403px;
+    padding: 13px 16px;
     font-size: 16px;
-    line-height: normal;
+    line-height: 22px;
   }
 `;
 export const InputMaskStyle = styled(InputMask)`
-  box-sizing: border-box;
-  display: flex;
-  width: 304px;
-  height: 37px;
-  padding: 10px 16px;
-  border: 1px solid #000;
-  color: #000;
-  font-family: Gill Sans;
+box-sizing: border-box;
+display: flex;
+width: 100%;
+padding: 8.5px 16px;
+border: 1px solid #000;
+color: #000;
+font-size: 14px;
+line-height: 140%;
+border-color: ${p => p.$errors && 'red'};
+&:focus {
+  outline: none;
+  border: 2px solid #000;
+}
+&::placeholder {
   font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 140%;
-  border-color: ${p => p.$errors && 'red'};
-  &:focus {
-    outline: none;
-    border: 2px solid #000;
-  }
+  line-height: 20px;
+  color: ${p => p.$errors && 'red'};
+}
+@media (min-width: 768px) {
+  max-width: 403px;
+  padding: 13px 16px;
   &::placeholder {
-    color: ${p => p.$errors && 'red'};
-  }
-  @media (min-width: 768px) {
-    width: 403px;
-    height: 48px;
     font-size: 16px;
-    line-height: normal;
+    line-height: 22px;
   }
 `;
 export const RadioLabel = styled.label`

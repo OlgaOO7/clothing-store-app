@@ -1,4 +1,6 @@
-import { ElipsTitle, Div, Title, WrapTitle } from './OrderCustomerForm.styled';
+import { Container, WrapTitle } from './OrderCustomerForm.styled';
+import { Title, ElipsTitle } from 'components/OrderForm/OrderForm.styled';
+
 import { OrderInput } from 'components/OrderInput/OrderInput';
 
 export const OrderCustomerForm = ({ register, errors }) => {
@@ -8,7 +10,7 @@ export const OrderCustomerForm = ({ register, errors }) => {
         <ElipsTitle>1</ElipsTitle>
         <Title>Особисті дані</Title>
       </WrapTitle>
-      <Div>
+      <Container>
         <OrderInput
           label={'Прізвище *'}
           type="text"
@@ -41,7 +43,7 @@ export const OrderCustomerForm = ({ register, errors }) => {
           placeholder={'E-mail'}
           errors={errors}
         />
-      </Div>
+      </Container>
     </>
   );
 };

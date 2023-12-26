@@ -1,9 +1,6 @@
-import {
-  ElipsTitle,
-  RadioForm,
-  Title,
-  WrapTitle,
-} from './OrderPaymentForm.styled';
+import { RadioForm, WrapTitle } from './OrderPaymentForm.styled';
+import { Title, ElipsTitle } from 'components/OrderForm/OrderForm.styled';
+
 import { OrderInput } from 'components/OrderInput/OrderInput';
 
 export const OrderPaymentForm = ({ register, errors }) => {
