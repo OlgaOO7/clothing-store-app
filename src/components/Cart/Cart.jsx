@@ -30,7 +30,7 @@ import {
 
 export const Cart = () => {
   const [cartProducts, setCartProducts] = useState([]);
-  const [productInfo, setProductInfo] = useState({});
+  const [productAvailableQuantity, setProductAvailableQuantity] = useState({});
   // const [cartTotalAmount, setCartTotalAmount] = useState(null);
   // const [cartCurrency, setCartCurrency] = useState('');
   // const [cartProductQunatity, setCartProductQuantity] = useState(null);
@@ -101,9 +101,9 @@ export const Cart = () => {
             map[product.productId] = product.availableQuantity;
             return map;
           }, {});
-          console.log(`productQuantity`, productQuantity);
+          // console.log(`productQuantity`, productQuantity);
 
-          setProductInfo(productQuantity);
+          setProductAvailableQuantity(productQuantity);
         }
       } catch (err) {
         console.error(err);
@@ -219,7 +219,9 @@ export const Cart = () => {
                       item={item}
                       increaseProductQuantity={increaseProductQuantity}
                       decreaseProductQuantity={decreaseProductQuantity}
-                      availableQuantity={productInfo[item.productId]}
+                      availableQuantity={
+                        productAvailableQuantity[item.productId]
+                      }
                     />
                   </li>
                 ))}
