@@ -97,12 +97,13 @@ export const Cart = () => {
           });
 
           const productArray = await Promise.all(productPromises);
-          const productInfoMap = productArray.reduce((map, info) => {
-            map[info.productId] = info.availableQuantity;
+          const productQuantity = productArray.reduce((map, product) => {
+            map[product.productId] = product.availableQuantity;
             return map;
           }, {});
+          console.log(`productQuantity`, productQuantity);
 
-          setProductInfo(productInfoMap);
+          setProductInfo(productQuantity);
         }
       } catch (err) {
         console.error(err);
