@@ -11,6 +11,9 @@ export const Wrapper = styled.div`
   padding-left: 28px;
   padding-right: 28px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   @media (min-width: 768px) {
     max-width: 1360px;
     padding-left: 40px;
@@ -39,5 +42,47 @@ export const OrderBtn = styled.button`
     padding: 10px 0;
     font-size: 26px;
     line-height: 36px;
+  }
+`;
+export const SuccessMessage = styled.div`
+  width: 100%;
+  max-width: 898px;
+  padding: 13px 0;
+  background: #000000;
+  font-size: 16px;
+  line-height: 18px;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 18px;
+  @media (min-width: 768px) {
+    padding: 27.5px 0;
+    font-size: 28px;
+    line-height: 32px;
+    margin-bottom: 40px;
+  }
+`;
+export const SuccessIcon = styled.svg`
+  width: 32px;
+  height: 32px;
+  margin-bottom: 18px;
+  @media (min-width: 768px) {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 30px;
+  }
+`;
+export const SuccessText = styled.p`
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  &:first-of-type {
+    margin-bottom: 24px;
+  }
+  @media (min-width: 768px) {
+    font-size: 24px;
+    line-height: 31px;
+    &:first-of-type {
+      margin-bottom: 0px;
+    }
   }
 `;
