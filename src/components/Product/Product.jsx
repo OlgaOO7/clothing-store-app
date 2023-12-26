@@ -15,7 +15,7 @@ import { ProductImage } from './ProductImage/ProductImage';
 import { SizeGridProducts } from './SizeGridProducts/SizeGridProducts';
 import { CartModal } from '../Cart/CartModal/CartModal';
 
-import { createCart } from 'redux/cart/operations';
+import { createCart, getCart } from 'redux/cart/operations';
 
 import { useMedia } from '../../hooks/useMedia';
 
@@ -89,6 +89,14 @@ export const Product = ({ productsId }) => {
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [productsId]);
+
+  useEffect(() => {
+    try {
+      dispatch(getCart());
+    } catch (err) {
+      console.error('Error:', err);
+    }
+  }, [dispatch]);
 
   // Loder
   if (
@@ -181,6 +189,7 @@ export const Product = ({ productsId }) => {
       toggleCartModal();
       // console.log(productToBasket);
       dispatch(createCart(productToBasket));
+      dispatch(getCart());
     } else {
       setMessageSize(true);
     }

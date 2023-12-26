@@ -34,23 +34,39 @@ export const Navigation = ({ sectionType, toggleShowSearch }) => {
   const dispatch = useDispatch();
   const cartTotalQuantity = useSelector(selectTotalQunaity);
 
+  // useEffect(() => {
+  //   try {
+  //     // dispatch(getCart());
+  //     dispatch(getCart()).then(action => {
+  //       if (
+  //         action.payload.totalQuantity !== undefined &&
+  //         action.payload.totalQuantity !== null
+  //       ) {
+  //         setTotalQuantity(action.payload.totalQuantity);
+  //       } else {
+  //         setTotalQuantity(0);
+  //       }
+  //     });
+  //   } catch (error) {
+  //     console.error('Error fetching data:', error);
+  //   }
+  // }, [dispatch]);
+
   useEffect(() => {
     try {
-      // dispatch(getCart());
-      dispatch(getCart()).then(action => {
-        if (
-          action.payload.totalQuantity !== undefined &&
-          action.payload.totalQuantity !== null
-        ) {
-          setTotalQuantity(action.payload.totalQuantity);
-        } else {
-          setTotalQuantity(0);
-        }
-      });
-    } catch (error) {
-      console.error('Error fetching data:', error);
+      dispatch(getCart());
+    } catch (err) {
+      console.error(err);
     }
   }, [dispatch]);
+
+  useEffect(() => {
+    if (cartTotalQuantity !== undefined && cartTotalQuantity !== null) {
+      setTotalQuantity(cartTotalQuantity);
+    } else {
+      setTotalQuantity(0);
+    }
+  }, [cartTotalQuantity]);
 
   const closeMobMenu = () => setIsShowMenu(false);
 
