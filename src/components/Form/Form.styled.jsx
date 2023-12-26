@@ -2,19 +2,20 @@ import styled from 'styled-components';
 
 export const ContactsForm = styled.form`
   width: 100%;
+  max-width: 303px;
+  @media (min-width: 768px) {
+    max-width: 438px;
+  }
 `;
 export const ContactsFormWrapper = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  min-width: 303px;
-  width: 50%;
   margin-bottom: 12px;
   @media (min-width: 768px) {
     margin-bottom: 18px;
     gap: 18px;
-    width: 438px;
+    max-width: 438px;
   }
 `;
 export const FormTitle = styled.h3`
@@ -48,8 +49,10 @@ export const FormButton = styled.button`
 export const SuccessMessageWrapper = styled.div`
   width: 100%;
   background-color: #c9c9c9;
-  padding: 27px 0;
+  padding: 27px 30px;
   height: max-content;
+  text-align: center;
+  max-width: 688px;
 `;
 export const SuccessContainer = styled.p`
   font-size: 24px;

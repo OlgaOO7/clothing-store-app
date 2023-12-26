@@ -23,17 +23,17 @@ export const Wrapper = styled.div`
   padding-left: 28px;
   padding-right: 28px;
   margin: 0 auto;
+  flex-wrap: wrap;
   @media (min-width: 768px) {
-    flex-wrap: wrap;
     flex-direction: row;
     gap: 95px;
-    max-width: 1360px;
+    max-width: 1245px;
     padding-left: 40px;
     padding-right: 40px;
   }
   @media (min-width: 1440px) {
     flex-wrap: nowrap;
-    gap: 189px;
+    gap: 81px;
   }
 `;
 export const MainWrapper = styled.div`
@@ -122,10 +122,11 @@ export const ContactTitle = styled.h3`
     width: 243px;
   }
 `;
-export const ContactText = styled.p`
+export const ContactText = styled.a`
   font-size: 16px;
   font-weight: 400;
   line-height: 18px;
+  color: inherit;
   @media (min-width: 768px) {
     font-size: 24px;
     line-height: 28px;

@@ -1,7 +1,9 @@
+import { Delivery } from 'components/Delivery/Delivery';
+
 export const OrderPage = () => {
   return (
-    <div>
-      <h2>Order</h2>
-    </div>
-  )
-}
+    <main>
+      <Delivery />
+    </main>
+  );
+};
