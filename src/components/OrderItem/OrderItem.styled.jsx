@@ -4,6 +4,7 @@ export const ItemWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
   &:not(:last-child) {
     padding-bottom: 21px;
     border-bottom: 1px solid #e1e1e1;
@@ -95,4 +96,21 @@ export const OrderColor = styled.div`
   background: #d9d9d9;
   border: 1px solid #d9d9d9;
   background: ${p => p.$color && p.$color};
+`;
+export const OrderError = styled.div`
+  background: rgba(236, 236, 236, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+`;
+export const OrderErrorText = styled.p`
+  font-size: 14px;
+  line-height: 20px;
+  @media (min-width: 768px) {
+    font-size: 18px;
+    line-height: 25px;
+  }
 `;
