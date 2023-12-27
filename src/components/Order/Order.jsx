@@ -74,7 +74,7 @@ export const Order = () => {
               <OrderResultList>
                 <OrderResultListItem>
                   <OrderResultTotal>
-                    {totalQuantity} товари на суму
+                    {totalQuantity} товари(-ів) на суму
                   </OrderResultTotal>
                   <OrderResultTotal>
                     {totalAmount} {currencyCode}
@@ -95,7 +95,7 @@ export const Order = () => {
               <OrderResultList>
                 <OrderResultListItem>
                   <OrderResultTotal>
-                    {totalQuantity} товари на суму
+                    {totalQuantity} товари(-ів) на суму
                   </OrderResultTotal>
                   <OrderResultTotal>
                     {totalAmount} {currencyCode}
