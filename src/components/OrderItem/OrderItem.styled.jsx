@@ -93,4 +93,6 @@ export const OrderColor = styled.div`
   height: 18px;
   border-radius: 50%;
   background: #d9d9d9;
+  border: 1px solid #d9d9d9;
+  background: ${p => p.$color && p.$color};
 `;

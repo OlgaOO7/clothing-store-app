@@ -15,21 +15,28 @@ import {
   OrderResultDestTotal,
   OrderResultTotal,
 } from './Order.styled';
-import { selectNewProducts } from 'redux/products/selectors';
 import { useEffect } from 'react';
-import { getProducts } from 'redux/products/operations';
 import { OrderItem } from 'components/OrderItem/OrderItem';
 import { useMedia } from 'hooks/useMedia';
 import { OrderForm } from 'components/OrderForm/OrderForm';
+import { useLocation } from 'react-router';
+import { getOrder } from 'redux/cart/operations';
+import { selectOrder, selectOrderItems } from 'redux/cart/selectors';
 
 export const Order = () => {
-  const products = useSelector(selectNewProducts) || [];
   const dispatch = useDispatch();
+  const { state } = useLocation();
   const { isMobileScreen } = useMedia();
 
+  const order = useSelector(selectOrder) || [];
+  const products = useSelector(selectOrderItems) || [];
+
+  const { totalAmount, currencyCode, totalQuantity } = order;
+  const sessionId = state ? state?.sessionId : null;
+
   useEffect(() => {
-    dispatch(getProducts());
-  }, [dispatch]);
+    dispatch(getOrder(sessionId));
+  }, [dispatch, sessionId]);
 
   return (
     <>
@@ -66,8 +73,12 @@ export const Order = () => {
               <OrderResultTitle>Всього</OrderResultTitle>
               <OrderResultList>
                 <OrderResultListItem>
-                  <OrderResultTotal>3 товари на суму</OrderResultTotal>
-                  <OrderResultTotal>2100 UAH</OrderResultTotal>
+                  <OrderResultTotal>
+                    {totalQuantity} товари на суму
+                  </OrderResultTotal>
+                  <OrderResultTotal>
+                    {totalAmount} {currencyCode}
+                  </OrderResultTotal>
                 </OrderResultListItem>
                 <OrderResultListItem>
                   <OrderResultDeliveryFirst>
@@ -83,8 +94,12 @@ export const Order = () => {
             <>
               <OrderResultList>
                 <OrderResultListItem>
-                  <OrderResultTotal>3 товари на суму</OrderResultTotal>
-                  <OrderResultTotal>2100 UAH</OrderResultTotal>
+                  <OrderResultTotal>
+                    {totalQuantity} товари на суму
+                  </OrderResultTotal>
+                  <OrderResultTotal>
+                    {totalAmount} {currencyCode}
+                  </OrderResultTotal>
                 </OrderResultListItem>
                 <OrderResultListItem>
                   <OrderResultDeliveryFirst>
@@ -96,7 +111,9 @@ export const Order = () => {
                 </OrderResultListItem>
                 <OrderResultListItem>
                   <OrderResultTitle>Разом:</OrderResultTitle>
-                  <OrderResultDestTotal>2100 UAH</OrderResultDestTotal>
+                  <OrderResultDestTotal>
+                    {totalAmount} {currencyCode}
+                  </OrderResultDestTotal>
                 </OrderResultListItem>
               </OrderResultList>
             </>
