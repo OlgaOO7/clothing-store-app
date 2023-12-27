@@ -45,7 +45,7 @@ export const Order = () => {
         {!isMobileScreen ? (
           <>
             <span>|</span>
-            <LinkTo to={'/order'}>Кошик</LinkTo>
+            <LinkTo to={'/cart'}>Кошик</LinkTo>
             <span>|</span>
             <LinkTo to={'/order'}>Оформлення замовлення</LinkTo>
           </>
