@@ -25,9 +25,9 @@ export const SearchedProduct = () => {
       try {
         dispatch(getSearchedProductsPage(searchQuery));
         setIsLoading(false);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-        setIsLoading(false);
+      } catch (e) {
+        console.error('Error fetching data:', e);
+      } finally {
       }
     };
     fetchData();
@@ -38,7 +38,7 @@ export const SearchedProduct = () => {
   }, [dispatch, searchQuery]);
 
   return isLoading ? (
-    <p style={{ marginTop: '300px', fontSize: '24px', textAlign: 'center' }}>
+    <p style={{ paddingTop: '300px', fontSize: '24px', textAlign: 'center' }}>
       Loading...
     </p>
   ) : (

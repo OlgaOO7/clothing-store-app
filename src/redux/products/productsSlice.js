@@ -56,8 +56,8 @@ const productsSlice = createSlice({
       .addCase(getSearchedProducts.fulfilled, (state, action) => {
         state.productsBySearch = action.payload;
       })
-      .addCase(getSearchedProducts.rejected, (state, action) => {
-        state.error = action.payload;
+      .addCase(getSearchedProducts.rejected, (state) => {
+        state.productsBySearch = [];
       })
       .addCase(clearSearchedProducts.fulfilled, (state) => {
         state.productsBySearch = [];

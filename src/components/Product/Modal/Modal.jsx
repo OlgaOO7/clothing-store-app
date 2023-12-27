@@ -34,7 +34,7 @@ export const Modal = ({ children, toggleModal, openModal }) => {
       <ModalContent>
         <ButtonClose onClick={toggleModal}>
           <IconClose>
-            <use href={`${Sprite}#icon-btn-close`} />
+            <use href={`${Sprite}#icon-cross`} />
           </IconClose>
         </ButtonClose>
         {children}

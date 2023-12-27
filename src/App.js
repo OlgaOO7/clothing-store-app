@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import { Routes, Route } from 'react-router-dom';
 
@@ -17,12 +18,19 @@ import { ContactsPage } from 'pages/ContactsPage/ContactsPage';
 import GlobalStyle from './GlobalStyle.jsx';
 import { UnsubscribePage } from 'pages/UnsubscribePage/UnsubscribePage';
 
+import { getCart } from 'redux/cart/operations';
+
 function App() {
   const location = useLocation();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
+
+  useEffect(() => {
+    dispatch(getCart());
+  }, [dispatch]);
 
   return (
     <div className="App">

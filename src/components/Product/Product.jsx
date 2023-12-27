@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 
 import { Modal } from './Modal/Modal';
 import { Breadcrumbs } from './Breadcrumbs/Breadcrumbs';
@@ -11,6 +13,9 @@ import { SizeOptions } from './SizeOptions/SizeOptions';
 import { QuantityControls } from './QuantityControls/QuantityControls';
 import { ProductImage } from './ProductImage/ProductImage';
 import { SizeGridProducts } from './SizeGridProducts/SizeGridProducts';
+import { CartModal } from '../Cart/CartModal/CartModal';
+
+import { createCart, getCart } from 'redux/cart/operations';
 
 import { useMedia } from '../../hooks/useMedia';
 
@@ -43,6 +48,11 @@ export const Product = ({ productsId }) => {
   const [message, setMessage] = useState(false);
   const [messageSize, setMessageSize] = useState(false);
   const { isMobileScreen } = useMedia();
+
+  const dispatch = useDispatch();
+
+  // cart modal
+  const [isShowCartModal, setIsShowCartModal] = useState(false);
 
   useEffect(() => {
     // Продукт
@@ -79,6 +89,14 @@ export const Product = ({ productsId }) => {
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [productsId]);
+
+  useEffect(() => {
+    try {
+      dispatch(getCart());
+    } catch (err) {
+      console.error('Error:', err);
+    }
+  }, [dispatch]);
 
   // Loder
   if (
@@ -129,6 +147,11 @@ export const Product = ({ productsId }) => {
   // відкриття модалки
   const toggleModal = () => setOpenModal(prevState => !prevState);
 
+  // відкриття модалки корзини
+  const toggleCartModal = () => {
+    setIsShowCartModal(!isShowCartModal);
+  };
+
   // дававання та зменшення кількості товару
   const decreaseQuantity = () => {
     if (quantity === 1) {
@@ -150,14 +173,23 @@ export const Product = ({ productsId }) => {
   //додавання в кошик
   const addToCart = () => {
     if (skuIdProduct) {
+      let userUid = localStorage.getItem('userUid');
+      if (!userUid) {
+        userUid = uuidv4();
+        localStorage.setItem('userUid', userUid);
+      }
       const productToBasket = {
-        sessionId: productsId,
+        sessionId: userUid,
         skuId: skuIdProduct,
         price: product.price.value,
         quantity,
         amount: product.price.value * quantity,
+        productId: productsId,
       };
-      console.log(productToBasket);
+      toggleCartModal();
+      // console.log(productToBasket);
+      dispatch(createCart(productToBasket));
+      dispatch(getCart());
     } else {
       setMessageSize(true);
     }
@@ -242,6 +274,14 @@ export const Product = ({ productsId }) => {
             <BuyButton type="button" onClick={addToCart} disabled={amount <= 0}>
               Додати в кошик
             </BuyButton>
+
+            {/* {модалка кошика} */}
+            {isShowCartModal && (
+              <CartModal
+                closeModal={toggleCartModal}
+                toggleCartModal={toggleCartModal}
+              />
+            )}
 
             {/* додаткова інформація */}
             <AdditionalInformation />
