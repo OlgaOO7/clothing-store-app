@@ -245,7 +245,10 @@ export const Cart = () => {
               </p>
             </PriceWrapper>
             <LinkBtnWrapper>
-              <OrderLink to={`/order`} state={{ from: location }}>
+              <OrderLink
+                to={`/order`}
+                state={{ from: location, sessionId: cartData?.sessionId }}
+              >
                 Оформити замовлення
               </OrderLink>
               <CatalogLink to={`/catalog`} state={{ from: location }}>

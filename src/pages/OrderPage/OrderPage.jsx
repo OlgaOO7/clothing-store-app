@@ -1,9 +1,9 @@
-import { Delivery } from 'components/Delivery/Delivery';
+import { Order } from 'components/Order/Order';
 
 export const OrderPage = () => {
   return (
     <main>
-      <Delivery />
+      <Order />
     </main>
   );
 };

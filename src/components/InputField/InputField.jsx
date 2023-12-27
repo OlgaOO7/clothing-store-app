@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Counter, ErrorMessage, Input, Textarea } from './InputField.styled';
 
 export const InputField = ({
@@ -8,25 +7,10 @@ export const InputField = ({
   errors,
   placeholder,
   maxLength,
+  handleInputChange,
+  isApproachingMax,
+  charCount,
 }) => {
-  const [charCount, setCharCount] = useState(0);
-  const [isApproachingMax, setIsApproachingMax] = useState(false);
-
-  useEffect(() => {
-    const storedData = localStorage.getItem('contact_us_form');
-    if (storedData) {
-      const messageValue = JSON.parse(storedData).message || '';
-      setCharCount(messageValue.length);
-      setIsApproachingMax(messageValue.length >= 1000 - 10);
-    }
-  }, []);
-
-  const handleInputChange = event => {
-    const length = event.target.value.length;
-    setCharCount(length);
-    setIsApproachingMax(length >= maxLength - 10);
-  };
-
   return (
     <>
       {type === 'textarea' ? (

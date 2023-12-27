@@ -2,16 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { throttle } from 'lodash';
 import { nanoid } from '@reduxjs/toolkit';
 import {
-  Container,
   ElipsRadio,
-  ElipsTitle,
   InputStyle,
   Item,
   LabelStyle,
   List,
   Message,
   NameRadio,
-  Title,
   WrapForm,
   WrapInput,
   WrapList,
@@ -19,11 +16,11 @@ import {
   WrapTitle,
   Text,
 } from './Delivery.styled';
+import { Title, ElipsTitle } from 'components/OrderForm/OrderForm.styled';
 
 const APIKEY = '4cfd344a4e40e9fab712995825eeaef4';
 
-export const Delivery = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+export const Delivery = ({ register, setValue, errors, formStatus }) => {
   const [searchCityName, setSearchCityName] = useState('');
   const [searchCities, setSearchCities] = useState([]);
   const [dropdownCityVisible, setDropdownCityVisible] = useState(false);
@@ -41,8 +38,13 @@ export const Delivery = () => {
     messege: 'Loading...',
     error: false,
   });
-  const [nameWarehous, setNameWarehous] = useState('');
-  const [placeholder, setPlaceholder] = useState(false);
+
+  useEffect(() => {
+    if (formStatus === 'success') {
+      setSearchCityName('');
+      setSearchWarehouses('');
+    }
+  }, [formStatus]);
 
   const handleСityName = async () => {
     try {
@@ -173,6 +175,11 @@ export const Delivery = () => {
     setSearchWarehouses('');
     setSearchCityName(`${city}`);
     setWarehouseSearchType(deliveryCity);
+    setValue('city', city);
+
+    if (deliveryCity && city) {
+      handleWarehousesChange();
+    }
   };
 
   const handleSearchTextChangeWarehose = throttle(e => {
@@ -192,8 +199,8 @@ export const Delivery = () => {
 
   const handleWarehouseSelect = warehouse => {
     setSearchWarehouses(`${warehouse}`);
-    setNameWarehous(`${warehouse}`);
     setDropdownWarehouseVisible(false);
+    setValue('warehouse', warehouse);
   };
   useEffect(() => {
     if (warehouseSearchType) {
@@ -211,28 +218,29 @@ export const Delivery = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchWarehouses, searchCities.length]);
 
-  const handleFormSubmit = async e => {
-    e.preventDefault();
+  // const handleFormSubmit = async e => {
+  //   e.preventDefault();
 
-    setIsSubmitting(true);
-    if (!searchCityName || !searchWarehouses) {
-      setPlaceholder(true);
+  //   setIsSubmitting(true);
+  //   if (!searchCityName || !searchWarehouses) {
+  //     setPlaceholder(true);
 
-      setIsSubmitting(false);
-      return;
-    } else if (searchWarehouses !== nameWarehous) {
-      setPlaceholder(true);
-      setSearchWarehouses('');
-      setIsSubmitting(false);
-      return;
-    }
-    const dataToSendWarehouse = `${searchCityName}, ${searchWarehouses}`;
-    console.log(dataToSendWarehouse);
-    // setIsSubmitting(false);
-  };
+  //     setIsSubmitting(false);
+  //     return;
+  //   } else if (searchWarehouses !== nameWarehous) {
+  //     setPlaceholder(true);
+  //     setSearchWarehouses('');
+  //     setIsSubmitting(false);
+  //     return;
+  //   }
+  //   const dataToSendWarehouse = `${searchCityName}, ${searchWarehouses}`;
+  //   console.log(dataToSendWarehouse);
+
+  //   // setIsSubmitting(false);
+  // };
 
   return (
-    <Container>
+    <>
       <WrapTitle>
         <ElipsTitle>2</ElipsTitle>
         <Title>Інформація про доставку</Title>
@@ -241,7 +249,7 @@ export const Delivery = () => {
         <ElipsRadio />
         <NameRadio>Доставка Новою поштою</NameRadio>
       </WrapRadio>
-      <form onSubmit={handleFormSubmit}>
+      <div>
         <WrapForm>
           <WrapInput>
             <LabelStyle htmlFor="city">Оберіть місто доставки *</LabelStyle>
@@ -249,9 +257,10 @@ export const Delivery = () => {
               type="text"
               id="city"
               name="city"
+              {...register('city')}
               autoComplete="off"
               placeholder="Оберіть місто доставки"
-              $error={placeholder}
+              $error={errors['city']}
               value={searchCityName}
               onChange={handleSearchTextChange}
               onClick={() => {
@@ -297,10 +306,11 @@ export const Delivery = () => {
               type="text"
               id="warehouse"
               name="warehouse"
+              {...register('warehouse')}
               value={searchWarehouses}
               autoComplete="off"
               placeholder="Оберіть відділення"
-              $error={placeholder}
+              $error={errors['warehouse']}
               onChange={handleSearchTextChangeWarehose}
               onClick={() => {
                 setDropdownWarehouseVisible(true);
@@ -343,16 +353,7 @@ export const Delivery = () => {
             )}
           </WrapInput>
         </WrapForm>
-
-        {/* тимчасово */}
-        <button
-          style={{ margin: '50px 0', padding: '10px' }}
-          type="submit"
-          disabled={isSubmitting}
-        >
-          Для перевірки
-        </button>
-      </form>
-    </Container>
+      </div>
+    </>
   );
 };
