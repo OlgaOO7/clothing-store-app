@@ -81,33 +81,35 @@ export const Delivery = () => {
       }
     } catch (error) {
       console.error(error);
+      setMassegeCity({
+        messege: 'Місто не знайдено! Перевірте правильність написання',
+        error: true,
+      });
     }
   };
 
   useEffect(() => {
-    if (searchCityName.length !== 0) {
+    if (searchCityName.length === 0) {
+      setWarehouseSearchType('');
+      setWarehouses([]);
+      setSearchWarehouses('');
+      setMassegeWarehous({
+        messege: 'Виберіть місто для перегляду відділень',
+        error: true,
+      });
+      setMassegeCity({
+        messege: 'Місто не знайдено! Перевірте правильність написання',
+        error: true,
+      });
+    } else {
       handleСityName();
-
-      if (searchCities.length === 0) {
-        setTimeout(() => {
-          setMassegeCity({
-            messege: 'Місто не знайдено! Перевірте правильність написання',
-            error: true,
-          });
-          setWarehouses([]);
-          setWarehouseSearchType('');
-          setSearchWarehouses('');
-        }, 2000);
-      } else {
-        setMassegeCity({
-          messege: 'Loading...',
-          error: false,
-        });
-      }
+      setMassegeWarehous({
+        messege: 'Loading...',
+        error: false,
+      });
     }
-
-    // eslint-disable-next-line
-  }, [searchCityName.length, searchCities.length]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchCityName]);
 
   const handleSearchTextChange = throttle(e => {
     const value = e.target.value;
@@ -171,16 +173,21 @@ export const Delivery = () => {
     setSearchWarehouses('');
     setSearchCityName(`${city}`);
     setWarehouseSearchType(deliveryCity);
-
-    if (deliveryCity && city) {
-      handleWarehousesChange();
-    }
   };
 
   const handleSearchTextChangeWarehose = throttle(e => {
     const value = e.target.value;
     setSearchWarehouses(value);
     setDropdownWarehouseVisible(true);
+
+    if (searchCityName.length === 0 || value.length === 0) {
+      setDropdownWarehouseVisible(false);
+      setWarehouses([]);
+      setMassegeWarehous({
+        messege: 'Виберіть місто для перегляду відділень',
+        error: true,
+      });
+    }
   }, 300);
 
   const handleWarehouseSelect = warehouse => {
@@ -297,7 +304,6 @@ export const Delivery = () => {
               onChange={handleSearchTextChangeWarehose}
               onClick={() => {
                 setDropdownWarehouseVisible(true);
-                warehouseSearchType && handleWarehousesChange();
               }}
               onBlur={() => {
                 setTimeout(() => {
