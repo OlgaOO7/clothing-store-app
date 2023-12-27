@@ -3,6 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { subscriptionReducer } from './subscription/subscriptionSlice';
 import { categoriesReducer } from './category/categorySlice';
 import { productsReducer } from './products/productsSlice';
+import { cartReducer } from './cart/cartSlice';
 
 // import {
 //   persistStore,
@@ -25,6 +26,7 @@ export const store = configureStore({
     subscription: subscriptionReducer,
     categories: categoriesReducer,
     products: productsReducer,
+    cart: cartReducer,
   },
   // middleware(getDefaultMiddleware) {
   //   return getDefaultMiddleware({

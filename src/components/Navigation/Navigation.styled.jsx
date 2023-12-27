@@ -42,7 +42,6 @@ export const MobNavList = styled.ul`
 
 export const MobNavLinkItem = styled.li`
   @media (max-width: 1439px) {
-    margin-top: 20px;
     flex-direction: column;
   }
 `;
@@ -153,8 +152,8 @@ export const CartIconWrapper = styled.div`
 
 export const CartQuantityWrapper = styled.div`
   position: absolute;
-  top: -0.48rem;
-  right: 0;
+  top: -0.5rem;
+  right: -4px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -166,6 +165,7 @@ export const CartQuantityWrapper = styled.div`
 export const TextCart = styled.span`
   color: #191919;
   font-size: 14px;
+  text-align: center;
 `;
 
 export const CartProductQuantity = styled.span`
