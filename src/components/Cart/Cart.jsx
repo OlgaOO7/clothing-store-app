@@ -1,11 +1,15 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import axios from 'axios';
 
 import { createCart, getCart, clearCart } from 'redux/cart/operations';
-import { selectCart, selectTotalQunaity } from 'redux/cart/selectors';
+import {
+  selectCart,
+  selectIsRefreshing,
+  selectTotalQunaity,
+} from 'redux/cart/selectors';
 // import { getProductById } from 'redux/products/operations';
 import { CartProductItem } from './CartProductItem/CartProductItem';
 import { formatPrice } from 'utils/formatPrice';
@@ -26,6 +30,7 @@ import {
   LinkBtnWrapper,
   OrderLink,
   CatalogLink,
+  DivToFix,
 } from './Cart.styled';
 
 export const Cart = () => {
@@ -42,6 +47,7 @@ export const Cart = () => {
 
   const cartData = useSelector(selectCart);
   const cartTotalQuantity = useSelector(selectTotalQunaity);
+  const isLoading = useSelector(selectIsRefreshing);
 
   const fetchCart = useCallback(() => {
     try {
@@ -174,8 +180,8 @@ export const Cart = () => {
     }
   };
 
-  const clearProductCart = userUid => {
-    dispatch(clearCart(userUid));
+  const clearProductCart = () => {
+    dispatch(clearCart());
   };
 
   return (
@@ -185,32 +191,37 @@ export const Cart = () => {
         <Divider></Divider>
         <LinkTo to="/cart">Кошик</LinkTo>
       </LinkWrapper>
-      {cartTotalQuantity ? (
+      {isLoading ? (
+        <p>Is loading...</p>
+      ) : cartTotalQuantity ? (
         <div>
           <TaglineWrapper>
-            <div
-              style={{
-                marginTop: '20px',
-                marginBottom: '20px',
-                marginLeft: 'auto',
-              }}
-            >
-              <button
+            <DivToFix>
+              <div
                 style={{
-                  padding: 0,
-                  backgroundColor: 'transparent',
-                  border: '1px solid #000',
+                  marginTop: '20px',
+                  marginBottom: '20px',
+                  marginLeft: 'auto',
                 }}
-                onClick={clearProductCart}
               >
-                Очистити корзину
-              </button>
-            </div>
-            <TaglineSubWrapper>
-              <ProductText>Товар</ProductText>
-              <ProductQuantity>Кількість</ProductQuantity>
-              <p>Ціна</p>
-            </TaglineSubWrapper>
+                <button
+                  style={{
+                    padding: 0,
+                    backgroundColor: 'transparent',
+                    border: '1px solid #000',
+                  }}
+                  onClick={clearProductCart}
+                >
+                  Очистити корзину
+                </button>
+              </div>
+              <TaglineSubWrapper>
+                <ProductText>Товар</ProductText>
+                <ProductQuantity>Кількість</ProductQuantity>
+                <p>Ціна</p>
+              </TaglineSubWrapper>
+            </DivToFix>
+
             <ProductCartList>
               {cartProducts?.length > 0 &&
                 cartProducts.map(item => (
@@ -255,7 +266,12 @@ export const Cart = () => {
           </Rectangle>
         </div>
       ) : (
-        <p>Ваш кошик пустий</p>
+        <div style={{ display: 'flex', gap: '4px' }}>
+          <p>Ваш кошик порожній.</p>
+          <Link to={`/catalog`} state={{ from: location }}>
+            Повернутися до покупок
+          </Link>
+        </div>
       )}
     </CartWrapper>
   );

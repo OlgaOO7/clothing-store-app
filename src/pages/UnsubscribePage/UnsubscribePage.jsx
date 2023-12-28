@@ -1,5 +1,7 @@
 import { Unsubscribe } from 'components/Unsubscribe/Unsubscribe';
 
-export const UnsubscribePage = () => {
+const UnsubscribePage = () => {
   return <Unsubscribe />;
 };
+
+export default UnsubscribePage;

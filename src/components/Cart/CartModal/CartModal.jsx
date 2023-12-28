@@ -42,68 +42,76 @@ export const CartModal = ({ closeModal, toggleCartModal }) => {
 
   return (
     <Modal closeModal={closeModal} toggleModal={toggleCartModal}>
-      <p style={{ padding: '10px 38px', backgroundColor: '#9D9D9D' }}>
-        Товар додано в кошик
-      </p>
-      <div style={{ padding: '8px 38px 42px' }}>
+      {cartData.items && cartData.items.length > 0 ? (
         <div>
-          <CartModalList>
-            {products &&
-              products.map(item => (
-                <li key={item.sku.id}>
-                  <CartItem item={item} />
-                </li>
-              ))}
-          </CartModalList>
-        </div>
+          <p style={{ padding: '10px 38px', backgroundColor: '#9D9D9D' }}>
+            Товар додано в кошик
+          </p>
+          <div style={{ padding: '8px 38px 42px' }}>
+            <div>
+              <CartModalList>
+                {products &&
+                  products.map(item => (
+                    <li key={item.sku.id}>
+                      <CartItem item={item} />
+                    </li>
+                  ))}
+              </CartModalList>
+            </div>
 
-        <div
-          style={{
-            width: '362px',
-            height: '1px',
-            backgroundColor: 'rgba(0, 0, 0, 0.2',
-          }}
-        ></div>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            width: 'max-content',
-            padding: '32px 64px 42px',
-          }}
-        >
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              gap: '101px',
-              marginBottom: '32px',
-            }}
-          >
-            <p
+            <div
               style={{
-                color: '#000',
-                fontSize: '18px',
-                fontWeight: '600',
-                lineHeight: '25.2px',
+                width: '362px',
+                height: '1px',
+                backgroundColor: 'rgba(0, 0, 0, 0.2',
+              }}
+            ></div>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                width: 'max-content',
+                padding: '32px 64px 42px',
               }}
             >
-              Разом:
-            </p>
-            <Amount>
-              {formatPrice(cartTotalAmount)} {cartCurrency}
-            </Amount>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  gap: '101px',
+                  marginBottom: '32px',
+                }}
+              >
+                <p
+                  style={{
+                    color: '#000',
+                    fontSize: '18px',
+                    fontWeight: '600',
+                    lineHeight: '25.2px',
+                  }}
+                >
+                  Разом:
+                </p>
+                <Amount>
+                  {formatPrice(cartTotalAmount)} {cartCurrency}
+                </Amount>
+              </div>
+              <LinkWrapper>
+                <OrderLink to={`/order`} state={{ from: location }}>
+                  Оформити замовлення
+                </OrderLink>
+                <CatalogLink to={`/cart`} state={{ from: location }}>
+                  Кошик
+                </CatalogLink>
+              </LinkWrapper>
+            </div>
           </div>
-          <LinkWrapper>
-            <OrderLink to={`/order`} state={{ from: location }}>
-              Оформити замовлення
-            </OrderLink>
-            <CatalogLink to={`/cart`} state={{ from: location }}>
-              Кошик
-            </CatalogLink>
-          </LinkWrapper>
         </div>
-      </div>
+      ) : (
+        <p style={{ padding: '10px 38px', backgroundColor: '#9D9D9D' }}>
+          Ваш кошик пустий
+        </p>
+      )}
     </Modal>
   );
 };

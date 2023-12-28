@@ -19,6 +19,7 @@ export const ProductComponent = ({ item, type, sectionType }) => {
           src={`${item?.photos ? item?.photos[0]?.url : noImage}`}
           type={type}
           $sectionType={sectionType}
+          loading="lazy"
         ></ProductImage>
         <ProductTextWrapper type={type}>
           {item.title.length > maxLength ? (

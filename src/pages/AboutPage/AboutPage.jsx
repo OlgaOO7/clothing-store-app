@@ -1,8 +1,11 @@
 import { AboutUs } from '../../components/AboutUs/AboutUs';
-export const AboutPage = () => {
+
+const AboutPage = () => {
   return (
     <div>
       <AboutUs />
     </div>
   );
 };
+
+export default AboutPage;
