@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 
 import { Modal } from 'components/Modal/Modal';
 import { CartItem } from './CartItem';
-import { selectCart } from 'redux/cart/selectors';
+import { selectCart, selectIsRefreshing } from 'redux/cart/selectors';
 import { getCart } from 'redux/cart/operations';
 import { formatPrice } from 'utils/formatPrice';
 
@@ -25,6 +25,7 @@ export const CartModal = ({ closeModal, toggleCartModal }) => {
   const location = useLocation();
 
   const cartData = useSelector(selectCart);
+  const isLoading = useSelector(selectIsRefreshing);
 
   useEffect(() => {
     try {
@@ -42,7 +43,9 @@ export const CartModal = ({ closeModal, toggleCartModal }) => {
 
   return (
     <Modal closeModal={closeModal} toggleModal={toggleCartModal}>
-      {cartData.items && cartData.items.length > 0 ? (
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : cartData.items && cartData.items.length > 0 ? (
         <div>
           <p style={{ padding: '10px 38px', backgroundColor: '#9D9D9D' }}>
             Товар додано в кошик

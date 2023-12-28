@@ -76,6 +76,7 @@ const cartSlice = createSlice({
       .addCase(clearCart.fulfilled, (state, action) => {
         state.cart = {};
         state.totalQuantity = null;
+        state.isRefreshing = false;
       })
       .addCase(clearCart.rejected, (state, action) => {
         state.isRefreshing = false;
