@@ -1,21 +1,32 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { createCart, getCart, deleteProductFromCart, clearCart } from './operations';
+import {
+  createCart,
+  getCart,
+  deleteProductFromCart,
+  clearCart,
+  getOrder,
+} from './operations';
 
 const initialState = {
   cart: {},
+  order: {},
   // totalAmount: null,
   totalQuantity: null,
   isRefreshing: false,
 };
 
 const cartSlice = createSlice({
-  name: "cart",
+  name: 'cart',
   initialState,
-  reducers: { updateTotalQuantity: (state, action) => { state.totalQuantity = action.payload } },
+  reducers: {
+    updateTotalQuantity: (state, action) => {
+      state.totalQuantity = action.payload;
+    },
+  },
   // reducer: { updateTotalAmount: (state, action) => { state.totalAmount = action.payload } },
   extraReducers: builder => {
     builder
-      .addCase(createCart.pending, (state) => {
+      .addCase(createCart.pending, state => {
         state.isRefreshing = true;
       })
       .addCase(createCart.fulfilled, (state, action) => {
@@ -26,7 +37,7 @@ const cartSlice = createSlice({
         state.isRefreshing = false;
         state.error = action.payload;
       })
-      .addCase(getCart.pending, (state) => {
+      .addCase(getCart.pending, state => {
         state.isRefreshing = true;
       })
       .addCase(getCart.fulfilled, (state, action) => {
@@ -70,7 +81,13 @@ const cartSlice = createSlice({
         state.isRefreshing = false;
         state.error = action.payload;
       })
-  }
+      .addCase(getOrder.fulfilled, (state, action) => {
+        state.order = action.payload;
+      })
+      .addCase(getOrder.rejected, state => {
+        state.order = null;
+      });
+  },
 });
 
 // export const { updateTotalAmount } = cartSlice.actions;

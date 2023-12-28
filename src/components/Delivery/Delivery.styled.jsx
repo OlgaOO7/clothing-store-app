@@ -1,68 +1,22 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  padding: 116px 28px 61px;
-  @media (min-width: 1024px) {
-    padding: 162px 40px 152px;
-  }
-`;
-
 export const WrapTitle = styled.div`
   display: flex;
   align-items: center;
   gap: 14px;
   margin-bottom: 28px;
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     gap: 24px;
     margin-bottom: 37px;
   }
 `;
 
-export const ElipsTitle = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 26px;
-  height: 26px;
-  background: #d9d9d9;
-  border-radius: 13px;
-  border: none;
-
-  color: #000;
-  font-family: Inter;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 130%;
-  @media (min-width: 1024px) {
-    width: 32px;
-    height: 32px;
-    border-radius: 16px;
-    font-size: 18px;
-    line-height: normal;
-  }
-`;
-
-export const Title = styled.h3`
-  color: #000;
-  text-align: center;
-  font-family: Gill Sans;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 130%; /* 18.2px */
-  text-transform: uppercase;
-  @media (min-width: 1024px) {
-    font-size: 16px;
-    line-height: normal;
-  }
-`;
 export const WrapRadio = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
   margin-bottom: 16px;
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     gap: 11px;
     margin-bottom: 25px;
   }
@@ -83,7 +37,7 @@ export const NameRadio = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 140%;
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     line-height: normal;
   }
 `;
@@ -92,7 +46,7 @@ export const WrapForm = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     gap: 14px;
   }
 `;
@@ -104,44 +58,39 @@ export const WrapInput = styled.div`
 `;
 export const LabelStyle = styled.label`
   color: #000;
-  font-family: Gill Sans;
   font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 140%;
+  line-height: 20px;
   margin-bottom: 6px;
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     font-size: 16px;
-    line-height: normal;
+    line-height: 22px;
   }
 `;
 
 export const InputStyle = styled.input`
   box-sizing: border-box;
   display: flex;
-  width: 304px;
-  height: 37px;
-  padding: 10px 16px;
+  width: 100%;
+  padding: 8.5px 16px;
   border: 1px solid #000;
   color: #000;
-  font-family: Gill Sans;
   font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 140%;
+  line-height: 20px;
+  border-color: ${p => p.$error && 'red'};
   &:focus {
     outline: none;
     border: 2px solid #000;
   }
   &::placeholder {
+    font-size: 14px;
+    line-height: 20px;
     color: ${p => p.$error && 'red'};
   }
-  @media (min-width: 1024px) {
-    width: 403px;
-    height: 48px;
-
+  @media (min-width: 768px) {
+    max-width: 403px;
+    padding: 13px 16px;
     font-size: 16px;
-    line-height: normal;
+    line-height: 22px;
   }
 `;
 export const WrapList = styled.div`
@@ -150,7 +99,7 @@ export const WrapList = styled.div`
   background: #fff;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 7px 10px 3px;
   z-index: 1;
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     top: 72px;
   }
 `;
@@ -166,7 +115,7 @@ export const List = styled.ul`
   max-height: 200px;
   gap: 10px;
   border: 1px solid #000;
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     width: 403px;
   }
 `;
@@ -177,7 +126,7 @@ export const Item = styled.li`
   font-style: normal;
   font-weight: 400;
   line-height: 140%;
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     font-size: 16px;
     line-height: normal;
   }
@@ -190,7 +139,7 @@ export const Text = styled.p`
   font-weight: 400;
   line-height: 140%;
   cursor: pointer;
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     font-size: 16px;
     line-height: normal;
   }
