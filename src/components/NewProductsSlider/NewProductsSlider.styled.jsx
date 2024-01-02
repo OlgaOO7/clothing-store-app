@@ -38,25 +38,25 @@ export const Title = styled.h2`
 export const PrevBtn = styled.button`
   background-color: transparent;
   border: none;
-  left: 10%;
-  top: 100%;
+  left: 10% !important;
+  top: 100% !important;
   @media (min-width: 768px) {
-    left: 20%;
+    left: 20% !important;
   }
   &:after {
-    content: none;
+    content: none !important;
   }
 `;
 export const NextBtn = styled.button`
   background-color: transparent;
   border: none;
-  right: 10%;
-  top: 100%;
+  right: 10% !important;
+  top: 100% !important;
   @media (min-width: 768px) {
-    right: 20%;
+    right: 20% !important;
   }
   &:after {
-    content: none;
+    content: none !important;
   }
 `;
 export const BtnIcon = styled.svg`
