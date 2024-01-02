@@ -6,6 +6,7 @@ export const Input = styled.input`
   padding: 12px 16px;
   border: 1px solid #000000;
   width: -webkit-fill-available;
+  border-color: ${p => p.$errors && 'red'};
   @media (min-width: 768px) {
     font-size: 14px;
     line-height: 16px;
@@ -20,6 +21,7 @@ export const Textarea = styled.textarea`
   height: 156px;
   resize: none;
   width: -webkit-fill-available;
+  border-color: ${p => p.$errors && 'red'};
   @media (min-width: 768px) {
     font-size: 14px;
     line-height: 16px;
@@ -29,8 +31,13 @@ export const Textarea = styled.textarea`
 export const ErrorMessage = styled.p`
   color: red;
   position: absolute;
-  bottom: -17px;
+  bottom: -13px;
+  font-size: 12px;
   left: 0;
+  @media (min-width: 768px) {
+    font-size: 16px;
+    bottom: -17px;
+  }
 `;
 export const Counter = styled.div`
   color: #888;
