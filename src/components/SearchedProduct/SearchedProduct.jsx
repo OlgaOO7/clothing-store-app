@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
@@ -8,9 +8,11 @@ import { selectSearchedProductsPage } from 'redux/products/selectors';
 import { resetSearchedProducts } from 'redux/products/productsSlice';
 
 import { getSearchedProductsPage } from 'redux/products/operations';
+import { selectIsRefreshing } from 'redux/products/selectors';
 
 export const SearchedProduct = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
+  const isLoading = useSelector(selectIsRefreshing);
 
   const dispatch = useDispatch();
   const location = useLocation();
@@ -21,10 +23,10 @@ export const SearchedProduct = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      setIsLoading(true);
+      // setIsLoading(true);
       try {
         dispatch(getSearchedProductsPage(searchQuery));
-        setIsLoading(false);
+        // setIsLoading(false);
       } catch (e) {
         console.error('Error fetching data:', e);
       } finally {
@@ -45,7 +47,7 @@ export const SearchedProduct = () => {
     <ProductCatalog
       type="searchpage"
       data={searchedProducts}
-      isLoading={isLoading}
+      // isLoading={isLoading}
     />
   );
 };

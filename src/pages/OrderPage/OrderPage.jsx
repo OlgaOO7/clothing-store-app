@@ -1,9 +1,11 @@
 import { Order } from 'components/Order/Order';
 
-export const OrderPage = () => {
+const OrderPage = () => {
   return (
     <main>
       <Order />
     </main>
   );
 };
+
+export default OrderPage;

@@ -13,6 +13,7 @@ import {
   SearchWord,
 } from './ProductCatalog.styled';
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 export const ProductCatalogComponent = ({
   data,
@@ -21,7 +22,6 @@ export const ProductCatalogComponent = ({
   page,
   totalPage,
   handlePageChange,
-  isLoading,
 }) => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);

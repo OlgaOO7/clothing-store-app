@@ -31,9 +31,9 @@ export const CartProductItem = ({
   const dispatch = useDispatch();
   const location = useLocation();
 
-  const deleteProduct = productId => {
-    dispatch(deleteProductFromCart(productId));
-    dispatch(getCart());
+  const deleteProduct = async skuId => {
+    await dispatch(deleteProductFromCart(skuId));
+    await dispatch(getCart());
   };
 
   return (
@@ -50,6 +50,7 @@ export const CartProductItem = ({
           <ProductImage
             src={item.photoUrl}
             alt={cuttedTitle(item.productTitle)}
+            loading="lazy"
           />
         </Link>
         <ProductDescriptionWrapper>

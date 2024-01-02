@@ -52,8 +52,9 @@ export const ProductCartList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 37px;
+  max-height: 507px;
   padding: 29px 0;
-  border-top: 1px solid #686868;
+  /* border-top: 1px solid #686868; */
   border-bottom: 1px solid #686868;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -112,4 +113,13 @@ export const CatalogLink = styled(Link)`
   padding: 16px 0;
   border: 1px solid #191919;
   width: 345px;
+`;
+
+export const DivToFix = styled.div`
+  position: sticky;
+  top: 100px;
+  z-index: 1111;
+  margin-bottom: 29px;
+  background-color: rgb(255, 255, 255);
+  border-bottom: 1px solid #686868;
 `;

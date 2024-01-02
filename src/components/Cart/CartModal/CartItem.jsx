@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { formatPrice } from 'utils/formatPrice';
 import { cuttedTitle } from 'utils/cuttedTitle';
-import { deleteProductFromCart } from 'redux/cart/operations';
+import { getCart, deleteProductFromCart } from 'redux/cart/operations';
 
 import Sprite from 'images/sprite.svg';
 
@@ -22,8 +22,9 @@ export const CartItem = ({ item }) => {
   const location = useLocation();
   const dispatch = useDispatch();
 
-  const deleteProduct = productId => {
-    dispatch(deleteProductFromCart(productId));
+  const deleteProduct = async skuId => {
+    await dispatch(deleteProductFromCart(skuId));
+    await dispatch(getCart());
   };
   return (
     <CartItemWrapper>

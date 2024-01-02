@@ -9,7 +9,7 @@ import {
 } from './NotFoundPage.styled';
 import { Form } from 'components/Form/Form';
 
-export const NotFoundPage = () => {
+const NotFoundPage = () => {
   return (
     <PageWrapper>
       <ContentWrrapper>
@@ -24,3 +24,5 @@ export const NotFoundPage = () => {
     </PageWrapper>
   );
 };
+
+export default NotFoundPage;

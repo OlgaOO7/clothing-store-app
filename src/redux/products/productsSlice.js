@@ -15,6 +15,7 @@ const initialState = {
   productsCategory: null,
   productsBySearch: [],
   searchedProducts: [],
+  isRefreshing: false,
 };
 const productsSlice = createSlice({
   name: 'products',
@@ -53,18 +54,39 @@ const productsSlice = createSlice({
       .addCase(getProductsSortByPrice.rejected, state => {
         state.productsCategory = {};
       })
+      .addCase(getSearchedProducts.pending, (state, action) => {
+        state.isRefreshing = true;
+      })
       .addCase(getSearchedProducts.fulfilled, (state, action) => {
         state.productsBySearch = action.payload;
+        state.isRefreshing = false;
       })
-      .addCase(getSearchedProducts.rejected, (state) => {
-        state.productsBySearch = [];
+      .addCase(getSearchedProducts.rejected, (state, action) => {
+        // state.productsBySearch = [];
+        state.error = action.payload;
+        state.isRefreshing = false;
+      })
+      .addCase(clearSearchedProducts.pending, (state) => {
+        state.isRefreshing = true;
       })
       .addCase(clearSearchedProducts.fulfilled, (state) => {
         state.productsBySearch = [];
-        state.error = null;
+        state.isRefreshing = false;
+      })
+      .addCase(clearSearchedProducts.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isRefreshing = false;
+      })
+      .addCase(getSearchedProductsPage.pending, (state, action) => {
+        state.isRefreshing = true;
       })
       .addCase(getSearchedProductsPage.fulfilled, (state, action) => {
         state.searchedProducts = action.payload;
+        state.isRefreshing = false;
+      })
+      .addCase(getSearchedProductsPage.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isRefreshing = false;
       })
     // .addCase(clearSearchedProductsPage.fulfilled, (state) => {
     //   state.searchedProducts = [];

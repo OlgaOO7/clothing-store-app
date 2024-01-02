@@ -66,13 +66,15 @@ export const deleteProductFromCart = createAsyncThunk(
 
 export const clearCart = createAsyncThunk(
   'cart/clearCart',
-  async (userUid, thunkAPI) => {
+  async (_, thunkAPI) => {
     try {
-      const res = await axios.delete(
-        `/carts/clear/?sessionId=${userUid}`,
-        config.headers
-      );
-      return res.data;
+      const userUid = localStorage.getItem('userUid');
+      if (userUid) {
+        const res = await axios.delete(`/carts/clear?sessionId=${userUid}`, config.headers);
+        return res.data;
+      } else {
+        return thunkAPI.rejectWithValue('UserUid is not available');
+      }
     } catch (err) {
       return thunkAPI.rejectWithValue(err.message);
     }

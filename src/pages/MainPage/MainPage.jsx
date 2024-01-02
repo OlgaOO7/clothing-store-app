@@ -4,7 +4,7 @@ import { MainSection } from 'components/MainSection/MainSection';
 import { InfoBlock } from 'components/InfoBlock/InfoBlock';
 import { Form } from 'components/Form/Form';
 
-export const MainPage = () => {
+const MainPage = () => {
   return (
     <div
       style={{
@@ -22,3 +22,5 @@ export const MainPage = () => {
     </div>
   );
 };
+
+export default MainPage;

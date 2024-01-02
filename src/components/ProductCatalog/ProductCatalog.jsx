@@ -6,7 +6,7 @@ import { ProductCatalogComponent } from './ProductCatalogComponent';
 
 import { LinkTo, Wrapper, Section, NavWrapper } from './ProductCatalog.styled';
 
-export const ProductCatalog = ({ type, data, categoryId, isLoading }) => {
+export const ProductCatalog = ({ type, data, categoryId }) => {
   const [page, setCurrentPage] = useState(0);
   const totalPage = useSelector(selectTotalPages) || 1;
 
