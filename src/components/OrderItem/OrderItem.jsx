@@ -24,16 +24,13 @@ export const OrderItem = ({ item, setOrderSuccess }) => {
   const size = sku.characteristics[0].name;
   const { availableQuantity } = sku;
 
-  const issue = () => {
+  useEffect(() => {
     if (quantity > availableQuantity) {
       setOrderSuccess(false);
     } else {
       setOrderSuccess(true);
     }
-  };
-  useEffect(() => {
-    issue();
-  }, []);
+  });
   return (
     <>
       <ItemWrapper>
