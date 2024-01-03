@@ -14,7 +14,7 @@ export const emailSchema = Yup.object().shape({
 export const formSchema = Yup.object().shape({
   name: Yup.string()
     .trim()
-    .required('Поле імʼя обовʼязкове до заповнення')
+    .required('Поле обовʼязкове до заповнення')
     .min(3, 'Поле має містити як мінімум 3 символи')
     .max(70, 'Перевищена максимальна кількість')
     .matches(
@@ -22,7 +22,7 @@ export const formSchema = Yup.object().shape({
       'Невірне імʼя'
     ),
   email: Yup.string()
-    .required('Будь ласка, введіть дійсну адресу електронної пошти.')
+    .required('Поле обовʼязкове до заповнення')
     .min(6, 'Будь ласка, введіть дійсну адресу електронної пошти.')
     .max(63, 'Будь ласка, введіть дійсну адресу електронної пошти.')
     .matches(
