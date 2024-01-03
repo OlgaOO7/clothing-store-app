@@ -21,7 +21,7 @@ export const InputField = ({
             placeholder={placeholder}
             onKeyUp={handleInputChange}
             maxLength={maxLength}
-            $errors={errors}
+            $errors={errors[name]}
           ></Textarea>
           <Counter style={{ color: isApproachingMax ? 'red' : '' }}>
             {charCount}/{maxLength}
@@ -36,7 +36,7 @@ export const InputField = ({
             type={type}
             placeholder={placeholder}
             autoComplete="true"
-            $errors={errors}
+            $errors={errors[name]}
           />
           {errors[name] && <ErrorMessage>{errors[name].message}</ErrorMessage>}
         </div>
