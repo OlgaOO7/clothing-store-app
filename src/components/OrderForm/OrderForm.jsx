@@ -15,9 +15,16 @@ import { useForm } from 'react-hook-form';
 import { orderFormSchema } from 'utils/yupSchema';
 import { useState } from 'react';
 import Sprite from '../../images/sprite.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { placeAnOrder } from 'redux/order/operations';
+import { v4 as uuidv4 } from 'uuid';
+import { selectOrderSuccess } from 'redux/order/selectors';
 
-export const OrderForm = ({ orderSuccess }) => {
+export const OrderForm = ({ orderSuccess, sessionId }) => {
   const [formStatus, setFormStatus] = useState(null);
+  const dispatch = useDispatch();
+  const orderSuccessful = useSelector(selectOrderSuccess);
+
   const {
     register,
     handleSubmit,
@@ -35,20 +42,29 @@ export const OrderForm = ({ orderSuccess }) => {
 
   const onSubmitSubscription = async formData => {
     try {
-      if (!orderSuccess) {
-        setFormStatus('error');
-        setTimeout(() => {
-          setFormStatus(null);
-        }, 8000);
-        return;
-      } else {
-        console.log(formData);
-        setFormStatus('success');
-        setTimeout(() => {
-          setFormStatus(null);
-        }, 5000);
-        reset();
-      }
+      // if (!orderSuccess) {
+      //   setFormStatus('error');
+      //   setTimeout(() => {
+      //     setFormStatus(null);
+      //   }, 8000);
+      //   return;
+      // } else {
+      dispatch(
+        placeAnOrder({
+          sessionId: sessionId,
+          id: parseInt(uuidv4(), 16),
+          email: formData.orderEmail,
+          firstName: formData.firstName,
+          lastName: formData.secondName,
+          customerPhoneNumber: formData.phoneNumber,
+          address: formData.city + '' + formData.warehouse,
+        })
+      );
+      console.log(formData);
+
+      setFormStatus('success');
+      reset();
+      // }
     } catch (error) {
       console.error(error);
       setFormStatus('error');
@@ -67,7 +83,9 @@ export const OrderForm = ({ orderSuccess }) => {
             <SuccessIcon>
               <use href={`${Sprite}#icon-success-order`}></use>
             </SuccessIcon>
-            <SuccessMessage>Ваше замовлення №12856384 оформлено</SuccessMessage>
+            <SuccessMessage>
+              Ваше замовлення №{orderSuccessful.id} оформлено
+            </SuccessMessage>
             <SuccessText>
               Очікуйте лист з деталями замовлення на вашу електронну адресу.
             </SuccessText>

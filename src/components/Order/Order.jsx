@@ -20,8 +20,8 @@ import { OrderItem } from 'components/OrderItem/OrderItem';
 import { useMedia } from 'hooks/useMedia';
 import { OrderForm } from 'components/OrderForm/OrderForm';
 import { useLocation } from 'react-router';
-import { getOrder } from 'redux/cart/operations';
-import { selectOrder, selectOrderItems } from 'redux/cart/selectors';
+import { getOrder } from 'redux/order/operations';
+import { selectOrder, selectOrderItems } from 'redux/order/selectors';
 import { useState } from 'react';
 
 export const Order = () => {
@@ -29,9 +29,9 @@ export const Order = () => {
   const { state } = useLocation();
   const { isMobileScreen } = useMedia();
 
+  // const [orderSuccess, setOrderSuccess] = useState(null);
   const order = useSelector(selectOrder) || [];
   const products = useSelector(selectOrderItems) || [];
-  const [orderSuccess, setOrderSuccess] = useState(null);
 
   const { totalAmount, currencyCode, totalQuantity } = order;
   const sessionId = state ? state?.sessionId : null;
@@ -66,7 +66,7 @@ export const Order = () => {
               <OrderItem
                 key={item.id}
                 item={item}
-                setOrderSuccess={setOrderSuccess}
+                // setOrderSuccess={setOrderSuccess}
               />
             ))}
           </OrderWrapper>
@@ -126,7 +126,10 @@ export const Order = () => {
           )}
         </Wrapper>
       </OrderResultSection>
-      <OrderForm orderSuccess={orderSuccess} />
+      <OrderForm
+        sessionId={sessionId}
+        // orderSuccess={orderSuccess}
+      />
     </>
   );
 };

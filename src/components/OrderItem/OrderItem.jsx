@@ -23,14 +23,15 @@ export const OrderItem = ({ item, setOrderSuccess }) => {
   const colorhex = sku.characteristics[1].value;
   const size = sku.characteristics[0].name;
   const { availableQuantity } = sku;
+  console.log(availableQuantity);
 
-  useEffect(() => {
-    if (quantity > availableQuantity) {
-      setOrderSuccess(false);
-    } else {
-      setOrderSuccess(true);
-    }
-  });
+  // useEffect(() => {
+  //   if (quantity > availableQuantity) {
+  //     setOrderSuccess(false);
+  //   } else {
+  //     setOrderSuccess(true);
+  //   }
+  // });
 
   return (
     <>
