@@ -16,7 +16,7 @@ import { orderFormSchema } from 'utils/yupSchema';
 import { useState } from 'react';
 import Sprite from '../../images/sprite.svg';
 
-export const OrderForm = () => {
+export const OrderForm = ({ orderSuccess }) => {
   const [formStatus, setFormStatus] = useState(null);
   const {
     register,
@@ -35,12 +35,20 @@ export const OrderForm = () => {
 
   const onSubmitSubscription = async formData => {
     try {
-      console.log(formData);
-      setFormStatus('success');
-      setTimeout(() => {
-        setFormStatus(null);
-      }, 5000);
-      reset();
+      if (!orderSuccess) {
+        setFormStatus('error');
+        setTimeout(() => {
+          setFormStatus(null);
+        }, 8000);
+        return;
+      } else {
+        console.log(formData);
+        setFormStatus('success');
+        setTimeout(() => {
+          setFormStatus(null);
+        }, 5000);
+        reset();
+      }
     } catch (error) {
       console.error(error);
       setFormStatus('error');
@@ -65,6 +73,10 @@ export const OrderForm = () => {
             </SuccessText>
             <SuccessText>Дякуємо, що обраєте Zatyshna.</SuccessText>
           </>
+        ) : formStatus === 'error' ? (
+          <SuccessMessage>
+            Вибачте, наразі неможливо оформити замовлення.
+          </SuccessMessage>
         ) : (
           <Form onSubmit={handleSubmit(onSubmitSubscription)}>
             <div>

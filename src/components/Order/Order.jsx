@@ -22,6 +22,7 @@ import { OrderForm } from 'components/OrderForm/OrderForm';
 import { useLocation } from 'react-router';
 import { getOrder } from 'redux/cart/operations';
 import { selectOrder, selectOrderItems } from 'redux/cart/selectors';
+import { useState } from 'react';
 
 export const Order = () => {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ export const Order = () => {
 
   const order = useSelector(selectOrder) || [];
   const products = useSelector(selectOrderItems) || [];
+  const [orderSuccess, setOrderSuccess] = useState(null);
 
   const { totalAmount, currencyCode, totalQuantity } = order;
   const sessionId = state ? state?.sessionId : null;
@@ -61,7 +63,11 @@ export const Order = () => {
           <Title>Ваше замовлення</Title>
           <OrderWrapper>
             {products.map(item => (
-              <OrderItem key={item.id} item={item} />
+              <OrderItem
+                key={item.id}
+                item={item}
+                setOrderSuccess={setOrderSuccess}
+              />
             ))}
           </OrderWrapper>
         </Wrapper>
@@ -120,7 +126,7 @@ export const Order = () => {
           )}
         </Wrapper>
       </OrderResultSection>
-      <OrderForm />
+      <OrderForm orderSuccess={orderSuccess} />
     </>
   );
 };
