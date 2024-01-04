@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
 import { useMedia } from 'hooks/useMedia';
+import { formatPrice } from 'utils/formatPrice';
 
 import noImage from '../../images/no-image.jpg';
 
@@ -78,7 +79,7 @@ export const OrderItem = ({ item, setOrderSuccess, availableQuantity }) => {
           </OrderContent>
         </Container>
         <OrderPrice>
-          {amount} {currencyCode}
+          {formatPrice(amount)} {currencyCode}
         </OrderPrice>
       </ItemWrapper>
     </>

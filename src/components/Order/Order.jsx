@@ -27,6 +27,7 @@ import {
   OrderResultDestTotal,
   OrderResultTotal,
 } from './Order.styled';
+import { formatPrice } from 'utils/formatPrice';
 
 export const Order = () => {
   const dispatch = useDispatch();
@@ -150,7 +151,7 @@ export const Order = () => {
                     {totalQuantity} товари(-ів) на суму
                   </OrderResultTotal>
                   <OrderResultTotal>
-                    {totalAmount} {currencyCode}
+                    {formatPrice(totalAmount)} {currencyCode}
                   </OrderResultTotal>
                 </OrderResultListItem>
                 <OrderResultListItem>
@@ -171,7 +172,7 @@ export const Order = () => {
                     {totalQuantity} товари(-ів) на суму
                   </OrderResultTotal>
                   <OrderResultTotal>
-                    {totalAmount} {currencyCode}
+                    {formatPrice(totalAmount)} {currencyCode}
                   </OrderResultTotal>
                 </OrderResultListItem>
                 <OrderResultListItem>
@@ -185,7 +186,7 @@ export const Order = () => {
                 <OrderResultListItem>
                   <OrderResultTitle>Разом:</OrderResultTitle>
                   <OrderResultDestTotal>
-                    {totalAmount} {currencyCode}
+                    {formatPrice(totalAmount)} {currencyCode}
                   </OrderResultDestTotal>
                 </OrderResultListItem>
               </OrderResultList>
