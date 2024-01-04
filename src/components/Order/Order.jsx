@@ -121,7 +121,7 @@ export const Order = () => {
           <Title>Ваше замовлення</Title>
           <OrderWrapper>
             {memoizedProducts.length === 0 ? (
-              <p>Масив порожній</p>
+              <p>Замовлення порожнє</p>
             ) : (
               memoizedProducts.map(item => (
                 <OrderItem
@@ -139,7 +139,7 @@ export const Order = () => {
         <Wrapper>
           {memoizedProducts.length === 0 || orderSuccess === false ? (
             <OrderResultTitle style={{ textAlign: 'center' }}>
-              Наразі неможливо оформити замовлення.
+              Наразі неможливо оформити замовлення
             </OrderResultTitle>
           ) : isMobileScreen ? (
             <>
