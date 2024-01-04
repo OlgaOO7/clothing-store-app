@@ -58,13 +58,41 @@ export const LinkTo = styled(Link)`
 `;
 export const OrderWrapper = styled.div`
   max-height: 234px;
-  overflow: scroll;
+  overflow: auto;
   display: flex;
   flex-direction: column;
   gap: 9px;
   @media (min-width: 768px) {
     gap: 56px;
     max-height: 472px;
+  }
+
+  /* Webkit (Chrome, Safari) scrollbar styling */
+  &::-webkit-scrollbar {
+    width: 6px;
+    @media (min-width: 768px) {
+      width: 12px;
+    }
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+
+  /* Firefox scrollbar styling */
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+
+  /* IE/Edge scrollbar styling */
+  -ms-overflow-style: none;
+  &::-ms-scrollbar-thumb {
+    background-color: #888;
+  }
+  &::-ms-scrollbar-track {
+    background-color: #f1f1f1;
   }
 `;
 export const OrderResultSection = styled.section`
