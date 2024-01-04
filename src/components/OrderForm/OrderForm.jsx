@@ -1,3 +1,18 @@
+import { useForm } from 'react-hook-form';
+import { useState } from 'react';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { v4 as uuidv4 } from 'uuid';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { orderFormSchema } from 'utils/yupSchema';
+import { placeAnOrder } from 'redux/order/operations';
+import { selectOrderSuccess } from 'redux/order/selectors';
+
+import { Delivery } from 'components/Delivery/Delivery';
+import { OrderPaymentForm } from 'components/OrderPaymentForm/OrderPaymentForm';
+import { OrderCustomerForm } from 'components/OrderCustomerForm/OrderCustomerForm';
+
+import Sprite from '../../images/sprite.svg';
 import {
   OrderFormSection,
   Wrapper,
@@ -7,22 +22,10 @@ import {
   SuccessIcon,
   SuccessText,
 } from './OrderForm.styled';
-import { Delivery } from 'components/Delivery/Delivery';
-import { OrderPaymentForm } from 'components/OrderPaymentForm/OrderPaymentForm';
-import { OrderCustomerForm } from 'components/OrderCustomerForm/OrderCustomerForm';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useForm } from 'react-hook-form';
-import { orderFormSchema } from 'utils/yupSchema';
-import { useState } from 'react';
-import Sprite from '../../images/sprite.svg';
-import { useDispatch, useSelector } from 'react-redux';
-import { placeAnOrder } from 'redux/order/operations';
-import { v4 as uuidv4 } from 'uuid';
-import { selectOrderSuccess } from 'redux/order/selectors';
 
 export const OrderForm = ({ orderSuccess, sessionId }) => {
-  const [formStatus, setFormStatus] = useState(null);
   const dispatch = useDispatch();
+  const [formStatus, setFormStatus] = useState(null);
   const orderSuccessful = useSelector(selectOrderSuccess);
 
   const {
@@ -39,6 +42,7 @@ export const OrderForm = ({ orderSuccess, sessionId }) => {
       'payment online': false,
     },
   });
+
   const onSubmitSubscription = async formData => {
     try {
       dispatch(

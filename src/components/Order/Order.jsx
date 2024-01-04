@@ -1,4 +1,16 @@
+import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useMemo } from 'react';
+import { useState } from 'react';
+import { useLocation } from 'react-router';
+
+import { useMedia } from 'hooks/useMedia';
+import { getOrder } from 'redux/order/operations';
+import { selectOrder, selectOrderItems } from 'redux/order/selectors';
+
+import { OrderItem } from 'components/OrderItem/OrderItem';
+import { OrderForm } from 'components/OrderForm/OrderForm';
+
 import {
   LinkTo,
   NavWrapper,
@@ -15,15 +27,6 @@ import {
   OrderResultDestTotal,
   OrderResultTotal,
 } from './Order.styled';
-import { useEffect, useMemo } from 'react';
-import { OrderItem } from 'components/OrderItem/OrderItem';
-import { useMedia } from 'hooks/useMedia';
-import { OrderForm } from 'components/OrderForm/OrderForm';
-import { useLocation } from 'react-router';
-import { getOrder } from 'redux/order/operations';
-import { selectOrder, selectOrderItems } from 'redux/order/selectors';
-import { useState } from 'react';
-import axios from 'axios';
 
 export const Order = () => {
   const dispatch = useDispatch();

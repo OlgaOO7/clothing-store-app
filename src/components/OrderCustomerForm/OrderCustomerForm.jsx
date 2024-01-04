@@ -1,7 +1,7 @@
+import { OrderInput } from 'components/OrderInput/OrderInput';
+
 import { Container, WrapTitle } from './OrderCustomerForm.styled';
 import { Title, ElipsTitle } from 'components/OrderForm/OrderForm.styled';
-
-import { OrderInput } from 'components/OrderInput/OrderInput';
 
 export const OrderCustomerForm = ({ register, errors }) => {
   return (
