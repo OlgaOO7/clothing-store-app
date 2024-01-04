@@ -70,29 +70,16 @@ export const clearCart = createAsyncThunk(
     try {
       const userUid = localStorage.getItem('userUid');
       if (userUid) {
-        const res = await axios.delete(`/carts/clear?sessionId=${userUid}`, config.headers);
+        const res = await axios.delete(
+          `/carts/clear?sessionId=${userUid}`,
+          config.headers
+        );
         return res.data;
       } else {
         return thunkAPI.rejectWithValue('UserUid is not available');
       }
     } catch (err) {
       return thunkAPI.rejectWithValue(err.message);
-    }
-  }
-);
-
-export const getOrder = createAsyncThunk(
-  'cart/getOrder',
-  async (sessionId, thunkAPI) => {
-    try {
-      const res = await axios.get(
-        `/carts?sessionId=${sessionId}`,
-        '',
-        config.headers
-      );
-      return res.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
