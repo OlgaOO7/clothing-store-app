@@ -36,7 +36,7 @@ export const OrderCustomerForm = ({ register, errors }) => {
           errors={errors}
         />
         <OrderInput
-          label={'E-Mail*'}
+          label={'E-Mail *'}
           type="email"
           name="orderEmail"
           register={register}

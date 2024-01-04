@@ -39,16 +39,8 @@ export const OrderForm = ({ orderSuccess, sessionId }) => {
       'payment online': false,
     },
   });
-
   const onSubmitSubscription = async formData => {
     try {
-      // if (!orderSuccess) {
-      //   setFormStatus('error');
-      //   setTimeout(() => {
-      //     setFormStatus(null);
-      //   }, 8000);
-      //   return;
-      // } else {
       dispatch(
         placeAnOrder({
           sessionId: sessionId,
@@ -60,11 +52,8 @@ export const OrderForm = ({ orderSuccess, sessionId }) => {
           address: formData.city + '' + formData.warehouse,
         })
       );
-      console.log(formData);
-
       setFormStatus('success');
       reset();
-      // }
     } catch (error) {
       console.error(error);
       setFormStatus('error');
@@ -84,7 +73,7 @@ export const OrderForm = ({ orderSuccess, sessionId }) => {
               <use href={`${Sprite}#icon-success-order`}></use>
             </SuccessIcon>
             <SuccessMessage>
-              Ваше замовлення №{orderSuccessful.id} оформлено
+              Ваше замовлення №{orderSuccessful?.id} оформлено
             </SuccessMessage>
             <SuccessText>
               Очікуйте лист з деталями замовлення на вашу електронну адресу.

@@ -28,7 +28,6 @@ export const placeAnOrder = createAsyncThunk(
   'order/placeAnOrder',
   async (credentials, thunkAPI) => {
     try {
-      console.log(credentials.sessionId);
       const {
         sessionId,
         id,
@@ -46,7 +45,6 @@ export const placeAnOrder = createAsyncThunk(
         customerPhoneNumber: customerPhoneNumber,
         address: address,
       };
-      console.log(orderDetails);
       const res = await axios.post(
         `/orders?sessionId=${sessionId}`,
         orderDetails,
