@@ -1,3 +1,18 @@
+import { useForm } from 'react-hook-form';
+import { useState } from 'react';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { v4 as uuidv4 } from 'uuid';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { orderFormSchema } from 'utils/yupSchema';
+import { placeAnOrder } from 'redux/order/operations';
+import { selectOrderSuccess } from 'redux/order/selectors';
+
+import { Delivery } from 'components/Delivery/Delivery';
+import { OrderPaymentForm } from 'components/OrderPaymentForm/OrderPaymentForm';
+import { OrderCustomerForm } from 'components/OrderCustomerForm/OrderCustomerForm';
+
+import Sprite from '../../images/sprite.svg';
 import {
   OrderFormSection,
   Wrapper,
@@ -7,17 +22,12 @@ import {
   SuccessIcon,
   SuccessText,
 } from './OrderForm.styled';
-import { Delivery } from 'components/Delivery/Delivery';
-import { OrderPaymentForm } from 'components/OrderPaymentForm/OrderPaymentForm';
-import { OrderCustomerForm } from 'components/OrderCustomerForm/OrderCustomerForm';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useForm } from 'react-hook-form';
-import { orderFormSchema } from 'utils/yupSchema';
-import { useState } from 'react';
-import Sprite from '../../images/sprite.svg';
 
-export const OrderForm = ({ orderSuccess }) => {
+export const OrderForm = ({ orderSuccess, sessionId }) => {
+  const dispatch = useDispatch();
   const [formStatus, setFormStatus] = useState(null);
+  const orderSuccessful = useSelector(selectOrderSuccess);
+
   const {
     register,
     handleSubmit,
@@ -35,20 +45,19 @@ export const OrderForm = ({ orderSuccess }) => {
 
   const onSubmitSubscription = async formData => {
     try {
-      if (!orderSuccess) {
-        setFormStatus('error');
-        setTimeout(() => {
-          setFormStatus(null);
-        }, 8000);
-        return;
-      } else {
-        console.log(formData);
-        setFormStatus('success');
-        setTimeout(() => {
-          setFormStatus(null);
-        }, 5000);
-        reset();
-      }
+      dispatch(
+        placeAnOrder({
+          sessionId: sessionId,
+          id: parseInt(uuidv4(), 16),
+          email: formData.orderEmail,
+          firstName: formData.firstName,
+          lastName: formData.secondName,
+          customerPhoneNumber: formData.phoneNumber,
+          address: formData.city + '' + formData.warehouse,
+        })
+      );
+      setFormStatus('success');
+      reset();
     } catch (error) {
       console.error(error);
       setFormStatus('error');
@@ -67,7 +76,9 @@ export const OrderForm = ({ orderSuccess }) => {
             <SuccessIcon>
               <use href={`${Sprite}#icon-success-order`}></use>
             </SuccessIcon>
-            <SuccessMessage>Ваше замовлення №12856384 оформлено</SuccessMessage>
+            <SuccessMessage>
+              Ваше замовлення №{orderSuccessful?.id} оформлено
+            </SuccessMessage>
             <SuccessText>
               Очікуйте лист з деталями замовлення на вашу електронну адресу.
             </SuccessText>

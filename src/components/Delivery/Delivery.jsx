@@ -238,7 +238,6 @@ export const Delivery = ({ register, setValue, errors, formStatus }) => {
 
   //   // setIsSubmitting(false);
   // };
-
   return (
     <>
       <WrapTitle>

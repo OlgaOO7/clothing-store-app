@@ -4,12 +4,10 @@ import {
   getCart,
   deleteProductFromCart,
   clearCart,
-  getOrder,
 } from './operations';
 
 const initialState = {
   cart: {},
-  order: {},
   // totalAmount: null,
   totalQuantity: null,
   isRefreshing: false,
@@ -49,15 +47,17 @@ const cartSlice = createSlice({
         state.isRefreshing = false;
         state.error = action.payload;
       })
-      .addCase(deleteProductFromCart.pending, (state) => {
+      .addCase(deleteProductFromCart.pending, state => {
         state.isRefreshing = true;
       })
       .addCase(deleteProductFromCart.fulfilled, (state, action) => {
         return {
           ...state,
           cart: {
-            ...state.cart, items: state.cart.items.filter(item => item.sku.id !== action.payload.skuId)
-
+            ...state.cart,
+            items: state.cart.items.filter(
+              item => item.sku.id !== action.payload.skuId
+            ),
           },
           isRefreshing: false,
           // cart: {
@@ -70,7 +70,7 @@ const cartSlice = createSlice({
         state.isRefreshing = false;
         state.error = action.payload;
       })
-      .addCase(clearCart.pending, (state) => {
+      .addCase(clearCart.pending, state => {
         state.isRefreshing = true;
       })
       .addCase(clearCart.fulfilled, (state, action) => {
@@ -81,12 +81,6 @@ const cartSlice = createSlice({
       .addCase(clearCart.rejected, (state, action) => {
         state.isRefreshing = false;
         state.error = action.payload;
-      })
-      .addCase(getOrder.fulfilled, (state, action) => {
-        state.order = action.payload;
-      })
-      .addCase(getOrder.rejected, state => {
-        state.order = null;
       });
   },
 });

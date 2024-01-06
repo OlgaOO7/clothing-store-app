@@ -4,6 +4,7 @@ import { subscriptionReducer } from './subscription/subscriptionSlice';
 import { categoriesReducer } from './category/categorySlice';
 import { productsReducer } from './products/productsSlice';
 import { cartReducer } from './cart/cartSlice';
+import { orderReducer } from './order/orderSlice';
 
 // import {
 //   persistStore,
@@ -27,6 +28,7 @@ export const store = configureStore({
     categories: categoriesReducer,
     products: productsReducer,
     cart: cartReducer,
+    order: orderReducer,
   },
   // middleware(getDefaultMiddleware) {
   //   return getDefaultMiddleware({

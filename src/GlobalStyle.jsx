@@ -54,7 +54,7 @@ a {
 a:visited {
   color: none;
 }
-}
+
 `;
 
 export default GlobalStyles;

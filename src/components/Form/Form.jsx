@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useDispatch } from 'react-redux';
-import useFormPersist from 'react-hook-form-persist';
 import { useForm } from 'react-hook-form';
-import { emailSchema } from '../../utils/yupSchema';
-import { formSchema } from 'utils/yupSchema';
-import { contactUs, subscription } from '../../redux/subscription/operations';
+import { yupResolver } from '@hookform/resolvers/yup';
+import useFormPersist from 'react-hook-form-persist';
+import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+
 import getButtonContent from 'utils/getMessageContent';
+import { emailSchema, formSchema } from '../../utils/yupSchema';
+import { contactUs, subscription } from '../../redux/subscription/operations';
+
 import { InputField } from 'components/InputField/InputField';
 
 import {

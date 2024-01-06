@@ -1,3 +1,10 @@
+import { useEffect } from 'react';
+
+import { useMedia } from 'hooks/useMedia';
+import { formatPrice } from 'utils/formatPrice';
+
+import noImage from '../../images/no-image.jpg';
+
 import {
   ItemWrapper,
   Container,
@@ -12,17 +19,14 @@ import {
   OrderError,
   OrderErrorText,
 } from './OrderItem.styled';
-import noImage from '../../images/no-image.jpg';
-import { useMedia } from 'hooks/useMedia';
-import { useEffect } from 'react';
 
-export const OrderItem = ({ item, setOrderSuccess }) => {
-  const { photoUrl, productTitle, sku, amount, currencyCode, quantity } = item;
+export const OrderItem = ({ item, setOrderSuccess, availableQuantity }) => {
   const { isMobileScreen } = useMedia();
+
+  const { photoUrl, productTitle, sku, amount, currencyCode, quantity } = item;
   const color = sku.characteristics[1].name;
   const colorhex = sku.characteristics[1].value;
   const size = sku.characteristics[0].name;
-  const { availableQuantity } = sku;
 
   useEffect(() => {
     if (quantity > availableQuantity) {
@@ -37,7 +41,10 @@ export const OrderItem = ({ item, setOrderSuccess }) => {
       <ItemWrapper>
         {quantity > availableQuantity && (
           <OrderError>
-            <OrderErrorText>Вибачте, цей товар недоступний</OrderErrorText>
+            <OrderErrorText>
+              Вибачте, цей товар тимчасово недоступний або його кількість
+              перевищує наявність.
+            </OrderErrorText>
           </OrderError>
         )}
         <Container>
@@ -72,7 +79,7 @@ export const OrderItem = ({ item, setOrderSuccess }) => {
           </OrderContent>
         </Container>
         <OrderPrice>
-          {amount} {currencyCode}
+          {formatPrice(amount)} {currencyCode}
         </OrderPrice>
       </ItemWrapper>
     </>
