@@ -64,6 +64,7 @@ export const Product = ({ productsId }) => {
         const { value } = data.skuSet[0].characteristics.find(
           ({ characteristic }) => characteristic.title === 'color'
         );
+
         setColorValue(value);
 
         const { availableQuantity } = data.skuSet[0];
@@ -133,6 +134,13 @@ export const Product = ({ productsId }) => {
       setActiveSizeId(id);
       setSkuIdProduct(skuId);
       setMessageSize(false);
+    }
+    // Отримання доступної кількості для обраного розміру
+    const selectedSize = product.skuSet.find(sku => sku.id === skuId);
+
+    if (selectedSize) {
+      setAmount(selectedSize.availableQuantity);
+      setQuantity(1);
     }
   };
 
@@ -235,6 +243,7 @@ export const Product = ({ productsId }) => {
               colorValue={colorValue}
               setClickedIndex={setClickedIndex}
               setColorValue={setColorValue}
+              setQuantity={setQuantity}
             />
             <SizeWrap>
               {/* Розміри */}
