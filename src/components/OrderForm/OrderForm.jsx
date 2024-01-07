@@ -104,7 +104,12 @@ export const OrderForm = ({ orderSuccess, sessionId }) => {
             <div>
               <OrderPaymentForm register={register} errors={errors} />
             </div>
-            <OrderBtn type="submit">Оформити замовлення</OrderBtn>
+            <OrderBtn
+              type="submit"
+              onClick={() => window.scrollTo({ top: 500, behavior: 'smooth' })}
+            >
+              Оформити замовлення
+            </OrderBtn>
           </Form>
         )}
       </Wrapper>
