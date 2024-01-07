@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/clothing-store-app/static/css/main.58462fbc.css",
-    "main.js": "/clothing-store-app/static/js/main.eda6df7b.js",
+    "main.js": "/clothing-store-app/static/js/main.5e3d7f8e.js",
     "static/css/757.d2097388.chunk.css": "/clothing-store-app/static/css/757.d2097388.chunk.css",
     "static/js/757.2688cb2c.chunk.js": "/clothing-store-app/static/js/757.2688cb2c.chunk.js",
     "static/js/270.22adcc2d.chunk.js": "/clothing-store-app/static/js/270.22adcc2d.chunk.js",
     "static/css/203.d2097388.chunk.css": "/clothing-store-app/static/css/203.d2097388.chunk.css",
     "static/js/203.dca450e8.chunk.js": "/clothing-store-app/static/js/203.dca450e8.chunk.js",
     "static/js/74.372db5f1.chunk.js": "/clothing-store-app/static/js/74.372db5f1.chunk.js",
-    "static/js/19.f1e65d80.chunk.js": "/clothing-store-app/static/js/19.f1e65d80.chunk.js",
+    "static/js/19.d600c207.chunk.js": "/clothing-store-app/static/js/19.d600c207.chunk.js",
     "static/js/487.ea97ecce.chunk.js": "/clothing-store-app/static/js/487.ea97ecce.chunk.js",
     "static/js/960.3b378ad6.chunk.js": "/clothing-store-app/static/js/960.3b378ad6.chunk.js",
     "static/js/152.d9ee2960.chunk.js": "/clothing-store-app/static/js/152.d9ee2960.chunk.js",
@@ -18,18 +18,18 @@
     "static/js/586.179baa85.chunk.js": "/clothing-store-app/static/js/586.179baa85.chunk.js",
     "static/js/863.60c9ebea.chunk.js": "/clothing-store-app/static/js/863.60c9ebea.chunk.js",
     "static/js/973.b1e7c8fb.chunk.js": "/clothing-store-app/static/js/973.b1e7c8fb.chunk.js",
-    "static/js/377.0ed5a93b.chunk.js": "/clothing-store-app/static/js/377.0ed5a93b.chunk.js",
+    "static/js/377.f6058790.chunk.js": "/clothing-store-app/static/js/377.f6058790.chunk.js",
     "static/media/sprite.svg": "/clothing-store-app/static/media/sprite.c1d15e0f41063ac838536e74c21d5e86.svg",
     "index.html": "/clothing-store-app/index.html",
     "main.58462fbc.css.map": "/clothing-store-app/static/css/main.58462fbc.css.map",
-    "main.eda6df7b.js.map": "/clothing-store-app/static/js/main.eda6df7b.js.map",
+    "main.5e3d7f8e.js.map": "/clothing-store-app/static/js/main.5e3d7f8e.js.map",
     "757.d2097388.chunk.css.map": "/clothing-store-app/static/css/757.d2097388.chunk.css.map",
     "757.2688cb2c.chunk.js.map": "/clothing-store-app/static/js/757.2688cb2c.chunk.js.map",
     "270.22adcc2d.chunk.js.map": "/clothing-store-app/static/js/270.22adcc2d.chunk.js.map",
     "203.d2097388.chunk.css.map": "/clothing-store-app/static/css/203.d2097388.chunk.css.map",
     "203.dca450e8.chunk.js.map": "/clothing-store-app/static/js/203.dca450e8.chunk.js.map",
     "74.372db5f1.chunk.js.map": "/clothing-store-app/static/js/74.372db5f1.chunk.js.map",
-    "19.f1e65d80.chunk.js.map": "/clothing-store-app/static/js/19.f1e65d80.chunk.js.map",
+    "19.d600c207.chunk.js.map": "/clothing-store-app/static/js/19.d600c207.chunk.js.map",
     "487.ea97ecce.chunk.js.map": "/clothing-store-app/static/js/487.ea97ecce.chunk.js.map",
     "960.3b378ad6.chunk.js.map": "/clothing-store-app/static/js/960.3b378ad6.chunk.js.map",
     "152.d9ee2960.chunk.js.map": "/clothing-store-app/static/js/152.d9ee2960.chunk.js.map",
@@ -39,10 +39,10 @@
     "586.179baa85.chunk.js.map": "/clothing-store-app/static/js/586.179baa85.chunk.js.map",
     "863.60c9ebea.chunk.js.map": "/clothing-store-app/static/js/863.60c9ebea.chunk.js.map",
     "973.b1e7c8fb.chunk.js.map": "/clothing-store-app/static/js/973.b1e7c8fb.chunk.js.map",
-    "377.0ed5a93b.chunk.js.map": "/clothing-store-app/static/js/377.0ed5a93b.chunk.js.map"
+    "377.f6058790.chunk.js.map": "/clothing-store-app/static/js/377.f6058790.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.58462fbc.css",
-    "static/js/main.eda6df7b.js"
+    "static/js/main.5e3d7f8e.js"
   ]
 }
