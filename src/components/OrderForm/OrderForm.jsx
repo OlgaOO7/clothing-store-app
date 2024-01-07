@@ -1,5 +1,4 @@
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { v4 as uuidv4 } from 'uuid';
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,11 +22,10 @@ import {
   SuccessText,
 } from './OrderForm.styled';
 
-export const OrderForm = ({ orderSuccess, sessionId }) => {
+export const OrderForm = ({ sessionId, setFormStatus, formStatus }) => {
   const dispatch = useDispatch();
-  const [formStatus, setFormStatus] = useState(null);
   const orderSuccessful = useSelector(selectOrderSuccess);
-
+  console.log(formStatus);
   const {
     register,
     handleSubmit,
@@ -106,7 +104,7 @@ export const OrderForm = ({ orderSuccess, sessionId }) => {
             </div>
             <OrderBtn
               type="submit"
-              onClick={() => window.scrollTo({ top: 500, behavior: 'smooth' })}
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
               Оформити замовлення
             </OrderBtn>
