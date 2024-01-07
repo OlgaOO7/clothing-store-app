@@ -25,7 +25,7 @@ import {
 export const OrderForm = ({ sessionId, setFormStatus, formStatus }) => {
   const dispatch = useDispatch();
   const orderSuccessful = useSelector(selectOrderSuccess);
-  console.log(formStatus);
+
   const {
     register,
     handleSubmit,

@@ -9,8 +9,11 @@ import {
   ProductWrapper,
   ProductTextWrapper,
 } from './ProductComponent.styled';
+import { formatPrice } from 'utils/formatPrice';
 
 export const ProductComponent = ({ item, type, sectionType }) => {
+  const { title, price } = item;
+  const { value, currency } = price;
   const maxLength = 25;
   return (
     <Link to={`/catalog/${item.id}`}>
@@ -22,15 +25,15 @@ export const ProductComponent = ({ item, type, sectionType }) => {
           loading="lazy"
         ></ProductImage>
         <ProductTextWrapper type={type}>
-          {item.title.length > maxLength ? (
+          {title.length > maxLength ? (
             <ProductTitle type={type}>
-              {item.title.slice(0, maxLength)}...
+              {title.slice(0, maxLength)}...
             </ProductTitle>
           ) : (
-            <ProductTitle type={type}>{item.title}</ProductTitle>
+            <ProductTitle type={type}>{title}</ProductTitle>
           )}
           <ProductDescription type={type}>
-            {item.price.value} {item.price.currency.code}
+            {formatPrice(value)} {currency.code}
           </ProductDescription>
         </ProductTextWrapper>
       </ProductWrapper>
