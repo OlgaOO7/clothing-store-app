@@ -13,7 +13,6 @@ import {
   SearchWord,
 } from './ProductCatalog.styled';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
 
 export const ProductCatalogComponent = ({
   data,

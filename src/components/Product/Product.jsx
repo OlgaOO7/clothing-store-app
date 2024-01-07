@@ -186,10 +186,10 @@ export const Product = ({ productsId }) => {
         amount: product.price.value * quantity,
         productId: productsId,
       };
-      toggleCartModal();
       // console.log(productToBasket);
       dispatch(createCart(productToBasket));
       dispatch(getCart());
+      toggleCartModal();
     } else {
       setMessageSize(true);
     }
