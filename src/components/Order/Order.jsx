@@ -34,6 +34,7 @@ export const Order = () => {
   const { state } = useLocation();
   const { isMobileScreen } = useMedia();
   const [orderSuccess, setOrderSuccess] = useState(null);
+  const [formStatus, setFormStatus] = useState(null);
   const [productAvailableQuantity, setProductAvailableQuantity] = useState({});
 
   const order = useSelector(selectOrder) || [];
@@ -78,7 +79,6 @@ export const Order = () => {
     const fetchProductQuantity = async () => {
       try {
         if (memoizedProducts) {
-          // Використовуйте memoizedProducts тут
           const productPromises = memoizedProducts.map(async item => {
             return fetchProductQuantityForItem(item.productId);
           });
@@ -101,6 +101,7 @@ export const Order = () => {
 
   return (
     <>
+      {}
       <NavWrapper>
         <LinkTo to={'/'}>Головна</LinkTo>
         {!isMobileScreen ? (
@@ -117,87 +118,100 @@ export const Order = () => {
           </>
         )}
       </NavWrapper>
-      <Section>
-        <Wrapper>
-          <Title>Ваше замовлення</Title>
-          <OrderWrapper>
-            {memoizedProducts.length === 0 ? (
-              <p>Замовлення порожнє</p>
-            ) : (
-              memoizedProducts.map(item => (
-                <OrderItem
-                  key={item.id}
-                  item={item}
-                  availableQuantity={productAvailableQuantity[item.productId]}
-                  setOrderSuccess={setOrderSuccess}
-                />
-              ))
-            )}
-          </OrderWrapper>
-        </Wrapper>
-      </Section>
-      <OrderResultSection>
-        <Wrapper>
-          {memoizedProducts.length === 0 || orderSuccess === false ? (
-            <OrderResultTitle style={{ textAlign: 'center' }}>
-              Наразі неможливо оформити замовлення
-            </OrderResultTitle>
-          ) : isMobileScreen ? (
-            <>
-              <OrderResultTitle>Всього</OrderResultTitle>
-              <OrderResultList>
-                <OrderResultListItem>
-                  <OrderResultTotal>
-                    {totalQuantity} товари(-ів) на суму
-                  </OrderResultTotal>
-                  <OrderResultTotal>
-                    {formatPrice(totalAmount)} {currencyCode}
-                  </OrderResultTotal>
-                </OrderResultListItem>
-                <OrderResultListItem>
-                  <OrderResultDeliveryFirst>
-                    Вартість доставки
-                  </OrderResultDeliveryFirst>
-                  <OrderResultDeliverySec>
-                    За тарифами перевізника
-                  </OrderResultDeliverySec>
-                </OrderResultListItem>
-              </OrderResultList>
-            </>
-          ) : (
-            <>
-              <OrderResultList>
-                <OrderResultListItem>
-                  <OrderResultTotal>
-                    {totalQuantity} товари(-ів) на суму
-                  </OrderResultTotal>
-                  <OrderResultTotal>
-                    {formatPrice(totalAmount)} {currencyCode}
-                  </OrderResultTotal>
-                </OrderResultListItem>
-                <OrderResultListItem>
-                  <OrderResultDeliveryFirst>
-                    Вартість доставки
-                  </OrderResultDeliveryFirst>
-                  <OrderResultDeliverySec>
-                    За тарифами перевізника
-                  </OrderResultDeliverySec>
-                </OrderResultListItem>
-                <OrderResultListItem>
-                  <OrderResultTitle>Разом:</OrderResultTitle>
-                  <OrderResultDestTotal>
-                    {formatPrice(totalAmount)} {currencyCode}
-                  </OrderResultDestTotal>
-                </OrderResultListItem>
-              </OrderResultList>
-            </>
-          )}
-        </Wrapper>
-      </OrderResultSection>
+      {formStatus === 'success' ? (
+        <></>
+      ) : (
+        <>
+          <Section>
+            <Wrapper>
+              <Title>Ваше замовлення</Title>
+              <OrderWrapper>
+                {memoizedProducts.length === 0 ? (
+                  <p>Замовлення порожнє</p>
+                ) : (
+                  memoizedProducts.map(item => (
+                    <OrderItem
+                      key={item.id}
+                      item={item}
+                      availableQuantity={
+                        productAvailableQuantity[item.productId]
+                      }
+                      setOrderSuccess={setOrderSuccess}
+                    />
+                  ))
+                )}
+              </OrderWrapper>
+            </Wrapper>
+          </Section>
+          <OrderResultSection>
+            <Wrapper>
+              {memoizedProducts.length === 0 || orderSuccess === false ? (
+                <OrderResultTitle style={{ textAlign: 'center' }}>
+                  Наразі неможливо оформити замовлення
+                </OrderResultTitle>
+              ) : isMobileScreen ? (
+                <>
+                  <OrderResultTitle>Всього</OrderResultTitle>
+                  <OrderResultList>
+                    <OrderResultListItem>
+                      <OrderResultTotal>
+                        {totalQuantity} товари(-ів) на суму
+                      </OrderResultTotal>
+                      <OrderResultTotal>
+                        {formatPrice(totalAmount)} {currencyCode}
+                      </OrderResultTotal>
+                    </OrderResultListItem>
+                    <OrderResultListItem>
+                      <OrderResultDeliveryFirst>
+                        Вартість доставки
+                      </OrderResultDeliveryFirst>
+                      <OrderResultDeliverySec>
+                        За тарифами перевізника
+                      </OrderResultDeliverySec>
+                    </OrderResultListItem>
+                  </OrderResultList>
+                </>
+              ) : (
+                <>
+                  <OrderResultList>
+                    <OrderResultListItem>
+                      <OrderResultTotal>
+                        {totalQuantity} товари(-ів) на суму
+                      </OrderResultTotal>
+                      <OrderResultTotal>
+                        {formatPrice(totalAmount)} {currencyCode}
+                      </OrderResultTotal>
+                    </OrderResultListItem>
+                    <OrderResultListItem>
+                      <OrderResultDeliveryFirst>
+                        Вартість доставки
+                      </OrderResultDeliveryFirst>
+                      <OrderResultDeliverySec>
+                        За тарифами перевізника
+                      </OrderResultDeliverySec>
+                    </OrderResultListItem>
+                    <OrderResultListItem>
+                      <OrderResultTitle>Разом:</OrderResultTitle>
+                      <OrderResultDestTotal>
+                        {formatPrice(totalAmount)} {currencyCode}
+                      </OrderResultDestTotal>
+                    </OrderResultListItem>
+                  </OrderResultList>
+                </>
+              )}
+            </Wrapper>
+          </OrderResultSection>
+        </>
+      )}
       {memoizedProducts.length === 0 || orderSuccess === false ? (
         <></>
       ) : (
-        <OrderForm sessionId={sessionId} orderSuccess={orderSuccess} />
+        <OrderForm
+          sessionId={sessionId}
+          orderSuccess={orderSuccess}
+          setFormStatus={setFormStatus}
+          formStatus={formStatus}
+        />
       )}
     </>
   );
