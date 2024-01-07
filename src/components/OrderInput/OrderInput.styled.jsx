@@ -111,3 +111,10 @@ export const CheckboxLabel = styled.label`
     line-height: 22px;
   }
 `;
+export const ErrorMessage = styled.p`
+  color: red;
+  font-size: 12px;
+  @media (min-width: 768px) {
+    font-size: 16px;
+  }
+`;
