@@ -98,3 +98,23 @@ export const DeleteIcon = styled.svg`
     height: 13px;
   }
 `;
+
+export const Notification = styled.p`
+  color: ${props => props.color};
+  font-size: ${props => props.fontSize};
+  padding-top: ${props => props.paddingTop};
+`;
+
+export const Wrapp = styled.div`
+  display: flex;
+`;
+
+export const AvailableQuantityWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const PriceWrapper = styled.div`
+  width: 130px;
+  margin-right: 180px;
+`;

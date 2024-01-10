@@ -20,6 +20,7 @@ export const createCart = createAsyncThunk(
       const res = await axios.post('/carts', credentials, config.headers);
       return res.data;
     } catch (err) {
+      console.error('err:', err);
       return thunkAPI.rejectWithValue(err.message);
     }
   }

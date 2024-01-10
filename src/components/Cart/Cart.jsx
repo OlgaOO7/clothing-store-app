@@ -10,7 +10,6 @@ import {
   selectIsRefreshing,
   selectTotalQunaity,
 } from 'redux/cart/selectors';
-// import { getProductById } from 'redux/products/operations';
 import { CartProductItem } from './CartProductItem/CartProductItem';
 import { formatPrice } from 'utils/formatPrice';
 
@@ -31,6 +30,7 @@ import {
   OrderLink,
   CatalogLink,
   DivToFix,
+  DeleteCartBtn,
 } from './Cart.styled';
 
 export const Cart = () => {
@@ -48,6 +48,10 @@ export const Cart = () => {
   const cartData = useSelector(selectCart);
   const cartTotalQuantity = useSelector(selectTotalQunaity);
   const isLoading = useSelector(selectIsRefreshing);
+
+  const unavailableProductQuantity =
+    cartProducts &&
+    cartProducts.some(item => productAvailableQuantity[item.productId] === 0);
 
   const fetchCart = useCallback(() => {
     try {
@@ -76,8 +80,6 @@ export const Cart = () => {
           const matchingSku = productResponse.data.skuSet.find(
             skuSet => skuSet.id === cartItem.sku.id
           );
-
-          // console.log(`matchingSku`, matchingSku);
           if (matchingSku) {
             return {
               productId,
@@ -107,7 +109,6 @@ export const Cart = () => {
             map[product.productId] = product.availableQuantity;
             return map;
           }, {});
-          // console.log(`productQuantity`, productQuantity);
 
           setProductAvailableQuantity(productQuantity);
         }
@@ -120,17 +121,19 @@ export const Cart = () => {
   }, [cartData, dispatch]);
 
   // console.log(cartProducts);
-  // console.log(cartData);
+  // console.log('cart data:', cartData);
 
   const increaseProductQuantity = async productId => {
     const itemToUpdate = cartProducts.find(
       item => item.productId === productId
     );
+
     const quantityToIncrease = itemToUpdate.quantity + 1;
     const increasedItemQuantity = quantityToIncrease - itemToUpdate.quantity;
-    // console.log(increasedItemQuantity);
+    const availableQuantityBySku =
+      productAvailableQuantity[itemToUpdate.productId];
 
-    if (itemToUpdate) {
+    if (itemToUpdate && quantityToIncrease <= availableQuantityBySku) {
       const updatedProduct = {
         sessionId: userUid,
         skuId: itemToUpdate.sku.id,
@@ -138,7 +141,7 @@ export const Cart = () => {
         quantity: increasedItemQuantity,
         amount: itemToUpdate.price * increasedItemQuantity,
       };
-      // console.log(updatedProduct);
+      // console.log('updatedProduct:', updatedProduct);
       try {
         await dispatch(createCart(updatedProduct));
         await fetchCart();
@@ -146,6 +149,7 @@ export const Cart = () => {
       } catch (err) {
         console.error('Error updating product quantity:', err);
       }
+      // console.log(cartData);
     } else {
       return;
     }
@@ -157,7 +161,6 @@ export const Cart = () => {
     );
     const quantityToDecrease = itemToUpdate.quantity - 1;
     const decreasedItemQuantity = quantityToDecrease - itemToUpdate.quantity;
-    // console.log(decreasedItemQuantity);
 
     if (itemToUpdate && itemToUpdate.quantity > 1) {
       const updatedProduct = {
@@ -197,29 +200,16 @@ export const Cart = () => {
         <div>
           <TaglineWrapper>
             <DivToFix>
-              <div
-                style={{
-                  marginTop: '20px',
-                  marginBottom: '20px',
-                  marginLeft: 'auto',
-                }}
-              >
-                <button
-                  style={{
-                    padding: 0,
-                    backgroundColor: 'transparent',
-                    border: '1px solid #000',
-                  }}
-                  onClick={clearProductCart}
-                >
-                  Очистити корзину
-                </button>
-              </div>
               <TaglineSubWrapper>
                 <ProductText>Товар</ProductText>
                 <ProductQuantity>Кількість</ProductQuantity>
                 <p>Ціна</p>
               </TaglineSubWrapper>
+              <div>
+                <DeleteCartBtn onClick={clearProductCart}>
+                  Очистити корзину
+                </DeleteCartBtn>
+              </div>
             </DivToFix>
 
             <ProductCartList>
@@ -256,12 +246,16 @@ export const Cart = () => {
               </p>
             </PriceWrapper>
             <LinkBtnWrapper>
-              <OrderLink
-                to={`/order`}
-                state={{ from: location, sessionId: cartData?.sessionId }}
-              >
-                Оформити замовлення
-              </OrderLink>
+              {unavailableProductQuantity ? (
+                <OrderLink disabled>Оформити замовлення</OrderLink>
+              ) : (
+                <OrderLink
+                  to={`/order`}
+                  state={{ from: location, sessionId: cartData?.sessionId }}
+                >
+                  Оформити замовлення
+                </OrderLink>
+              )}
               <CatalogLink to={`/catalog`} state={{ from: location }}>
                 Продовжити покупку
               </CatalogLink>

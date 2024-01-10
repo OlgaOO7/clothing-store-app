@@ -119,7 +119,16 @@ export const DivToFix = styled.div`
   position: sticky;
   top: 100px;
   z-index: 1111;
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 29px;
   background-color: rgb(255, 255, 255);
   border-bottom: 1px solid #686868;
+`;
+
+export const DeleteCartBtn = styled.button`
+  padding: 8px 10px;
+  color: #ffffff;
+  background-color: #000000;
+  border: none;
 `;
