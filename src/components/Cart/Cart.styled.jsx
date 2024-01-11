@@ -27,6 +27,11 @@ export const LinkTo = styled(Link)`
   }
 `;
 
+export const TaglineWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 export const TaglineSubWrapper = styled.div`
   display: flex;
   margin-bottom: 18px;

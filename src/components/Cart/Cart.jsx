@@ -18,6 +18,7 @@ import {
   LinkWrapper,
   Divider,
   LinkTo,
+  TaglineWrapper,
   TaglineSubWrapper,
   ProductText,
   ProductQuantity,
@@ -203,42 +204,45 @@ export const Cart = () => {
         <p>Is loading...</p>
       ) : cartTotalQuantity ? (
         <div>
-          <HeadlineWrapper>
-            <TaglineSubWrapper>
-              <ProductText>Товар</ProductText>
-              <ProductQuantity>Кількість</ProductQuantity>
-              <p>Ціна</p>
-            </TaglineSubWrapper>
-            <div>
-              <DeleteCartBtn onClick={clearProductCart}>
-                Очистити корзину
-              </DeleteCartBtn>
+          <TaglineWrapper>
+            <HeadlineWrapper>
+              <TaglineSubWrapper>
+                <ProductText>Товар</ProductText>
+                <ProductQuantity>Кількість</ProductQuantity>
+                <p>Ціна</p>
+              </TaglineSubWrapper>
+              <div>
+                <DeleteCartBtn onClick={clearProductCart}>
+                  Очистити корзину
+                </DeleteCartBtn>
+              </div>
+            </HeadlineWrapper>
+            <div
+              style={{
+                display: 'flex',
+                padding: '29px 0',
+                borderTop: '1px solid #686868',
+                borderBottom: '1px solid #686868',
+              }}
+            >
+              <ProductCartList>
+                {cartProducts?.length > 0 &&
+                  cartProducts.map(item => (
+                    <li key={item.sku.id}>
+                      <CartProductItem
+                        item={item}
+                        increaseProductQuantity={increaseProductQuantity}
+                        decreaseProductQuantity={decreaseProductQuantity}
+                        availableQuantity={
+                          productAvailableQuantity[item.productId]
+                        }
+                      />
+                    </li>
+                  ))}
+              </ProductCartList>
             </div>
-          </HeadlineWrapper>
-          <div
-            style={{
-              display: 'flex',
-              padding: '29px 0',
-              borderTop: '1px solid #686868',
-              borderBottom: '1px solid #686868',
-            }}
-          >
-            <ProductCartList>
-              {cartProducts?.length > 0 &&
-                cartProducts.map(item => (
-                  <li key={item.sku.id}>
-                    <CartProductItem
-                      item={item}
-                      increaseProductQuantity={increaseProductQuantity}
-                      decreaseProductQuantity={decreaseProductQuantity}
-                      availableQuantity={
-                        productAvailableQuantity[item.productId]
-                      }
-                    />
-                  </li>
-                ))}
-            </ProductCartList>
-          </div>
+          </TaglineWrapper>
+
           <Rectangle>
             <TextWrapper>
               <p>
