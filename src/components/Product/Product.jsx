@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -35,6 +35,7 @@ import {
   TextQuantity,
   InfoMessage,
 } from './Product.styled';
+import { selectCart } from 'redux/cart/selectors';
 
 export const Product = ({ productsId }) => {
   const [product, setProduct] = useState([]);
@@ -54,9 +55,7 @@ export const Product = ({ productsId }) => {
 
   // cart modal
   const [isShowCartModal, setIsShowCartModal] = useState(false);
-
-  // const cart = useSelector(selectCart);
-  // const cartId = cart.id;
+  const basket = useSelector(selectCart);
 
   useEffect(() => {
     // Продукт
@@ -184,6 +183,17 @@ export const Product = ({ productsId }) => {
 
   //додавання в кошик
   const addToCart = async () => {
+    if (basket.items) {
+      const isIdInBasket = basket.items
+        .map(item => item.sku.id)
+        .includes(skuIdProduct);
+      if (isIdInBasket && quantity >= amount) {
+        alert('товар вже в кошику');
+        console.log('ytghfdbkmyj');
+        setMessage(true);
+        return;
+      }
+    }
     if (skuIdProduct) {
       let userUid = localStorage.getItem('userUid');
       if (!userUid) {
@@ -198,10 +208,7 @@ export const Product = ({ productsId }) => {
         amount: product.price.value * quantity,
         productId: productsId,
       };
-      // console.log(productToBasket);
-      // if (!cartId) {
-      //   await dispatch(createCart(productToBasket));
-      // }
+
       await dispatch(createCart(productToBasket));
       await dispatch(getCart());
 
@@ -281,7 +288,7 @@ export const Product = ({ productsId }) => {
                 />
                 {message && (
                   <InfoMessage>
-                    Дана кількість цього товару недоступна
+                    Більша кількість цього товару недоступна
                   </InfoMessage>
                 )}
               </div>
