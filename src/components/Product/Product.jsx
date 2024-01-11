@@ -184,12 +184,11 @@ export const Product = ({ productsId }) => {
   //додавання в кошик
   const addToCart = async () => {
     if (basket.items) {
-      const isIdInBasket = basket.items
-        .map(item => item.sku.id)
-        .includes(skuIdProduct);
-      if (isIdInBasket && quantity >= amount) {
-        alert('товар вже в кошику');
-        console.log('ytghfdbkmyj');
+      const existingItem = basket.items.find(
+        item => item.sku.id === skuIdProduct
+      );
+
+      if (existingItem && existingItem.quantity + quantity > amount) {
         setMessage(true);
         return;
       }
