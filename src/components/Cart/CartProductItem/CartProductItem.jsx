@@ -45,6 +45,9 @@ export const CartProductItem = ({
   const isOneProductAvalable = availableQuantity === 1;
   const isMaxAvailableQunatity = availableQuantity === item.quantity;
 
+  console.log('isMaxAvailableQunatity:', isMaxAvailableQunatity);
+  console.log('isOneProductAvalable:', isOneProductAvalable);
+
   return (
     <Wrapper>
       {isMobileScreen && (
@@ -82,7 +85,13 @@ export const CartProductItem = ({
         </ProductDescriptionWrapper>
       </InfoProductWrapper>
       {!availableQuantity ? (
-        <div style={{ width: '547px' }}>
+        <div
+          style={{
+            width: '547px',
+            display: 'flex',
+            justifyContent: 'space-between',
+          }}
+        >
           <Notification color="red">Наразі товар відсутній</Notification>
           {!isMobileScreen && (
             <ProductDeleteBtn
@@ -112,16 +121,11 @@ export const CartProductItem = ({
                   </Icon>
                 </span>
               </QuantityWrapper>
-              {isMaxAvailableQunatity ||
-                (isOneProductAvalable && (
-                  <Notification
-                    $paddingTop="6px"
-                    color="#4C4B4B"
-                    fontSize="12px"
-                  >
-                    Доступна кількість: {availableQuantity}
-                  </Notification>
-                ))}
+              {isMaxAvailableQunatity || isOneProductAvalable ? (
+                <Notification $paddingTop="6px" color="#4C4B4B" fontSize="12px">
+                  Доступна кількість: {availableQuantity}
+                </Notification>
+              ) : null}
             </AvailableQuantityWrapper>
             <PriceWrapper>
               <Price>
