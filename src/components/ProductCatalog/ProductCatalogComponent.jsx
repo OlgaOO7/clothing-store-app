@@ -13,7 +13,6 @@ import {
   SearchWord,
 } from './ProductCatalog.styled';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
 
 export const ProductCatalogComponent = ({
   data,
@@ -26,7 +25,6 @@ export const ProductCatalogComponent = ({
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const searchQuery = searchParams.get('s');
-  console.log(totalPage);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });

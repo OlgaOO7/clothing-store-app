@@ -16,6 +16,7 @@ import { SizeGridProducts } from './SizeGridProducts/SizeGridProducts';
 import { CartModal } from '../Cart/CartModal/CartModal';
 
 import { createCart, getCart } from 'redux/cart/operations';
+// import { selectCart } from 'redux/cart/selectors';
 
 import { useMedia } from '../../hooks/useMedia';
 
@@ -53,6 +54,9 @@ export const Product = ({ productsId }) => {
 
   // cart modal
   const [isShowCartModal, setIsShowCartModal] = useState(false);
+
+  // const cart = useSelector(selectCart);
+  // const cartId = cart.id;
 
   useEffect(() => {
     // Продукт
@@ -179,7 +183,7 @@ export const Product = ({ productsId }) => {
   };
 
   //додавання в кошик
-  const addToCart = () => {
+  const addToCart = async () => {
     if (skuIdProduct) {
       let userUid = localStorage.getItem('userUid');
       if (!userUid) {
@@ -194,10 +198,14 @@ export const Product = ({ productsId }) => {
         amount: product.price.value * quantity,
         productId: productsId,
       };
-      toggleCartModal();
       // console.log(productToBasket);
-      dispatch(createCart(productToBasket));
-      dispatch(getCart());
+      // if (!cartId) {
+      //   await dispatch(createCart(productToBasket));
+      // }
+      await dispatch(createCart(productToBasket));
+      await dispatch(getCart());
+
+      toggleCartModal();
     } else {
       setMessageSize(true);
     }

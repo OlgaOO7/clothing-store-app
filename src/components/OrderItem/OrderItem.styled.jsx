@@ -39,6 +39,7 @@ export const OrderContent = styled.div`
   width: 128px;
   @media (min-width: 768px) {
     flex-direction: column;
+    width: auto;
   }
 `;
 export const OrderContentWrapper = styled.div`

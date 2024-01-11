@@ -62,7 +62,7 @@ export const OrderItem = ({ item, setOrderSuccess, availableQuantity }) => {
             ) : (
               <>
                 <OrderContentWrapper>
-                  <OrderTitle>{productTitle.slice(0, 5)}...</OrderTitle>
+                  <OrderTitle>{productTitle}</OrderTitle>
                   <OrderDescription>
                     Колір:<OrderColor $color={colorhex}></OrderColor>
                   </OrderDescription>

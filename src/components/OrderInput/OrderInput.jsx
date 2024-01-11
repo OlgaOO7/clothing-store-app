@@ -1,5 +1,6 @@
 import {
   CheckboxLabel,
+  ErrorMessage,
   InputMaskStyle,
   InputStyle,
   LabelStyle,
@@ -19,6 +20,9 @@ export const OrderInput = ({
   disabled,
   errors,
 }) => {
+  const errorMessage = errors[name]?.message;
+
+  const showMatchesError = errors[name]?.type === 'matches';
   return (
     <>
       {type === 'radio' ? (
@@ -72,6 +76,9 @@ export const OrderInput = ({
             $errors={errors[name]}
             autoComplete="true"
           ></InputStyle>
+          {showMatchesError && errorMessage && (
+            <ErrorMessage>{errorMessage}</ErrorMessage>
+          )}
         </WrapInput>
       )}
     </>

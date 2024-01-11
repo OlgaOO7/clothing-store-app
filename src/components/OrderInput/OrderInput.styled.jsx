@@ -39,7 +39,7 @@ export const InputStyle = styled.input`
   box-sizing: border-box;
   display: flex;
   width: 100%;
-  padding: 8.5px 16px;
+  padding: 7.5px 16px;
   border: 1px solid #000;
   color: #000;
   font-size: 14px;
@@ -54,7 +54,7 @@ export const InputStyle = styled.input`
   }
   @media (min-width: 768px) {
     max-width: 403px;
-    padding: 13px 16px;
+    padding: 12px 16px;
     font-size: 16px;
     line-height: 22px;
   }
@@ -109,5 +109,12 @@ export const CheckboxLabel = styled.label`
     gap: 12px;
     font-size: 16px;
     line-height: 22px;
+  }
+`;
+export const ErrorMessage = styled.p`
+  color: red;
+  font-size: 12px;
+  @media (min-width: 768px) {
+    font-size: 16px;
   }
 `;
