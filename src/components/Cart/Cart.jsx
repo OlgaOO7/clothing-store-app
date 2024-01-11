@@ -18,7 +18,6 @@ import {
   LinkWrapper,
   Divider,
   LinkTo,
-  TaglineWrapper,
   TaglineSubWrapper,
   ProductText,
   ProductQuantity,
@@ -29,7 +28,7 @@ import {
   LinkBtnWrapper,
   OrderLink,
   CatalogLink,
-  DivToFix,
+  HeadlineWrapper,
   DeleteCartBtn,
 } from './Cart.styled';
 
@@ -52,6 +51,12 @@ export const Cart = () => {
   const unavailableProductQuantity =
     cartProducts &&
     cartProducts.some(item => productAvailableQuantity[item.productId] === 0);
+
+  const invalidQuantity =
+    cartProducts &&
+    cartProducts.some(
+      item => productAvailableQuantity[item.productId] < item.quantity
+    );
 
   const fetchCart = useCallback(() => {
     try {
@@ -198,20 +203,26 @@ export const Cart = () => {
         <p>Is loading...</p>
       ) : cartTotalQuantity ? (
         <div>
-          <TaglineWrapper>
-            <DivToFix>
-              <TaglineSubWrapper>
-                <ProductText>Товар</ProductText>
-                <ProductQuantity>Кількість</ProductQuantity>
-                <p>Ціна</p>
-              </TaglineSubWrapper>
-              <div>
-                <DeleteCartBtn onClick={clearProductCart}>
-                  Очистити корзину
-                </DeleteCartBtn>
-              </div>
-            </DivToFix>
-
+          <HeadlineWrapper>
+            <TaglineSubWrapper>
+              <ProductText>Товар</ProductText>
+              <ProductQuantity>Кількість</ProductQuantity>
+              <p>Ціна</p>
+            </TaglineSubWrapper>
+            <div>
+              <DeleteCartBtn onClick={clearProductCart}>
+                Очистити корзину
+              </DeleteCartBtn>
+            </div>
+          </HeadlineWrapper>
+          <div
+            style={{
+              display: 'flex',
+              padding: '29px 0',
+              borderTop: '1px solid #686868',
+              borderBottom: '1px solid #686868',
+            }}
+          >
             <ProductCartList>
               {cartProducts?.length > 0 &&
                 cartProducts.map(item => (
@@ -227,7 +238,7 @@ export const Cart = () => {
                   </li>
                 ))}
             </ProductCartList>
-          </TaglineWrapper>
+          </div>
           <Rectangle>
             <TextWrapper>
               <p>
@@ -246,7 +257,7 @@ export const Cart = () => {
               </p>
             </PriceWrapper>
             <LinkBtnWrapper>
-              {unavailableProductQuantity ? (
+              {unavailableProductQuantity || invalidQuantity ? (
                 <OrderLink disabled>Оформити замовлення</OrderLink>
               ) : (
                 <OrderLink
