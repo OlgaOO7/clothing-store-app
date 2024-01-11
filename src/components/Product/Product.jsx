@@ -16,7 +16,7 @@ import { SizeGridProducts } from './SizeGridProducts/SizeGridProducts';
 import { CartModal } from '../Cart/CartModal/CartModal';
 
 import { createCart, getCart } from 'redux/cart/operations';
-// import { selectCart } from 'redux/cart/selectors';
+import { selectCart } from 'redux/cart/selectors';
 
 import { useMedia } from '../../hooks/useMedia';
 
@@ -35,7 +35,6 @@ import {
   TextQuantity,
   InfoMessage,
 } from './Product.styled';
-import { selectCart } from 'redux/cart/selectors';
 
 export const Product = ({ productsId }) => {
   const [product, setProduct] = useState([]);
