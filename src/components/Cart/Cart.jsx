@@ -39,6 +39,7 @@ export const Cart = () => {
   // const [cartTotalAmount, setCartTotalAmount] = useState(null);
   // const [cartCurrency, setCartCurrency] = useState('');
   // const [cartProductQunatity, setCartProductQuantity] = useState(null);
+  const [forceRerender, setForceRerender] = useState(false);
 
   const dispatch = useDispatch();
   const location = useLocation();
@@ -151,6 +152,7 @@ export const Cart = () => {
       try {
         await dispatch(createCart(updatedProduct));
         await fetchCart();
+        setForceRerender(!forceRerender);
         // await dispatch(getCart());
       } catch (err) {
         console.error('Error updating product quantity:', err);
@@ -245,6 +247,7 @@ export const Cart = () => {
 
           <Rectangle>
             <TextWrapper>
+              {forceRerender && <div>Force Rerender Test</div>}
               <p>
                 Вартість
                 <br /> доставки
