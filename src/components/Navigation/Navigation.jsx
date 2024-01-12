@@ -26,6 +26,7 @@ import {
   SearchBtn,
   SearchIcon,
 } from './Navigation.styled';
+import { useLocation } from 'react-router';
 
 export const Navigation = ({ sectionType, toggleShowSearch }) => {
   const [isShowMenu, setIsShowMenu] = useState(false);
@@ -33,6 +34,7 @@ export const Navigation = ({ sectionType, toggleShowSearch }) => {
 
   const dispatch = useDispatch();
   const cartTotalQuantity = useSelector(selectTotalQunaity);
+  const location = useLocation();
 
   // useEffect(() => {
   //   try {
@@ -86,7 +88,7 @@ export const Navigation = ({ sectionType, toggleShowSearch }) => {
             <use href={`${Sprite}#icon-search`} />
           </SearchIcon>
         </SearchBtn>
-        <CartLink to="/cart">
+        <CartLink to="/cart" state={{ from: location }}>
           <CartIconWrapper>
             <CartIcon width={24} height={24}>
               <use href={`${Sprite}#icon-cart`} />

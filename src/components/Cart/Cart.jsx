@@ -10,7 +10,6 @@ import {
   selectIsRefreshing,
   selectTotalQunaity,
 } from 'redux/cart/selectors';
-// import { getProductById } from 'redux/products/operations';
 import { CartProductItem } from './CartProductItem/CartProductItem';
 import { formatPrice } from 'utils/formatPrice';
 
@@ -30,15 +29,13 @@ import {
   LinkBtnWrapper,
   OrderLink,
   CatalogLink,
-  DivToFix,
+  HeadlineWrapper,
+  DeleteCartBtn,
 } from './Cart.styled';
 
 export const Cart = () => {
   const [cartProducts, setCartProducts] = useState([]);
   const [productAvailableQuantity, setProductAvailableQuantity] = useState({});
-  // const [cartTotalAmount, setCartTotalAmount] = useState(null);
-  // const [cartCurrency, setCartCurrency] = useState('');
-  // const [cartProductQunatity, setCartProductQuantity] = useState(null);
 
   const dispatch = useDispatch();
   const location = useLocation();
@@ -48,6 +45,16 @@ export const Cart = () => {
   const cartData = useSelector(selectCart);
   const cartTotalQuantity = useSelector(selectTotalQunaity);
   const isLoading = useSelector(selectIsRefreshing);
+
+  const unavailableProductQuantity =
+    cartProducts &&
+    cartProducts.some(item => productAvailableQuantity[item.productId] === 0);
+
+  const invalidQuantity =
+    cartProducts &&
+    cartProducts.some(
+      item => productAvailableQuantity[item.productId] < item.quantity
+    );
 
   const fetchCart = useCallback(() => {
     try {
@@ -70,14 +77,10 @@ export const Cart = () => {
         const cartItem = cartData.items.find(
           item => item.productId === productId
         );
-        // console.log(`productResponse:`, productResponse);
-        // console.log(`cartItem:`, cartItem);
         if (cartItem) {
           const matchingSku = productResponse.data.skuSet.find(
             skuSet => skuSet.id === cartItem.sku.id
           );
-
-          // console.log(`matchingSku`, matchingSku);
           if (matchingSku) {
             return {
               productId,
@@ -107,7 +110,6 @@ export const Cart = () => {
             map[product.productId] = product.availableQuantity;
             return map;
           }, {});
-          // console.log(`productQuantity`, productQuantity);
 
           setProductAvailableQuantity(productQuantity);
         }
@@ -119,18 +121,17 @@ export const Cart = () => {
     fetchProductQuantity();
   }, [cartData, dispatch]);
 
-  // console.log(cartProducts);
-  // console.log(cartData);
-
   const increaseProductQuantity = async productId => {
     const itemToUpdate = cartProducts.find(
       item => item.productId === productId
     );
+
     const quantityToIncrease = itemToUpdate.quantity + 1;
     const increasedItemQuantity = quantityToIncrease - itemToUpdate.quantity;
-    // console.log(increasedItemQuantity);
+    const availableQuantityBySku =
+      productAvailableQuantity[itemToUpdate.productId];
 
-    if (itemToUpdate) {
+    if (itemToUpdate && quantityToIncrease <= availableQuantityBySku) {
       const updatedProduct = {
         sessionId: userUid,
         skuId: itemToUpdate.sku.id,
@@ -138,11 +139,9 @@ export const Cart = () => {
         quantity: increasedItemQuantity,
         amount: itemToUpdate.price * increasedItemQuantity,
       };
-      // console.log(updatedProduct);
       try {
         await dispatch(createCart(updatedProduct));
         await fetchCart();
-        // await dispatch(getCart());
       } catch (err) {
         console.error('Error updating product quantity:', err);
       }
@@ -157,7 +156,6 @@ export const Cart = () => {
     );
     const quantityToDecrease = itemToUpdate.quantity - 1;
     const decreasedItemQuantity = quantityToDecrease - itemToUpdate.quantity;
-    // console.log(decreasedItemQuantity);
 
     if (itemToUpdate && itemToUpdate.quantity > 1) {
       const updatedProduct = {
@@ -167,10 +165,8 @@ export const Cart = () => {
         quantity: decreasedItemQuantity,
         amount: itemToUpdate.price * decreasedItemQuantity,
       };
-      // console.log(updatedProduct);
       try {
         await dispatch(createCart(updatedProduct));
-        // await dispatch(getCart());
         await fetchCart();
       } catch (err) {
         console.error('Error updating product quantity:', err);
@@ -196,48 +192,44 @@ export const Cart = () => {
       ) : cartTotalQuantity ? (
         <div>
           <TaglineWrapper>
-            <DivToFix>
-              <div
-                style={{
-                  marginTop: '20px',
-                  marginBottom: '20px',
-                  marginLeft: 'auto',
-                }}
-              >
-                <button
-                  style={{
-                    padding: 0,
-                    backgroundColor: 'transparent',
-                    border: '1px solid #000',
-                  }}
-                  onClick={clearProductCart}
-                >
-                  Очистити корзину
-                </button>
-              </div>
+            <HeadlineWrapper>
               <TaglineSubWrapper>
                 <ProductText>Товар</ProductText>
                 <ProductQuantity>Кількість</ProductQuantity>
                 <p>Ціна</p>
               </TaglineSubWrapper>
-            </DivToFix>
-
-            <ProductCartList>
-              {cartProducts?.length > 0 &&
-                cartProducts.map(item => (
-                  <li key={item.sku.id}>
-                    <CartProductItem
-                      item={item}
-                      increaseProductQuantity={increaseProductQuantity}
-                      decreaseProductQuantity={decreaseProductQuantity}
-                      availableQuantity={
-                        productAvailableQuantity[item.productId]
-                      }
-                    />
-                  </li>
-                ))}
-            </ProductCartList>
+              <div>
+                <DeleteCartBtn onClick={clearProductCart}>
+                  Очистити корзину
+                </DeleteCartBtn>
+              </div>
+            </HeadlineWrapper>
+            <div
+              style={{
+                display: 'flex',
+                padding: '29px 0',
+                borderTop: '1px solid #686868',
+                borderBottom: '1px solid #686868',
+              }}
+            >
+              <ProductCartList>
+                {cartProducts?.length > 0 &&
+                  cartProducts.map(item => (
+                    <li key={item.sku.id}>
+                      <CartProductItem
+                        item={item}
+                        increaseProductQuantity={increaseProductQuantity}
+                        decreaseProductQuantity={decreaseProductQuantity}
+                        availableQuantity={
+                          productAvailableQuantity[item.productId]
+                        }
+                      />
+                    </li>
+                  ))}
+              </ProductCartList>
+            </div>
           </TaglineWrapper>
+
           <Rectangle>
             <TextWrapper>
               <p>
@@ -256,12 +248,16 @@ export const Cart = () => {
               </p>
             </PriceWrapper>
             <LinkBtnWrapper>
-              <OrderLink
-                to={`/order`}
-                state={{ from: location, sessionId: cartData?.sessionId }}
-              >
-                Оформити замовлення
-              </OrderLink>
+              {unavailableProductQuantity || invalidQuantity ? (
+                <OrderLink disabled>Оформити замовлення</OrderLink>
+              ) : (
+                <OrderLink
+                  to={`/order`}
+                  state={{ from: location, sessionId: cartData?.sessionId }}
+                >
+                  Оформити замовлення
+                </OrderLink>
+              )}
               <CatalogLink to={`/catalog`} state={{ from: location }}>
                 Продовжити покупку
               </CatalogLink>

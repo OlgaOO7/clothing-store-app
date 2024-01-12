@@ -1,6 +1,8 @@
 export const selectTotalPages = state =>
   state.products.productsCategory?.totalPages;
 export const selectProducts = state => state.products.productsCategory?.content;
+// export const selectProducts = (state, type) =>
+//   type !== 'searchpage' ? state.products.productsCategory?.content : null;
 export const selectNewProducts = state => state.products.products?.content;
 
 export const selectSearchedProducts = state => state.products.productsBySearch;

@@ -10,6 +10,7 @@ import Sprite from 'images/sprite.svg';
 import {
   ImageProduct,
   CartItemWrapper,
+  ItemInfoWrapper,
   InfoTextWrapper,
   ItemTitle,
   ItemPrice,
@@ -28,27 +29,30 @@ export const CartItem = ({ item }) => {
   };
   return (
     <CartItemWrapper>
-      <Link to={`/catalog/${item.productId}`} state={{ from: location }}>
-        <ImageProduct
-          src={item.photoUrl}
-          alt={cuttedTitle(item.productTitle, 15)}
-        />
-      </Link>
-
-      <InfoTextWrapper>
-        <Link
-          to={`/catalog/${item.productId}`}
-          state={{ from: location }}
-          style={{ color: '#000' }}
-        >
-          <ItemTitle>{cuttedTitle(item.productTitle, 15)}</ItemTitle>
+      <ItemInfoWrapper>
+        <Link to={`/catalog/${item.productId}`} state={{ from: location }}>
+          <ImageProduct
+            src={item.photoUrl}
+            alt={cuttedTitle(item.productTitle, 15)}
+          />
         </Link>
-        <p>{item.sku.characteristics[1].name}</p>
-        <p>{item.sku.characteristics[0].name}</p>
-        <ItemPrice>
-          {item.quantity} x {formatPrice(item.price)} {item.currencyCode}
-        </ItemPrice>
-      </InfoTextWrapper>
+
+        <InfoTextWrapper>
+          <Link
+            to={`/catalog/${item.productId}`}
+            state={{ from: location }}
+            style={{ color: '#000' }}
+          >
+            <ItemTitle>{cuttedTitle(item.productTitle, 15)}</ItemTitle>
+          </Link>
+          <p>{item.sku.characteristics[1].name}</p>
+          <p>{item.sku.characteristics[0].name}</p>
+          <ItemPrice>
+            {item.quantity} x {formatPrice(item.price)} {item.currencyCode}
+          </ItemPrice>
+        </InfoTextWrapper>
+      </ItemInfoWrapper>
+
       <ItemDeleteBtn onClick={() => deleteProduct(item.sku.id)}>
         <DeleteIcon width={13} height={13}>
           <use href={`${Sprite}#icon-cross`} />

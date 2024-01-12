@@ -5,6 +5,7 @@ export const ColorOptions = ({
   colorValue,
   setColorValue,
   setClickedIndex,
+  setQuantity,
 }) => {
   return (
     <Wrap>
@@ -17,6 +18,7 @@ export const ColorOptions = ({
               onClick={() => {
                 setColorValue(color);
                 setClickedIndex(0);
+                setQuantity(1);
               }}
             >
               <ColorElips
