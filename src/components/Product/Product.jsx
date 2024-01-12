@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -16,7 +16,7 @@ import { SizeGridProducts } from './SizeGridProducts/SizeGridProducts';
 import { CartModal } from '../Cart/CartModal/CartModal';
 
 import { createCart, getCart } from 'redux/cart/operations';
-// import { selectCart } from 'redux/cart/selectors';
+import { selectCart } from 'redux/cart/selectors';
 
 import { useMedia } from '../../hooks/useMedia';
 
@@ -54,9 +54,7 @@ export const Product = ({ productsId }) => {
 
   // cart modal
   const [isShowCartModal, setIsShowCartModal] = useState(false);
-
-  // const cart = useSelector(selectCart);
-  // const cartId = cart.id;
+  const basket = useSelector(selectCart);
 
   useEffect(() => {
     // Продукт
@@ -68,6 +66,7 @@ export const Product = ({ productsId }) => {
         const { value } = data.skuSet[0].characteristics.find(
           ({ characteristic }) => characteristic.title === 'color'
         );
+
         setColorValue(value);
 
         const { availableQuantity } = data.skuSet[0];
@@ -138,6 +137,13 @@ export const Product = ({ productsId }) => {
       setSkuIdProduct(skuId);
       setMessageSize(false);
     }
+    // Отримання доступної кількості для обраного розміру
+    const selectedSize = product.skuSet.find(sku => sku.id === skuId);
+
+    if (selectedSize) {
+      setAmount(selectedSize.availableQuantity);
+      setQuantity(1);
+    }
   };
 
   // Розміри, що відповідають обраному кольору
@@ -176,6 +182,16 @@ export const Product = ({ productsId }) => {
 
   //додавання в кошик
   const addToCart = async () => {
+    if (basket.items) {
+      const existingItem = basket.items.find(
+        item => item.sku.id === skuIdProduct
+      );
+
+      if (existingItem && existingItem.quantity + quantity > amount) {
+        setMessage(true);
+        return;
+      }
+    }
     if (skuIdProduct) {
       let userUid = localStorage.getItem('userUid');
       if (!userUid) {
@@ -190,10 +206,7 @@ export const Product = ({ productsId }) => {
         amount: product.price.value * quantity,
         productId: productsId,
       };
-      // console.log(productToBasket);
-      // if (!cartId) {
-      //   await dispatch(createCart(productToBasket));
-      // }
+
       await dispatch(createCart(productToBasket));
       await dispatch(getCart());
 
@@ -243,6 +256,7 @@ export const Product = ({ productsId }) => {
               colorValue={colorValue}
               setClickedIndex={setClickedIndex}
               setColorValue={setColorValue}
+              setQuantity={setQuantity}
             />
             <SizeWrap>
               {/* Розміри */}
@@ -272,7 +286,7 @@ export const Product = ({ productsId }) => {
                 />
                 {message && (
                   <InfoMessage>
-                    Дана кількість цього товару недоступна
+                    Більша кількість цього товару недоступна
                   </InfoMessage>
                 )}
               </div>
