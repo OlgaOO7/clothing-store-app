@@ -82,6 +82,7 @@ export const ProductCartList = styled.ul`
   /* Firefox: */
   scrollbar-width: thin;
   scrollbar-color: #888 #f1f1f1;
+  scroll-behavior: smooth;
 
   /* Chrome and Safari: */
   &::-webkit-scrollbar {

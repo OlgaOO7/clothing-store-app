@@ -6,16 +6,40 @@ export const CartModalList = styled.ul`
   flex-direction: column;
   gap: 18px;
   max-height: 377px;
+  padding-bottom: 8px;
   overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+  /* -webkit-overflow-scrolling: touch; */
+
+  /* IE and Edge: */
+  -ms-overflow-style: none;
+  &::-ms-scrollbar-thumb {
+    background-color: #888;
+  }
+  &::-ms-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+
+  /* FireFox: */
   scrollbar-width: thin;
-  scrollbar-color: #c6c6c6;
+  scrollbar-color: #888 #f1f1f1;
   scroll-behavior: smooth;
+
+  /* Chrome and Safari: */
   &::-webkit-scrollbar {
     width: 3px;
+    @media (min-width: 768px) {
+      width: 6px;
+    }
   }
+
   &::-webkit-scrollbar-thumb {
-    background-color: #c6c6c6;
+    background-color: #888;
+    border-radius: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 6px;
   }
 `;
 
@@ -26,8 +50,14 @@ export const ImageProduct = styled.img`
 
 export const CartItemWrapper = styled.div`
   display: flex;
+  justify-content: space-between;
+`;
+
+export const ItemInfoWrapper = styled.div`
+  display: flex;
   gap: 16px;
 `;
+
 export const InfoTextWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -59,9 +89,6 @@ export const ItemPrice = styled.p`
 export const ItemDeleteBtn = styled.button`
   width: 24px;
   height: 24px;
-  margin-left: 50px;
-
-  margin-right: 24px;
   background-color: transparent;
   border: none;
 `;
