@@ -36,10 +36,6 @@ import {
 export const Cart = () => {
   const [cartProducts, setCartProducts] = useState([]);
   const [productAvailableQuantity, setProductAvailableQuantity] = useState({});
-  // const [cartTotalAmount, setCartTotalAmount] = useState(null);
-  // const [cartCurrency, setCartCurrency] = useState('');
-  // const [cartProductQunatity, setCartProductQuantity] = useState(null);
-  const [forceRerender, setForceRerender] = useState(false);
 
   const dispatch = useDispatch();
   const location = useLocation();
@@ -81,8 +77,6 @@ export const Cart = () => {
         const cartItem = cartData.items.find(
           item => item.productId === productId
         );
-        // console.log(`productResponse:`, productResponse);
-        // console.log(`cartItem:`, cartItem);
         if (cartItem) {
           const matchingSku = productResponse.data.skuSet.find(
             skuSet => skuSet.id === cartItem.sku.id
@@ -127,9 +121,6 @@ export const Cart = () => {
     fetchProductQuantity();
   }, [cartData, dispatch]);
 
-  // console.log(cartProducts);
-  // console.log('cart data:', cartData);
-
   const increaseProductQuantity = async productId => {
     const itemToUpdate = cartProducts.find(
       item => item.productId === productId
@@ -148,16 +139,12 @@ export const Cart = () => {
         quantity: increasedItemQuantity,
         amount: itemToUpdate.price * increasedItemQuantity,
       };
-      // console.log('updatedProduct:', updatedProduct);
       try {
         await dispatch(createCart(updatedProduct));
         await fetchCart();
-        setForceRerender(!forceRerender);
-        // await dispatch(getCart());
       } catch (err) {
         console.error('Error updating product quantity:', err);
       }
-      // console.log(cartData);
     } else {
       return;
     }
@@ -178,10 +165,8 @@ export const Cart = () => {
         quantity: decreasedItemQuantity,
         amount: itemToUpdate.price * decreasedItemQuantity,
       };
-      // console.log(updatedProduct);
       try {
         await dispatch(createCart(updatedProduct));
-        // await dispatch(getCart());
         await fetchCart();
       } catch (err) {
         console.error('Error updating product quantity:', err);
@@ -247,7 +232,6 @@ export const Cart = () => {
 
           <Rectangle>
             <TextWrapper>
-              {forceRerender && <div>Force Rerender Test</div>}
               <p>
                 Вартість
                 <br /> доставки
