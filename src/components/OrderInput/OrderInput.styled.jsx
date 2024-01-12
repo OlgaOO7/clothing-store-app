@@ -47,7 +47,7 @@ export const InputStyle = styled.input`
   border-color: ${p => p.$errors && 'red'};
   &:focus {
     outline: none;
-    border: 2px solid #000;
+    border: 2px solid #7c7d80;
   }
   &::placeholder {
     color: ${p => p.$errors && 'red'};
@@ -71,7 +71,7 @@ line-height: 140%;
 border-color: ${p => p.$errors && 'red'};
 &:focus {
   outline: none;
-  border: 2px solid #000;
+  border: 2px solid #7c7d80;
 }
 &::placeholder {
   font-size: 14px;

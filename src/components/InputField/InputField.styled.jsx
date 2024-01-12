@@ -12,6 +12,10 @@ export const Input = styled.input`
     line-height: 16px;
     padding: 16px;
   }
+  &:focus {
+    outline: none;
+    border: 2px solid #7c7d80;
+  }
 `;
 export const Textarea = styled.textarea`
   font-size: 12px;
@@ -26,6 +30,10 @@ export const Textarea = styled.textarea`
     font-size: 14px;
     line-height: 16px;
     padding: 18px 16px;
+  }
+  &:focus {
+    outline: none;
+    border: 2px solid #7c7d80;
   }
 `;
 export const ErrorMessage = styled.p`

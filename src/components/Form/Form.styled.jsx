@@ -39,6 +39,11 @@ export const FormButton = styled.button`
   color: #fff;
   border: none;
   width: 186px;
+  transition: all 0.5s ease-out;
+  &:hover,
+  &:focus {
+    background: #525151;
+  }
   @media (min-width: 768px) {
     width: 253px;
     font-size: 22px;
@@ -142,6 +147,10 @@ export const SubscriptionFormInput = styled.input`
     padding: 14px 16px 14px 16px;
     font-size: 20px;
     line-height: 28px;
+  }
+  &:focus {
+    outline: none;
+    border: 2px solid #7c7d80;
   }
 `;
 export const SubscriptionFormButton = styled.button`

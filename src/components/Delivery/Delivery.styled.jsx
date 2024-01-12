@@ -79,7 +79,7 @@ export const InputStyle = styled.input`
   border-color: ${p => p.$error && 'red'};
   &:focus {
     outline: none;
-    border: 2px solid #000;
+    border: 2px solid #7c7d80;
   }
   &::placeholder {
     font-size: 14px;
