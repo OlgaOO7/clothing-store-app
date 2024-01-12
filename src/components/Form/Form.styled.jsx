@@ -160,6 +160,11 @@ export const SubscriptionFormButton = styled.button`
   font-size: 12px;
   line-height: 17px;
   color: #fff;
+  transition: all 0.5s ease-out;
+  &:hover,
+  &:focus {
+    background: #525151;
+  }
   @media (min-width: 768px) {
     padding: 15px;
     font-size: 20px;
