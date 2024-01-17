@@ -3,16 +3,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
 import { Modal } from 'components/Modal/Modal';
-import { CartItem } from './CartItem';
+import { CartItem } from './CartItem/CartItem';
 import { selectCart, selectIsRefreshing } from 'redux/cart/selectors';
 import { getCart } from 'redux/cart/operations';
 import { formatPrice } from 'utils/formatPrice';
 
 import {
+  CartModalHeader,
+  CartModalWrapper,
+  CartModalListWrapper,
   CartModalList,
   LinkWrapper,
   OrderLink,
   CatalogLink,
+  CartTotalWrapper,
+  AmountWrapper,
+  TotalAmount,
   Amount,
 } from './CartModal.styled';
 
@@ -47,11 +53,9 @@ export const CartModal = ({ closeModal, toggleCartModal }) => {
         <p>Loading...</p>
       ) : cartData.items && cartData.items.length > 0 ? (
         <div>
-          <p style={{ padding: '10px 38px', backgroundColor: '#9D9D9D' }}>
-            Товар додано в кошик
-          </p>
-          <div style={{ padding: '8px 38px 42px' }}>
-            <div>
+          <CartModalHeader>Товар додано в кошик</CartModalHeader>
+          <CartModalWrapper>
+            <CartModalListWrapper>
               <CartModalList>
                 {products &&
                   products.map(item => (
@@ -60,45 +64,14 @@ export const CartModal = ({ closeModal, toggleCartModal }) => {
                     </li>
                   ))}
               </CartModalList>
-            </div>
-
-            <div
-              style={{
-                width: '362px',
-                height: '1px',
-                backgroundColor: 'rgba(0, 0, 0, 0.2',
-              }}
-            ></div>
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                width: 'max-content',
-                padding: '32px 64px 42px',
-              }}
-            >
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  gap: '101px',
-                  marginBottom: '32px',
-                }}
-              >
-                <p
-                  style={{
-                    color: '#000',
-                    fontSize: '18px',
-                    fontWeight: '600',
-                    lineHeight: '25.2px',
-                  }}
-                >
-                  Разом:
-                </p>
+            </CartModalListWrapper>
+            <CartTotalWrapper>
+              <AmountWrapper>
+                <TotalAmount>Разом:</TotalAmount>
                 <Amount>
                   {formatPrice(cartTotalAmount)} {cartCurrency}
                 </Amount>
-              </div>
+              </AmountWrapper>
               <LinkWrapper>
                 <OrderLink
                   to={`/order`}
@@ -110,13 +83,13 @@ export const CartModal = ({ closeModal, toggleCartModal }) => {
                   Кошик
                 </CatalogLink>
               </LinkWrapper>
-            </div>
-          </div>
+            </CartTotalWrapper>
+          </CartModalWrapper>
         </div>
       ) : (
-        <p style={{ padding: '10px 38px', backgroundColor: '#9D9D9D' }}>
-          Ваш кошик пустий
-        </p>
+        <div>
+          <CartModalHeader>Ваш кошик пустий</CartModalHeader>
+        </div>
       )}
     </Modal>
   );

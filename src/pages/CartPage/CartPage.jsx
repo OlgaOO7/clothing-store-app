@@ -2,9 +2,9 @@ import { Cart } from 'components/Cart/Cart';
 
 const CartPage = () => {
   return (
-    <main>
+    <div>
       <Cart />
-    </main>
+    </div>
   );
 };
 

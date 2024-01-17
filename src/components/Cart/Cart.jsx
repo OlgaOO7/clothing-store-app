@@ -1,17 +1,19 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import axios from 'axios';
 
 import { createCart, getCart, clearCart } from 'redux/cart/operations';
+import { CartProductItem } from './CartProductItem/CartProductItem';
+import { CartTotal } from './CartTotal/CartTotal';
+import { useMedia } from 'hooks/useMedia';
+
 import {
   selectCart,
   selectIsRefreshing,
   selectTotalQunaity,
 } from 'redux/cart/selectors';
-import { CartProductItem } from './CartProductItem/CartProductItem';
-import { formatPrice } from 'utils/formatPrice';
 
 import {
   CartWrapper,
@@ -22,20 +24,19 @@ import {
   TaglineSubWrapper,
   ProductText,
   ProductQuantity,
+  ProductListWrapper,
   ProductCartList,
-  Rectangle,
-  TextWrapper,
-  PriceWrapper,
-  LinkBtnWrapper,
-  OrderLink,
-  CatalogLink,
-  HeadlineWrapper,
+  DeleteCartBtnWrapp,
   DeleteCartBtn,
+  EmptyCartWrapper,
+  CatalogLink,
 } from './Cart.styled';
 
 export const Cart = () => {
   const [cartProducts, setCartProducts] = useState([]);
   const [productAvailableQuantity, setProductAvailableQuantity] = useState({});
+
+  const { isMobileScreen } = useMedia();
 
   const dispatch = useDispatch();
   const location = useLocation();
@@ -49,7 +50,6 @@ export const Cart = () => {
   const unavailableProductQuantity =
     cartProducts &&
     cartProducts.some(item => productAvailableQuantity[item.productId] === 0);
-
   const invalidQuantity =
     cartProducts &&
     cartProducts.some(
@@ -104,13 +104,11 @@ export const Cart = () => {
           const productPromises = cartData.items.map(async item => {
             return fetchProductQuantityForItem(item.productId);
           });
-
           const productArray = await Promise.all(productPromises);
           const productQuantity = productArray.reduce((map, product) => {
             map[product.productId] = product.availableQuantity;
             return map;
           }, {});
-
           setProductAvailableQuantity(productQuantity);
         }
       } catch (err) {
@@ -125,12 +123,10 @@ export const Cart = () => {
     const itemToUpdate = cartProducts.find(
       item => item.productId === productId
     );
-
     const quantityToIncrease = itemToUpdate.quantity + 1;
     const increasedItemQuantity = quantityToIncrease - itemToUpdate.quantity;
     const availableQuantityBySku =
       productAvailableQuantity[itemToUpdate.productId];
-
     if (itemToUpdate && quantityToIncrease <= availableQuantityBySku) {
       const updatedProduct = {
         sessionId: userUid,
@@ -156,7 +152,6 @@ export const Cart = () => {
     );
     const quantityToDecrease = itemToUpdate.quantity - 1;
     const decreasedItemQuantity = quantityToDecrease - itemToUpdate.quantity;
-
     if (itemToUpdate && itemToUpdate.quantity > 1) {
       const updatedProduct = {
         sessionId: userUid,
@@ -181,7 +176,7 @@ export const Cart = () => {
   };
 
   return (
-    <CartWrapper>
+    <CartWrapper type="empty">
       <LinkWrapper>
         <LinkTo to="/">Головна</LinkTo>
         <Divider></Divider>
@@ -192,26 +187,24 @@ export const Cart = () => {
       ) : cartTotalQuantity ? (
         <div>
           <TaglineWrapper>
-            <HeadlineWrapper>
-              <TaglineSubWrapper>
-                <ProductText>Товар</ProductText>
-                <ProductQuantity>Кількість</ProductQuantity>
-                <p>Ціна</p>
-              </TaglineSubWrapper>
-              <div>
+            {isMobileScreen && (
+              <DeleteCartBtnWrapp>
                 <DeleteCartBtn onClick={clearProductCart}>
-                  Очистити корзину
+                  Очистити кошик
                 </DeleteCartBtn>
-              </div>
-            </HeadlineWrapper>
-            <div
-              style={{
-                display: 'flex',
-                padding: '29px 0',
-                borderTop: '1px solid #686868',
-                borderBottom: '1px solid #686868',
-              }}
-            >
+              </DeleteCartBtnWrapp>
+            )}
+            <TaglineSubWrapper>
+              <ProductText>Товар</ProductText>
+              <ProductQuantity>Кількість</ProductQuantity>
+              <p>Ціна</p>
+              {!isMobileScreen && (
+                <DeleteCartBtn onClick={clearProductCart}>
+                  Очистити кошик
+                </DeleteCartBtn>
+              )}
+            </TaglineSubWrapper>
+            <ProductListWrapper>
               <ProductCartList>
                 {cartProducts?.length > 0 &&
                   cartProducts.map(item => (
@@ -227,50 +220,21 @@ export const Cart = () => {
                     </li>
                   ))}
               </ProductCartList>
-            </div>
+            </ProductListWrapper>
           </TaglineWrapper>
-
-          <Rectangle>
-            <TextWrapper>
-              <p>
-                Вартість
-                <br /> доставки
-              </p>
-              <p>
-                За тарифами
-                <br /> перевізника
-              </p>
-            </TextWrapper>
-            <PriceWrapper>
-              <p>Сума </p>
-              <p>
-                {formatPrice(cartData.totalAmount)} {cartData.currencyCode}
-              </p>
-            </PriceWrapper>
-            <LinkBtnWrapper>
-              {unavailableProductQuantity || invalidQuantity ? (
-                <OrderLink disabled>Оформити замовлення</OrderLink>
-              ) : (
-                <OrderLink
-                  to={`/order`}
-                  state={{ from: location, sessionId: cartData?.sessionId }}
-                >
-                  Оформити замовлення
-                </OrderLink>
-              )}
-              <CatalogLink to={`/catalog`} state={{ from: location }}>
-                Продовжити покупку
-              </CatalogLink>
-            </LinkBtnWrapper>
-          </Rectangle>
+          <CartTotal
+            data={cartData}
+            unavailableProductQuantity={unavailableProductQuantity}
+            invalidQuantity={invalidQuantity}
+          />
         </div>
       ) : (
-        <div style={{ display: 'flex', gap: '4px' }}>
+        <EmptyCartWrapper>
           <p>Ваш кошик порожній.</p>
-          <Link to={`/catalog`} state={{ from: location }}>
+          <CatalogLink to={`/catalog`} state={{ from: location }}>
             Повернутися до покупок
-          </Link>
-        </div>
+          </CatalogLink>
+        </EmptyCartWrapper>
       )}
     </CartWrapper>
   );

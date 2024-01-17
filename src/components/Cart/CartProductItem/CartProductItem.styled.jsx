@@ -3,17 +3,20 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  @media (min-width: 768px) {
+    margin-right: 16px;
+  }
 `;
 
 export const InfoProductWrapper = styled.div`
   display: flex;
+  align-items: center;
+`;
+
+export const ItemWrapper = styled.div`
+  display: flex;
   gap: 16px;
-  /* width: 493px; */
-  margin-right: 20px;
-  @media (min-width: 768px) {
-    gap: 35px;
-    margin-right: 195px;
-  }
 `;
 
 export const ProductImage = styled.img`
@@ -21,8 +24,8 @@ export const ProductImage = styled.img`
   height: 67px;
   max-width: none;
   @media (min-width: 768px) {
-    width: 206px;
-    height: 234px;
+    width: 160px;
+    height: 208px;
   }
 `;
 
@@ -31,7 +34,7 @@ export const ProductDescriptionWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 9px;
-  width: 66px;
+  width: 51px;
   color: #000;
   text-align: left;
   font-size: 14px;
@@ -39,7 +42,7 @@ export const ProductDescriptionWrapper = styled.div`
   font-weight: 300;
   line-height: normal;
   @media (min-width: 768px) {
-    width: 250px;
+    width: 120px;
     gap: 15px;
     font-size: 24px;
   }
@@ -47,7 +50,6 @@ export const ProductDescriptionWrapper = styled.div`
 
 export const ProductTitle = styled.p`
   color: #000;
-  width: max-content;
   font-weight: 400;
   font-size: 16px;
   @media (min-width: 768px) {
@@ -68,8 +70,7 @@ export const QuantityWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 13px;
-  margin-right: 32px;
+  padding: 4px 5px;
   width: 47px;
   height: 22px;
   border: 1px solid #000;
@@ -77,7 +78,7 @@ export const QuantityWrapper = styled.div`
   @media (min-width: 768px) {
     width: 82px;
     height: 32px;
-    margin-right: 115px;
+    padding: 8px 13px;
     font-size: 18px;
   }
 `;
@@ -88,11 +89,10 @@ export const Icon = styled.svg`
 `;
 
 export const Price = styled.p`
-  /* margin-right: 219px; */
   color: #000;
   text-align: center;
   font-family: Inter;
-  font-size: 18px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -129,7 +129,7 @@ export const Notification = styled.p`
   font-size: ${props => props.fontSize};
   padding-top: ${props => props.$paddingTop};
   @media (max-width: 767px) {
-    font-size: 10px;
+    font-size: ${props => (props.mobFont ? '6px' : 'inherit')};
   }
 `;
 
@@ -144,8 +144,8 @@ export const AvailableQuantityWrapper = styled.div`
 `;
 
 export const PriceWrapper = styled.div`
+  font-size: 14px;
   @media (min-width: 768px) {
-    width: 130px;
-    margin-right: 180px;
+    font-size: 18px;
   }
 `;

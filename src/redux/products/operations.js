@@ -80,6 +80,7 @@ export const getSearchedProducts = createAsyncThunk(
   async (searchQuery, thunkAPI) => {
     try {
       const res = await axios.get(`products?title=${searchQuery}`, config.headers);
+      // const res = await axios.get(`products?page=${page}&size=12&sort=title&title=${searchQuery}`, config.headers);
       return res.data.content;
 
     } catch (e) {
