@@ -4,14 +4,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
 import { ProductCatalog } from 'components/ProductCatalog/ProductCatalog';
+import { Loader } from 'components/Loader/Loader';
 import { selectSearchedProductsPage } from 'redux/products/selectors';
 import { resetSearchedProducts } from 'redux/products/productsSlice';
-
 import { getSearchedProductsPage } from 'redux/products/operations';
 import { selectIsRefreshing } from 'redux/products/selectors';
 
+import { Wrapper } from './SearchedProduct.styled';
+
 export const SearchedProduct = () => {
-  // const [isLoading, setIsLoading] = useState(true);
   const isLoading = useSelector(selectIsRefreshing);
 
   const dispatch = useDispatch();
@@ -23,10 +24,8 @@ export const SearchedProduct = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      // setIsLoading(true);
       try {
         dispatch(getSearchedProductsPage(searchQuery));
-        // setIsLoading(false);
       } catch (e) {
         console.error('Error fetching data:', e);
       } finally {
@@ -40,9 +39,9 @@ export const SearchedProduct = () => {
   }, [dispatch, searchQuery]);
 
   return isLoading ? (
-    <p style={{ paddingTop: '300px', fontSize: '24px', textAlign: 'center' }}>
-      Loading...
-    </p>
+    <Wrapper>
+      <Loader />
+    </Wrapper>
   ) : (
     <ProductCatalog
       type="searchpage"

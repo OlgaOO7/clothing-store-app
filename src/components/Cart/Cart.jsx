@@ -7,6 +7,7 @@ import axios from 'axios';
 import { createCart, getCart, clearCart } from 'redux/cart/operations';
 import { CartProductItem } from './CartProductItem/CartProductItem';
 import { CartTotal } from './CartTotal/CartTotal';
+import { Loader } from 'components/Loader/Loader';
 import { useMedia } from 'hooks/useMedia';
 
 import {
@@ -183,7 +184,7 @@ export const Cart = () => {
         <LinkTo to="/cart">Кошик</LinkTo>
       </LinkWrapper>
       {isLoading ? (
-        <p>Is loading...</p>
+        <Loader />
       ) : cartTotalQuantity ? (
         <div>
           <TaglineWrapper>

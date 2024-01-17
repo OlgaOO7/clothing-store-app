@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 
 import { Modal } from 'components/Modal/Modal';
 import { CartItem } from './CartItem/CartItem';
+import { Loader } from 'components/Loader/Loader';
 import { selectCart, selectIsRefreshing } from 'redux/cart/selectors';
 import { getCart } from 'redux/cart/operations';
 import { formatPrice } from 'utils/formatPrice';
@@ -50,7 +51,7 @@ export const CartModal = ({ closeModal, toggleCartModal }) => {
   return (
     <Modal closeModal={closeModal} toggleModal={toggleCartModal}>
       {isLoading ? (
-        <p>Loading...</p>
+        <Loader />
       ) : cartData.items && cartData.items.length > 0 ? (
         <div>
           <CartModalHeader>Товар додано в кошик</CartModalHeader>
