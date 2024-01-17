@@ -32,6 +32,7 @@ export const AsideList = styled.ul`
   margin-top: 28px;
   margin-left: auto;
   margin-right: auto;
+
   @media (min-width: 1024px) {
     grid-template-columns: repeat(4, 1fr);
     margin-top: 48px;
@@ -57,6 +58,7 @@ export const SimilarProductsImg = styled.img`
   max-height: 100%;
   max-width: 100%;
   object-fit: cover;
+  user-select: none;
 
   @media (max-width: 360px) {
     max-width: 144px;

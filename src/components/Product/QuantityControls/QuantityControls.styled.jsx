@@ -20,6 +20,7 @@ export const Wrap = styled.div`
   font-weight: 400;
   line-height: normal;
   margin-top: 38px;
+  user-select: none;
   @media (min-width: 1024px) {
     margin-top: 60px;
     width: 194px;

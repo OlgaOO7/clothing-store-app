@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Wrap = styled.div`
   margin-top: 22px;
+  user-select: none;
   @media (min-width: 1024px) {
     margin-top: 30px;
   }

@@ -19,6 +19,7 @@ export const ProductWrap = styled.div`
 `;
 export const ImageWrap = styled.div`
   max-width: 692px;
+  user-select: none;
   @media (min-width: 1440px) {
     width: 692px;
   }
@@ -85,6 +86,7 @@ export const Text = styled.p`
 `;
 
 export const SizeWrap = styled.div`
+  user-select: none;
   position: relative;
   margin-top: 32px;
   @media (min-width: 1024px) {
@@ -159,6 +161,7 @@ export const BuyButton = styled.button`
   font-weight: 400;
   line-height: normal;
   margin-top: 18px;
+  user-select: none;
   &:disabled {
     cursor: not-allowed;
   }

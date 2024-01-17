@@ -8,7 +8,7 @@ import {
 
 export const SizeGridProducts = () => {
   return (
-    <>
+    <div style={{ userSelect: 'none' }}>
       <SizeGridTitle> Розмірна сітка</SizeGridTitle>
       <WrapTable>
         <Table>
@@ -58,7 +58,6 @@ export const SizeGridProducts = () => {
         </Table>
       </WrapTable>
       <SizeGridLogo>ZATYSHNA</SizeGridLogo>
-    </>
+    </div>
   );
 };
-
