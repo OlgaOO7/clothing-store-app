@@ -1,5 +1,5 @@
 import { LoaderSpin } from './Loader.styled';
 
-export const Loader = () => {
-  return <LoaderSpin></LoaderSpin>;
+export const Loader = ({ type }) => {
+  return <LoaderSpin type={type}></LoaderSpin>;
 };

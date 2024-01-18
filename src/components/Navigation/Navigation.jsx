@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Logo } from 'components/Logo/Logo';
@@ -7,6 +7,7 @@ import { NavigationMenu } from './NavigationMenu';
 import { SearchBar } from '../SearchBar/SearchBar';
 import { getCart } from 'redux/cart/operations';
 import { selectTotalQunaity } from 'redux/cart/selectors';
+// import { selectIsRefreshing, selectTotalQunaity } from 'redux/cart/selectors';
 
 import Sprite from '../../images/sprite.svg';
 
@@ -27,15 +28,18 @@ import {
   SearchIcon,
 } from './Navigation.styled';
 import { useLocation } from 'react-router';
-import { Loader } from 'components/Loader/Loader';
+// import { Loader } from 'components/Loader/Loader';
 
 export const Navigation = ({ sectionType, toggleShowSearch }) => {
   const [isShowMenu, setIsShowMenu] = useState(false);
   const [totalQuantity, setTotalQuantity] = useState(null);
 
+  // const isLoading = useSelector(selectIsRefreshing);
   const dispatch = useDispatch();
   const cartTotalQuantity = useSelector(selectTotalQunaity);
   const location = useLocation();
+
+  const previousCartTotalQuantity = useRef(cartTotalQuantity);
 
   // useEffect(() => {
   //   try {
@@ -64,10 +68,14 @@ export const Navigation = ({ sectionType, toggleShowSearch }) => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (cartTotalQuantity !== undefined && cartTotalQuantity !== null) {
+    // if (cartTotalQuantity !== undefined && cartTotalQuantity !== null) {
+    //   setTotalQuantity(cartTotalQuantity || 0);
+    // } else {
+    //   setTotalQuantity(0);
+    // }
+    if (cartTotalQuantity !== previousCartTotalQuantity.current) {
       setTotalQuantity(cartTotalQuantity);
-    } else {
-      setTotalQuantity(0);
+      previousCartTotalQuantity.current = cartTotalQuantity;
     }
   }, [cartTotalQuantity]);
 
@@ -95,13 +103,17 @@ export const Navigation = ({ sectionType, toggleShowSearch }) => {
               <use href={`${Sprite}#icon-cart`} />
             </CartIcon>
             <CartQuantityWrapper>
-              {!cartTotalQuantity ? (
-                <Loader />
+              {totalQuantity !== null && (
+                <CartProductQuantity>{totalQuantity}</CartProductQuantity>
+              )}
+              {/* 
+              {isLoading ? (
+                <Loader type="small" />
               ) : (
                 <CartProductQuantity>
                   {cartTotalQuantity || totalQuantity}
                 </CartProductQuantity>
-              )}
+              )} */}
               {/* <CartProductQuantity>
                 {cartTotalQuantity || totalQuantity}
               </CartProductQuantity> */}
