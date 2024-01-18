@@ -27,10 +27,11 @@ import {
   SearchIcon,
 } from './Navigation.styled';
 import { useLocation } from 'react-router';
+import { Loader } from 'components/Loader/Loader';
 
 export const Navigation = ({ sectionType, toggleShowSearch }) => {
   const [isShowMenu, setIsShowMenu] = useState(false);
-  const [totalQuantity, setTotalQuantity] = useState(0);
+  const [totalQuantity, setTotalQuantity] = useState(null);
 
   const dispatch = useDispatch();
   const cartTotalQuantity = useSelector(selectTotalQunaity);
@@ -94,9 +95,16 @@ export const Navigation = ({ sectionType, toggleShowSearch }) => {
               <use href={`${Sprite}#icon-cart`} />
             </CartIcon>
             <CartQuantityWrapper>
-              <CartProductQuantity>
+              {!cartTotalQuantity ? (
+                <Loader />
+              ) : (
+                <CartProductQuantity>
+                  {cartTotalQuantity || totalQuantity}
+                </CartProductQuantity>
+              )}
+              {/* <CartProductQuantity>
                 {cartTotalQuantity || totalQuantity}
-              </CartProductQuantity>
+              </CartProductQuantity> */}
             </CartQuantityWrapper>
           </CartIconWrapper>
           <TextContainer>

@@ -36,6 +36,7 @@ import {
 export const Cart = () => {
   const [cartProducts, setCartProducts] = useState([]);
   const [productAvailableQuantity, setProductAvailableQuantity] = useState({});
+  const [initialLoad, setInitialLoad] = useState(true);
 
   const { isMobileScreen } = useMedia();
 
@@ -111,6 +112,7 @@ export const Cart = () => {
             return map;
           }, {});
           setProductAvailableQuantity(productQuantity);
+          setInitialLoad(false);
         }
       } catch (err) {
         console.error(err);
@@ -217,6 +219,8 @@ export const Cart = () => {
                         availableQuantity={
                           productAvailableQuantity[item.productId]
                         }
+                        isLoading={isLoading}
+                        initialLoad={initialLoad}
                       />
                     </li>
                   ))}

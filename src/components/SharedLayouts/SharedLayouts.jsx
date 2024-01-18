@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { Header } from '../Header/Header';
 import { Footer } from 'components/Footer/Footer';
 import { ScrollUp } from 'components/ScrollUp/ScrollUp';
+import { Loader } from 'components/Loader/Loader';
 
 // put Loader in Suspense fallback
 
@@ -12,7 +13,7 @@ export const SharedLayout = () => {
     <div>
       <Header />
       <ScrollUp />
-      <Suspense fallback={<div>Loading page...</div>}>
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
       <Footer />

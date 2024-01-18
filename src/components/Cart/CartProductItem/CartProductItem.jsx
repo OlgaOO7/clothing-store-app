@@ -31,6 +31,8 @@ export const CartProductItem = ({
   decreaseProductQuantity,
   increaseProductQuantity,
   availableQuantity,
+  isLoading,
+  initialLoad,
 }) => {
   const { isMobileScreen } = useMedia();
   const dispatch = useDispatch();
@@ -88,7 +90,7 @@ export const CartProductItem = ({
           </ProductDescriptionWrapper>
         </ItemWrapper>
       </InfoProductWrapper>
-      {!availableQuantity ? (
+      {!isLoading && !initialLoad && !availableQuantity ? (
         <Notification color="red" fontSize="24px">
           Наразі товар відсутній
         </Notification>
