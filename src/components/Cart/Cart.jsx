@@ -122,6 +122,8 @@ export const Cart = () => {
     fetchProductQuantity();
   }, [cartData, dispatch]);
 
+  console.log('cartData:', cartData);
+
   const increaseProductQuantity = async productId => {
     const itemToUpdate = cartProducts.find(
       item => item.productId === productId
@@ -174,8 +176,8 @@ export const Cart = () => {
     }
   };
 
-  const clearProductCart = () => {
-    dispatch(clearCart());
+  const clearProductCart = async () => {
+    await dispatch(clearCart());
   };
 
   return (

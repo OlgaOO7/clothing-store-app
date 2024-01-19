@@ -46,9 +46,9 @@ export const CartProductItem = ({
   const isProductQuantityAvailable = availableQuantity > 0;
   const isOneProductAvalable = availableQuantity === 1;
   const isMaxAvailableQunatity = availableQuantity === item.quantity;
-
-  console.log('isMaxAvailableQunatity:', isMaxAvailableQunatity);
-  console.log('isOneProductAvalable:', isOneProductAvalable);
+  const exceededQuantity = item.quantity > availableQuantity;
+  // console.log('isMaxAvailableQunatity:', isMaxAvailableQunatity);
+  // console.log('isOneProductAvalable:', isOneProductAvalable);
 
   return (
     <Wrapper>
@@ -110,12 +110,14 @@ export const CartProductItem = ({
               </Icon>
             </span>
           </QuantityWrapper>
-          {isMaxAvailableQunatity || isOneProductAvalable ? (
+          {isMaxAvailableQunatity ||
+          isOneProductAvalable ||
+          exceededQuantity ? (
             <Notification
               $paddingTop="6px"
               color="#4C4B4B"
               fontSize="12px"
-              mobFont
+              $mobFont
             >
               Доступна кількість: {availableQuantity}
             </Notification>
