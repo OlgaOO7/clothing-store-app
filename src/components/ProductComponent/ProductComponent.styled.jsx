@@ -1,14 +1,14 @@
 import styled, { css } from 'styled-components';
 
 export const ProductWrapper = styled.div`
-  width: max-content;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 6px;
   color: #000;
+  align-items: center;
   @media (min-width: 768px) {
-    gap: 10px;
+    gap: 14px;
   }
 
   ${props =>
@@ -19,14 +19,6 @@ export const ProductWrapper = styled.div`
     `}
 `;
 export const ProductImage = styled.img`
-  background-color: #ececec;
-  width: 144px;
-  height: 190px;
-  @media (min-width: 768px) {
-    width: 322px;
-    height: 416px;
-  }
-
   ${props =>
     props.type === 'search' &&
     css`
@@ -45,15 +37,11 @@ export const ProductImage = styled.img`
 `;
 export const ProductTitle = styled.h3`
   font-size: 16px;
-  line-height: 18px;
+  line-height: 21px;
   font-weight: 400;
-  width: 144px;
+  width: 100%;
   @media (min-width: 768px) {
-    width: 230px;
-  }
-  @media (min-width: 768px) {
-    width: 322px;
-    font-size: 22px;
+    font-size: 18px;
     line-height: 25px;
   }
 
@@ -90,6 +78,14 @@ export const ProductDescription = styled.p`
 `;
 
 export const ProductTextWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  width: 100%;
+  @media (min-width: 768px) {
+    gap: 8px;
+  }
   ${props =>
     props.type === 'search' &&
     css`

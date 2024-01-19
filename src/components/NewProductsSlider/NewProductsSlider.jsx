@@ -18,27 +18,34 @@ import {
   PrevBtn,
   NextBtn,
   BtnIcon,
+  BtnWrapper,
 } from './NewProductsSlider.styled';
+import { useMedia } from 'hooks/useMedia';
+import { bullets } from './bullets';
 
 export const NewProductsSlider = () => {
   const products = useSelector(selectNewProducts) || [];
   const dispatch = useDispatch();
+  const { isMobileScreen } = useMedia();
+  const size = isMobileScreen ? 5 : 7;
+  bullets({ isMobileScreen });
 
   useEffect(() => {
-    dispatch(getProducts());
-  }, [dispatch]);
+    dispatch(getProducts({ size }));
+  }, [dispatch, size]);
 
   return (
     <Section>
       <Wrapper>
         <Title>Новинки</Title>
         <Swiper
+          className="new"
           slidesPerView={2}
           spaceBetween={16}
           pagination={{
             clickable: true,
             renderBullet: function (index, className) {
-              return `<span class="${className}" style="border-radius: 0; width: 30px; height: 2px; background:#000000;"></span>`;
+              return `<span class="${className}" style="border-radius: 0; height: 2px; background:#000000; margin: 0 5px;"></span>`;
             },
           }}
           navigation={{
@@ -65,16 +72,18 @@ export const NewProductsSlider = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-        <NextBtn className="swiper-button-next">
-          <BtnIcon>
-            <use href={`${Sprite}#icon-next`}></use>
-          </BtnIcon>
-        </NextBtn>
-        <PrevBtn className="swiper-button-prev">
-          <BtnIcon>
-            <use href={`${Sprite}#icon-prev`}></use>
-          </BtnIcon>
-        </PrevBtn>
+        <BtnWrapper id="navigation-wrapper">
+          <NextBtn className="swiper-button-next">
+            <BtnIcon>
+              <use href={`${Sprite}#icon-next`}></use>
+            </BtnIcon>
+          </NextBtn>
+          <PrevBtn className="swiper-button-prev">
+            <BtnIcon>
+              <use href={`${Sprite}#icon-prev`}></use>
+            </BtnIcon>
+          </PrevBtn>
+        </BtnWrapper>
       </Wrapper>
     </Section>
   );
