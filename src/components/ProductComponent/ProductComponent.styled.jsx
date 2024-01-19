@@ -19,6 +19,20 @@ export const ProductWrapper = styled.div`
     `}
 `;
 export const ProductImage = styled.img`
+  height: 190px;
+  @media (min-width: 768px) {
+    height: 416px;
+  }
+  ${props =>
+    props.type === 'new' &&
+    css`
+      width: auto;
+      height: auto;
+      @media (min-width: 768px) {
+        width: auto;
+        height: auto;
+      }
+    `}
   ${props =>
     props.type === 'search' &&
     css`
@@ -56,14 +70,12 @@ export const ProductTitle = styled.h3`
     `}
 `;
 export const ProductDescription = styled.p`
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 16px;
+  font-size: 12px;
+  line-height: 17px;
 
   @media (min-width: 768px) {
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 18px;
+    font-size: 14px;
+    line-height: 20px;
   }
 
   ${props =>

@@ -11,6 +11,7 @@ import {
   Icon,
   Message,
   SearchWord,
+  ListItem,
 } from './ProductCatalog.styled';
 import { useEffect } from 'react';
 
@@ -18,6 +19,7 @@ export const ProductCatalogComponent = ({
   data,
   type,
   handleNextPage,
+  handlePrevPage,
   page,
   totalPage,
   handlePageChange,
@@ -34,13 +36,18 @@ export const ProductCatalogComponent = ({
     <>
       <List>
         {data.map(product => (
-          <li key={product.id}>
+          <ListItem key={product.id}>
             <ProductComponent item={product} />
-          </li>
+          </ListItem>
         ))}
       </List>
       {totalPage > 1 ? (
         <ButtonsWrapper>
+          <Button onClick={handlePrevPage} disabled={page > 0 ? false : true}>
+            <Icon>
+              <use href={`${Sprite}#icon-prev-page`}></use>
+            </Icon>
+          </Button>
           <Pagination
             totalPage={totalPage}
             page={page}

@@ -19,6 +19,11 @@ export const ProductCatalog = ({ type, data, categoryId }) => {
       handlePageChange(page + 1);
     }
   };
+  const handlePrevPage = () => {
+    if (page > 0) {
+      handlePageChange(page - 1);
+    }
+  };
   return (
     <>
       <NavWrapper>
@@ -43,6 +48,7 @@ export const ProductCatalog = ({ type, data, categoryId }) => {
             data={data}
             type={type}
             handleNextPage={handleNextPage}
+            handlePrevPage={handlePrevPage}
             page={page}
             totalPage={totalPage}
             handlePageChange={handlePageChange}

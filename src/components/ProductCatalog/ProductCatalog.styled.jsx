@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const Section = styled.section`
@@ -56,6 +56,12 @@ export const List = styled.ul`
     gap: 58px 24px;
   }
 `;
+export const ListItem = styled.li`
+  width: 144px;
+  @media (min-width: 768px) {
+    width: 322px;
+  }
+`;
 export const ButtonsWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -73,14 +79,20 @@ export const Button = styled.button`
   border: none;
   background-color: transparent;
 
+  ${props =>
+    props.disabled &&
+    css`
+      display: none;
+    `}
+
   @media (min-width: 768px) {
     font-size: 18px;
     line-height: 21px;
   }
 `;
 export const Icon = styled.svg`
-  width: 11px;
-  height: 10px;
+  width: 24px;
+  height: 24px;
 `;
 export const Message = styled.p`
   text-align: center;

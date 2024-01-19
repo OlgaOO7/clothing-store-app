@@ -68,7 +68,7 @@ export const NewProductsSlider = () => {
         >
           {products.map(item => (
             <SwiperSlide key={item.id}>
-              <ProductComponent item={item} />
+              <ProductComponent item={item} type="new" />
             </SwiperSlide>
           ))}
         </Swiper>
