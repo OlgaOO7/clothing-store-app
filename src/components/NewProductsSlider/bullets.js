@@ -21,10 +21,6 @@ export const bullets = ({ isMobileScreen }) => {
     const bulletsCount = bulletContainer.childElementCount;
 
     function calculateBulletWidth(bulletContainerWidth) {
-      console.log(
-        (bulletContainerWidth - (bulletsCount - 1) * BULLET_SPACE) /
-          bulletsCount
-      );
       return Math.round(
         (bulletContainerWidth - (bulletsCount - 1) * BULLET_SPACE) /
           bulletsCount

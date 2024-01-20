@@ -20,7 +20,6 @@ export const getProducts = createAsyncThunk(
         '',
         config.headers
       );
-      console.log(res.data);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

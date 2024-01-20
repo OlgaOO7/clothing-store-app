@@ -5,10 +5,12 @@ import { FilterByCategory } from 'components/FilterByCategory/FilterByCategory';
 import { ProductCatalogComponent } from './ProductCatalogComponent';
 
 import { LinkTo, Wrapper, Section, NavWrapper } from './ProductCatalog.styled';
+import { useLocation } from 'react-router-dom';
 
 export const ProductCatalog = ({ type, data, categoryId }) => {
   const [page, setCurrentPage] = useState(0);
   const totalPage = useSelector(selectTotalPages) || 1;
+  const location = useLocation();
 
   const handlePageChange = useCallback(page => {
     setCurrentPage(page);
@@ -38,7 +40,7 @@ export const ProductCatalog = ({ type, data, categoryId }) => {
       {type !== 'searchpage' && (
         <FilterByCategory
           page={page}
-          categoryId={categoryId}
+          categoryId={categoryId ? categoryId : location.state.categoryId}
           handlePageChange={handlePageChange}
         />
       )}
