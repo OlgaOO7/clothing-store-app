@@ -13,7 +13,6 @@ import { InputField } from 'components/InputField/InputField';
 import {
   ErrorMessage,
   SubscriptionFormButton,
-  SubscriptionFormContainer,
   SubscriptionFormContent,
   SubscriptionFormImage,
   SubscriptionFormInput,
@@ -131,20 +130,19 @@ export const Form = ({ formType }) => {
                 Підписуйся та будь в курсі усіх новинок та знижок!
               </SubscriptionFormTitle>
               <SubForm onSubmit={handleSubmit(onSubmitSubscription)}>
-                <SubscriptionFormContainer>
-                  <SubscriptionFormInput
-                    type="email"
-                    name="email"
-                    id="email"
-                    placeholder="Email"
-                    {...register('email')}
-                    autoComplete="true"
-                    onChange={handleChange}
-                  ></SubscriptionFormInput>
-                  <SubscriptionFormButton type="submit">
-                    Надіслати
-                  </SubscriptionFormButton>
-                </SubscriptionFormContainer>
+                <SubscriptionFormInput
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Email"
+                  {...register('email')}
+                  autoComplete="true"
+                  onChange={handleChange}
+                ></SubscriptionFormInput>
+                <SubscriptionFormButton type="submit">
+                  Надіслати
+                </SubscriptionFormButton>
+
                 {messageContent}
               </SubForm>
             </SubscriptionFormContent>

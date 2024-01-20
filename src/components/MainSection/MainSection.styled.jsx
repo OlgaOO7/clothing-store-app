@@ -11,7 +11,6 @@ import bgHeroMobileWebp2x from '../../images/hero-bg-mobile@2x.webp';
 
 export const Section = styled.section`
   width: 100%;
-  border-radius: 30px;
   position: relative;
   overflow: hidden;
   height: 532px;
@@ -29,7 +28,6 @@ export const Section = styled.section`
     background-size: cover;
     background-position: top;
     height: 650px;
-    border-radius: inherit;
   }
 `;
 export const Wrapper = styled.div`

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import subscriptionForm from '../../images/subscription-form.jpg';
 
 export const ContactsForm = styled.form`
   width: 100%;
@@ -87,66 +88,73 @@ export const SubscriptionFormWrapper = styled.div`
   padding-left: 28px;
   padding-right: 28px;
   @media (min-width: 768px) {
-    gap: 20px;
     max-width: 1360px;
     padding-left: 40px;
     padding-right: 40px;
   }
 `;
 export const SubscriptionFormImage = styled.div`
-  width: 330px;
-  height: 315px;
-  background-color: #ececec;
   display: none;
   @media screen and (min-width: 768px) {
     display: block;
-  }
-  @media (min-width: 768px) {
-    width: 418px;
-    height: 400px;
+    width: 100%;
+    max-width: 242px;
+    height: 267px;
+    background: url(${subscriptionForm});
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 `;
 export const SubscriptionFormContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 33px;
+  gap: 24px;
+  max-width: 304px;
+  width: 100%;
   @media (min-width: 768px) {
-    gap: 43px;
+    gap: 31px;
+    max-width: 534px;
   }
 `;
 export const SubscriptionFormTitle = styled.h3`
   width: 192px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 22px;
+  line-height: 20px;
+  text-align: center;
   @media (min-width: 768px) {
-    width: 459px;
-    font-size: 36px;
+    text-align: start;
+    width: 100%;
+    font-size: 18px;
     font-weight: 400;
-    line-height: 50px;
+    line-height: 25px;
   }
 `;
 export const SubForm = styled.form`
   display: flex;
   justify-content: center;
-  flex-direction: column;
-  width: 304px;
+  max-width: 304px;
+  width: 100%;
   @media (min-width: 768px) {
-    width: 534px;
+    max-width: 534px;
+    width: 100%;
   }
 `;
 export const SubscriptionFormInput = styled.input`
   width: 100%;
-  padding: 10px 16px 10px 16px;
-  border: 1px solid #000000;
-  font-size: 12px;
-  line-height: 17px;
-  color: #696969;
+  padding: 9px 15px;
+  border: 1px solid #160b03;
+  font-size: 14px;
+  line-height: 20px;
+  color: #160b03;
+
+  &::placeholder {
+    color: #696969;
+  }
+
   @media (min-width: 768px) {
-    padding: 14px 16px 14px 16px;
-    font-size: 20px;
-    line-height: 28px;
+    padding: 9px 21px;
   }
   &:focus {
     outline: none;
@@ -155,10 +163,10 @@ export const SubscriptionFormInput = styled.input`
 `;
 export const SubscriptionFormButton = styled.button`
   border: none;
-  padding: 11px 27px;
+  padding: 7px 16px;
   background: #191919;
-  font-size: 12px;
-  line-height: 17px;
+  font-size: 16px;
+  line-height: 21px;
   color: #fff;
   transition: all 0.5s ease-out;
   &:hover,
@@ -166,15 +174,10 @@ export const SubscriptionFormButton = styled.button`
     background: #525151;
   }
   @media (min-width: 768px) {
-    padding: 15px;
-    font-size: 20px;
-    line-height: 28px;
+    padding: 9px 46px;
+    line-height: 22px;
     border: none;
   }
-`;
-export const SubscriptionFormContainer = styled.div`
-  display: flex;
-  width: 100%;
 `;
 export const ErrorMessage = styled.p`
   color: red;
