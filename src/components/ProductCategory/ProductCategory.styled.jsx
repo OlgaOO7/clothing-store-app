@@ -4,7 +4,10 @@ import { Link } from 'react-router-dom';
 
 export const Section = styled.section`
   width: 100%;
-  padding: 60px 0;
+  padding: 23px 0 32px;
+  @media (min-width: 768px) {
+    padding: 26px 0 40px;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -67,6 +70,13 @@ export const CategoryImage = styled.div`
 `;
 export const CategoryTitle = styled.h3`
   font-weight: 400;
+  font-size: 16px;
+  color: #160b03;
+  line-height: 21px;
+  @media (min-width: 768px) {
+    font-size: 22px;
+    line-height: 29px;
+  }
 `;
 export const CategoryCount = styled.span`
   display: none;

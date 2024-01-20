@@ -14,7 +14,6 @@ import {
 import { getCategories } from 'redux/category/operations';
 import { selectCategory } from 'redux/category/selectors';
 import photo from '../../images/Frame.jpg';
-import noImage from '../../images/no-image.jpg';
 import { Link } from 'react-router-dom';
 
 export const ProductCategory = () => {

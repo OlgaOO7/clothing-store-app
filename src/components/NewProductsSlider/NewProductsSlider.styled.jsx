@@ -2,7 +2,10 @@ import styled from 'styled-components';
 
 export const Section = styled.section`
   width: 100%;
-  padding: 60px 0;
+  padding: 64px 0 23px;
+  @media (min-width: 768px) {
+    padding: 82px 0 26px;
+  }
 `;
 
 export const Wrapper = styled.div`

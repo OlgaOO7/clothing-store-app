@@ -3,11 +3,10 @@ import styled from 'styled-components';
 
 export const Section = styled.section`
   width: 100%;
-  padding: 60px 0;
-  background: #ececec;
-  border-radius: 63px;
+  padding: 40px 0;
+  background: #f4efeb;
   @media (min-width: 768px) {
-    padding: 40px 0;
+    padding: 43px 0;
   }
 `;
 

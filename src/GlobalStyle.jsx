@@ -52,7 +52,7 @@ a {
 }
 
 a:visited {
-  color: inherit;
+  color: none;
 }
 
 `;

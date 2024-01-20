@@ -73,9 +73,9 @@ export const SuccessContainer = styled.p`
 
 export const SubscriptionFormSection = styled.section`
   width: 100%;
-  padding: 30px 0;
+  padding: 64px 0 80px;
   @media (min-width: 768px) {
-    padding: 60px 0;
+    padding: 92px 0 142px;
   }
 `;
 
