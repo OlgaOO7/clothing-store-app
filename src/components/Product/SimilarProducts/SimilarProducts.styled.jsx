@@ -7,7 +7,7 @@ export const Aside = styled.aside`
   flex-direction: column;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 86px;
+  margin-top: 56px;
   @media (min-width: 1024px) {
     margin-top: 88px;
   }
@@ -19,7 +19,7 @@ export const AsideTitle = styled.h3`
   font-size: 22px;
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
+  line-height: 140%;
   @media (min-width: 1024px) {
     font-size: 40px;
   }
@@ -27,9 +27,9 @@ export const AsideTitle = styled.h3`
 export const AsideList = styled.ul`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  column-gap: 15px;
-  row-gap: 26px;
-  margin-top: 28px;
+  column-gap: 16px;
+  row-gap: 24px;
+  margin-top: 24px;
   margin-left: auto;
   margin-right: auto;
 
@@ -76,27 +76,27 @@ export const SimilarProductsImg = styled.img`
   }
 `;
 export const SimilarProductsITitle = styled.h4`
-  color: #000;
+  color: #160b03;
   font-family: Gill Sans;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
-  margin-top: 12px;
+  line-height: 130%;
+  margin-top: 6px;
   @media (min-width: 1024px) {
     margin-top: 18px;
     font-size: 24px;
   }
 `;
 export const SimilarProductsIText = styled.p`
-  color: #000;
+  color: #3f3831;
 
-  font-family: Gill Sans;
-  font-size: 14px;
+  font-family: Inter;
+  font-size: 12px;
   font-style: normal;
-  font-weight: 300;
-  line-height: normal;
-  margin-top: 6px;
+  font-weight: 400;
+  line-height: 140%;
+  margin-top: 2px;
   @media (min-width: 1024px) {
     margin-top: 12px;
     font-size: 24px;

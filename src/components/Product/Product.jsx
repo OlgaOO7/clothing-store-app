@@ -182,6 +182,7 @@ export const Product = ({ productsId }) => {
 
   //додавання в кошик
   const addToCart = async () => {
+    console.log(skuIdProduct);
     if (basket.items) {
       const existingItem = basket.items.find(
         item => item.sku.id === skuIdProduct
@@ -223,7 +224,7 @@ export const Product = ({ productsId }) => {
   return (
     <>
       <Container>
-        {!isMobileScreen && <Breadcrumbs category={product.category} />}
+        <Breadcrumbs category={product.category} />
 
         <ProductWrap>
           <ImageWrap>
@@ -257,6 +258,7 @@ export const Product = ({ productsId }) => {
               setClickedIndex={setClickedIndex}
               setColorValue={setColorValue}
               setQuantity={setQuantity}
+              setSkuIdProduct={setSkuIdProduct}
             />
             <SizeWrap>
               {/* Розміри */}

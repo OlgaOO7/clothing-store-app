@@ -6,6 +6,7 @@ export const ColorOptions = ({
   setColorValue,
   setClickedIndex,
   setQuantity,
+  setSkuIdProduct,
 }) => {
   return (
     <Wrap>
@@ -19,6 +20,7 @@ export const ColorOptions = ({
                 setColorValue(color);
                 setClickedIndex(0);
                 setQuantity(1);
+                setSkuIdProduct(null);
               }}
             >
               <ColorElips
