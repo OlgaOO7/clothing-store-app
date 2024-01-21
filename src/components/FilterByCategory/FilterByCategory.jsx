@@ -1,11 +1,6 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { getCategories } from 'redux/category/operations';
-import { selectCategory } from 'redux/category/selectors';
-import {
-  getProductsFilterByCategory,
-  getProductsPagination,
-} from 'redux/products/operations';
 
 import { SortByPrice } from 'components/SortByPrice/SortByPrice';
 import {
@@ -16,45 +11,28 @@ import {
   Wrapper,
 } from './FilterByCategory.styled';
 
-export const FilterByCategory = ({ page, categoryId, handlePageChange }) => {
+export const FilterByCategory = ({
+  categories,
+  categoryId,
+  handleCategoryChange,
+  handleSortChange,
+  setSelectedCategory,
+  selectedCategory,
+  selected,
+}) => {
   const dispatch = useDispatch();
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const categories = useSelector(selectCategory) || [];
+
   useEffect(() => {
     dispatch(getCategories());
   }, [dispatch]);
 
   useEffect(() => {
-    if (
-      selectedCategory !== null &&
-      selectedCategory !== undefined &&
-      selectedCategory !== 0
-    ) {
-      dispatch(
-        getProductsFilterByCategory({ page, categoryId: selectedCategory })
-      );
-    } else if (selectedCategory === 0) {
-      dispatch(getProductsPagination({ page: page }));
-    } else if (
-      categoryId !== null &&
-      categoryId !== undefined &&
-      categoryId !== 0
-    ) {
-      setSelectedCategory(categoryId);
-      dispatch(getProductsFilterByCategory({ page, categoryId }));
-    } else {
-      setSelectedCategory(0);
-      dispatch(getProductsPagination({ page }));
-    }
-  }, [dispatch, page, categoryId, selectedCategory]);
+    setSelectedCategory(categoryId);
+  }, [categoryId, setSelectedCategory]);
 
-  const handleCategoryChange = newCategoryId => {
-    if (newCategoryId !== selectedCategory) {
-      handlePageChange(0);
-      dispatch(
-        getProductsFilterByCategory({ page, categoryId: newCategoryId })
-      );
-    }
+  const handleInternalCategoryChange = newCategoryId => {
+    setSelectedCategory(newCategoryId);
+    handleCategoryChange(newCategoryId);
   };
 
   return (
@@ -66,8 +44,7 @@ export const FilterByCategory = ({ page, categoryId, handlePageChange }) => {
           ) : (
             <CatalogButton
               onClick={() => {
-                setSelectedCategory(0);
-                handlePageChange(0);
+                handleInternalCategoryChange(0);
               }}
             >
               Всі
@@ -83,8 +60,7 @@ export const FilterByCategory = ({ page, categoryId, handlePageChange }) => {
                 ) : (
                   <CatalogButton
                     onClick={() => {
-                      handleCategoryChange(category.id);
-                      setSelectedCategory(category.id);
+                      handleInternalCategoryChange(category.id);
                     }}
                     key={category.id}
                   >
@@ -94,7 +70,7 @@ export const FilterByCategory = ({ page, categoryId, handlePageChange }) => {
               </li>
             ))}
         </CatalogButtonList>
-        <SortByPrice page={page} selectedCategory={selectedCategory} />
+        <SortByPrice handleSortChange={handleSortChange} selected={selected} />
       </Wrapper>
     </Section>
   );

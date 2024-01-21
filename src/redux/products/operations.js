@@ -29,10 +29,12 @@ export const getProducts = createAsyncThunk(
 
 export const getProductsPagination = createAsyncThunk(
   'products/getAll',
-  async (page, thunkAPI) => {
+  async (credentials, thunkAPI) => {
     try {
       const res = await axios.get(
-        `/products?page=${page.page}&size=12&sort=title`,
+        `/products?page=${credentials.page}&size=12${
+          credentials?.sort ? `&sort=${credentials.sort}` : ``
+        }`,
         '',
         config.headers
       );
@@ -48,7 +50,11 @@ export const getProductsFilterByCategory = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.get(
-        `/products?page=${credentials.page}&size=12&sort=title&categoryId=${credentials.categoryId}`,
+        `/products?page=${credentials.page}&size=12&sort=${credentials.sort}${
+          credentials.selectedCategory >= 1
+            ? `&categoryId=${credentials.selectedCategory}`
+            : ''
+        }&categoryId=${credentials.categoryId}`,
         '',
         config.headers
       );

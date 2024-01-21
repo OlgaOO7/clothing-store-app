@@ -1,16 +1,87 @@
-import { useCallback, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useCallback, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectTotalPages } from 'redux/products/selectors';
 import { FilterByCategory } from 'components/FilterByCategory/FilterByCategory';
 import { ProductCatalogComponent } from './ProductCatalogComponent';
 
 import { LinkTo, Wrapper, Section, NavWrapper } from './ProductCatalog.styled';
-import { useLocation } from 'react-router-dom';
+import {
+  getProductsFilterByCategory,
+  getProductsPagination,
+  getProductsSortByPrice,
+} from 'redux/products/operations';
+import { selectCategory } from 'redux/category/selectors';
+import { getCategories } from 'redux/category/operations';
 
 export const ProductCatalog = ({ type, data, categoryId }) => {
+  const dispatch = useDispatch();
   const [page, setCurrentPage] = useState(0);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selected, setIsSelected] = useState(
+    'Сортування за ціною: від вищої до нижчої'
+  );
   const totalPage = useSelector(selectTotalPages) || 1;
-  const location = useLocation();
+  const categories = useSelector(selectCategory) || [];
+
+  useEffect(() => {
+    dispatch(getCategories());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (
+      selectedCategory !== null &&
+      selectedCategory !== undefined &&
+      selectedCategory !== 0
+    ) {
+      dispatch(
+        getProductsFilterByCategory({
+          page,
+          categoryId: selectedCategory,
+          sort:
+            selected === 'Сортування за ціною: від нижчої до вищої'
+              ? 'price.value,asc'
+              : 'price.value,desc',
+        })
+      );
+    } else if (selectedCategory === 0) {
+      dispatch(
+        getProductsPagination({
+          page: page,
+          sort:
+            selected === 'Сортування за ціною: від нижчої до вищої'
+              ? 'price.value,asc'
+              : 'price.value,desc',
+        })
+      );
+    } else if (
+      categoryId !== null &&
+      categoryId !== undefined &&
+      categoryId !== 0
+    ) {
+      setSelectedCategory(categoryId);
+      dispatch(
+        getProductsFilterByCategory({
+          page,
+          categoryId,
+          sort:
+            selected === 'Сортування за ціною: від нижчої до вищої'
+              ? 'price.value,asc'
+              : 'price.value,desc',
+        })
+      );
+    } else {
+      setSelectedCategory(0);
+      dispatch(
+        getProductsPagination({
+          page,
+          sort:
+            selected === 'Сортування за ціною: від нижчої до вищої'
+              ? 'price.value,asc'
+              : 'price.value,desc',
+        })
+      );
+    }
+  }, [dispatch, page, categoryId, selectedCategory, selected]);
 
   const handlePageChange = useCallback(page => {
     setCurrentPage(page);
@@ -21,11 +92,44 @@ export const ProductCatalog = ({ type, data, categoryId }) => {
       handlePageChange(page + 1);
     }
   };
-  const handlePrevPage = () => {
-    if (page > 0) {
-      handlePageChange(page - 1);
+
+  const handleSortChange = useCallback(
+    order => {
+      setCurrentPage(0);
+      dispatch(
+        getProductsSortByPrice({
+          page,
+          sort:
+            order === 'Сортування за ціною: від нижчої до вищої'
+              ? 'price.value,asc'
+              : 'price.value,desc',
+          selectedCategory,
+        })
+      );
+      setIsSelected(order);
+    },
+    [dispatch, page, selectedCategory]
+  );
+
+  const handleCategoryChange = newCategoryId => {
+    handlePageChange(0);
+
+    if (newCategoryId === 0) {
+      dispatch(getProductsPagination({ page }));
+    } else {
+      dispatch(
+        getProductsFilterByCategory({
+          page,
+          categoryId: newCategoryId,
+          sort:
+            selected === 'Сортування за ціною: від нижчої до вищої'
+              ? 'price.value,asc'
+              : 'price.value,desc',
+        })
+      );
     }
   };
+
   return (
     <>
       <NavWrapper>
@@ -39,9 +143,13 @@ export const ProductCatalog = ({ type, data, categoryId }) => {
       </NavWrapper>
       {type !== 'searchpage' && (
         <FilterByCategory
-          page={page}
-          categoryId={categoryId ? categoryId : location.state?.categoryId}
-          handlePageChange={handlePageChange}
+          categories={categories}
+          categoryId={categoryId}
+          handleCategoryChange={handleCategoryChange}
+          handleSortChange={handleSortChange}
+          setSelectedCategory={setSelectedCategory}
+          selectedCategory={selectedCategory}
+          selected={selected}
         />
       )}
       <Section>
@@ -50,7 +158,6 @@ export const ProductCatalog = ({ type, data, categoryId }) => {
             data={data}
             type={type}
             handleNextPage={handleNextPage}
-            handlePrevPage={handlePrevPage}
             page={page}
             totalPage={totalPage}
             handlePageChange={handlePageChange}
