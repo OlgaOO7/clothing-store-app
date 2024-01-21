@@ -48,20 +48,14 @@ export const CategoryList = styled.ul`
 export const CategoryImage = styled.div`
   width: 144px;
   height: 134px;
-  background: linear-gradient(
-      0deg,
-      rgba(227, 224, 222, 0.45) 0%,
-      rgba(227, 224, 222, 0.45) 100%
-    ),
-    lightgray ${p => (p.$photo ? `url(${p.$photo})` : `url(${noImage})`)};
+  transition: all 0.7s ease-out;
+  background-image: ${p => (p.$photo ? `url(${p.$photo})` : `url(${noImage})`)};
+  opacity: 0.7;
   background-repeat: no-repeat;
   background-size: cover;
   &:hover,
   &:focus {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-image: ${p =>
-      p.$photo ? `url(${p.$photo})` : `url(${noImage})`};
+    opacity: 10;
   }
   @media (min-width: 768px) {
     width: 437px;
