@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectTotalPages } from 'redux/products/selectors';
+import { selectIsRefreshing, selectTotalPages } from 'redux/products/selectors';
 import { FilterByCategory } from 'components/FilterByCategory/FilterByCategory';
 import { ProductCatalogComponent } from './ProductCatalogComponent';
 
@@ -20,6 +20,7 @@ export const ProductCatalog = ({ type, data, categoryId }) => {
   const [selected, setIsSelected] = useState(
     'Сортування за ціною: від вищої до нижчої'
   );
+  const isLoading = useSelector(selectIsRefreshing);
   const totalPage = useSelector(selectTotalPages) || 1;
   const categories = useSelector(selectCategory) || [];
 
@@ -154,14 +155,18 @@ export const ProductCatalog = ({ type, data, categoryId }) => {
       )}
       <Section>
         <Wrapper>
-          <ProductCatalogComponent
-            data={data}
-            type={type}
-            handleNextPage={handleNextPage}
-            page={page}
-            totalPage={totalPage}
-            handlePageChange={handlePageChange}
-          />
+          {isLoading ? (
+            <p>Loading...</p>
+          ) : (
+            <ProductCatalogComponent
+              data={data}
+              type={type}
+              handleNextPage={handleNextPage}
+              page={page}
+              totalPage={totalPage}
+              handlePageChange={handlePageChange}
+            />
+          )}
         </Wrapper>
       </Section>
     </>
