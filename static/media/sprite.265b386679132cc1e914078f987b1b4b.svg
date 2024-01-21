@@ -55,6 +55,9 @@
 <symbol id="icon-vector-13" viewBox="0 0 54 32">
 <path stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="3.2" d="M3.2 3.2l24 25.6 24-25.6"></path>
 </symbol>
+<symbol id="icon-vector-14" viewBox="0 0 59 32">
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M56 29.333l-26.667-26.667-26.667 26.667"></path>
+</symbol>
 
 <symbol id="icon-minus" viewBox="0 0 75 32">
 <path d="M4.917 5.792h62.25v24.375h-62.25v-24.375z"></path>
