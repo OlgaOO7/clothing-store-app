@@ -20,8 +20,6 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column-reverse;
   gap: 60px;
-  padding-left: 28px;
-  padding-right: 28px;
   margin: 0 auto;
   flex-wrap: wrap;
   @media (min-width: 768px) {
@@ -81,8 +79,10 @@ export const ContactsContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
+  padding: 0 28px;
   @media (min-width: 768px) {
     gap: 32px;
+    padding: 0;
   }
 `;
 export const ContactsWrapper = styled.div`

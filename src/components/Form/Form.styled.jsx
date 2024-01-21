@@ -51,13 +51,24 @@ export const FormButton = styled.button`
     padding: 9px 0;
   }
 `;
+export const SuccessFormMessage = styled.p`
+  font-size: 14px;
+  line-height: 20px;
+  @media (min-width: 768px) {
+    font-size: 16px;
+    line-height: 22px;
+    text-align: left;
+  }
+`;
 export const SuccessMessageWrapper = styled.div`
-  width: 100%;
   background-color: #c9c9c9;
-  padding: 27px 30px;
+  padding: 21px 41px;
   height: max-content;
   text-align: center;
-  max-width: 688px;
+  @media (min-width: 768px) {
+    max-width: 378px;
+    padding: 24px 87px;
+  }
 `;
 export const SuccessContainer = styled.p`
   font-size: 24px;

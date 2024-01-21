@@ -26,10 +26,11 @@ import {
   FormButton,
   SuccessMessageWrapper,
   SubForm,
+  SuccessFormMessage,
 } from './Form.styled';
 
 export const Form = ({ formType }) => {
-  const [formStatus, setFormStatus] = useState(null);
+  const [formStatus, setFormStatus] = useState('success');
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [isValid, setIsValid] = useState(true);
   const [charCount, setCharCount] = useState(0);
@@ -152,10 +153,10 @@ export const Form = ({ formType }) => {
         <>
           {formStatus === 'success' ? (
             <SuccessMessageWrapper>
-              <p>
-                Дякуємо, ми переглянемо ваш лист і зв'яжемось з вами найближчим
-                часом!
-              </p>
+              <SuccessFormMessage>
+                Дякуємо, ми переглянемо ваш лист і зв'яжемось з вами в
+                найближчий робочий час.
+              </SuccessFormMessage>
             </SuccessMessageWrapper>
           ) : (
             <ContactsForm onSubmit={handleSubmit(onSubmitContactUs)}>
