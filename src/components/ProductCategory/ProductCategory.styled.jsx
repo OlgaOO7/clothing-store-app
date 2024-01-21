@@ -53,11 +53,13 @@ export const CategoryImage = styled.div`
   opacity: 0.7;
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   &:hover,
   &:focus {
     opacity: 10;
   }
   @media (min-width: 768px) {
+    background-position: top;
     width: 437px;
     height: 400px;
   }

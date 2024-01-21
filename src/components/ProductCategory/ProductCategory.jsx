@@ -13,7 +13,11 @@ import {
 } from './ProductCategory.styled';
 import { getCategories } from 'redux/category/operations';
 import { selectCategory } from 'redux/category/selectors';
-import photo from '../../images/Frame.jpg';
+import skinny from '../../images/skinny.jpg';
+import tShirts from '../../images/t-shirts.jpg';
+import costumes from '../../images/costumes.jpg';
+import pants from '../../images/pants.jpg';
+import sweatshirts from '../../images/sweatshirts.jpg';
 import { Link } from 'react-router-dom';
 
 export const ProductCategory = () => {
@@ -23,7 +27,7 @@ export const ProductCategory = () => {
   }, [dispatch]);
   const categories = useSelector(selectCategory) || [];
   const visibleCategories = categories.slice(0, 5);
-  const photos = [photo, photo, photo, photo, photo];
+  const photos = [tShirts, costumes, sweatshirts, skinny, pants];
   return (
     <Section>
       <Wrapper>

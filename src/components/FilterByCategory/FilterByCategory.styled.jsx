@@ -35,11 +35,18 @@ export const CatalogButtonList = styled.ul`
 export const CatalogButton = styled.button`
   padding: 6px 18px;
   background: transparent;
-  border: 1px solid #000000;
+  border: 1px solid #160b03;
 
   font-size: 14px;
   line-height: 16px;
-  color: #000000;
+  color: #160b03;
+  transition: all 0.7s ease-out;
+
+  &:hover,
+  &:focus {
+    background: #160b03;
+    color: #fff;
+  }
 
   @media (min-width: 768px) {
     padding: 8px 24px;
@@ -50,12 +57,12 @@ export const CatalogButton = styled.button`
 `;
 export const SelectedCatalogButton = styled.button`
   padding: 7px 18px;
-  background: #000000;
+  background: #160b03;
   border: none;
 
   font-size: 14px;
   line-height: 16px;
-  color: #ffffff;
+  color: #fff;
 
   @media (min-width: 768px) {
     padding: 10px 24px;

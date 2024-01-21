@@ -40,7 +40,7 @@ export const ProductCatalog = ({ type, data, categoryId }) => {
       {type !== 'searchpage' && (
         <FilterByCategory
           page={page}
-          categoryId={categoryId ? categoryId : location.state.categoryId}
+          categoryId={categoryId ? categoryId : location.state?.categoryId}
           handlePageChange={handlePageChange}
         />
       )}
