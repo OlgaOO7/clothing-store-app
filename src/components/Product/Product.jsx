@@ -182,7 +182,6 @@ export const Product = ({ productsId }) => {
 
   //додавання в кошик
   const addToCart = async () => {
-    console.log(skuIdProduct);
     if (basket.items) {
       const existingItem = basket.items.find(
         item => item.sku.id === skuIdProduct
@@ -218,7 +217,7 @@ export const Product = ({ productsId }) => {
   };
 
   // console.log(filterPhoto);
-  console.log(product);
+  // console.log(product);
   // console.log(similarProducts.content);
 
   return (
