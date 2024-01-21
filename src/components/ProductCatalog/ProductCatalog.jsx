@@ -12,6 +12,7 @@ import {
 } from 'redux/products/operations';
 import { selectCategory } from 'redux/category/selectors';
 import { getCategories } from 'redux/category/operations';
+import { Loader } from 'components/Loader/Loader';
 
 export const ProductCatalog = ({ type, data, categoryId }) => {
   const dispatch = useDispatch();
@@ -156,7 +157,7 @@ export const ProductCatalog = ({ type, data, categoryId }) => {
       <Section>
         <Wrapper>
           {isLoading ? (
-            <p>Loading...</p>
+            <Loader />
           ) : (
             <ProductCatalogComponent
               data={data}

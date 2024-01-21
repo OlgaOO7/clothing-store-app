@@ -28,6 +28,8 @@ import {
   OrderResultTotal,
 } from './Order.styled';
 import { formatPrice } from 'utils/formatPrice';
+import { selectIsRefreshing } from 'redux/cart/selectors';
+import { Loader } from 'components/Loader/Loader';
 
 export const Order = () => {
   const dispatch = useDispatch();
@@ -38,6 +40,7 @@ export const Order = () => {
   const [productAvailableQuantity, setProductAvailableQuantity] = useState({});
 
   const order = useSelector(selectOrder) || [];
+  const isLoading = useSelector(selectIsRefreshing);
   const products = useSelector(selectOrderItems);
   const memoizedProducts = useMemo(() => products || [], [products]);
 
@@ -124,23 +127,29 @@ export const Order = () => {
         <>
           <Section>
             <Wrapper>
-              <Title>Ваше замовлення</Title>
-              <OrderWrapper>
-                {memoizedProducts.length === 0 ? (
-                  <p>Замовлення порожнє</p>
-                ) : (
-                  memoizedProducts.map(item => (
-                    <OrderItem
-                      key={item.id}
-                      item={item}
-                      availableQuantity={
-                        productAvailableQuantity[item.productId]
-                      }
-                      setOrderSuccess={setOrderSuccess}
-                    />
-                  ))
-                )}
-              </OrderWrapper>
+              {isLoading ? (
+                <Loader />
+              ) : (
+                <>
+                  <Title>Ваше замовлення</Title>
+                  <OrderWrapper>
+                    {memoizedProducts.length === 0 ? (
+                      <p>Замовлення порожнє</p>
+                    ) : (
+                      memoizedProducts.map(item => (
+                        <OrderItem
+                          key={item.id}
+                          item={item}
+                          availableQuantity={
+                            productAvailableQuantity[item.productId]
+                          }
+                          setOrderSuccess={setOrderSuccess}
+                        />
+                      ))
+                    )}
+                  </OrderWrapper>
+                </>
+              )}
             </Wrapper>
           </Section>
           <OrderResultSection>
