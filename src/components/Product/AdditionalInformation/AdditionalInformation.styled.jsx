@@ -47,7 +47,6 @@ export const Icon = styled.svg`
   width: 14px;
   height: 7px;
   flex-shrink: 0;
-  /* cursor: pointer; */
   @media (min-width: 1024px) {
     width: 15px;
     height: 7px;
