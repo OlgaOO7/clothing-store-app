@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/clothing-store-app/static/css/main.58462fbc.css",
-    "main.js": "/clothing-store-app/static/js/main.3d184466.js",
+    "main.js": "/clothing-store-app/static/js/main.eb1cffd0.js",
     "static/css/975.21cac865.chunk.css": "/clothing-store-app/static/css/975.21cac865.chunk.css",
     "static/js/975.3f2aaecc.chunk.js": "/clothing-store-app/static/js/975.3f2aaecc.chunk.js",
     "static/js/270.2adec8f7.chunk.js": "/clothing-store-app/static/js/270.2adec8f7.chunk.js",
     "static/css/478.642bd848.chunk.css": "/clothing-store-app/static/css/478.642bd848.chunk.css",
-    "static/js/478.e13b2479.chunk.js": "/clothing-store-app/static/js/478.e13b2479.chunk.js",
+    "static/js/478.f6ab98c3.chunk.js": "/clothing-store-app/static/js/478.f6ab98c3.chunk.js",
     "static/js/41.39b750c3.chunk.js": "/clothing-store-app/static/js/41.39b750c3.chunk.js",
     "static/js/19.e89b0ef7.chunk.js": "/clothing-store-app/static/js/19.e89b0ef7.chunk.js",
     "static/js/487.ea97ecce.chunk.js": "/clothing-store-app/static/js/487.ea97ecce.chunk.js",
@@ -22,12 +22,12 @@
     "static/media/sprite.svg": "/clothing-store-app/static/media/sprite.265b386679132cc1e914078f987b1b4b.svg",
     "index.html": "/clothing-store-app/index.html",
     "main.58462fbc.css.map": "/clothing-store-app/static/css/main.58462fbc.css.map",
-    "main.3d184466.js.map": "/clothing-store-app/static/js/main.3d184466.js.map",
+    "main.eb1cffd0.js.map": "/clothing-store-app/static/js/main.eb1cffd0.js.map",
     "975.21cac865.chunk.css.map": "/clothing-store-app/static/css/975.21cac865.chunk.css.map",
     "975.3f2aaecc.chunk.js.map": "/clothing-store-app/static/js/975.3f2aaecc.chunk.js.map",
     "270.2adec8f7.chunk.js.map": "/clothing-store-app/static/js/270.2adec8f7.chunk.js.map",
     "478.642bd848.chunk.css.map": "/clothing-store-app/static/css/478.642bd848.chunk.css.map",
-    "478.e13b2479.chunk.js.map": "/clothing-store-app/static/js/478.e13b2479.chunk.js.map",
+    "478.f6ab98c3.chunk.js.map": "/clothing-store-app/static/js/478.f6ab98c3.chunk.js.map",
     "41.39b750c3.chunk.js.map": "/clothing-store-app/static/js/41.39b750c3.chunk.js.map",
     "19.e89b0ef7.chunk.js.map": "/clothing-store-app/static/js/19.e89b0ef7.chunk.js.map",
     "487.ea97ecce.chunk.js.map": "/clothing-store-app/static/js/487.ea97ecce.chunk.js.map",
@@ -43,6 +43,6 @@
   },
   "entrypoints": [
     "static/css/main.58462fbc.css",
-    "static/js/main.3d184466.js"
+    "static/js/main.eb1cffd0.js"
   ]
 }
