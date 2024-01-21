@@ -6,7 +6,11 @@ import { MobNavigationMenu } from './MobNavigationMenu';
 import { NavigationMenu } from './NavigationMenu';
 import { SearchBar } from '../SearchBar/SearchBar';
 import { getCart } from 'redux/cart/operations';
-import { selectTotalQunaity } from 'redux/cart/selectors';
+import {
+  selectIsRefreshing,
+  selectTotalQunaity,
+  selectCart,
+} from 'redux/cart/selectors';
 
 import Sprite from '../../images/sprite.svg';
 
@@ -33,26 +37,11 @@ export const Navigation = ({ sectionType, toggleShowSearch }) => {
   const [totalQuantity, setTotalQuantity] = useState(0);
 
   const dispatch = useDispatch();
-  const cartTotalQuantity = useSelector(selectTotalQunaity);
   const location = useLocation();
 
-  // useEffect(() => {
-  //   try {
-  //     // dispatch(getCart());
-  //     dispatch(getCart()).then(action => {
-  //       if (
-  //         action.payload.totalQuantity !== undefined &&
-  //         action.payload.totalQuantity !== null
-  //       ) {
-  //         setTotalQuantity(action.payload.totalQuantity);
-  //       } else {
-  //         setTotalQuantity(0);
-  //       }
-  //     });
-  //   } catch (error) {
-  //     console.error('Error fetching data:', error);
-  //   }
-  // }, [dispatch]);
+  const isLoading = useSelector(selectIsRefreshing);
+  const cartTotalQuantity = useSelector(selectTotalQunaity);
+  const cart = useSelector(selectCart);
 
   useEffect(() => {
     try {
@@ -63,12 +52,11 @@ export const Navigation = ({ sectionType, toggleShowSearch }) => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (cartTotalQuantity !== undefined && cartTotalQuantity !== null) {
-      setTotalQuantity(cartTotalQuantity);
-    } else {
+    setTotalQuantity(cartTotalQuantity);
+    if (!isLoading && !cartTotalQuantity) {
       setTotalQuantity(0);
     }
-  }, [cartTotalQuantity]);
+  }, [cartTotalQuantity, isLoading, cart]);
 
   const closeMobMenu = () => setIsShowMenu(false);
 
@@ -79,7 +67,6 @@ export const Navigation = ({ sectionType, toggleShowSearch }) => {
   return (
     <NavContainer>
       <Logo />
-
       <NavigationMenu $sectionType={sectionType} />
       <BtnWrapper>
         <SearchBar />
@@ -94,9 +81,7 @@ export const Navigation = ({ sectionType, toggleShowSearch }) => {
               <use href={`${Sprite}#icon-cart`} />
             </CartIcon>
             <CartQuantityWrapper>
-              <CartProductQuantity>
-                {cartTotalQuantity || totalQuantity}
-              </CartProductQuantity>
+              <CartProductQuantity>{totalQuantity}</CartProductQuantity>
             </CartQuantityWrapper>
           </CartIconWrapper>
           <TextContainer>

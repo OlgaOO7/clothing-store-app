@@ -36,6 +36,7 @@ import {
 export const Cart = () => {
   const [cartProducts, setCartProducts] = useState([]);
   const [productAvailableQuantity, setProductAvailableQuantity] = useState({});
+  const [initialLoad, setInitialLoad] = useState(true);
 
   const { isMobileScreen } = useMedia();
 
@@ -111,6 +112,7 @@ export const Cart = () => {
             return map;
           }, {});
           setProductAvailableQuantity(productQuantity);
+          setInitialLoad(false);
         }
       } catch (err) {
         console.error(err);
@@ -119,6 +121,8 @@ export const Cart = () => {
 
     fetchProductQuantity();
   }, [cartData, dispatch]);
+
+  console.log('cartData:', cartData);
 
   const increaseProductQuantity = async productId => {
     const itemToUpdate = cartProducts.find(
@@ -172,8 +176,8 @@ export const Cart = () => {
     }
   };
 
-  const clearProductCart = () => {
-    dispatch(clearCart());
+  const clearProductCart = async () => {
+    await dispatch(clearCart());
   };
 
   return (
@@ -217,6 +221,8 @@ export const Cart = () => {
                         availableQuantity={
                           productAvailableQuantity[item.productId]
                         }
+                        isLoading={isLoading}
+                        initialLoad={initialLoad}
                       />
                     </li>
                   ))}

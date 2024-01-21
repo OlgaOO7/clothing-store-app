@@ -129,7 +129,7 @@ export const Notification = styled.p`
   font-size: ${props => props.fontSize};
   padding-top: ${props => props.$paddingTop};
   @media (max-width: 767px) {
-    font-size: ${props => (props.mobFont ? '6px' : 'inherit')};
+    font-size: ${props => (props.$mobFont ? '6px' : 'inherit')};
   }
 `;
 

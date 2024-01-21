@@ -31,6 +31,8 @@ export const CartProductItem = ({
   decreaseProductQuantity,
   increaseProductQuantity,
   availableQuantity,
+  isLoading,
+  initialLoad,
 }) => {
   const { isMobileScreen } = useMedia();
   const dispatch = useDispatch();
@@ -44,9 +46,9 @@ export const CartProductItem = ({
   const isProductQuantityAvailable = availableQuantity > 0;
   const isOneProductAvalable = availableQuantity === 1;
   const isMaxAvailableQunatity = availableQuantity === item.quantity;
-
-  console.log('isMaxAvailableQunatity:', isMaxAvailableQunatity);
-  console.log('isOneProductAvalable:', isOneProductAvalable);
+  const exceededQuantity = item.quantity > availableQuantity;
+  // console.log('isMaxAvailableQunatity:', isMaxAvailableQunatity);
+  // console.log('isOneProductAvalable:', isOneProductAvalable);
 
   return (
     <Wrapper>
@@ -88,7 +90,7 @@ export const CartProductItem = ({
           </ProductDescriptionWrapper>
         </ItemWrapper>
       </InfoProductWrapper>
-      {!availableQuantity ? (
+      {!isLoading && !initialLoad && !availableQuantity ? (
         <Notification color="red" fontSize="24px">
           Наразі товар відсутній
         </Notification>
@@ -108,12 +110,14 @@ export const CartProductItem = ({
               </Icon>
             </span>
           </QuantityWrapper>
-          {isMaxAvailableQunatity || isOneProductAvalable ? (
+          {isMaxAvailableQunatity ||
+          isOneProductAvalable ||
+          exceededQuantity ? (
             <Notification
               $paddingTop="6px"
               color="#4C4B4B"
               fontSize="12px"
-              mobFont
+              $mobFont
             >
               Доступна кількість: {availableQuantity}
             </Notification>

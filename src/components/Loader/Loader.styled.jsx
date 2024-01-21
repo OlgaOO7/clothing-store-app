@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
 const spin = keyframes`
   0% {
@@ -18,4 +18,14 @@ export const LoaderSpin = styled.div`
   border-radius: 50%;
   animation: ${spin} 1s infinite linear;
   margin-top: 15px;
+
+  ${props =>
+    props.type === 'small' &&
+    css`
+      margin: auto;
+      width: 20px;
+      height: 20px;
+      border: 3px solid #fff;
+      border-top: 3px solid #000;
+    `}
 `;
