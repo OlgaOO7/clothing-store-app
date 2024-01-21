@@ -4,8 +4,10 @@ import subscriptionForm from '../../images/subscription-form.jpg';
 export const ContactsForm = styled.form`
   width: 100%;
   max-width: 303px;
+  padding: 0 28px;
   @media (min-width: 768px) {
     max-width: 438px;
+    padding: 0;
   }
 `;
 export const ContactsFormWrapper = styled.div`

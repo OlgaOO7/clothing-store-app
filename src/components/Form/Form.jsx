@@ -30,7 +30,7 @@ import {
 } from './Form.styled';
 
 export const Form = ({ formType }) => {
-  const [formStatus, setFormStatus] = useState('success');
+  const [formStatus, setFormStatus] = useState(null);
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [isValid, setIsValid] = useState(true);
   const [charCount, setCharCount] = useState(0);
