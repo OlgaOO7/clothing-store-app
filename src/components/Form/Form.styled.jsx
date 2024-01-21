@@ -14,42 +14,41 @@ export const ContactsFormWrapper = styled.div`
   gap: 12px;
   margin-bottom: 12px;
   @media (min-width: 768px) {
-    margin-bottom: 18px;
-    gap: 18px;
+    margin-bottom: 22px;
+    gap: 16px;
     max-width: 438px;
   }
 `;
 export const FormTitle = styled.h3`
-  font-size: 18px;
-  font-weight: 400;
+  font-size: 16px;
+  font-weight: 600;
   line-height: 21px;
   margin-bottom: 16px;
   @media (min-width: 768px) {
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 29px;
-    margin-bottom: 22px;
+    font-size: 18px;
+    line-height: 25px;
+    margin-bottom: 26px;
   }
 `;
 export const FormButton = styled.button`
   font-size: 16px;
-  font-weight: 400;
-  line-height: 18px;
-  padding: 10px 0;
-  background: #686868;
-  color: #fff;
+  line-height: 21px;
+  padding: 7px 0;
+  background: #160b03;
+  color: #ffffff;
   border: none;
-  width: 186px;
+  width: 100%;
+  max-width: 187px;
   transition: all 0.5s ease-out;
   &:hover,
   &:focus {
-    background: #525151;
+    background: #3f3831;
   }
   @media (min-width: 768px) {
-    width: 253px;
-    font-size: 22px;
-    line-height: 25px;
-    margin-bottom: 22px;
+    max-width: 167px;
+    font-size: 16px;
+    line-height: 22px;
+    padding: 9px 0;
   }
 `;
 export const SuccessMessageWrapper = styled.div`

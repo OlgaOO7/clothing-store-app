@@ -1,24 +1,24 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const Section = styled.section`
-  width: 100%;
-  padding: 41px 0 98px;
-  @media (min-width: 768px) {
-    padding: 140px 0 207px;
-  }
-`;
 export const MainSection = styled.section`
   width: 100%;
   padding: 22px 0;
-  background-color: #f5f5f5;
+  background-color: #f4efeb;
   @media (min-width: 768px) {
-    padding: 41px 0;
+    padding: 48px 0;
+  }
+`;
+export const Section = styled.section`
+  width: 100%;
+  padding: 52px 0 80px;
+  @media (min-width: 768px) {
+    padding: 72px 0 124px;
   }
 `;
 export const Wrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   gap: 60px;
   padding-left: 28px;
   padding-right: 28px;
@@ -30,10 +30,7 @@ export const Wrapper = styled.div`
     max-width: 1245px;
     padding-left: 40px;
     padding-right: 40px;
-  }
-  @media (min-width: 1440px) {
-    flex-wrap: nowrap;
-    gap: 81px;
+    justify-content: space-between;
   }
 `;
 export const MainWrapper = styled.div`
@@ -51,11 +48,11 @@ export const NavWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   gap: 31px;
-  padding: 115px 28px 32px;
+  padding: 124px 30px 42px;
   margin: 0;
   @media (min-width: 768px) {
     max-width: 1360px;
-    padding: 155px 40px 44px;
+    padding: 170px 40px 52px;
     margin: 0 auto;
   }
 `;
@@ -70,37 +67,22 @@ export const LinkTo = styled(Link)`
   }
 `;
 export const Title = styled.h2`
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 400;
-  line-height: 28px;
+  line-height: 31px;
   letter-spacing: 0.04em;
   text-align: center;
   @media (min-width: 768px) {
-    font-size: 48px;
-    line-height: 55px;
-  }
-`;
-export const Logo = styled.p`
-  font-size: 41px;
-  font-style: italic;
-  font-weight: 700;
-  line-height: 47px;
-  letter-spacing: 0.21em;
-  text-transform: uppercase;
-  color: #00000024;
-  text-align: center;
-  @media (min-width: 768px) {
-    font-size: 120px;
-    line-height: 139px;
-    letter-spacing: 0.21em;
+    font-size: 32px;
+    line-height: 40px;
   }
 `;
 export const ContactsContent = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 24px;
   @media (min-width: 768px) {
-    gap: 34px;
+    gap: 32px;
   }
 `;
 export const ContactsWrapper = styled.div`
@@ -109,35 +91,36 @@ export const ContactsWrapper = styled.div`
   gap: 10px;
   @media (min-width: 768px) {
     flex-direction: row;
-    gap: 48px;
+    gap: 104px;
   }
 `;
 export const ContactTitle = styled.h3`
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   line-height: 21px;
   @media (min-width: 768px) {
-    font-size: 24px;
-    line-height: 29px;
+    font-size: 18px;
+    line-height: 25px;
     width: 243px;
   }
 `;
 export const ContactText = styled.a`
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 14px;
   line-height: 18px;
   color: inherit;
   @media (min-width: 768px) {
-    font-size: 24px;
-    line-height: 28px;
+    font-size: 16px;
+    line-height: 21px;
   }
 `;
 export const IconsWrapper = styled.div`
   display: flex;
-  gap: 5px;
+  flex-direction: row-reverse;
+  gap: 21px;
   align-items: center;
+  justify-content: flex-end;
   @media (min-width: 768px) {
-    gap: 7px;
+    gap: 14px;
   }
 `;
 export const IconInstagram = styled.svg`
