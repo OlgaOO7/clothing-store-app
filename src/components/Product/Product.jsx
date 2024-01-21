@@ -319,6 +319,7 @@ export const Product = ({ productsId }) => {
             setClickedIndex={setClickedIndex}
             setSkuIdProduct={setSkuIdProduct}
             message={setMessage}
+            messageSize={setMessageSize}
           />
         )}
       </Container>

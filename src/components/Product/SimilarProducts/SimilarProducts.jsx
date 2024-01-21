@@ -17,6 +17,7 @@ export const SimilarProducts = ({
   setQuantity,
   setSkuIdProduct,
   message,
+  setMessageSize,
 }) => {
   const limitedProducts = similarProducts.content.slice(0, 4);
   const cleaningValues = () => {
@@ -24,6 +25,7 @@ export const SimilarProducts = ({
     setQuantity(1);
     setSkuIdProduct(null);
     message(false);
+    setMessageSize(false);
   };
   return (
     <Aside>
