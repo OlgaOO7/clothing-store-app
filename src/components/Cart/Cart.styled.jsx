@@ -1,9 +1,20 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const CartWrapper = styled.div`
-  padding: 174px 40px 0 40px;
+  /* display: flex;
+  flex-direction: column; */
+  padding: 128px 28px 0 28px;
   margin-bottom: 646px;
+  @media (min-width: 768px) {
+    padding: 174px 40px 0 40px;
+  }
+
+  ${props =>
+    props.type === 'empty' &&
+    css`
+      margin-bottom: 250px;
+    `}
 `;
 
 export const LinkWrapper = styled.div`
@@ -34,7 +45,9 @@ export const TaglineWrapper = styled.div`
 
 export const TaglineSubWrapper = styled.div`
   display: flex;
+  justify-content: space-around;
   margin-bottom: 18px;
+  padding-left: 36px;
   color: #737373;
   text-align: center;
   font-family: Gill Sans;
@@ -42,22 +55,32 @@ export const TaglineSubWrapper = styled.div`
   font-weight: 400;
   line-height: normal;
   @media (min-width: 768px) {
+    justify-content: space-between;
+    padding-left: 240px;
     font-size: 32px;
     color: #000;
   }
 `;
 
 export const ProductText = styled.p`
-  margin-right: 44px;
+  /* margin-right: 44px;
   @media (min-width: 768px) {
     margin-right: 610px;
-  }
+  } */
 `;
 
 export const ProductQuantity = styled.p`
-  margin-right: 38px;
+  /* margin-right: 38px;
   @media (min-width: 768px) {
     margin-right: 113px;
+  } */
+`;
+
+export const ProductListWrapper = styled.div`
+  padding: 29px 0;
+  border-top: 1px solid #686868;
+  @media (min-width: 768px) {
+    border-bottom: 1px solid #686868;
   }
 `;
 
@@ -103,67 +126,10 @@ export const ProductCartList = styled.ul`
   }
 `;
 
-export const Rectangle = styled.div`
-  width: max-content;
-  padding: 84px 104px;
-  margin-top: 36px;
-  margin-left: auto;
-  background-color: #f0f0f0;
-`;
-
-export const TextWrapper = styled.div`
+export const DeleteCartBtnWrapp = styled.div`
   display: flex;
-  justify-content: space-between;
-  gap: 120px;
-  margin-bottom: 31px;
-  color: #000;
-  font-size: 18px;
-`;
-
-export const PriceWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  gap: 120px;
-  margin-bottom: 61px;
-  color: #000;
-  font-size: 24px;
-  font-weight: 600px;
-`;
-
-export const LinkBtnWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  width: 345px;
-`;
-
-export const OrderLink = styled(Link)`
-  display: flex;
-  justify-content: center;
-  color: #fff;
-  background-color: #0e0e0e;
-  font-size: 22px;
-  padding: 16px 0;
-  border: 1px solid #191919;
-  width: 345px;
-`;
-
-export const CatalogLink = styled(Link)`
-  display: flex;
-  justify-content: center;
-  color: #191919;
-  font-size: 22px;
-  padding: 16px 0;
-  border: 1px solid #191919;
-  width: 345px;
-`;
-
-export const HeadlineWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  /* margin-bottom: 29px; */
-  /* background-color: rgb(255, 255, 255); */
-  /* border-bottom: 1px solid #686868; */
+  justify-content: right;
+  margin-bottom: 40px;
 `;
 
 export const DeleteCartBtn = styled.button`
@@ -171,8 +137,33 @@ export const DeleteCartBtn = styled.button`
   color: #ffffff;
   background-color: #000000;
   border: none;
-  font-size: 14px;
+  font-size: 12px;
   @media (min-width: 768px) {
     font-size: 18px;
+  }
+`;
+
+export const EmptyCartWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  margin-top: 150px;
+  color: #191919;
+  font-size: 18px;
+  @media (min-width: 768px) {
+    font-size: 22px;
+  }
+`;
+
+export const CatalogLink = styled(Link)`
+  color: #191919;
+  font-size: 18px;
+  font-weight: bold;
+  &:hover {
+    text-decoration: underline;
+  }
+  @media (min-width: 768px) {
+    font-size: 22px;
   }
 `;

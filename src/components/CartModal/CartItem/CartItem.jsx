@@ -16,8 +16,7 @@ import {
   ItemPrice,
   ItemDeleteBtn,
   DeleteIcon,
-  // InfoContainer,
-} from './CartModal.styled';
+} from './CartItem.styled';
 
 export const CartItem = ({ item }) => {
   const location = useLocation();
@@ -36,7 +35,6 @@ export const CartItem = ({ item }) => {
             alt={cuttedTitle(item.productTitle, 15)}
           />
         </Link>
-
         <InfoTextWrapper>
           <Link
             to={`/catalog/${item.productId}`}
@@ -52,7 +50,6 @@ export const CartItem = ({ item }) => {
           </ItemPrice>
         </InfoTextWrapper>
       </ItemInfoWrapper>
-
       <ItemDeleteBtn onClick={() => deleteProduct(item.sku.id)}>
         <DeleteIcon width={13} height={13}>
           <use href={`${Sprite}#icon-cross`} />

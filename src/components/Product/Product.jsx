@@ -13,7 +13,7 @@ import { SizeOptions } from './SizeOptions/SizeOptions';
 import { QuantityControls } from './QuantityControls/QuantityControls';
 import { ProductImage } from './ProductImage/ProductImage';
 import { SizeGridProducts } from './SizeGridProducts/SizeGridProducts';
-import { CartModal } from '../Cart/CartModal/CartModal';
+import { CartModal } from '../CartModal/CartModal';
 
 import { createCart, getCart } from 'redux/cart/operations';
 import { selectCart } from 'redux/cart/selectors';
