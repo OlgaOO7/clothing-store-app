@@ -9,6 +9,7 @@ export const BreadcrumbsWrapper = styled.div`
   gap: 18px;
 
   margin-bottom: 52px;
+
   button {
     margin: 0;
     background: transparent;
@@ -23,10 +24,12 @@ export const BreadcrumbsWrapper = styled.div`
   }
 
   @media (min-width: 1024px) {
-    gap: 31px;
-    margin-bottom: 88px;
+    gap: 24px;
+    margin-bottom: 92px;
+
     button {
       font-size: 22px;
+      line-height: 130%;
     }
   }
 `;
@@ -34,6 +37,9 @@ export const HorizontalLine = styled.div`
   width: 1px;
   height: 14px;
   background: #160b03;
+  @media (min-width: 1024px) {
+    height: 16px;
+  }
 `;
 
 export const StyleLink = styled(Link)`
@@ -50,5 +56,6 @@ export const StyleLink = styled(Link)`
   }
   @media (min-width: 1024px) {
     font-size: 22px;
+    line-height: 130%;
   }
 `;

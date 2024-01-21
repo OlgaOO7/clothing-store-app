@@ -9,7 +9,7 @@ export const Aside = styled.aside`
   margin-right: auto;
   margin-top: 56px;
   @media (min-width: 1024px) {
-    margin-top: 88px;
+    margin-top: 92px;
   }
 `;
 
@@ -21,7 +21,7 @@ export const AsideTitle = styled.h3`
   font-weight: 400;
   line-height: 140%;
   @media (min-width: 1024px) {
-    font-size: 40px;
+    font-size: 26px;
   }
 `;
 export const AsideList = styled.ul`
@@ -35,9 +35,9 @@ export const AsideList = styled.ul`
 
   @media (min-width: 1024px) {
     grid-template-columns: repeat(4, 1fr);
-    margin-top: 48px;
+    margin-top: 40px;
     column-gap: 24px;
-    row-gap: 26px;
+    /* row-gap: 26px; */
   }
   @media (min-width: 1440px) {
     margin-left: 0;
@@ -84,8 +84,9 @@ export const SimilarProductsITitle = styled.h4`
   line-height: 130%;
   margin-top: 6px;
   @media (min-width: 1024px) {
-    margin-top: 18px;
-    font-size: 24px;
+    margin-top: 14px;
+    font-size: 18px;
+    line-height: 140%;
   }
 `;
 export const SimilarProductsIText = styled.p`
@@ -98,7 +99,7 @@ export const SimilarProductsIText = styled.p`
   line-height: 140%;
   margin-top: 2px;
   @media (min-width: 1024px) {
-    margin-top: 12px;
-    font-size: 24px;
+    margin-top: 8px;
+    font-size: 14px;
   }
 `;

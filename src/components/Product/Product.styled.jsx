@@ -6,36 +6,39 @@ export const Container = styled.div`
   margin: 0 auto;
   padding: 124px 28px 80px;
   @media (min-width: 1024px) {
-    padding: 162px 40px 142px;
+    padding: 170px 40px 142px;
   }
 `;
 
 export const ProductWrap = styled.div`
   @media (min-width: 768px) {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 48% 52%;
     grid-template-rows: 1fr;
+  }
+  @media (min-width: 1440px) {
+    padding: 0 91px 0 70px;
   }
 `;
 export const ImageWrap = styled.div`
   max-width: 692px;
   user-select: none;
   @media (min-width: 1440px) {
-    width: 692px;
+    width: 566px;
   }
 `;
 
 export const SliderList = styled.ul`
   margin-top: 11px;
   @media (min-width: 768px) {
-    margin-top: 23px;
+    margin-top: 16px;
   }
 `;
 export const InfoWrap = styled.div`
   margin-top: 32px;
   @media (min-width: 768px) {
     margin-top: 55px;
-    margin-left: 50px;
+    margin-left: 40px;
   }
   @media (min-width: 1024px) {
     margin-left: 83px;
@@ -80,10 +83,6 @@ export const Text = styled.p`
   line-height: 140%;
   margin-top: 18px;
   text-align: justify;
-  @media (min-width: 1024px) {
-    font-size: 24px;
-    margin-top: 23px;
-  }
 `;
 
 export const SizeWrap = styled.div`
@@ -94,7 +93,7 @@ export const SizeWrap = styled.div`
   justify-content: space-between;
   align-items: flex-end;
   @media (min-width: 1024px) {
-    margin-top: 47px;
+    margin-top: 32px;
     align-items: center;
   }
 `;
@@ -103,7 +102,8 @@ export const SizeGridButton = styled.button`
   border: none;
   margin: 0;
   padding: 0;
-  color: #160b03;
+  color: #000000;
+
   font-family: Gill Sans;
   font-size: 16px;
   font-style: normal;
@@ -111,7 +111,7 @@ export const SizeGridButton = styled.button`
   line-height: 130%;
   padding-bottom: 3px;
 
-  border-bottom: 1px solid#160B03;
+  border-bottom: 1px solid#000000;
 
   &:hover,
   &:focus {
@@ -120,7 +120,8 @@ export const SizeGridButton = styled.button`
   }
 
   @media (min-width: 1024px) {
-    font-size: 20px;
+    padding-bottom: 2px;
+    line-height: 140%;
   }
 `;
 
@@ -153,12 +154,12 @@ export const InfoMessage = styled.p`
 
 export const BuyButton = styled.button`
   display: flex;
-  width: 160px;
-  /* height: 38px; */
+  min-width: 160px;
+
   padding: 7px 16px;
   justify-content: center;
   align-items: center;
-  /* gap: 10px; */
+
   flex-shrink: 0;
   background: #160b03;
   color: #fff;
@@ -182,11 +183,8 @@ export const BuyButton = styled.button`
     border: 1px solid #3f3831;
   }
   @media (min-width: 1024px) {
-    width: 338px;
-    height: 72px;
-    padding: 10px;
-
-    font-size: 32px;
-    margin-top: 49px;
+    padding: 9px 46px;
+    line-height: 140%;
+    margin-top: 46px;
   }
 `;

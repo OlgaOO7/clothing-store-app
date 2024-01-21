@@ -19,7 +19,7 @@ export const ImageSlider = ({ photos, renderPhotos }) => {
         '--swiper-navigation-size': `${isMobileScreen ? '16px' : '32px'} `,
       }}
       slidesPerView={3}
-      spaceBetween={isMobileScreen ? 10 : 23}
+      spaceBetween={isMobileScreen ? 10 : 16}
       navigation={true}
       modules={[Navigation]}
       className="mySwiper"

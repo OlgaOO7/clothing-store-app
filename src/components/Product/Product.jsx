@@ -18,7 +18,7 @@ import { CartModal } from '../CartModal/CartModal';
 import { createCart, getCart } from 'redux/cart/operations';
 import { selectCart } from 'redux/cart/selectors';
 
-import { useMedia } from '../../hooks/useMedia';
+// import { useMedia } from '../../hooks/useMedia';
 
 import {
   Container,
@@ -48,7 +48,7 @@ export const Product = ({ productsId }) => {
   const [amount, setAmount] = useState(null);
   const [message, setMessage] = useState(false);
   const [messageSize, setMessageSize] = useState(false);
-  const { isMobileScreen } = useMedia();
+  // const { isMobileScreen } = useMedia();
 
   const dispatch = useDispatch();
 
@@ -182,7 +182,6 @@ export const Product = ({ productsId }) => {
 
   //додавання в кошик
   const addToCart = async () => {
-    console.log(skuIdProduct);
     if (basket.items) {
       const existingItem = basket.items.find(
         item => item.sku.id === skuIdProduct

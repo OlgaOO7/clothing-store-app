@@ -17,27 +17,25 @@ export const TitleColor = styled.p`
   line-height: 140%;
   margin-bottom: 8px;
   @media (min-width: 1024px) {
-    font-size: 36px;
-    margin-bottom: 25px;
+    margin-bottom: 16px;
   }
 `;
 
 export const ListColor = styled.ul`
   display: flex;
   gap: 16px;
-  @media (min-width: 1024px) {
-    gap: 22px;
-  }
 `;
 
-export const ColorElips = styled.div`
+export const ColorElips = styled.button`
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
   background: ${p => p.color && p.color};
   width: 24px;
   height: 24px;
   border-radius: 12px;
   border: 1px solid #d9d9d9;
-  cursor: pointer;
+
   &.active {
     border-color: #000000;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px 3px;
@@ -47,11 +45,5 @@ export const ColorElips = styled.div`
   &:focus {
     border-color: #000000;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px 3px;
-  }
-
-  @media (min-width: 1024px) {
-    width: 61px;
-    height: 61px;
-    border-radius: 31px;
   }
 `;
