@@ -5,9 +5,6 @@ export const WrapInput = styled.div`
   display: flex;
   flex-direction: column;
   gap: 6px;
-  @media (min-width: 768px) {
-    gap: 10px;
-  }
 `;
 export const WrapRadioInput = styled.div`
   display: flex;
@@ -26,7 +23,7 @@ export const WrapCheckboxInput = styled.div`
   }
 `;
 export const LabelStyle = styled.label`
-  color: #000;
+  color: #160b03;
   font-size: 14px;
   line-height: 20px;
   @media (min-width: 768px) {
@@ -53,10 +50,10 @@ export const InputStyle = styled.input`
     color: ${p => p.$errors && 'red'};
   }
   @media (min-width: 768px) {
-    max-width: 403px;
-    padding: 12px 16px;
-    font-size: 16px;
-    line-height: 22px;
+    max-width: 408px;
+    padding: 13px 16px;
+    font-size: 14px;
+    line-height: 20px;
   }
 `;
 export const InputMaskStyle = styled(InputMask)`
@@ -74,16 +71,14 @@ border-color: ${p => p.$errors && 'red'};
   border: 2px solid #7c7d80;
 }
 &::placeholder {
-  font-size: 14px;
-  line-height: 20px;
   color: ${p => p.$errors && 'red'};
 }
 @media (min-width: 768px) {
-  max-width: 403px;
+  max-width: 408px;
   padding: 13px 16px;
   &::placeholder {
-    font-size: 16px;
-    line-height: 22px;
+    font-size: 14px;
+    line-height: 20px;
   }
 `;
 export const RadioLabel = styled.label`

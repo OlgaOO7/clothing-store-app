@@ -20,12 +20,12 @@ import {
   Title,
   OrderResultSection,
   OrderResultTitle,
-  OrderResultDeliveryFirst,
-  OrderResultDeliverySec,
+  OrderResultDelivery,
   OrderResultList,
   OrderResultListItem,
   OrderResultDestTotal,
   OrderResultTotal,
+  OrderResultTotalPrice,
 } from './Order.styled';
 import { formatPrice } from 'utils/formatPrice';
 import { selectIsRefreshing } from 'redux/cart/selectors';
@@ -160,23 +160,28 @@ export const Order = () => {
                 </OrderResultTitle>
               ) : isMobileScreen ? (
                 <>
-                  <OrderResultTitle>Всього</OrderResultTitle>
                   <OrderResultList>
                     <OrderResultListItem>
                       <OrderResultTotal>
                         {totalQuantity} товари(-ів) на суму
                       </OrderResultTotal>
-                      <OrderResultTotal>
+                      <OrderResultTotalPrice>
                         {formatPrice(totalAmount)} {currencyCode}
-                      </OrderResultTotal>
+                      </OrderResultTotalPrice>
                     </OrderResultListItem>
                     <OrderResultListItem>
-                      <OrderResultDeliveryFirst>
+                      <OrderResultDelivery>
                         Вартість доставки
-                      </OrderResultDeliveryFirst>
-                      <OrderResultDeliverySec>
+                      </OrderResultDelivery>
+                      <OrderResultDelivery>
                         За тарифами перевізника
-                      </OrderResultDeliverySec>
+                      </OrderResultDelivery>
+                    </OrderResultListItem>
+                    <OrderResultListItem>
+                      <OrderResultTitle>Всього</OrderResultTitle>
+                      <OrderResultDestTotal>
+                        {formatPrice(totalAmount)} {currencyCode}
+                      </OrderResultDestTotal>
                     </OrderResultListItem>
                   </OrderResultList>
                 </>
@@ -187,17 +192,17 @@ export const Order = () => {
                       <OrderResultTotal>
                         {totalQuantity} товари(-ів) на суму
                       </OrderResultTotal>
-                      <OrderResultTotal>
+                      <OrderResultTotalPrice>
                         {formatPrice(totalAmount)} {currencyCode}
-                      </OrderResultTotal>
+                      </OrderResultTotalPrice>
                     </OrderResultListItem>
                     <OrderResultListItem>
-                      <OrderResultDeliveryFirst>
+                      <OrderResultDelivery>
                         Вартість доставки
-                      </OrderResultDeliveryFirst>
-                      <OrderResultDeliverySec>
+                      </OrderResultDelivery>
+                      <OrderResultDelivery>
                         За тарифами перевізника
-                      </OrderResultDeliverySec>
+                      </OrderResultDelivery>
                     </OrderResultListItem>
                     <OrderResultListItem>
                       <OrderResultTitle>Разом:</OrderResultTitle>

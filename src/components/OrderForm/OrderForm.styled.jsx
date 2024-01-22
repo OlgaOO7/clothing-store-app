@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 export const OrderFormSection = styled.section`
   width: 100%;
-  padding: 39px 0 61px;
+  padding: 52px 0 63px;
   @media (min-width: 768px) {
-    padding: 56px 0 430px;
+    padding: 64px 0 142px;
   }
 `;
 export const Wrapper = styled.div`
@@ -55,9 +55,9 @@ export const ElipsTitle = styled.div`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 29px;
+  gap: 32px;
   @media (min-width: 768px) {
-    gap: 39px;
+    gap: 34px;
   }
 `;
 export const OrderBtn = styled.button`
