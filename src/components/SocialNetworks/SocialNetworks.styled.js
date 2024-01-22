@@ -9,10 +9,10 @@ export const IconWrapper = styled.div`
   ${props =>
     props.type === 'mobile' &&
     css`
-      margin-top: 42px;
+      margin-top: 40px;
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 21px;
 
       @media (min-width: 768px) {
         display: none;
@@ -23,48 +23,23 @@ export const IconWrapper = styled.div`
     css`
       display: none;
       @media (min-width: 768px) {
-        margin-top: 27px;
+        margin-top: 44px;
         display: flex;
         align-items: center;
-        gap: 7px;
+        gap: 14px;
       }
     `}
 `;
 
 export const MenuIcon = styled.svg`
   display: inline-block;
-  fill: #160B03;
+  fill: #160b03;
   width: 24px;
   height: 24px;
 
   @media (min-width: 768px) {
     ${props =>
-    (props.type === 'mobile' && 'display: none;') ||
-    (props.type === 'desktop' && 'display: inline-block;')}
+      (props.type === 'mobile' && 'display: none;') ||
+      (props.type === 'desktop' && 'display: inline-block;')}
   }
-
-  /* ${props =>
-    props.type === 'mobile' &&
-    css`
-      display: inline-block;
-      fill: #000000;
-      width: 24px;
-      height: 24px;
-      @media (min-width: 1440px) {
-        display: none;
-      }
-    `}
-
-  ${props =>
-    props.type === 'desktop' &&
-    css`
-      display: none;
-      @media (min-width: 1440px) {
-        display: inline-block;
-        fill: #000000;
-        width: 24px;
-        height: 24px;
-      }
-    `} */
 `;
-export const LinkIcon = styled.a``;
