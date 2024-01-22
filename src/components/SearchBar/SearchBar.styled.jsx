@@ -10,9 +10,9 @@ export const Wrapper = styled.div`
 `;
 
 export const SearchWrapper = styled.div`
-  display: none;
+  /* display: none;
   @media (min-width: 1440px) {
-    display: flex;
+    display: flex; */
     /* justify-content: center;
     align-items: center; */
   }
@@ -67,7 +67,11 @@ export const SearchIcon = styled.svg`
   @media screen and (min-width: 360px) {
     width: 24px;
     height: 24px;
-    fill: #4c4b4b;
+    fill: #160b03;
+    &:hover,
+    &:focus {
+      fill: #3f3831;
+    }
   }
 `;
 

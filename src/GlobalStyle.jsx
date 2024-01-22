@@ -1,7 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
+
 import 'normalize.css';
 
 const GlobalStyles = createGlobalStyle`
+
   body {
   margin: 0;
 }

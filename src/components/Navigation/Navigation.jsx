@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Logo } from 'components/Logo/Logo';
@@ -11,6 +12,7 @@ import {
   selectTotalQunaity,
   selectCart,
 } from 'redux/cart/selectors';
+import { useMedia } from 'hooks/useMedia';
 
 import Sprite from '../../images/sprite.svg';
 
@@ -19,6 +21,7 @@ import {
   BtnWrapper,
   MenuBtn,
   MenuIcon,
+  CartWrapper,
   CartLink,
   CartIcon,
   TextContainer,
@@ -30,11 +33,11 @@ import {
   SearchBtn,
   SearchIcon,
 } from './Navigation.styled';
-import { useLocation } from 'react-router';
 
 export const Navigation = ({ sectionType, toggleShowSearch }) => {
   const [isShowMenu, setIsShowMenu] = useState(false);
   const [totalQuantity, setTotalQuantity] = useState(0);
+  const { isMobileScreen } = useMedia();
 
   const dispatch = useDispatch();
   const location = useLocation();
@@ -67,42 +70,50 @@ export const Navigation = ({ sectionType, toggleShowSearch }) => {
   return (
     <NavContainer>
       <Logo />
-      <NavigationMenu $sectionType={sectionType} />
+      {!isMobileScreen && <NavigationMenu $sectionType={sectionType} />}
       <BtnWrapper>
-        <SearchBar />
-        <SearchBtn type="button" onClick={toggleShowSearch}>
-          <SearchIcon width={24} height={24}>
-            <use href={`${Sprite}#icon-search`} />
-          </SearchIcon>
-        </SearchBtn>
-        <CartLink to="/cart" state={{ from: location }}>
-          <CartIconWrapper>
-            <CartIcon width={24} height={24}>
-              <use href={`${Sprite}#icon-cart`} />
-            </CartIcon>
-            <CartQuantityWrapper>
-              <CartProductQuantity>{totalQuantity}</CartProductQuantity>
-            </CartQuantityWrapper>
-          </CartIconWrapper>
-          <TextContainer>
-            <TextCart>Кошик</TextCart>
-          </TextContainer>
-        </CartLink>
-        <ButtonContainer>
-          <MenuBtn type="button" onClick={toggleMenu}>
-            {isShowMenu ? (
-              <MenuIcon width={24} height={24} style={{ fill: '#4c4b4b' }}>
-                <use href={`${Sprite}#icon-cross`} />
-              </MenuIcon>
-            ) : (
-              <MenuIcon width={24} height={24}>
-                <use href={`${Sprite}#icon-burger-menu`} />
-              </MenuIcon>
+        {!isMobileScreen && <SearchBar />}
+        {isMobileScreen && (
+          <SearchBtn type="button" onClick={toggleShowSearch}>
+            <SearchIcon width={24} height={24}>
+              <use href={`${Sprite}#icon-search`} />
+            </SearchIcon>
+          </SearchBtn>
+        )}
+        <CartWrapper>
+          <CartLink to="/cart" state={{ from: location }}>
+            <CartIconWrapper>
+              <CartIcon width={24} height={24}>
+                <use href={`${Sprite}#icon-cart`} />
+              </CartIcon>
+              <CartQuantityWrapper>
+                <CartProductQuantity>{totalQuantity}</CartProductQuantity>
+              </CartQuantityWrapper>
+            </CartIconWrapper>
+            {!isMobileScreen && (
+              <TextContainer>
+                <TextCart>Кошик</TextCart>
+              </TextContainer>
             )}
-          </MenuBtn>
-        </ButtonContainer>
+          </CartLink>
+        </CartWrapper>
+        {isMobileScreen && (
+          <ButtonContainer>
+            <MenuBtn type="button" onClick={toggleMenu}>
+              {isShowMenu ? (
+                <MenuIcon width={24} height={24}>
+                  <use href={`${Sprite}#icon-cross`} />
+                </MenuIcon>
+              ) : (
+                <MenuIcon width={24} height={24}>
+                  <use href={`${Sprite}#icon-burger-menu`} />
+                </MenuIcon>
+              )}
+            </MenuBtn>
+          </ButtonContainer>
+        )}
       </BtnWrapper>
-      {isShowMenu && (
+      {isMobileScreen && isShowMenu && (
         <MobNavigationMenu
           $sectionType={sectionType}
           isMobile={true}

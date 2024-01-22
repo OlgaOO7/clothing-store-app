@@ -7,49 +7,46 @@ export const NavContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
 `;
 
 export const MobNavContainer = styled.div`
   position: fixed;
   z-index: 1000;
   width: 100%;
-  top: 88px;
+  top: 86px;
   right: 0;
   background: #fff;
 `;
 
 export const NavWrapper = styled.div`
-  padding: 32px 28px 22px;
+  padding: 32px 38px 54px;
+  overflow: auto;
 `;
 
 export const MobNav = styled.nav`
-  display: none;
-
-  @media (max-width: 1439px) {
-    display: flex;
-    flex-direction: column;
-  }
+  display: flex;
+  flex-direction: column;
 `;
 
 export const MobNavList = styled.ul`
-  @media (max-width: 1439px) {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 `;
 
 export const MobNavLinkItem = styled.li`
-  @media (max-width: 1439px) {
-    flex-direction: column;
-  }
+  flex-direction: column;
 `;
 
 export const StyledLink = styled(Link)`
-  color: #4c4b4b;
+  color: #160b03;
   font-size: 16px;
-  text-align: center;
+  font-weight: 400px;
+  line-height: 20.8px;
+  @media (min-width: 768px) {
+    line-height: 22.4px;
+  }
 
   ${props =>
     props.$sectionType === 'footer' &&
@@ -66,10 +63,7 @@ export const StyledLink = styled(Link)`
 `;
 
 export const Nav = styled.nav`
-  display: none;
-  @media (min-width: 1440px) {
-    display: flex;
-  }
+  display: flex;
 
   ${props =>
     props.$sectionType === 'footer' &&
@@ -79,7 +73,7 @@ export const Nav = styled.nav`
       @media (min-width: 768px) {
         margin-top: 0;
       }
-    `}
+    `};
 `;
 
 export const NavList = styled.ul`
@@ -114,12 +108,12 @@ export const MenuBtn = styled.button`
 `;
 
 export const MenuIcon = styled.svg`
-  @media screen and (min-width: 360px) {
-    width: 24px;
-    height: 24px;
-  }
-  @media (min-width: 1440px) {
-    display: none;
+  width: 24px;
+  height: 24px;
+  fill: #160b03;
+  &:hover,
+  &:focus {
+    fill: #3f3831;
   }
 `;
 
@@ -127,13 +121,22 @@ export const CartIcon = styled.svg`
   @media screen and (min-width: 360px) {
     width: 24px;
     height: 24px;
+    fill: #160b03;
+    &:hover,
+    &:focus {
+      fill: #3f3831;
+    }
   }
 `;
 
 export const TextContainer = styled.div`
-  display: none;
-  @media (min-width: 1440px) {
-    display: block;
+  padding-top: 8px;
+`;
+
+export const CartWrapper = styled.div`
+  margin-right: 24px;
+  @media (min-width: 768px) {
+    margin-right: 0;
   }
 `;
 
@@ -141,46 +144,48 @@ export const CartLink = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 10px;
 `;
 
 export const CartIconWrapper = styled.div`
   display: flex;
   position: relative;
-  margin-right: 4px;
+  @media (min-width: 768px) {
+    margin-right: 8px;
+  }
 `;
 
 export const CartQuantityWrapper = styled.div`
   position: absolute;
-  top: -0.5rem;
-  right: -4px;
+  top: 3px;
+  left: 9px;
+  width: 14px;
+  height: 14px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border-radius: 50%;
+  background-color: #f4efeb;
   font-weight: 500;
   font-size: 12px;
-`;
-
-export const TextCart = styled.span`
-  color: #191919;
-  font-size: 14px;
-  text-align: center;
 `;
 
 export const CartProductQuantity = styled.span`
-  color: #191919;
+  display: flex;
+  align-items: center;
+  left: 1px;
+  color: #160b03;
   font-weight: 500;
   font-size: 12px;
+  line-height: 14.4px;
 `;
 
-export const MobMenuContainer = styled.div`
-  position: fixed;
-  z-index: 1000;
-  width: 100%;
-  top: 88px;
-  right: 0;
-  background: #fff;
+export const TextCart = styled.span`
+  color: #160b03;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.4px;
+  text-align: center;
 `;
 
 export const ButtonContainer = styled.div`
@@ -193,18 +198,19 @@ export const SearchBtn = styled.button`
   padding: 0px;
   width: 24px;
   height: 24px;
-  margin-right: 14px;
+  margin-right: 24px;
   border: none;
   background-color: transparent;
-  @media (min-width: 1440px) {
-    display: none;
-  }
 `;
 
 export const SearchIcon = styled.svg`
   @media screen and (min-width: 360px) {
     width: 24px;
     height: 24px;
-    fill: #4c4b4b;
+    fill: #160b03;
+    &:hover,
+    &:focus {
+      fill: #3f3831;
+    }
   }
 `;
