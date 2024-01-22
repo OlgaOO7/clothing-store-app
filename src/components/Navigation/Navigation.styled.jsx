@@ -175,7 +175,8 @@ export const CartProductQuantity = styled.span`
   align-items: center;
   left: 1px;
   color: #160b03;
-  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
   font-size: 12px;
   line-height: 14.4px;
 `;
