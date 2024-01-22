@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 import 'normalize.css';
 
-const GlobalStyles = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
 
   body {
   margin: 0;
@@ -59,4 +59,4 @@ a:visited {
 
 `;
 
-export default GlobalStyles;
+export default GlobalStyle;

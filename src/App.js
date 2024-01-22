@@ -15,6 +15,7 @@ import { SharedLayout } from 'components/SharedLayouts/SharedLayouts';
 // import { SearchedProductPage } from 'pages/SearchedProductPage/SearchedProductPage';
 // import { ContactsPage } from 'pages/ContactsPage/ContactsPage';
 // import { UnsubscribePage } from 'pages/UnsubscribePage/UnsubscribePage';
+import FontStyle from './FontStyle.js';
 import GlobalStyle from './GlobalStyle.jsx';
 
 
@@ -47,6 +48,7 @@ function App() {
 
   return (
     <div className="App">
+      <FontStyle />
       <GlobalStyle />
       <Routes>
         <Route path="/" element={<SharedLayout />}>
