@@ -1,4 +1,4 @@
-import { ListSize, TextSize, TitleSize } from './SizeOptions.styled';
+import { ListSize, ButtonSize, TitleSize } from './SizeOptions.styled';
 
 export const SizeOptions = ({
   sizesForSelectedColor,
@@ -15,12 +15,13 @@ export const SizeOptions = ({
               ({ id, characteristic, value }) =>
                 characteristic.title === 'size' && (
                   <li key={id}>
-                    <TextSize
+                    <ButtonSize
+                      type="button"
                       className={activeSizeId === id ? 'active' : ''}
                       onClick={() => selectSize(id, skuId)}
                     >
                       {value}
-                    </TextSize>
+                    </ButtonSize>
                   </li>
                 )
             )

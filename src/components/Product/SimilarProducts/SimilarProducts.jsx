@@ -15,11 +15,17 @@ export const SimilarProducts = ({
   similarProducts,
   setClickedIndex,
   setQuantity,
+  setSkuIdProduct,
+  message,
+  setMessageSize,
 }) => {
   const limitedProducts = similarProducts.content.slice(0, 4);
   const cleaningValues = () => {
     setClickedIndex(0);
     setQuantity(1);
+    setSkuIdProduct(null);
+    message(false);
+    setMessageSize(false);
   };
   return (
     <Aside>

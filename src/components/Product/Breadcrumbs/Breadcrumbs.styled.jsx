@@ -6,28 +6,56 @@ export const BreadcrumbsWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 31px;
+  gap: 18px;
 
-  margin-bottom: 88px;
+  margin-bottom: 52px;
+
   button {
+    margin: 0;
     background: transparent;
     border: none;
     display: inline-block;
     font-family: Gill Sans;
-    font-size: 22px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 400;
-    line-height: normal;
-    color: #000000;
+    line-height: 140%;
+    color: #3f3831;
+  }
+
+  @media (min-width: 1024px) {
+    gap: 24px;
+    margin-bottom: 92px;
+
+    button {
+      font-size: 22px;
+      line-height: 130%;
+    }
+  }
+`;
+export const HorizontalLine = styled.div`
+  width: 1px;
+  height: 14px;
+  background: #160b03;
+  @media (min-width: 1024px) {
+    height: 16px;
   }
 `;
 
 export const StyleLink = styled(Link)`
-  display: inline-block;
   font-family: Gill Sans;
-  font-size: 22px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
-  color: #000000;
+  line-height: 140%;
+
+  color: #160b03;
+  &:hover,
+  &:focus {
+    color: #3f3831;
+  }
+  @media (min-width: 1024px) {
+    font-size: 22px;
+    line-height: 130%;
+  }
 `;

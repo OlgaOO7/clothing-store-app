@@ -1,4 +1,10 @@
-import { ColorElips, ListColor, TitleColor, Wrap } from './ColorOptions.styled';
+import {
+  ColorElips,
+  ListColor,
+  TitleColor,
+  Wrap,
+  Button,
+} from './ColorOptions.styled';
 
 export const ColorOptions = ({
   uniqueColors,
@@ -6,6 +12,7 @@ export const ColorOptions = ({
   setColorValue,
   setClickedIndex,
   setQuantity,
+  setSkuIdProduct,
 }) => {
   return (
     <Wrap>
@@ -19,12 +26,19 @@ export const ColorOptions = ({
                 setColorValue(color);
                 setClickedIndex(0);
                 setQuantity(1);
+                setSkuIdProduct(null);
               }}
             >
-              <ColorElips
+              <Button
+                type="button"
                 color={color}
                 className={colorValue === color ? 'active' : ''}
-              />
+              >
+                <ColorElips
+                  color={color}
+                  className={colorValue === color ? 'active' : ''}
+                />
+              </Button>
             </li>
           ))}
         </ListColor>
