@@ -31,8 +31,8 @@ export const ModalContent = styled.div`
 
 export const ButtonClose = styled.button`
   position: absolute;
-  top: -24px;
-  right: 28px;
+  top: 12px;
+  right: 12px;
   margin: 0;
   padding: 0;
   background: transparent;
@@ -43,18 +43,13 @@ export const ButtonClose = styled.button`
   justify-content: center;
 
   @media (min-width: 1024px) {
-    top: -20px;
-    right: -20px;
+    top: 32px;
+    right: 32px;
   }
 `;
 
 export const IconClose = styled.svg`
-  stroke-width: 3px;
+  stroke-width: 2px;
   width: 24px;
   height: 24px;
-
-  @media (min-width: 1024px) {
-    width: 25px;
-    height: 25px;
-  }
 `;

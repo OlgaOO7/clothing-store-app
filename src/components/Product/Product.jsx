@@ -18,7 +18,7 @@ import { CartModal } from '../CartModal/CartModal';
 import { createCart, getCart } from 'redux/cart/operations';
 import { selectCart } from 'redux/cart/selectors';
 
-import { useMedia } from '../../hooks/useMedia';
+// import { useMedia } from '../../hooks/useMedia';
 
 import {
   Container,
@@ -48,7 +48,7 @@ export const Product = ({ productsId }) => {
   const [amount, setAmount] = useState(null);
   const [message, setMessage] = useState(false);
   const [messageSize, setMessageSize] = useState(false);
-  const { isMobileScreen } = useMedia();
+  // const { isMobileScreen } = useMedia();
 
   const dispatch = useDispatch();
 
@@ -223,7 +223,7 @@ export const Product = ({ productsId }) => {
   return (
     <>
       <Container>
-        {!isMobileScreen && <Breadcrumbs category={product.category} />}
+        <Breadcrumbs category={product.category} />
 
         <ProductWrap>
           <ImageWrap>
@@ -257,6 +257,7 @@ export const Product = ({ productsId }) => {
               setClickedIndex={setClickedIndex}
               setColorValue={setColorValue}
               setQuantity={setQuantity}
+              setSkuIdProduct={setSkuIdProduct}
             />
             <SizeWrap>
               {/* Розміри */}
@@ -316,6 +317,9 @@ export const Product = ({ productsId }) => {
             setQuantity={setQuantity}
             similarProducts={similarProducts}
             setClickedIndex={setClickedIndex}
+            setSkuIdProduct={setSkuIdProduct}
+            message={setMessage}
+            messageSize={setMessageSize}
           />
         )}
       </Container>

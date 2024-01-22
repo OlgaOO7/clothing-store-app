@@ -8,9 +8,14 @@ export const WrapImg = styled.div`
   }
   min-width: 304px;
   min-height: 310px;
-  @media (max-width: 1440px) {
+  /* @media (max-width: 1440px) {
     max-width: 692px;
     max-height: 703px;
+    overflow: hidden;
+  } */
+  @media (min-width: 1440px) {
+    width: 566px;
+    height: 627px;
     overflow: hidden;
   }
 `;
@@ -28,8 +33,8 @@ export const Image = styled.img`
   }
 
   @media (min-width: 1440px) {
-    width: 692px;
-    height: 703px;
+    width: 566px;
+    height: 627px;
     object-fit: cover;
     object-position: center;
   }

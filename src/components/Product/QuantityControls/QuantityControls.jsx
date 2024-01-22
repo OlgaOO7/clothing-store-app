@@ -1,5 +1,5 @@
 import React from 'react';
-import { Span, Wrap } from './QuantityControls.styled';
+import { Button, Wrap } from './QuantityControls.styled';
 
 import Sprite from '../../../images/sprite.svg';
 
@@ -10,17 +10,17 @@ export const QuantityControls = ({
 }) => {
   return (
     <Wrap>
-      <Span onClick={decreaseQuantity}>
+      <Button onClick={decreaseQuantity}>
         <svg>
           <use href={`${Sprite}#icon-minus`} />
         </svg>
-      </Span>
+      </Button>
       {quantity}
-      <Span onClick={increaseQuantity}>
+      <Button onClick={increaseQuantity}>
         <svg>
           <use href={`${Sprite}#icon-plus`} />
         </svg>
-      </Span>
+      </Button>
     </Wrap>
   );
 };

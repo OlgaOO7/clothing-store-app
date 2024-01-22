@@ -13,8 +13,8 @@ export const Image = styled.img`
   }
 
   @media (min-width: 1440px) {
-    width: 215px;
-    height: 257px;
+    width: 178px;
+    height: 218px;
     object-fit: cover;
     object-position: center;
   }
