@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const ContactsWrapper = styled.div`
-  margin-top: 50px;
+  margin-top: 38px;
 
   ${props =>
     props.$sectionType === 'footer' &&
@@ -19,11 +19,16 @@ export const StyleLink = styled(Link)`
   padding: 0;
   background-color: transparent;
 
+<<<<<<< HEAD
   color: #160b03;
+=======
+  color: #160B03;
+>>>>>>> main
   font-style: normal;
   font-weight: 600;
-  line-height: 140%;
-  font-size: 14px;
+    font-size: 16px;
+  line-height: 130%;
+
 
   ${props =>
     props.$sectionType === 'footer' &&
@@ -68,8 +73,13 @@ export const LinkWrapper = styled.div`
     `}
 `;
 export const LinkTel = styled.a`
+<<<<<<< HEAD
   font-family: Inter;
   color: #160b03;
+=======
+  color: #160B03;
+  font-family: 'Inter', sans-serif;
+>>>>>>> main
   font-size: 14px;
   font-style: normal;
   font-weight: 400;

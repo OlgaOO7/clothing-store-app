@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 
 export const IconWrapper = styled.div`
-  margin-top: 19px;
+  margin-top: 21px;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 21px;
 
   ${props =>
     props.type === 'mobile' &&
@@ -33,13 +33,17 @@ export const IconWrapper = styled.div`
 
 export const MenuIcon = styled.svg`
   display: inline-block;
+<<<<<<< HEAD
   fill: #160b03;
+=======
+  fill: #160B03;
+>>>>>>> main
   width: 24px;
   height: 24px;
 
   @media (min-width: 768px) {
     ${props =>
-      (props.type === 'mobile' && 'display: none;') ||
-      (props.type === 'desktop' && 'display: inline-block;')}
+    (props.type === 'mobile' && 'display: none;') ||
+    (props.type === 'desktop' && 'display: inline-block;')}
   }
 `;
