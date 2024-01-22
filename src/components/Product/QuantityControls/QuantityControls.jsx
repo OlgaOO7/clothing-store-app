@@ -7,6 +7,7 @@ export const QuantityControls = ({
   decreaseQuantity,
   increaseQuantity,
   quantity,
+  amount,
 }) => {
   return (
     <Wrap>
@@ -16,7 +17,7 @@ export const QuantityControls = ({
         </svg>
       </Button>
       {quantity}
-      <Button onClick={increaseQuantity}>
+      <Button onClick={increaseQuantity} value={amount <= quantity}>
         <svg>
           <use href={`${Sprite}#icon-plus`} />
         </svg>

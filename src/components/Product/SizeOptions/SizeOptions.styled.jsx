@@ -22,12 +22,12 @@ export const ListSize = styled.ul`
 `;
 
 export const ButtonSize = styled.button`
-  color: #9d9a97;
+  color: #160b03;
 
   background: transparent;
-  border: none;
+  border: 1px solid #e3e0de;
   margin: 0;
-
+  padding: 8px 18px;
   font-family: Gill Sans;
   font-size: 16px;
   font-style: normal;
@@ -35,11 +35,13 @@ export const ButtonSize = styled.button`
   line-height: 130%;
 
   &.active {
-    color: #160b03;
+    /* color: #160b03; */
+    border: 1px solid #000;
   }
   &:hover,
   &:focus {
-    color: #160b03;
+    /* color: #160b03; */
+    border: 1px solid #000;
   }
   @media (min-width: 1024px) {
     font-size: 22px;
