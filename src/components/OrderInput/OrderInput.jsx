@@ -2,6 +2,7 @@ import {
   CheckboxLabel,
   ErrorMessage,
   InputMaskStyle,
+  Input,
   InputStyle,
   LabelStyle,
   RadioLabel,
@@ -28,7 +29,7 @@ export const OrderInput = ({
       {type === 'radio' ? (
         <WrapRadioInput>
           <RadioLabel htmlFor={name} $errors={errors[name]}>
-            <input
+            <Input
               type={type}
               id={name}
               {...register(name)}
@@ -41,7 +42,7 @@ export const OrderInput = ({
       ) : type === 'checkbox' ? (
         <WrapCheckboxInput>
           <CheckboxLabel htmlFor={name} $errors={errors[name]}>
-            <input
+            <Input
               type={type}
               id={name}
               {...register(name)}

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { InputMask } from 'primereact/inputmask';
 
 export const WrapInput = styled.div`
@@ -56,6 +56,13 @@ export const InputStyle = styled.input`
     line-height: 20px;
   }
 `;
+export const Input = styled.input`
+  ${props =>
+    (props.type === 'radio' || props.type === 'checkbox') &&
+    css`
+      accent-color: #160b03;
+    `}
+`;
 export const InputMaskStyle = styled(InputMask)`
 box-sizing: border-box;
 display: flex;
@@ -98,7 +105,7 @@ export const CheckboxLabel = styled.label`
   gap: 10px;
   font-size: 14px;
   line-height: 20px;
-  color: #00000066;
+  color: #9d9a97;
   color: ${p => p.$errors && 'red'};
   @media (min-width: 768px) {
     gap: 12px;
