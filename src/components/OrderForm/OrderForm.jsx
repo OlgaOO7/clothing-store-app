@@ -20,6 +20,8 @@ import {
   SuccessMessage,
   SuccessIcon,
   SuccessText,
+  OrderSuccessSection,
+  OrderSuccessContainer,
 } from './OrderForm.styled';
 
 export const OrderForm = ({ sessionId, setFormStatus, formStatus }) => {
@@ -67,10 +69,10 @@ export const OrderForm = ({ sessionId, setFormStatus, formStatus }) => {
   };
 
   return (
-    <OrderFormSection>
-      <Wrapper>
-        {formStatus === 'success' ? (
-          <>
+    <>
+      {formStatus === 'success' ? (
+        <OrderSuccessSection>
+          <OrderSuccessContainer>
             <SuccessIcon>
               <use href={`${Sprite}#icon-success-order`}></use>
             </SuccessIcon>
@@ -80,37 +82,41 @@ export const OrderForm = ({ sessionId, setFormStatus, formStatus }) => {
             <SuccessText>
               Очікуйте лист з деталями замовлення на вашу електронну адресу.
             </SuccessText>
-            <SuccessText>Дякуємо, що обраєте Zatyshna.</SuccessText>
-          </>
-        ) : formStatus === 'error' ? (
-          <SuccessMessage>
-            Вибачте, наразі неможливо оформити замовлення.
-          </SuccessMessage>
-        ) : (
-          <Form onSubmit={handleSubmit(onSubmitSubscription)}>
-            <div>
-              <OrderCustomerForm register={register} errors={errors} />
-            </div>
-            <div>
-              <Delivery
-                register={register}
-                setValue={setValue}
-                errors={errors}
-                formStatus={formStatus}
-              />
-            </div>
-            <div>
-              <OrderPaymentForm register={register} errors={errors} />
-            </div>
-            <OrderBtn
-              type="submit"
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            >
-              Оформити замовлення
-            </OrderBtn>
-          </Form>
-        )}
-      </Wrapper>
-    </OrderFormSection>
+            <SuccessText>Дякуємо, що обираєте Zatyshna.</SuccessText>
+          </OrderSuccessContainer>
+        </OrderSuccessSection>
+      ) : formStatus === 'error' ? (
+        <SuccessMessage>
+          Вибачте, наразі неможливо оформити замовлення.
+        </SuccessMessage>
+      ) : (
+        <OrderFormSection>
+          <Wrapper>
+            <Form onSubmit={handleSubmit(onSubmitSubscription)}>
+              <div>
+                <OrderCustomerForm register={register} errors={errors} />
+              </div>
+              <div>
+                <Delivery
+                  register={register}
+                  setValue={setValue}
+                  errors={errors}
+                  formStatus={formStatus}
+                />
+              </div>
+              <div>
+                <OrderPaymentForm register={register} errors={errors} />
+              </div>
+              <OrderBtn
+                type="submit"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              >
+                Оформити замовлення
+              </OrderBtn>
+            </Form>
+          </Wrapper>
+        </OrderFormSection>
+      )}
+    </>
   );
 };

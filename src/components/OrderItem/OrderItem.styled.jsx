@@ -76,7 +76,7 @@ z
   }
 `;
 export const OrderError = styled.div`
-  background: rgba(236, 236, 236, 0.9);
+  background: #f4efeb;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -88,6 +88,7 @@ export const OrderErrorText = styled.p`
   font-size: 12px;
   line-height: 20px;
   text-align: center;
+  color: #000000;
   @media (min-width: 768px) {
     font-size: 18px;
     line-height: 25px;

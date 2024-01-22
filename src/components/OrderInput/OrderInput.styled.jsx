@@ -37,8 +37,8 @@ export const InputStyle = styled.input`
   display: flex;
   width: 100%;
   padding: 7.5px 16px;
-  border: 1px solid #000;
-  color: #000;
+  border: 1px solid #160b03;
+  color: #160b03;
   font-size: 14px;
   line-height: 20px;
   border-color: ${p => p.$errors && 'red'};
@@ -47,6 +47,7 @@ export const InputStyle = styled.input`
     border: 2px solid #7c7d80;
   }
   &::placeholder {
+    color: #9d9a97;
     color: ${p => p.$errors && 'red'};
   }
   @media (min-width: 768px) {
