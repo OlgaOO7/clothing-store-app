@@ -54,13 +54,13 @@ export const StyledLink = styled(Link)`
   ${props =>
     props.$sectionType === 'footer' &&
     css`
-      color: #000;
+      color: #160b03;
       font-size: 14px;
       font-style: normal;
       font-weight: 400;
-      line-height: 160%;
+      line-height: 140%;
       @media (min-width: 768px) {
-        font-size: 18px;
+        font-size: 16px;
       }
     `}
 `;
@@ -75,7 +75,7 @@ export const Nav = styled.nav`
     props.$sectionType === 'footer' &&
     css`
       display: inline-block;
-      margin-top: 37px;
+      margin-top: 36px;
       @media (min-width: 768px) {
         margin-top: 0;
       }
@@ -91,11 +91,7 @@ export const NavList = styled.ul`
     css`
       display: flex;
       flex-direction: column;
-      gap: 8px;
-
-      @media (min-width: 768px) {
-        gap: 12px;
-      }
+      gap: 12px;
     `}
 `;
 
