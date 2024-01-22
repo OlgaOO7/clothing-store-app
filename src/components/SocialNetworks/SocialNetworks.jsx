@@ -11,7 +11,7 @@ export const SocialNetworks = ({ type }) => {
         </MenuIcon>
       </a>
       <a href="https://www.instagram.com" target="_blank" rel="noreferrer">
-        <MenuIcon type={type} style={{ width: '28px', height: '28px' }}>
+        <MenuIcon type={type}>
           <use href={`${Sprite}#icon-instagram`} />
         </MenuIcon>
       </a>
