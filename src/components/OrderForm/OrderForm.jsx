@@ -86,9 +86,13 @@ export const OrderForm = ({ sessionId, setFormStatus, formStatus }) => {
           </OrderSuccessContainer>
         </OrderSuccessSection>
       ) : formStatus === 'error' ? (
-        <SuccessMessage>
-          Вибачте, наразі неможливо оформити замовлення.
-        </SuccessMessage>
+        <OrderSuccessSection>
+          <OrderSuccessContainer>
+            <SuccessMessage>
+              Вибачте, наразі неможливо оформити замовлення.
+            </SuccessMessage>
+          </OrderSuccessContainer>
+        </OrderSuccessSection>
       ) : (
         <OrderFormSection>
           <Wrapper>
