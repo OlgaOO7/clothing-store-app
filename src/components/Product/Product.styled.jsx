@@ -129,7 +129,7 @@ export const TextQuantity = styled.p`
   color: #242424;
 
   font-family: Gill Sans;
-  font-size: 24px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -137,7 +137,7 @@ export const TextQuantity = styled.p`
   @media (min-width: 1024px) {
     margin-top: 60px;
 
-    font-size: 32px;
+    font-size: 18px;
   }
 `;
 export const InfoMessage = styled.p`

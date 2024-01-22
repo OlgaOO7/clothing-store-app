@@ -29,7 +29,6 @@ export const ColorOptions = ({
                 setSkuIdProduct(null);
               }}
             >
-              {console.log(color)}
               <Button
                 type="button"
                 color={color}
