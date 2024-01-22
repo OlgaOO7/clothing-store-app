@@ -1,4 +1,10 @@
-import { ColorElips, ListColor, TitleColor, Wrap } from './ColorOptions.styled';
+import {
+  ColorElips,
+  ListColor,
+  TitleColor,
+  Wrap,
+  Button,
+} from './ColorOptions.styled';
 
 export const ColorOptions = ({
   uniqueColors,
@@ -23,10 +29,17 @@ export const ColorOptions = ({
                 setSkuIdProduct(null);
               }}
             >
-              <ColorElips
+              {console.log(color)}
+              <Button
+                type="button"
                 color={color}
                 className={colorValue === color ? 'active' : ''}
-              />
+              >
+                <ColorElips
+                  color={color}
+                  className={colorValue === color ? 'active' : ''}
+                />
+              </Button>
             </li>
           ))}
         </ListColor>

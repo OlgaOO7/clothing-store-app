@@ -31,7 +31,8 @@ export const Button = styled.button`
   border: none;
   box-sizing: border-box;
   display: flex;
-  fill: #9d9a97;
+  fill: ${p => (p.value === false ? '#160b03' : '#9d9a97')};
+  /* fill: #9d9a97; */
   font-family: Inter;
   font-size: 18px;
   font-style: normal;
@@ -41,6 +42,7 @@ export const Button = styled.button`
   & svg {
     width: 12px;
     height: 23px;
+
     &:hover,
     &:focus {
       fill: #160b03;

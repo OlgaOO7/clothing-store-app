@@ -284,6 +284,7 @@ export const Product = ({ productsId }) => {
                   decreaseQuantity={decreaseQuantity}
                   increaseQuantity={increaseQuantity}
                   quantity={quantity}
+                  amount={amount}
                 />
                 {message && (
                   <InfoMessage>
