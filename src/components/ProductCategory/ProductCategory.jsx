@@ -10,6 +10,7 @@ import {
   CategoryCount,
   CategoryItem,
   LinkTo,
+  MoreLink,
 } from './ProductCategory.styled';
 import { getCategories } from 'redux/category/operations';
 import { selectCategory } from 'redux/category/selectors';
@@ -18,7 +19,6 @@ import tShirts from '../../images/t-shirts.jpg';
 import costumes from '../../images/costumes.jpg';
 import pants from '../../images/pants.jpg';
 import sweatshirts from '../../images/sweatshirts.jpg';
-import { Link } from 'react-router-dom';
 
 export const ProductCategory = () => {
   const dispatch = useDispatch();
@@ -49,7 +49,7 @@ export const ProductCategory = () => {
             </LinkTo>
           ))}
         </CategoryList>
-        <Link></Link>
+        <MoreLink to="/catalog">Показати більше</MoreLink>
       </Wrapper>
     </Section>
   );

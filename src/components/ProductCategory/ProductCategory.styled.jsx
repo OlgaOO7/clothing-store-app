@@ -44,6 +44,10 @@ export const CategoryList = styled.ul`
   flex-wrap: wrap;
   gap: 35px 24px;
   justify-content: space-between;
+  margin-bottom: 24px;
+  @media (min-width: 768px) {
+    margin-bottom: 56px;
+  }
 `;
 export const CategoryImage = styled.div`
   width: 144px;
@@ -128,5 +132,21 @@ export const CategoryItem = styled.li`
   @media (min-width: 768px) {
     gap: 14px;
     }
+  }
+`;
+export const MoreLink = styled(Link)`
+  font-size: 16px;
+  line-height: 21px;
+  border-bottom: 1px solid #160b03;
+  color: #160b03;
+  transition: all 150ms ease-out;
+  &:hover,
+  &:focus {
+    color: #3f3831;
+    border-color: #3f3831;
+  }
+  @media (min-width: 768px) {
+    font-size: 22px;
+    line-height: 29px;
   }
 `;
