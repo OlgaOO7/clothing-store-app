@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const LogoLink = styled(Link)`
-  color: #000;
+  color: #160b03;
   text-align: center;
   font-size: 18px;
   font-style: italic;

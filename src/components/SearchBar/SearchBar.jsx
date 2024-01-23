@@ -185,7 +185,7 @@ export const SearchBar = () => {
           onClick={closeSearchBtn ? clearSearchInput : toggleSearch}
         >
           {isShowSearch ? (
-            <SearchIcon width={24} height={24} style={{ fill: '#4c4b4b' }}>
+            <SearchIcon width={24} height={24}>
               <use href={`${Sprite}#icon-cross`} />
             </SearchIcon>
           ) : (

@@ -1,10 +1,10 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Navigation } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
 
 import { useMedia } from 'hooks/useMedia';
 
 import 'swiper/css';
-import 'swiper/css/pagination';
+
 import 'swiper/css/navigation';
 
 import { Image } from './ImageSlider.styled';
@@ -15,16 +15,13 @@ export const ImageSlider = ({ photos, renderPhotos }) => {
   return (
     <Swiper
       style={{
-        '--swiper-navigation-color': '#fff',
-        '--swiper-pagination-color': '#fff',
+        '--swiper-navigation-color': '#000000',
+        '--swiper-navigation-size': `${isMobileScreen ? '16px' : '32px'} `,
       }}
       slidesPerView={3}
-      spaceBetween={isMobileScreen ? 10 : 23}
-      pagination={{
-        clickable: true,
-      }}
+      spaceBetween={isMobileScreen ? 10 : 16}
       navigation={true}
-      modules={[Pagination, Navigation]}
+      modules={[Navigation]}
       className="mySwiper"
     >
       {photos.map((item, index) => (

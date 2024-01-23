@@ -50,6 +50,9 @@ export const Table = styled.table`
       font-size: 24px;
       padding: 14px 10px 14px 12px;
     }
+    @media (min-width: 1024px) {
+      background: #e3e0de;
+    }
   }
   td {
     color: #000;
@@ -79,5 +82,8 @@ export const SizeGridLogo = styled.p`
     margin-top: 32px;
     font-size: 48px;
     letter-spacing: 10.08px;
+  }
+  @media (min-width: 1024px) {
+    color: #e3e0de;
   }
 `;
