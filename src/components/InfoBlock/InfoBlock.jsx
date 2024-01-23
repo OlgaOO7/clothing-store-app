@@ -5,21 +5,24 @@ import {
   Description,
   LinkTo,
   Image,
-  Container,
+  Logo,
+  ContentWrapper,
 } from './InfoBlock.styled';
 
 export const InfoBlock = () => {
   return (
     <Section>
       <Wrapper>
-        <Container>
-          <Title>ZATYSHNA – це український бренд жіночого одягу</Title>
+        <ContentWrapper>
+          <Title>
+            <Logo>Zatyshna</Logo> – це український бренд жіночого одягу
+          </Title>
           <Description>
             Створений для жінок, що цінують комфорт. Стильно та зручно - це про
             нас і про тебе.
           </Description>
-        </Container>
-        <LinkTo to="/">Познайомитись з брендом</LinkTo>
+        </ContentWrapper>
+        <LinkTo to="/about">Познайомитись з брендом</LinkTo>
         <Image></Image>
       </Wrapper>
     </Section>

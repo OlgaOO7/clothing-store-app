@@ -1,4 +1,4 @@
-const {
+import {
   Title,
   Logo,
   NavWrapper,
@@ -11,7 +11,7 @@ const {
   ContentText,
   TextWrapper,
   TextContent,
-} = require('./AboutUs.styled');
+} from './AboutUs.styled';
 
 export const AboutUs = () => {
   return (

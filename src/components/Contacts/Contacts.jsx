@@ -9,7 +9,6 @@ import {
   Wrapper,
   MainSection,
   Title,
-  Logo,
   MainWrapper,
   ContactsWrapper,
   ContactTitle,
@@ -31,7 +30,6 @@ export const Contacts = () => {
       <MainSection>
         <MainWrapper>
           <Title>Контакти</Title>
-          <Logo>Zatyshna</Logo>
         </MainWrapper>
       </MainSection>
       <Section>

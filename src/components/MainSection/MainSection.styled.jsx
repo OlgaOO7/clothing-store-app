@@ -1,20 +1,35 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import bgHeroDesktop from '../../images/hero-bg-desktop.jpg';
+import bgHeroDesktop2x from '../../images/hero-bg-desktop@2x.jpg';
+import bgHeroDesktopWebp from '../../images/hero-bg-desktop.webp';
+import bgHeroDesktopWebp2x from '../../images/hero-bg-desktop@2x.webp';
+import bgHeroMobile from '../../images/hero-bg-mobile.jpg';
+import bgHeroMobile2x from '../../images/hero-bg-mobile@2x.jpg';
+import bgHeroMobileWebp from '../../images/hero-bg-mobile.webp';
+import bgHeroMobileWebp2x from '../../images/hero-bg-mobile@2x.webp';
 
 export const Section = styled.section`
   width: 100%;
-  background: #ececec;
-  border-radius: 30px;
   position: relative;
   overflow: hidden;
   height: 532px;
+  background: url(${bgHeroMobile}),
+    -webkit-image-set(url(${bgHeroMobileWebp}) 1x, url(${bgHeroMobileWebp2x}) 2x, url(${bgHeroMobile})
+          1x, url(${bgHeroMobile2x}) 2x);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
   @media (min-width: 768px) {
-    background: #ececec;
+    background: url(${bgHeroDesktop}),
+      -webkit-image-set(url(${bgHeroDesktopWebp}) 1x, url(${bgHeroDesktopWebp2x})
+            2x, url(${bgHeroDesktop}) 1x, url(${bgHeroDesktop2x}) 2x);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
     height: 650px;
-    border-radius: inherit;
   }
 `;
-
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -31,97 +46,28 @@ export const Wrapper = styled.div`
     padding-right: 40px;
   }
 `;
-export const LeftText = styled.p`
-  display: none;
-  @media (min-width: 768px) {
-    font-size: 120px;
-    font-style: italic;
-    font-weight: 700;
-    line-height: 139px;
-    letter-spacing: 0.21em;
-    color: #00000033;
 
-    display: block;
-  }
-`;
-export const RightText = styled.p`
-  display: none;
-  @media (min-width: 768px) {
-    font-size: 120px;
-    font-style: italic;
-    font-weight: 700;
-    line-height: 139px;
-    letter-spacing: 0.21em;
-    color: #00000033;
-
-    display: block;
-  }
-`;
-export const LeftTextWrapper = styled.div`
-  display: none;
-  @media (min-width: 768px) {
-    left: -35px;
-    top: 460px;
-    animation: marquee 10s infinite linear;
-    display: flex;
-    gap: 35px;
-    position: absolute;
-    width: 100%;
-  }
-`;
-export const RightTextWrapper = styled.div`
-  display: none;
-  @media (min-width: 768px) {
-    position: absolute;
-    left: 795px;
-    top: 330px;
-    width: 100%;
-    display: flex;
-    gap: 35px;
-    animation: marqueeright 10s infinite linear;
-  }
-`;
-export const ImageWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  width: 100%;
-  background: #ececec;
-  z-index: 998;
-  height: 100%;
-  border-radius: 30px;
-  @media (min-width: 768px) {
-    width: 701px;
-    height: 650px;
-    border-radius: 60px;
-    background: #d9d9d9;
-  }
-`;
 export const LinkTo = styled(Link)`
   display: inline-block;
   font-size: 16px;
-  font-weight: 400;
   line-height: 21px;
-  border: 1px solid #000000;
   padding: 7px 0;
   width: 120px;
-  background-color: transparent;
   text-align: center;
-  color: #000000;
+  border: none;
+  background: #160b03;
+  color: #ffffff;
   transition: all 0.5s ease-out;
+  position: absolute;
+  bottom: 80px;
   &:hover,
   &:focus {
-    background-color: #000000;
-    color: #ffffff;
+    background: #3f3831;
   }
   @media (min-width: 768px) {
     width: 186px;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 21px;
-    border: 2px solid #000000;
-    padding: 8px 0;
+    line-height: 22px;
+    padding: 9px 0;
+    bottom: 122px;
   }
 `;

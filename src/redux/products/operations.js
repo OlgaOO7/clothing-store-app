@@ -4,7 +4,6 @@ import { resetSearchedProducts } from './productsSlice';
 
 axios.defaults.baseURL = 'https://online-store.ddns.net/api/v1';
 
-
 const config = {
   headers: {
     Accept: '*/*',
@@ -14,9 +13,13 @@ const config = {
 
 export const getProducts = createAsyncThunk(
   'products/getNews',
-  async (_, thunkAPI) => {
+  async (size, thunkAPI) => {
     try {
-      const res = await axios.get(`/products`, '', config.headers);
+      const res = await axios.get(
+        `/products?page=0&size=${size.size}&sort=createdAt`,
+        '',
+        config.headers
+      );
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -26,10 +29,12 @@ export const getProducts = createAsyncThunk(
 
 export const getProductsPagination = createAsyncThunk(
   'products/getAll',
-  async (page, thunkAPI) => {
+  async (credentials, thunkAPI) => {
     try {
       const res = await axios.get(
-        `/products?page=${page.page}&size=12&sort=title`,
+        `/products?page=${credentials.page}&size=12${
+          credentials?.sort ? `&sort=${credentials.sort}` : ``
+        }`,
         '',
         config.headers
       );
@@ -45,7 +50,11 @@ export const getProductsFilterByCategory = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.get(
-        `/products?page=${credentials.page}&size=12&sort=title&categoryId=${credentials.categoryId}`,
+        `/products?page=${credentials.page}&size=12&sort=${credentials.sort}${
+          credentials.selectedCategory >= 1
+            ? `&categoryId=${credentials.selectedCategory}`
+            : ''
+        }&categoryId=${credentials.categoryId}`,
         '',
         config.headers
       );
@@ -61,9 +70,10 @@ export const getProductsSortByPrice = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.get(
-        `/products?page=${credentials.page}&size=12&sort=${credentials.sort}${credentials.selectedCategory >= 1
-          ? `&categoryId=${credentials.selectedCategory}`
-          : ''
+        `/products?page=${credentials.page}&size=12&sort=${credentials.sort}${
+          credentials.selectedCategory >= 1
+            ? `&categoryId=${credentials.selectedCategory}`
+            : ''
         }`,
         '',
         config.headers
@@ -79,10 +89,12 @@ export const getSearchedProducts = createAsyncThunk(
   'products/getProductsBySearch',
   async (searchQuery, thunkAPI) => {
     try {
-      const res = await axios.get(`products?title=${searchQuery}`, config.headers);
+      const res = await axios.get(
+        `products?title=${searchQuery}`,
+        config.headers
+      );
       // const res = await axios.get(`products?page=${page}&size=12&sort=title&title=${searchQuery}`, config.headers);
       return res.data.content;
-
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -93,9 +105,11 @@ export const getSearchedProductsPage = createAsyncThunk(
   'products/getProductsBySearchPage',
   async (searchQuery, thunkAPI) => {
     try {
-      const res = await axios.get(`products?title=${searchQuery}`, config.headers);
+      const res = await axios.get(
+        `products?title=${searchQuery}`,
+        config.headers
+      );
       return res.data.content;
-
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -115,4 +129,3 @@ export const clearSearchedProducts = createAsyncThunk(
 //     dispatch(resetSearchedProducts());
 //   }
 // );
-
