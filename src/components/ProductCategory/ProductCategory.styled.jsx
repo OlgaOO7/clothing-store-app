@@ -48,7 +48,7 @@ export const CategoryList = styled.ul`
 export const CategoryImage = styled.div`
   width: 144px;
   height: 134px;
-  transition: all 0.7s ease-out;
+  transition: all 150ms ease-in-out;
   background-image: ${p => (p.$photo ? `url(${p.$photo})` : `url(${noImage})`)};
   opacity: 0.7;
   background-repeat: no-repeat;
