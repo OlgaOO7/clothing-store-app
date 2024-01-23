@@ -37,6 +37,7 @@ export const CatalogButton = styled.button`
   padding: 3px 18px;
   background: transparent;
   border: 1px solid #160b03;
+  text-transform: capitalize;
 
   font-size: 14px;
   line-height: 20px;
