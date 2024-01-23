@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/clothing-store-app/static/css/main.58462fbc.css",
-    "main.js": "/clothing-store-app/static/js/main.8b65b59d.js",
+    "main.js": "/clothing-store-app/static/js/main.e5e8a5f3.js",
     "static/css/307.57362dfa.chunk.css": "/clothing-store-app/static/css/307.57362dfa.chunk.css",
-    "static/js/307.b3aa7a0d.chunk.js": "/clothing-store-app/static/js/307.b3aa7a0d.chunk.js",
+    "static/js/307.ae934744.chunk.js": "/clothing-store-app/static/js/307.ae934744.chunk.js",
     "static/js/270.261fe36f.chunk.js": "/clothing-store-app/static/js/270.261fe36f.chunk.js",
     "static/css/478.642bd848.chunk.css": "/clothing-store-app/static/css/478.642bd848.chunk.css",
     "static/js/478.8f8ea808.chunk.js": "/clothing-store-app/static/js/478.8f8ea808.chunk.js",
@@ -39,9 +39,9 @@
     "static/media/sprite.svg": "/clothing-store-app/static/media/sprite.219cdf930606f8457608452cbf02b520.svg",
     "index.html": "/clothing-store-app/index.html",
     "main.58462fbc.css.map": "/clothing-store-app/static/css/main.58462fbc.css.map",
-    "main.8b65b59d.js.map": "/clothing-store-app/static/js/main.8b65b59d.js.map",
+    "main.e5e8a5f3.js.map": "/clothing-store-app/static/js/main.e5e8a5f3.js.map",
     "307.57362dfa.chunk.css.map": "/clothing-store-app/static/css/307.57362dfa.chunk.css.map",
-    "307.b3aa7a0d.chunk.js.map": "/clothing-store-app/static/js/307.b3aa7a0d.chunk.js.map",
+    "307.ae934744.chunk.js.map": "/clothing-store-app/static/js/307.ae934744.chunk.js.map",
     "270.261fe36f.chunk.js.map": "/clothing-store-app/static/js/270.261fe36f.chunk.js.map",
     "478.642bd848.chunk.css.map": "/clothing-store-app/static/css/478.642bd848.chunk.css.map",
     "478.8f8ea808.chunk.js.map": "/clothing-store-app/static/js/478.8f8ea808.chunk.js.map",
@@ -60,6 +60,6 @@
   },
   "entrypoints": [
     "static/css/main.58462fbc.css",
-    "static/js/main.8b65b59d.js"
+    "static/js/main.e5e8a5f3.js"
   ]
 }
