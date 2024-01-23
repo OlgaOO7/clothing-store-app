@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import noImage from '../../images/no-image.jpg';
 
 export const ProductWrapper = styled.div`
   margin: 0 auto;
@@ -18,21 +19,22 @@ export const ProductWrapper = styled.div`
       gap: 10px;
     `}
 `;
-export const ProductImage = styled.img`
+export const ProductImage = styled.div`
   height: 190px;
+  width: 100%;
   @media (min-width: 768px) {
     height: 416px;
   }
-  ${props =>
-    props.type === 'new' &&
-    css`
-      width: auto;
-      height: auto;
-      @media (min-width: 768px) {
-        width: auto;
-        height: auto;
-      }
-    `}
+  transition: all 150ms ease-out;
+  background-size: 110%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(${props => (props.$image ? props.$image : noImage)});
+  &:hover,
+  &:focus {
+    background-size: 127.758%;
+  }
+
   ${props =>
     props.type === 'search' &&
     css`
