@@ -49,8 +49,15 @@ export const LinkTo = styled(Link)`
   font-family: Gill Sans;
   font-size: 18px;
   line-height: 25px;
-  color: #000000;
-
+  color: #160b03;
+  transition: all 150ms ease-out;
+  &:hover,
+  &:focus {
+    color: #3f3831;
+  }
+  &:last-child {
+    color: #3f3831;
+  }
   @media (min-width: 768px) {
     font-size: 22px;
     line-height: 29px;
