@@ -2,7 +2,10 @@ import styled from 'styled-components';
 
 export const Section = styled.section`
   width: 100%;
-  padding: 60px 0;
+  padding: 64px 0 23px;
+  @media (min-width: 768px) {
+    padding: 82px 0 26px;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -22,26 +25,36 @@ export const Wrapper = styled.div`
 `;
 export const Title = styled.h2`
   text-transform: uppercase;
-  margin-bottom: 30px;
+  margin-bottom: 24px;
   font-size: 16px;
   font-weight: 600;
-  line-height: 19px;
-  letter-spacing: 0.05em;
+  line-height: 24px;
   @media (min-width: 768px) {
-    margin-bottom: 67px;
-    font-size: 26px;
+    margin-bottom: 42px;
+    font-size: 28px;
     font-weight: 600;
-    line-height: 31px;
-    letter-spacing: 0.05em;
+    line-height: 36px;
+  }
+`;
+export const BtnWrapper = styled.div`
+  display: flex;
+  max-width: 304px;
+  position: absolute;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  top: 96.6%;
+  @media (min-width: 768px) {
+    max-width: 1360px;
+    top: 98% !important;
   }
 `;
 export const PrevBtn = styled.button`
   background-color: transparent;
   border: none;
-  left: 10% !important;
-  top: 100% !important;
+  position: static !important;
+  width: 48px !important;
   @media (min-width: 768px) {
-    left: 20% !important;
+    width: 44px !important;
   }
   &:after {
     content: none !important;
@@ -50,10 +63,10 @@ export const PrevBtn = styled.button`
 export const NextBtn = styled.button`
   background-color: transparent;
   border: none;
-  right: 10% !important;
-  top: 100% !important;
+  position: static !important;
+  width: 48px !important;
   @media (min-width: 768px) {
-    right: 20% !important;
+    width: 44px !important;
   }
   &:after {
     content: none !important;

@@ -13,7 +13,6 @@ import { InputField } from 'components/InputField/InputField';
 import {
   ErrorMessage,
   SubscriptionFormButton,
-  SubscriptionFormContainer,
   SubscriptionFormContent,
   SubscriptionFormImage,
   SubscriptionFormInput,
@@ -27,6 +26,7 @@ import {
   FormButton,
   SuccessMessageWrapper,
   SubForm,
+  SuccessFormMessage,
 } from './Form.styled';
 
 export const Form = ({ formType }) => {
@@ -131,20 +131,19 @@ export const Form = ({ formType }) => {
                 Підписуйся та будь в курсі усіх новинок та знижок!
               </SubscriptionFormTitle>
               <SubForm onSubmit={handleSubmit(onSubmitSubscription)}>
-                <SubscriptionFormContainer>
-                  <SubscriptionFormInput
-                    type="email"
-                    name="email"
-                    id="email"
-                    placeholder="Email"
-                    {...register('email')}
-                    autoComplete="true"
-                    onChange={handleChange}
-                  ></SubscriptionFormInput>
-                  <SubscriptionFormButton type="submit">
-                    Надіслати
-                  </SubscriptionFormButton>
-                </SubscriptionFormContainer>
+                <SubscriptionFormInput
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Email"
+                  {...register('email')}
+                  autoComplete="true"
+                  onChange={handleChange}
+                ></SubscriptionFormInput>
+                <SubscriptionFormButton type="submit">
+                  Надіслати
+                </SubscriptionFormButton>
+
                 {messageContent}
               </SubForm>
             </SubscriptionFormContent>
@@ -154,10 +153,10 @@ export const Form = ({ formType }) => {
         <>
           {formStatus === 'success' ? (
             <SuccessMessageWrapper>
-              <p>
-                Дякуємо, ми переглянемо ваш лист і зв'яжемось з вами найближчим
-                часом!
-              </p>
+              <SuccessFormMessage>
+                Дякуємо, ми переглянемо ваш лист і зв'яжемось з вами в
+                найближчий робочий час.
+              </SuccessFormMessage>
             </SuccessMessageWrapper>
           ) : (
             <ContactsForm onSubmit={handleSubmit(onSubmitContactUs)}>

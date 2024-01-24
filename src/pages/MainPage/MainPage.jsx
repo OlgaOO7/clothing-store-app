@@ -8,9 +8,6 @@ const MainPage = () => {
   return (
     <div
       style={{
-        display: 'flex',
-        justifyContent: 'center',
-        flexDirection: 'column',
         paddingTop: 100,
       }}
     >

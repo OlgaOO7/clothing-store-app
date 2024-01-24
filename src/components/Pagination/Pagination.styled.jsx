@@ -12,28 +12,28 @@ export const ListOfButtons = styled.ul`
 export const ButtonGray = styled.button`
   font-family: Gill Sans;
   font-size: 14px;
-  line-height: 16px;
-  color: #939393;
+  line-height: 18px;
+  color: #9d9a97;
 
   border: none;
   background-color: transparent;
 
   @media (min-width: 768px) {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 21px;
   }
 `;
 export const Button = styled.button`
   font-family: Gill Sans;
   font-size: 14px;
-  line-height: 16px;
-  color: #4c4b4b;
+  line-height: 18px;
+  color: #160b03;
 
   border: none;
   background-color: transparent;
 
   @media (min-width: 768px) {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 21px;
   }
 `;

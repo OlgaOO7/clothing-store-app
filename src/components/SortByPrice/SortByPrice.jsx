@@ -1,37 +1,42 @@
-import { useDispatch } from 'react-redux';
-import { getProductsSortByPrice } from 'redux/products/operations';
+import { Button, Item, List, Option } from './SortByPrice.styled';
+import { Fragment, useState } from 'react';
 
-import { Select } from './SortByPrice.styled';
-import { useCallback } from 'react';
+export const SortByPrice = ({ handleSortChange, selected }) => {
+  const [isCategoriesShown, setIsCategoriesShown] = useState(false);
 
-export const SortByPrice = ({ page, selectedCategory }) => {
-  const dispatch = useDispatch();
-
-  const handleSortChange = useCallback(
-    order => {
-      dispatch(
-        getProductsSortByPrice({
-          page,
-          sort:
-            order === 'lowestToHighest'
-              ? 'price.value,asc'
-              : 'price.value,desc',
-          selectedCategory,
-        })
-      );
-    },
-    [dispatch, page, selectedCategory]
-  );
+  const toggleCategoriesSearch = () => {
+    setIsCategoriesShown(!isCategoriesShown);
+  };
+  const options = [
+    'Сортування за ціною: від вищої до нижчої',
+    'Сортування за ціною: від нижчої до вищої',
+  ];
   return (
     <div>
-      <Select id="sortOption" onChange={e => handleSortChange(e.target.value)}>
-        <option value="lowestToHighest">
-          Сортування за ціною: від нижчої до вищої
-        </option>
-        <option value="highestToLowest">
-          Сортування за ціною: від вищої до нижчої
-        </option>
-      </Select>
+      <Button
+        onClick={() => toggleCategoriesSearch()}
+        $isCategoriesShown={isCategoriesShown}
+      >
+        {selected}
+      </Button>
+      <List $isCategoriesShown={isCategoriesShown}>
+        {options.map((option, index) => (
+          <Fragment key={index}>
+            {selected !== option && (
+              <Item>
+                <Option
+                  onClick={() => {
+                    handleSortChange(option);
+                    setIsCategoriesShown(false);
+                  }}
+                >
+                  {option}
+                </Option>
+              </Item>
+            )}
+          </Fragment>
+        ))}
+      </List>
     </div>
   );
 };

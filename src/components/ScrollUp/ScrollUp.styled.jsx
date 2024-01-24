@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const Scroll = styled.button`
-  width: 44px;
-  height: 44px;
+  width: 35px;
+  height: 35px;
   background-color: #000000;
   position: fixed;
   right: 20px;
@@ -15,10 +15,10 @@ export const Scroll = styled.button`
   }
 `;
 export const ScrollIcon = styled.svg`
-  width: 22px;
-  height: 16px;
+  width: 13px;
+  height: 12px;
   position: absolute;
-  top: 14px;
+  top: 12px;
   left: 11px;
   @media (min-width: 768px) {
     width: 29px;

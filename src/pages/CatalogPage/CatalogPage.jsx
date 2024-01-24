@@ -10,15 +10,9 @@ const CatalogPage = () => {
   const { state } = useLocation();
   const categoryId = state ? state?.categoryId : null;
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        flexDirection: 'column',
-      }}
-    >
+    <>
       <ProductCatalog data={products} categoryId={categoryId} />
-    </div>
+    </>
   );
 };
 

@@ -61,6 +61,10 @@ export const Navigation = ({ sectionType, toggleShowSearch }) => {
     }
   }, [cartTotalQuantity, isLoading, cart]);
 
+  useEffect(() => {
+    closeMobMenu();
+  }, [location.pathname]);
+
   const closeMobMenu = () => setIsShowMenu(false);
 
   const toggleMenu = () => {
@@ -69,7 +73,7 @@ export const Navigation = ({ sectionType, toggleShowSearch }) => {
 
   return (
     <NavContainer>
-      <Logo />
+      <Logo closeMobMenu={closeMobMenu} />
       {!isMobileScreen && <NavigationMenu $sectionType={sectionType} />}
       <BtnWrapper>
         {!isMobileScreen && <SearchBar />}
