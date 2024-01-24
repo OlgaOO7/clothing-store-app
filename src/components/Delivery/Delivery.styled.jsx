@@ -17,8 +17,7 @@ export const WrapRadio = styled.div`
   gap: 8px;
   margin-bottom: 16px;
   @media (min-width: 768px) {
-    gap: 11px;
-    margin-bottom: 25px;
+    margin-bottom: 26px;
   }
 `;
 
@@ -28,6 +27,9 @@ export const ElipsRadio = styled.div`
   background: #160b03;
   border-radius: 4px;
   border: none;
+  @media (min-width: 768px) {
+    background: #3f3831;
+  }
 `;
 export const NameRadio = styled.p`
   color: #000;
@@ -37,17 +39,15 @@ export const NameRadio = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 140%;
-  @media (min-width: 768px) {
-    line-height: normal;
-  }
 `;
 
 export const WrapForm = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  max-width: 408px;
   @media (min-width: 768px) {
-    gap: 14px;
+    gap: 16px;
   }
 `;
 
@@ -62,6 +62,7 @@ export const LabelStyle = styled.label`
   line-height: 20px;
   margin-bottom: 6px;
   @media (min-width: 768px) {
+    color: #160b03;
     font-size: 16px;
     line-height: 22px;
   }
@@ -72,21 +73,23 @@ export const InputStyle = styled.input`
   display: flex;
   width: 100%;
   padding: 10px 16px;
-  border: 1px solid #000;
+  border: 1px solid ${p => (p.$error ? 'red' : '#000')};
   color: #000;
   font-size: 14px;
   line-height: 20px;
-  border-color: ${p => p.$error && 'red'};
+
   &:focus {
     outline: none;
-    border: 2px solid #7c7d80;
+    border: 2px solid #7c7d80; // вирішити з дизайнерати
   }
   &::placeholder {
     font-size: 14px;
     line-height: 20px;
-    color: ${p => p.$error && 'red'};
+    color: ${p => (p.$error ? 'red' : '#9D9A97')};
   }
   @media (min-width: 768px) {
+    color: #160b03;
+    border: 1px solid ${p => (p.$error ? 'red' : '#160b03')};
     max-width: 408px;
     padding: 12px 16px;
     font-size: 16px;
@@ -95,13 +98,13 @@ export const InputStyle = styled.input`
 `;
 export const WrapList = styled.div`
   position: absolute;
-  top: 77px;
+  top: 79px;
   background: #fff;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 7px 10px 3px;
   z-index: 1;
   width: 100%;
   @media (min-width: 768px) {
-    top: 72px;
+    top: 89px;
     max-width: 408px;
   }
 `;
@@ -156,18 +159,17 @@ export const Message = styled.p`
 `;
 
 export const Icon = styled.svg`
-  position: absolute;
-  right: 24px;
-  top: 21px;
-  display: inline-block;
-  fill: transparent;
-  stroke-width: 1px;
-  stroke: #160b03;
-  width: 14px;
-  height: 7px;
-  flex-shrink: 0;
-  @media (min-width: 1024px) {
-    width: 15px;
-    height: 7px;
+  display: none;
+  @media (min-width: 768px) {
+    position: absolute;
+    right: 24px;
+    top: 21px;
+    display: inline-block;
+    fill: transparent;
+    stroke-width: 1px;
+    stroke: #160b03;
+    flex-shrink: 0;
+    width: 12px;
+    height: 6px;
   }
 `;

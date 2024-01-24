@@ -316,25 +316,36 @@ export const Delivery = ({ register, setValue, errors, formStatus }) => {
           </WrapInput>
           <WrapInput>
             <LabelStyle htmlFor="warehouse">Оберіть відділення *</LabelStyle>
-            <InputStyle
-              type="text"
-              id="warehouse"
-              name="warehouse"
-              {...register('warehouse')}
-              value={searchWarehouses}
-              autoComplete="off"
-              placeholder="Оберіть відділення"
-              $error={errors['warehouse']}
-              onChange={handleSearchTextChangeWarehose}
-              onClick={() => {
-                setDropdownWarehouseVisible(true);
-              }}
-              onBlur={() => {
-                setTimeout(() => {
-                  setDropdownWarehouseVisible(false);
-                }, 200);
-              }}
-            />
+            <div style={{ position: 'relative' }}>
+              <InputStyle
+                type="text"
+                id="warehouse"
+                name="warehouse"
+                {...register('warehouse')}
+                value={searchWarehouses}
+                autoComplete="off"
+                placeholder="Оберіть відділення"
+                $error={errors['warehouse']}
+                onChange={handleSearchTextChangeWarehose}
+                onClick={() => {
+                  setDropdownWarehouseVisible(true);
+                }}
+                onBlur={() => {
+                  setTimeout(() => {
+                    setDropdownWarehouseVisible(false);
+                  }, 200);
+                }}
+              />
+              {dropdownWarehouseVisible ? (
+                <Icon>
+                  <use href={`${Sprite}#icon-vector-14`} />
+                </Icon>
+              ) : (
+                <Icon>
+                  <use href={`${Sprite}#icon-vector-13`} />
+                </Icon>
+              )}
+            </div>
             {dropdownWarehouseVisible && (
               <WrapList>
                 <List>
