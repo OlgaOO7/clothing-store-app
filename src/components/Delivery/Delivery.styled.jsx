@@ -4,10 +4,10 @@ export const WrapTitle = styled.div`
   display: flex;
   align-items: center;
   gap: 14px;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
   @media (min-width: 768px) {
     gap: 24px;
-    margin-bottom: 37px;
+    margin-bottom: 26px;
   }
 `;
 
@@ -23,10 +23,10 @@ export const WrapRadio = styled.div`
 `;
 
 export const ElipsRadio = styled.div`
-  width: 12px;
-  height: 12px;
-  background: #d9d9d9;
-  border-radius: 6px;
+  width: 8px;
+  height: 8px;
+  background: #160b03;
+  border-radius: 4px;
   border: none;
 `;
 export const NameRadio = styled.p`
@@ -71,7 +71,7 @@ export const InputStyle = styled.input`
   box-sizing: border-box;
   display: flex;
   width: 100%;
-  padding: 8.5px 16px;
+  padding: 10px 16px;
   border: 1px solid #000;
   color: #000;
   font-size: 14px;
@@ -87,20 +87,22 @@ export const InputStyle = styled.input`
     color: ${p => p.$error && 'red'};
   }
   @media (min-width: 768px) {
-    max-width: 403px;
-    padding: 13px 16px;
+    max-width: 408px;
+    padding: 12px 16px;
     font-size: 16px;
     line-height: 22px;
   }
 `;
 export const WrapList = styled.div`
   position: absolute;
-  top: 62px;
+  top: 77px;
   background: #fff;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 7px 10px 3px;
   z-index: 1;
+  width: 100%;
   @media (min-width: 768px) {
     top: 72px;
+    max-width: 408px;
   }
 `;
 
@@ -109,15 +111,9 @@ export const List = styled.ul`
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  width: 304px;
-  padding: 10px 16px;
-  min-height: 100px;
-  max-height: 200px;
-  gap: 10px;
+  max-height: 336px;
+
   border: 1px solid #000;
-  @media (min-width: 768px) {
-    width: 403px;
-  }
 `;
 
 export const Item = styled.li`
@@ -126,6 +122,13 @@ export const Item = styled.li`
   font-style: normal;
   font-weight: 400;
   line-height: 140%;
+  border-bottom: 1px solid #160b03;
+
+  width: 100%;
+  &:last-child {
+    border-bottom: none;
+  }
+
   @media (min-width: 768px) {
     font-size: 16px;
     line-height: normal;
@@ -139,11 +142,32 @@ export const Text = styled.p`
   font-weight: 400;
   line-height: 140%;
   cursor: pointer;
+  padding: 10px 16px;
+  &:hover {
+    background: #3f3831;
+    color: #fff;
+  }
   @media (min-width: 768px) {
-    font-size: 16px;
-    line-height: normal;
   }
 `;
 export const Message = styled.p`
+  padding: 10px 16px;
   color: ${p => (p.$error ? 'red' : 'black')};
+`;
+
+export const Icon = styled.svg`
+  position: absolute;
+  right: 24px;
+  top: 21px;
+  display: inline-block;
+  fill: transparent;
+  stroke-width: 1px;
+  stroke: #160b03;
+  width: 14px;
+  height: 7px;
+  flex-shrink: 0;
+  @media (min-width: 1024px) {
+    width: 15px;
+    height: 7px;
+  }
 `;

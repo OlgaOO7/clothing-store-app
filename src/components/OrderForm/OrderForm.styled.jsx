@@ -37,11 +37,14 @@ export const ElipsTitle = styled.div`
   align-items: center;
   width: 26px;
   height: 26px;
-  background: #d9d9d9;
+  background: #f4efeb;
   border-radius: 13px;
   border: none;
   color: #000;
+  font-family: Inter;
   font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
   line-height: 18px;
 
   @media (min-width: 768px) {
