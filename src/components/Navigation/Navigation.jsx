@@ -71,6 +71,11 @@ export const Navigation = ({ sectionType, toggleShowSearch }) => {
     setIsShowMenu(!isShowMenu);
   };
 
+  const handleSearchClick = () => {
+    toggleShowSearch();
+    closeMobMenu();
+  };
+
   return (
     <NavContainer>
       <Logo closeMobMenu={closeMobMenu} />
@@ -78,7 +83,7 @@ export const Navigation = ({ sectionType, toggleShowSearch }) => {
       <BtnWrapper>
         {!isMobileScreen && <SearchBar />}
         {isMobileScreen && (
-          <SearchBtn type="button" onClick={toggleShowSearch}>
+          <SearchBtn type="button" onClick={handleSearchClick}>
             <SearchIcon width={24} height={24}>
               <use href={`${Sprite}#icon-search`} />
             </SearchIcon>
