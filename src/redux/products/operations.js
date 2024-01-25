@@ -32,8 +32,7 @@ export const getProductsPagination = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.get(
-        `/products?page=${credentials.page}&size=12${
-          credentials?.sort ? `&sort=${credentials.sort}` : ``
+        `/products?page=${credentials.page}&size=12${credentials?.sort ? `&sort=${credentials.sort}` : ``
         }`,
         '',
         config.headers
@@ -50,10 +49,9 @@ export const getProductsFilterByCategory = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.get(
-        `/products?page=${credentials.page}&size=12&sort=${credentials.sort}${
-          credentials.selectedCategory >= 1
-            ? `&categoryId=${credentials.selectedCategory}`
-            : ''
+        `/products?page=${credentials.page}&size=12&sort=${credentials.sort}${credentials.selectedCategory >= 1
+          ? `&categoryId=${credentials.selectedCategory}`
+          : ''
         }&categoryId=${credentials.categoryId}`,
         '',
         config.headers
@@ -70,10 +68,9 @@ export const getProductsSortByPrice = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.get(
-        `/products?page=${credentials.page}&size=12&sort=${credentials.sort}${
-          credentials.selectedCategory >= 1
-            ? `&categoryId=${credentials.selectedCategory}`
-            : ''
+        `/products?page=${credentials.page}&size=12&sort=${credentials.sort}${credentials.selectedCategory >= 1
+          ? `&categoryId=${credentials.selectedCategory}`
+          : ''
         }`,
         '',
         config.headers
@@ -90,11 +87,13 @@ export const getSearchedProducts = createAsyncThunk(
   async (searchQuery, thunkAPI) => {
     try {
       const res = await axios.get(
-        `products?page=${searchQuery.page}&size=12&sort=title&title=${searchQuery.searchQuery}`,
+        `products?size=12&sort=title&title=${searchQuery}`,
         config.headers
       );
       // const res = await axios.get(`products?page=${page}&size=12&sort=title&title=${searchQuery}`, config.headers);
-      return res.data;
+      console.log('data:', res.data);
+      console.log('data content:', res.data.content);
+      return res.data.content;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -122,10 +121,3 @@ export const clearSearchedProducts = createAsyncThunk(
     dispatch(resetSearchedProducts());
   }
 );
-
-// export const clearSearchedProductsPage = createAsyncThunk(
-//   'products/clearSearchedProductsPage',
-//   async (_, { dispatch }) => {
-//     dispatch(resetSearchedProducts());
-//   }
-// );

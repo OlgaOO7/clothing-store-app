@@ -6,7 +6,7 @@ export const selectProducts = state => state.products.productsCategory?.content;
 export const selectNewProducts = state => state.products.products?.content;
 
 export const selectSearchedProducts = state =>
-  state.products.productsBySearch?.content;
+  state.products.productsBySearch;
 export const selectSearchedProductsPage = state =>
   state.products.searchedProducts?.content;
 export const selectSearchedTotalPages = state =>

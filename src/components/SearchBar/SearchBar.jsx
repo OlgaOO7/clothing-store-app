@@ -55,11 +55,12 @@ export const SearchBar = () => {
 
   const visibleProducts = useSelector(selectSearchedProducts) || [];
 
-  // console.log('visibleProducts: ', visibleProducts);
+  console.log('visibleProducts: ', visibleProducts);
 
   const notFound = searchQuery.length >= 3 && visibleProducts.length === 0;
 
   const toggleSearch = () => {
+    setSearchQuery('');
     setIsShowSearch(!isShowSearch);
     setCloseSearchBtn(!closeSearchBtn);
     console.log(closeSearchBtn);
@@ -115,7 +116,6 @@ export const SearchBar = () => {
         setIsShowSearch(false);
       }
     };
-
     document.addEventListener('click', handleClickOutside);
 
     return () => {
@@ -124,11 +124,10 @@ export const SearchBar = () => {
   }, [searchRef, dispatch]);
 
   const clearSearchInput = () => {
-    setSearchQuery('');
     // setIsCloseBtn(false);
     toggleSearch();
     setIsEmpty(false);
-    console.log(isEmpty);
+    // console.log(isEmpty);
     dispatch(resetSearchedProducts());
   };
 

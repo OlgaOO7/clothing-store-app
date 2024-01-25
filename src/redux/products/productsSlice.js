@@ -7,7 +7,6 @@ import {
   getSearchedProducts,
   clearSearchedProducts,
   getSearchedProductsPage,
-  // clearSearchedProductsPage
 } from './operations';
 
 const initialState = {
@@ -107,11 +106,7 @@ const productsSlice = createSlice({
       .addCase(getSearchedProductsPage.rejected, (state, action) => {
         state.error = action.payload;
         state.isRefreshing = false;
-      });
-    // .addCase(clearSearchedProductsPage.fulfilled, (state) => {
-    //   state.searchedProducts = [];
-    //   state.error = null;
-    // })
+      })
   },
 });
 

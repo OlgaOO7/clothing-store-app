@@ -39,7 +39,7 @@ export const LinkTo = styled(Link)`
   font-family: Gill Sans;
   font-size: 18px;
   line-height: 21px;
-  color: #000000;
+  color: #160b03;
   transition: all 150ms ease-out;
   &:hover,
   &:focus {
@@ -103,11 +103,13 @@ export const Icon = styled.svg`
   height: 24px;
 `;
 export const Message = styled.p`
+  color: #160b03;
   text-align: center;
   font-size: 20px;
+  line-height: 140%;
 `;
 
 export const SearchWord = styled.span`
-  color: grey;
+  color: #3f3831;
   font-weight: 600;
 `;

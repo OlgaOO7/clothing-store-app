@@ -86,9 +86,13 @@ export const SearchBarMob = ({
     };
   }, [dispatch]);
 
-  const clearSearchInput = () => {
+  const emptySearch = () => {
     setSearchQuery('');
     toggleShowSearch();
+  };
+
+  const clearSearchInput = () => {
+    emptySearch();
     setIsEmpty(false);
     dispatch(resetSearchedProducts());
   };
@@ -101,13 +105,14 @@ export const SearchBarMob = ({
     } else {
       setIsSearchListVisible(false);
       // setIsShowSearch(false);
+      // toggleShowSearch();
+      emptySearch();
       setTimeout(() => {
         const searchUrl = `/search?s=${encodeURIComponent(
           trimmedSearchQuerry
         )}`;
         navigate(searchUrl);
       }, 300);
-      toggleShowSearch();
     }
   };
 
@@ -117,13 +122,11 @@ export const SearchBarMob = ({
     if (searchQuery) {
       setIsEmpty(false);
     }
-
     if (inputValue.length < 3) {
       setIsEmpty(false);
     } else if (inputValue === '') {
       setSearchQuery('');
     }
-
     if (inputValue.length >= 3) {
       setIsSearchListVisible(true);
       try {

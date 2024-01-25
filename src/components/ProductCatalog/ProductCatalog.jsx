@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import {
   selectIsRefreshing,
   selectSearchedTotalPages,
@@ -35,6 +36,10 @@ export const ProductCatalog = ({
     type === 'searchpage' ? selectSearchedTotalPages : selectTotalPages
   );
   const categories = useSelector(selectCategory) || [];
+
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const searchQuery = searchParams.get('s');
 
   useEffect(() => {
     dispatch(getCategories());
@@ -104,7 +109,7 @@ export const ProductCatalog = ({
         {type !== 'searchpage' ? (
           <LinkTo to={'/catalog'}>Каталог</LinkTo>
         ) : (
-          <p>Пошук</p>
+          <LinkTo to={`/search?s=${searchQuery}`}>Пошук</LinkTo>
         )}
       </NavWrapper>
       {type !== 'searchpage' && (

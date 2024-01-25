@@ -68,16 +68,17 @@ export const SearchIcon = styled.svg`
   @media screen and (min-width: 360px) {
     width: 24px;
     height: 24px;
-    fill: #160b03;
+    /* fill: #160b03; */
+    fill: ${p => (p.type ? '#fff' : '#3f3831')};
     &:hover,
     &:focus {
-      fill: #3f3831;
+      fill: ${p => (p.type ? '#fff' : '#3f3831')};
     }
-    ${props =>
+    /* ${props =>
       props.type === 'input' &&
       css`
         fill: #fff;
-      `}
+      `} */
   }
 `;
 

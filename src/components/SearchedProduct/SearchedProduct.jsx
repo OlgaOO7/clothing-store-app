@@ -36,7 +36,6 @@ export const SearchedProduct = () => {
     return () => {
       dispatch(resetSearchedProducts());
     };
-    // eslint-disable-next-line
   }, [dispatch, searchQuery, page]);
 
   return isLoading ? (
