@@ -90,11 +90,11 @@ export const getSearchedProducts = createAsyncThunk(
   async (searchQuery, thunkAPI) => {
     try {
       const res = await axios.get(
-        `products?title=${searchQuery}`,
+        `products?page=${searchQuery.page}&size=12&sort=title&title=${searchQuery.searchQuery}`,
         config.headers
       );
       // const res = await axios.get(`products?page=${page}&size=12&sort=title&title=${searchQuery}`, config.headers);
-      return res.data.content;
+      return res.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -106,10 +106,10 @@ export const getSearchedProductsPage = createAsyncThunk(
   async (searchQuery, thunkAPI) => {
     try {
       const res = await axios.get(
-        `products?title=${searchQuery}`,
+        `products?page=${searchQuery.page}&size=12&sort=title&title=${searchQuery.searchQuery}`,
         config.headers
       );
-      return res.data.content;
+      return res.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
