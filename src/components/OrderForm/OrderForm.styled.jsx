@@ -64,10 +64,9 @@ export const Form = styled.form`
   }
 `;
 export const OrderBtn = styled.button`
-  max-width: 189px;
   font-size: 16px;
   line-height: 21px;
-  padding: 7px 0;
+  padding: 7px 16px;
   transition: all 0.5s ease-out;
   background: #160b03;
   color: #ffffff;
@@ -78,7 +77,7 @@ export const OrderBtn = styled.button`
   }
   @media (min-width: 768px) {
     max-width: 249px;
-    padding: 9px 0;
+    padding: 9px 46px;
     font-size: 16px;
     line-height: 22px;
   }
