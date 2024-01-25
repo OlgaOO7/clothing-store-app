@@ -9,6 +9,8 @@ export const Scroll = styled.button`
   top: 70%;
   z-index: 999;
   border: none;
+  transition: opacity 150ms ease-out;
+  opacity: ${props => (props.$isvisible ? '10' : '0')};
   @media (min-width: 768px) {
     width: 72px;
     height: 72px;
