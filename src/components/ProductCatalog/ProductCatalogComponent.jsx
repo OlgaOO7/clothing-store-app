@@ -55,7 +55,7 @@ export const ProductCatalogComponent = ({
           />
           <Button
             onClick={handleNextPage}
-            disabled={totalPage === 1 ? true : false}
+            disabled={page < totalPage - 1 ? false : true}
           >
             <Icon>
               <use href={`${Sprite}#icon-next-page`}></use>
