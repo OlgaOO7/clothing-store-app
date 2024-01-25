@@ -5,9 +5,12 @@ export const CartWrapper = styled.div`
   /* display: flex;
   flex-direction: column; */
   padding: 128px 28px 0 28px;
-  margin-bottom: 646px;
+  margin-bottom: 80px;
   @media (min-width: 768px) {
     padding: 174px 40px 0 40px;
+    max-width: 1440px;
+    box-sizing: border-box;
+    margin: 0 auto 124px;
   }
 
   ${props =>
@@ -20,7 +23,7 @@ export const CartWrapper = styled.div`
 export const LinkWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 52px;
 `;
 
 export const Divider = styled.div`
@@ -31,10 +34,19 @@ export const Divider = styled.div`
 `;
 
 export const LinkTo = styled(Link)`
-  font-size: 15px;
-  color: #000;
+  color: #160b03;
+  font-size: 18px;
+  line-height: 140%;
+  &:hover,
+  &:focus {
+    color: #3f3831;
+  }
+  &:last-child {
+    color: #3f3831;
+  }
   @media (min-width: 768px) {
     font-size: 22px;
+    line-height: 130%;
   }
 `;
 
@@ -45,6 +57,13 @@ export const TaglineWrapper = styled.div`
 
 export const TaglineSubWrapper = styled.div`
   display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  color: #000;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 140%;
+  /* display: flex;
   justify-content: space-around;
   margin-bottom: 18px;
   padding-left: 36px;
@@ -57,9 +76,10 @@ export const TaglineSubWrapper = styled.div`
   @media (min-width: 768px) {
     justify-content: space-between;
     padding-left: 240px;
-    font-size: 32px;
     color: #000;
-  }
+    font-size: 26px;
+    line-height: 140%;
+  } */
 `;
 
 export const ProductText = styled.p`
@@ -78,9 +98,11 @@ export const ProductQuantity = styled.p`
 
 export const ProductListWrapper = styled.div`
   padding: 29px 0;
-  border-top: 1px solid #686868;
+  margin-bottom: 12px;
+  border-top: 1px solid #e3e0de;
   @media (min-width: 768px) {
-    border-bottom: 1px solid #686868;
+    margin-bottom: 18px;
+    border-bottom: 1px solid #e3e0de;
   }
 `;
 
@@ -133,13 +155,15 @@ export const DeleteCartBtnWrapp = styled.div`
 `;
 
 export const DeleteCartBtn = styled.button`
-  padding: 8px 10px;
-  color: #ffffff;
-  background-color: #000000;
+  padding: 0;
+  color: #000000;
+  background-color: transparent;
   border: none;
-  font-size: 12px;
+  border-bottom: 1px solid #000000;
+  font-size: 14px;
+  line-height: 140%;
   @media (min-width: 768px) {
-    font-size: 18px;
+    font-size: 16px;
   }
 `;
 

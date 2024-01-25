@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const CartTotalWrapper = styled.div`
-  width: max-content;
-  padding: 30px 40px;
+  padding: 21px 70px 42px;
   margin-top: 115px;
   margin-left: auto;
   background-color: #f0f0f0;
   @media (min-width: 768px) {
-    padding: 84px 104px;
+    width: max-content;
+    padding: 48px 60px 50px;
     margin-top: 36px;
   }
 `;
