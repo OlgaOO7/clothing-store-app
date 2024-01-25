@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { throttle } from 'lodash';
 import { nanoid } from '@reduxjs/toolkit';
+
+import Sprite from '../../images/sprite.svg';
+
 import {
   ElipsRadio,
   InputStyle,
@@ -15,6 +18,7 @@ import {
   WrapRadio,
   WrapTitle,
   Text,
+  Icon,
 } from './Delivery.styled';
 import { Title, ElipsTitle } from 'components/OrderForm/OrderForm.styled';
 
@@ -252,28 +256,39 @@ export const Delivery = ({ register, setValue, errors, formStatus }) => {
         <WrapForm>
           <WrapInput>
             <LabelStyle htmlFor="city">Оберіть місто доставки *</LabelStyle>
-            <InputStyle
-              type="text"
-              id="city"
-              name="city"
-              {...register('city')}
-              autoComplete="off"
-              placeholder="Оберіть місто доставки"
-              $error={errors['city']}
-              value={searchCityName}
-              onChange={handleSearchTextChange}
-              onClick={() => {
-                !searchCityName === '' && setDropdownCityVisible(true);
-              }}
-              onBlur={() => {
-                setTimeout(() => {
-                  setDropdownCityVisible(false);
-                }, 200);
-              }}
-            />
+            <div style={{ position: 'relative' }}>
+              <InputStyle
+                type="text"
+                id="city"
+                name="city"
+                {...register('city')}
+                autoComplete="off"
+                placeholder="Оберіть місто доставки"
+                $error={errors['city']}
+                value={searchCityName}
+                onChange={handleSearchTextChange}
+                onClick={() => {
+                  !searchCityName === '' && setDropdownCityVisible(true);
+                }}
+                onBlur={() => {
+                  setTimeout(() => {
+                    setDropdownCityVisible(false);
+                  }, 200);
+                }}
+              />
+              {dropdownCityVisible ? (
+                <Icon>
+                  <use href={`${Sprite}#icon-vector-14`} />
+                </Icon>
+              ) : (
+                <Icon>
+                  <use href={`${Sprite}#icon-vector-13`} />
+                </Icon>
+              )}
+            </div>
             {dropdownCityVisible && (
               <WrapList>
-                <List>
+                <List $error={massegeCity.error}>
                   {searchCities.length === 0 ? (
                     <Item>
                       <Message $error={massegeCity.error}>
@@ -301,25 +316,36 @@ export const Delivery = ({ register, setValue, errors, formStatus }) => {
           </WrapInput>
           <WrapInput>
             <LabelStyle htmlFor="warehouse">Оберіть відділення *</LabelStyle>
-            <InputStyle
-              type="text"
-              id="warehouse"
-              name="warehouse"
-              {...register('warehouse')}
-              value={searchWarehouses}
-              autoComplete="off"
-              placeholder="Оберіть відділення"
-              $error={errors['warehouse']}
-              onChange={handleSearchTextChangeWarehose}
-              onClick={() => {
-                setDropdownWarehouseVisible(true);
-              }}
-              onBlur={() => {
-                setTimeout(() => {
-                  setDropdownWarehouseVisible(false);
-                }, 200);
-              }}
-            />
+            <div style={{ position: 'relative' }}>
+              <InputStyle
+                type="text"
+                id="warehouse"
+                name="warehouse"
+                {...register('warehouse')}
+                value={searchWarehouses}
+                autoComplete="off"
+                placeholder="Оберіть відділення"
+                $error={errors['warehouse']}
+                onChange={handleSearchTextChangeWarehose}
+                onClick={() => {
+                  setDropdownWarehouseVisible(true);
+                }}
+                onBlur={() => {
+                  setTimeout(() => {
+                    setDropdownWarehouseVisible(false);
+                  }, 200);
+                }}
+              />
+              {dropdownWarehouseVisible ? (
+                <Icon>
+                  <use href={`${Sprite}#icon-vector-14`} />
+                </Icon>
+              ) : (
+                <Icon>
+                  <use href={`${Sprite}#icon-vector-13`} />
+                </Icon>
+              )}
+            </div>
             {dropdownWarehouseVisible && (
               <WrapList>
                 <List>
