@@ -4,10 +4,10 @@ export const WrapTitle = styled.div`
   display: flex;
   align-items: center;
   gap: 14px;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
   @media (min-width: 768px) {
     gap: 24px;
-    margin-bottom: 37px;
+    margin-bottom: 26px;
   }
 `;
 
@@ -17,17 +17,19 @@ export const WrapRadio = styled.div`
   gap: 8px;
   margin-bottom: 16px;
   @media (min-width: 768px) {
-    gap: 11px;
-    margin-bottom: 25px;
+    margin-bottom: 26px;
   }
 `;
 
 export const ElipsRadio = styled.div`
-  width: 12px;
-  height: 12px;
-  background: #d9d9d9;
-  border-radius: 6px;
+  width: 8px;
+  height: 8px;
+  background: #160b03;
+  border-radius: 4px;
   border: none;
+  @media (min-width: 768px) {
+    background: #3f3831;
+  }
 `;
 export const NameRadio = styled.p`
   color: #000;
@@ -37,17 +39,15 @@ export const NameRadio = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 140%;
-  @media (min-width: 768px) {
-    line-height: normal;
-  }
 `;
 
 export const WrapForm = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  max-width: 408px;
   @media (min-width: 768px) {
-    gap: 14px;
+    gap: 16px;
   }
 `;
 
@@ -62,6 +62,7 @@ export const LabelStyle = styled.label`
   line-height: 20px;
   margin-bottom: 6px;
   @media (min-width: 768px) {
+    color: #160b03;
     font-size: 16px;
     line-height: 22px;
   }
@@ -71,36 +72,40 @@ export const InputStyle = styled.input`
   box-sizing: border-box;
   display: flex;
   width: 100%;
-  padding: 8.5px 16px;
-  border: 1px solid #000;
+  padding: 10px 16px;
+  border: 1px solid ${p => (p.$error ? 'red' : '#000')};
   color: #000;
   font-size: 14px;
   line-height: 20px;
-  border-color: ${p => p.$error && 'red'};
+
   &:focus {
     outline: none;
-    border: 2px solid #7c7d80;
+    border: 2px solid #7c7d80; // вирішити з дизайнерати
   }
   &::placeholder {
     font-size: 14px;
     line-height: 20px;
-    color: ${p => p.$error && 'red'};
+    color: ${p => (p.$error ? 'red' : '#9D9A97')};
   }
   @media (min-width: 768px) {
-    max-width: 403px;
-    padding: 13px 16px;
+    color: #160b03;
+    border: 1px solid ${p => (p.$error ? 'red' : '#160b03')};
+    max-width: 408px;
+    padding: 12px 16px;
     font-size: 16px;
     line-height: 22px;
   }
 `;
 export const WrapList = styled.div`
   position: absolute;
-  top: 62px;
+  top: 79px;
   background: #fff;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 7px 10px 3px;
   z-index: 1;
+  width: 100%;
   @media (min-width: 768px) {
-    top: 72px;
+    top: 89px;
+    max-width: 408px;
   }
 `;
 
@@ -109,15 +114,9 @@ export const List = styled.ul`
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  width: 304px;
-  padding: 10px 16px;
-  min-height: 100px;
-  max-height: 200px;
-  gap: 10px;
+  max-height: 336px;
+
   border: 1px solid #000;
-  @media (min-width: 768px) {
-    width: 403px;
-  }
 `;
 
 export const Item = styled.li`
@@ -126,6 +125,13 @@ export const Item = styled.li`
   font-style: normal;
   font-weight: 400;
   line-height: 140%;
+  border-bottom: 1px solid #160b03;
+
+  width: 100%;
+  &:last-child {
+    border-bottom: none;
+  }
+
   @media (min-width: 768px) {
     font-size: 16px;
     line-height: normal;
@@ -139,11 +145,31 @@ export const Text = styled.p`
   font-weight: 400;
   line-height: 140%;
   cursor: pointer;
+  padding: 10px 16px;
+  &:hover {
+    background: #3f3831;
+    color: #fff;
+  }
   @media (min-width: 768px) {
-    font-size: 16px;
-    line-height: normal;
   }
 `;
 export const Message = styled.p`
+  padding: 10px 16px;
   color: ${p => (p.$error ? 'red' : 'black')};
+`;
+
+export const Icon = styled.svg`
+  display: none;
+  @media (min-width: 768px) {
+    position: absolute;
+    right: 24px;
+    top: 21px;
+    display: inline-block;
+    fill: transparent;
+    stroke-width: 1px;
+    stroke: #160b03;
+    flex-shrink: 0;
+    width: 12px;
+    height: 6px;
+  }
 `;

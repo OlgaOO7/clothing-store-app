@@ -4,18 +4,19 @@ import styled, { css } from 'styled-components';
 export const Wrapper = styled.div`
   position: relative;
   margin-right: 14px;
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     margin-right: 29px;
   }
 `;
 
 export const SearchWrapper = styled.div`
+  display: flex;
   /* display: none;
   @media (min-width: 1440px) {
     display: flex; */
-    /* justify-content: center;
+  /* justify-content: center;
     align-items: center; */
-  }
+  /* } */
 `;
 
 export const SearchMobWrapper = styled.div`
@@ -32,16 +33,16 @@ export const SearchMobWrapper = styled.div`
   align-items: center;
   /* box-sizing: border-box; */
   /* width: 100vw; */
-  @media (min-width: 1440px) {
+  /* @media (min-width: 1440px) {
     display: none;
-  }
+  } */
 `;
 
 export const MobSearchWrapper = styled.div`
-  display: flex;
+  /* display: flex;
   @media (min-width: 1440px) {
     display: none;
-  }
+  } */
 `;
 
 export const SearchBtn = styled.button`
@@ -72,6 +73,11 @@ export const SearchIcon = styled.svg`
     &:focus {
       fill: #3f3831;
     }
+    ${props =>
+      props.type === 'input' &&
+      css`
+        fill: #fff;
+      `}
   }
 `;
 
@@ -81,13 +87,11 @@ export const SearchInputListWrapper = styled.div`
   right: 0%;
   z-index: 1100;
   background-color: #fff;
-  @media (max-width: 1439px) {
-    width: 100%;
-  }
+  width: 100%;
 `;
 
 export const SearchListWrapper = styled.div`
-  padding: 10px 12px;
+  padding: 15px 12px 8px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   color: #4c4b4b;
   /* border-bottom-left-radius: 10px;
@@ -101,12 +105,14 @@ export const SearchListWrapper = styled.div`
 `;
 
 export const SearchInput = styled.input`
+  padding: 3px 0;
   width: 100%;
   outline: none;
   border: none;
   background-color: transparent;
   color: #fff;
   font-size: 16px;
+  line-height: 140%;
   /* 
   ${props =>
     props.type === 'search' &&
@@ -125,12 +131,18 @@ export const SearchCloseIcon = styled.svg`
 export const SearchList = styled.ul`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  flex-direction: column-reverse;
   gap: 8px;
   margin-bottom: 3px;
+  @media (min-width: 768px) {
+    align-items: flex-start;
+  }
 `;
 
-export const SearchItem = styled.li``;
+export const SearchItem = styled.li`
+  display: flex;
+  background-color: ${p => (p.$even ? '#e3e0de' : 'transparent')};
+`;
 
 export const LinkWrapper = styled.div`
   /* position: absolute; */
@@ -138,13 +150,23 @@ export const LinkWrapper = styled.div`
   /* z-index: 1004; */
   display: flex;
   justify-content: center;
-  padding: 10px 12px;
-  background: black;
+  padding: 7px 16px;
+  background: #160b03;
+
+  @media (min-width: 768px) {
+    padding: 9px 46px;
+  }
 `;
 
 export const ProductsLink = styled(Link)`
-  font-size: 16px;
   color: #fff;
+  font-size: 16px;
+  line-height: 130%;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    line-height: 140%;
+  }
 `;
 
 export const Container = styled.div`
@@ -173,20 +195,30 @@ export const FormContainer = styled.div`
   /* width: 323px; */
   width: 100%;
 
-  @media (min-width: 1439px) {
+  @media (min-width: 768px) {
     width: 323px;
   }
 `;
 
 export const SearchForm = styled.form`
   display: flex;
-
-  padding: 10px 19px;
-  background: #292929;
+  align-items: center;
+  padding: 10px 16px;
+  background: #3f3831;
   border-radius: 2px 2px 0px 0px;
   ${props =>
     props.type === 'search' &&
     css`
       /* width: 100vw; */
     `}
+`;
+
+export const InfoText = styled.p`
+  color: #3f3831;
+  font-size: 16px;
+  line-height: 140%;
+
+  @media (min-width: 768px) {
+    line-height: 130%;
+  }
 `;

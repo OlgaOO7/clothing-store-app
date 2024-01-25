@@ -22,7 +22,7 @@ export const LoaderSpin = styled.div`
   ${props =>
     props.type === 'small' &&
     css`
-      margin: auto;
+      margin: 20px auto 20px;
       width: 20px;
       height: 20px;
       border: 3px solid #fff;

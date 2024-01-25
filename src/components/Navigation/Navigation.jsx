@@ -61,20 +61,29 @@ export const Navigation = ({ sectionType, toggleShowSearch }) => {
     }
   }, [cartTotalQuantity, isLoading, cart]);
 
+  useEffect(() => {
+    closeMobMenu();
+  }, [location.pathname]);
+
   const closeMobMenu = () => setIsShowMenu(false);
 
   const toggleMenu = () => {
     setIsShowMenu(!isShowMenu);
   };
 
+  const handleSearchClick = () => {
+    toggleShowSearch();
+    closeMobMenu();
+  };
+
   return (
     <NavContainer>
-      <Logo />
+      <Logo closeMobMenu={closeMobMenu} />
       {!isMobileScreen && <NavigationMenu $sectionType={sectionType} />}
       <BtnWrapper>
         {!isMobileScreen && <SearchBar />}
         {isMobileScreen && (
-          <SearchBtn type="button" onClick={toggleShowSearch}>
+          <SearchBtn type="button" onClick={handleSearchClick}>
             <SearchIcon width={24} height={24}>
               <use href={`${Sprite}#icon-search`} />
             </SearchIcon>

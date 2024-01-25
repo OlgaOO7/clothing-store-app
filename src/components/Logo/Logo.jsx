@@ -1,8 +1,12 @@
-import { LogoLink } from "./Logo.styled"
+import { LogoLink } from './Logo.styled';
 
-
-export const Logo = () => {
+export const Logo = ({ closeMobMenu }) => {
+  const handlClick = () => {
+    closeMobMenu();
+  };
   return (
-    <LogoLink to="/" >ZATYSHNA</LogoLink>
-  )
-}
+    <LogoLink to="/" onClick={handlClick}>
+      ZATYSHNA
+    </LogoLink>
+  );
+};
