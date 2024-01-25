@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
@@ -19,6 +18,7 @@ export const SearchedProduct = () => {
   const location = useLocation();
 
   const searchedProducts = useSelector(selectSearchedProductsPage);
+  console.log('searchedProducts:', searchedProducts);
   const searchParams = new URLSearchParams(location.search);
   const searchQuery = searchParams.get('s');
 

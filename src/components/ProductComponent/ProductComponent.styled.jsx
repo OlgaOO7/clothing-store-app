@@ -17,6 +17,10 @@ export const ProductWrapper = styled.div`
     css`
       flex-direction: row;
       gap: 10px;
+
+      @media (min-width: 768px) {
+        gap: 12px;
+      }
     `}
 `;
 export const ProductImage = styled.div`
@@ -38,17 +42,24 @@ export const ProductImage = styled.div`
   ${props =>
     props.type === 'search' &&
     css`
-      @media (min-width: 768px) {
+      width: 48px;
+      height: 64px;
+
+      @media (min-width: 767px) {
         width: 48px;
         height: 64px;
+      }
     `}
 
   ${props =>
-    props.$sectionTtype === 'search' &&
+    props.$sectionType === 'search' &&
     css`
-      @media (max-width: 767px) {
+      width: 48px;
+      height: 64px;
+      @media (min-width: 767px) {
         width: 48px;
         height: 64px;
+      }
     `}
 `;
 export const ProductTitle = styled.h3`
@@ -64,10 +75,13 @@ export const ProductTitle = styled.h3`
   ${props =>
     props.type === 'search' &&
     css`
+      font-size: 14px;
+      line-height: 140%;
+      color: #160b03;
       @media (min-width: 768px) {
         width: 242px;
-        font-size: 14px;
-        line-height: normal;
+        font-size: 16px;
+        line-height: 140%;
       }
     `}
 `;
@@ -83,10 +97,12 @@ export const ProductDescription = styled.p`
   ${props =>
     props.type === 'search' &&
     css`
+      font-size: 14px;
+      line-height: 130%;
+      color: #160b03;
       @media (min-width: 768px) {
-        font-size: 10px;
-        font-weight: 300;
-        line-height: normal;
+        font-size: 14px;
+        line-height: 140%;
       }
     `}
 `;
@@ -106,6 +122,10 @@ export const ProductTextWrapper = styled.div`
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 10px;
+      gap: 4px;
+
+      @media (min-width: 768px) {
+        gap: 2px;
+      }
     `}
 `;

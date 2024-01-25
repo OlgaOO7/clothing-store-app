@@ -3,13 +3,16 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getSearchedProducts } from 'redux/products/operations';
-import { selectSearchedProducts } from 'redux/products/selectors';
+import {
+  selectSearchedProducts,
+  selectIsRefreshing,
+} from 'redux/products/selectors';
 import {
   resetSearchedProducts,
   setSearchedProducts,
 } from 'redux/products/productsSlice';
-
 import { ProductComponent } from 'components/ProductComponent/ProductComponent.jsx';
+import { Loader } from 'components/Loader/Loader';
 
 import {
   Container,
@@ -25,6 +28,7 @@ import {
   SearchItem,
   LinkWrapper,
   ProductsLink,
+  InfoText,
 } from './SearchBar.styled';
 
 import Sprite from '../../images/sprite.svg';
@@ -44,9 +48,12 @@ export const SearchBarMob = ({
   const dispatch = useDispatch();
   const previousLocation = useRef();
 
+  const isLoading = useSelector(selectIsRefreshing);
+
   const showSearchList = searchQuery && isSearchListVisible;
   const trimmedSearchQuerry = searchQuery.trim();
   const visibleProducts = useSelector(selectSearchedProducts) || [];
+  const notFound = searchQuery.length >= 3 && visibleProducts.length === 0;
 
   useEffect(() => {
     if (searchQuery === '') {
@@ -78,21 +85,6 @@ export const SearchBarMob = ({
       dispatch(resetSearchedProducts());
     };
   }, [dispatch]);
-
-  // FOR CLOSE OUTSIDE DIV
-  // useEffect(() => {
-  //   const handleClickOutside = event => {
-  //     if (searchRef.current && !searchRef.current.contains(event.target)) {
-  //       setIsSearching(false);
-  //     }
-  //   };
-
-  //   document.addEventListener('click', handleClickOutside);
-
-  //   return () => {
-  //     document.removeEventListener('click', handleClickOutside);
-  //   };
-  // }, [searchRef, dispatch]);
 
   const clearSearchInput = () => {
     setSearchQuery('');
@@ -194,27 +186,42 @@ export const SearchBarMob = ({
 
                 <SearchInputListWrapper>
                   {isEmpty && !searchQuery && (
-                    <SearchListWrapper>
-                      <p>Будь ласка, введіть ваш запит!</p>
+                    <SearchListWrapper $info="info">
+                      <InfoText>Будь ласка, введіть назву товару</InfoText>
                     </SearchListWrapper>
                   )}
-                  {visibleProducts.length > 5 && showSearchList && (
-                    <SearchListWrapper>
-                      <SearchList>
-                        {visibleProducts
-                          .map(product => (
-                            <SearchItem key={product.id}>
-                              <ProductComponent
-                                item={product}
-                                type="search"
-                                $sectionType={sectionType}
-                              />
-                            </SearchItem>
-                          ))
-                          .slice(0, 4)}
-                      </SearchList>
-                    </SearchListWrapper>
+                  {isLoading ? (
+                    <Loader type="small" />
+                  ) : (
+                    <div>
+                      {notFound && (
+                        <SearchListWrapper $info="info">
+                          <InfoText>За запитом нічого не знайдено!</InfoText>
+                        </SearchListWrapper>
+                      )}
+                      {visibleProducts.length > 0 && showSearchList && (
+                        <SearchListWrapper>
+                          <SearchList>
+                            {visibleProducts
+                              .slice(0, 4)
+                              .map((product, index) => (
+                                <SearchItem
+                                  key={product.id}
+                                  $even={index % 2 === 0}
+                                >
+                                  <ProductComponent
+                                    item={product}
+                                    type="search"
+                                    $sectionType={sectionType}
+                                  />
+                                </SearchItem>
+                              ))}
+                          </SearchList>
+                        </SearchListWrapper>
+                      )}
+                    </div>
                   )}
+
                   {visibleProducts.length > 4 && showSearchList && (
                     <LinkWrapper onClick={clearSearchInput}>
                       <ProductsLink
