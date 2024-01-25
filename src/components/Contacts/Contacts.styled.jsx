@@ -25,7 +25,7 @@ export const Wrapper = styled.div`
   @media (min-width: 768px) {
     flex-direction: row;
     gap: 95px;
-    max-width: 1245px;
+    max-width: 1132px;
     padding-left: 40px;
     padding-right: 40px;
     justify-content: space-between;
@@ -41,16 +41,23 @@ export const MainWrapper = styled.div`
     padding-right: 40px;
   }
 `;
+export const NavSection = styled.section`
+  width: 100%;
+  padding: 124px 0 52px;
+  @media (min-width: 768px) {
+    padding: 170px 0 42px;
+  }
+`;
 export const NavWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 31px;
-  padding: 124px 30px 42px;
+  padding: 0 30px;
   margin: 0;
   @media (min-width: 768px) {
     max-width: 1360px;
-    padding: 170px 40px 52px;
+    padding: 0 40px;
     margin: 0 auto;
   }
 `;

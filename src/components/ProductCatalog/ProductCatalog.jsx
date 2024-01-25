@@ -9,7 +9,13 @@ import {
 import { FilterByCategory } from 'components/FilterByCategory/FilterByCategory';
 import { ProductCatalogComponent } from './ProductCatalogComponent';
 
-import { LinkTo, Wrapper, Section, NavWrapper } from './ProductCatalog.styled';
+import {
+  LinkTo,
+  Wrapper,
+  Section,
+  NavWrapper,
+  NavSection,
+} from './ProductCatalog.styled';
 import {
   getProductsFilterByCategory,
   getProductsPagination,
@@ -103,15 +109,17 @@ export const ProductCatalog = ({
 
   return (
     <>
-      <NavWrapper>
-        <LinkTo to={'/'}>Головна</LinkTo>
-        <span>|</span>
-        {type !== 'searchpage' ? (
-          <LinkTo to={'/catalog'}>Каталог</LinkTo>
-        ) : (
-          <LinkTo to={`/search?s=${searchQuery}`}>Пошук</LinkTo>
-        )}
-      </NavWrapper>
+      <NavSection>
+        <NavWrapper>
+          <LinkTo to={'/'}>Головна</LinkTo>
+          <span>|</span>
+          {type !== 'searchpage' ? (
+            <LinkTo to={'/catalog'}>Каталог</LinkTo>
+          ) : (
+            <LinkTo to={`/search?s=${searchQuery}`}>Пошук</LinkTo>
+          )}
+        </NavWrapper>
+      </NavSection>
       {type !== 'searchpage' && (
         <FilterByCategory
           categories={categories}

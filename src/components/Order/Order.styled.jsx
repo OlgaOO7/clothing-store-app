@@ -8,18 +8,24 @@ export const Section = styled.section`
     padding: 0 0 28px;
   }
 `;
-
+export const NavSection = styled.section`
+  width: 100%;
+  padding: 124px 0 52px;
+  @media (min-width: 768px) {
+    padding: 170px 0 64px;
+  }
+`;
 export const NavWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 18px;
-  padding: 124px 43px 52px 30px;
-  margin: 0;
+  padding: 0 43px 0 30px;
+  margin: 0 auto;
   @media (min-width: 768px) {
     gap: 24px;
     max-width: 1360px;
-    padding: 170px 40px 64px 40px;
+    padding: 0 40px;
   }
 `;
 export const Wrapper = styled.div`

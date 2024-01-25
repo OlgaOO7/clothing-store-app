@@ -8,31 +8,35 @@ export const Section = styled.section`
     padding: 40px 0 81px;
   }
 `;
-
+export const NavSection = styled.section`
+  width: 100%;
+  padding: 105px 0 28px;
+  @media (min-width: 768px) {
+    padding: 155px 0 69px;
+  }
+`;
 export const NavWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 31px;
-  padding: 105px 28px 28px;
-  margin: 0;
+  padding: 0 28px;
+  margin: 0 auto;
   @media (min-width: 768px) {
     max-width: 1360px;
-    padding: 155px 40px 69px;
+    padding: 0 40px;
   }
 `;
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 78px;
-  padding-left: 28px;
-  padding-right: 28px;
+  padding: 0 28px;
   margin: 0 auto;
   @media (min-width: 768px) {
     gap: 112px;
     max-width: 1360px;
-    padding-left: 40px;
-    padding-right: 40px;
+    padding: 0 40px;
   }
 `;
 export const LinkTo = styled(Link)`

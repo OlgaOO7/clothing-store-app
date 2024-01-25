@@ -26,6 +26,7 @@ import {
   OrderResultDestTotal,
   OrderResultTotal,
   OrderResultTotalPrice,
+  NavSection,
 } from './Order.styled';
 import { formatPrice } from 'utils/formatPrice';
 import { selectIsRefreshing } from 'redux/cart/selectors';
@@ -104,23 +105,24 @@ export const Order = () => {
 
   return (
     <>
-      {}
-      <NavWrapper>
-        <LinkTo to={'/'}>Головна</LinkTo>
-        {!isMobileScreen ? (
-          <>
-            <span>|</span>
-            <LinkTo to={'/cart'}>Кошик</LinkTo>
-            <span>|</span>
-            <LinkTo to={'/order'}>Оформлення замовлення</LinkTo>
-          </>
-        ) : (
-          <>
-            <span>|</span>
-            <LinkTo to={'/order'}>Оформлення замовлення</LinkTo>
-          </>
-        )}
-      </NavWrapper>
+      <NavSection>
+        <NavWrapper>
+          <LinkTo to={'/'}>Головна</LinkTo>
+          {!isMobileScreen ? (
+            <>
+              <span>|</span>
+              <LinkTo to={'/cart'}>Кошик</LinkTo>
+              <span>|</span>
+              <LinkTo to={'/order'}>Оформлення замовлення</LinkTo>
+            </>
+          ) : (
+            <>
+              <span>|</span>
+              <LinkTo to={'/order'}>Оформлення замовлення</LinkTo>
+            </>
+          )}
+        </NavWrapper>
+      </NavSection>
       {formStatus === 'success' ? (
         <></>
       ) : (
