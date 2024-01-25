@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
@@ -18,14 +18,15 @@ export const SearchedProduct = () => {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  const searchedProducts = useSelector(selectSearchedProductsPage);
+  const [page, setCurrentPage] = useState(0);
+  const searchedProducts = useSelector(selectSearchedProductsPage) || [];
   const searchParams = new URLSearchParams(location.search);
   const searchQuery = searchParams.get('s');
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        dispatch(getSearchedProductsPage(searchQuery));
+        dispatch(getSearchedProductsPage({ searchQuery, page }));
       } catch (e) {
         console.error('Error fetching data:', e);
       } finally {
@@ -36,7 +37,7 @@ export const SearchedProduct = () => {
       dispatch(resetSearchedProducts());
     };
     // eslint-disable-next-line
-  }, [dispatch, searchQuery]);
+  }, [dispatch, searchQuery, page]);
 
   return isLoading ? (
     <Wrapper>
@@ -46,6 +47,8 @@ export const SearchedProduct = () => {
     <ProductCatalog
       type="searchpage"
       data={searchedProducts}
+      setCurrentPage={setCurrentPage}
+      page={page}
       // isLoading={isLoading}
     />
   );

@@ -10,6 +10,10 @@ import {
   SelectedCatalogButton,
   Wrapper,
 } from './FilterByCategory.styled';
+import {
+  getProductsFilterByCategory,
+  getProductsPagination,
+} from 'redux/products/operations';
 
 export const FilterByCategory = ({
   categories,
@@ -19,12 +23,75 @@ export const FilterByCategory = ({
   setSelectedCategory,
   selectedCategory,
   selected,
+  page,
 }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getCategories());
   }, [dispatch]);
+  useEffect(() => {
+    if (
+      selectedCategory !== null &&
+      selectedCategory !== undefined &&
+      selectedCategory !== 0
+    ) {
+      dispatch(
+        getProductsFilterByCategory({
+          page,
+          categoryId: selectedCategory,
+          sort:
+            selected === 'Сортування за ціною: від нижчої до вищої'
+              ? 'price.value,asc'
+              : 'price.value,desc',
+        })
+      );
+    } else if (selectedCategory === 0) {
+      dispatch(
+        getProductsPagination({
+          page: page,
+          sort:
+            selected === 'Сортування за ціною: від нижчої до вищої'
+              ? 'price.value,asc'
+              : 'price.value,desc',
+        })
+      );
+    } else if (
+      categoryId !== null &&
+      categoryId !== undefined &&
+      categoryId !== 0
+    ) {
+      setSelectedCategory(categoryId);
+      dispatch(
+        getProductsFilterByCategory({
+          page,
+          categoryId,
+          sort:
+            selected === 'Сортування за ціною: від нижчої до вищої'
+              ? 'price.value,asc'
+              : 'price.value,desc',
+        })
+      );
+    } else {
+      setSelectedCategory(0);
+      dispatch(
+        getProductsPagination({
+          page,
+          sort:
+            selected === 'Сортування за ціною: від нижчої до вищої'
+              ? 'price.value,asc'
+              : 'price.value,desc',
+        })
+      );
+    }
+  }, [
+    dispatch,
+    page,
+    categoryId,
+    selectedCategory,
+    selected,
+    setSelectedCategory,
+  ]);
 
   useEffect(() => {
     setSelectedCategory(categoryId);
@@ -39,7 +106,7 @@ export const FilterByCategory = ({
     <Section>
       <Wrapper>
         <CatalogButtonList>
-          {selectedCategory === 0 ? (
+          {selectedCategory === 0 || selectedCategory === null ? (
             <SelectedCatalogButton>Всі</SelectedCatalogButton>
           ) : (
             <CatalogButton
