@@ -5,14 +5,22 @@ import { useState } from 'react';
 export const Unsubscribe = () => {
   const dispatch = useDispatch();
   const [unsubscription, setUnsubscription] = useState(null);
-  const handleUnsubscribe = () => {
+
+  const handleUnsubscribe = async () => {
     try {
       const currentUrl = window.location.search;
       const urlParams = new URLSearchParams(currentUrl);
       const email = urlParams.get('email');
 
-      dispatch(unsubscribe({ subscriptionId: 1, email: email }));
-      setUnsubscription('success');
+      const result = await dispatch(
+        unsubscribe({ subscriptionId: 1, email: email })
+      );
+
+      if (unsubscribe.fulfilled.match(result)) {
+        setUnsubscription('success');
+      } else {
+        setUnsubscription('error');
+      }
     } catch (error) {
       console.error(error);
       setUnsubscription('error');
