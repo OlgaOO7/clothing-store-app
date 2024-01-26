@@ -11,7 +11,7 @@ export const Unsubscribe = () => {
       const urlParams = new URLSearchParams(currentUrl);
       const email = urlParams.get('email');
 
-      dispatch(unsubscribe({ subscriptionId: 1, email }));
+      dispatch(unsubscribe({ subscriptionId: 1, email: email }));
       setUnsubscription('success');
     } catch (error) {
       console.error(error);

@@ -51,11 +51,14 @@ export const unsubscribe = createAsyncThunk(
   'unsubscribe',
   async (credentials, thunkAPI) => {
     try {
-      const res = await axios.delete(
-        `/subscriptions`,
-        credentials,
-        config.headers
-      );
+      const config = {
+        headers: {
+          Accept: '*/*',
+          'Content-Type': 'application/json',
+        },
+        data: credentials,
+      };
+      const res = await axios.delete(`/subscriptions`, config);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
