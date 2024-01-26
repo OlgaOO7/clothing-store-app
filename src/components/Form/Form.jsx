@@ -143,9 +143,8 @@ export const Form = ({ formType }) => {
                 <SubscriptionFormButton type="submit">
                   Надіслати
                 </SubscriptionFormButton>
-
-                {messageContent}
               </SubForm>
+              {messageContent}
             </SubscriptionFormContent>
           </SubscriptionFormWrapper>
         </SubscriptionFormSection>
