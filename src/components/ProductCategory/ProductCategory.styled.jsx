@@ -78,12 +78,6 @@ export const CategoryTitle = styled.h3`
     line-height: 29px;
   }
 `;
-export const CategoryCount = styled.span`
-  display: none;
-  @media (min-width: 768px) {
-    display: inline-block;
-  }
-`;
 export const LinkTo = styled(Link)`
 width: calc(50% - 16px);
 & ${CategoryImage} {

@@ -7,7 +7,6 @@ import {
   CategoryList,
   CategoryImage,
   CategoryTitle,
-  CategoryCount,
   CategoryItem,
   LinkTo,
   MoreLink,
@@ -41,10 +40,7 @@ export const ProductCategory = () => {
             >
               <CategoryItem>
                 <CategoryImage $photo={photos[index]} />
-                <CategoryTitle>
-                  {category.title}
-                  <CategoryCount>({category.productCount})</CategoryCount>
-                </CategoryTitle>
+                <CategoryTitle>{category.title}</CategoryTitle>
               </CategoryItem>
             </LinkTo>
           ))}
