@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
   margin: 0;
+  font-family: "Mulish", sans-serif;
 }
 
 body.modal-open {
