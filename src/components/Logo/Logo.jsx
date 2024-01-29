@@ -1,8 +1,5 @@
-import { LogoLink } from "./Logo.styled"
-
+import { LogoLink } from './Logo.styled';
 
 export const Logo = () => {
-  return (
-    <LogoLink to="/" >ZATYSHNA</LogoLink>
-  )
-}
+  return <LogoLink to="/">Zatyshna</LogoLink>;
+};
