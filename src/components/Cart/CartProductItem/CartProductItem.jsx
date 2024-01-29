@@ -128,7 +128,7 @@ export const CartProductItem = ({
             <QuantityWrapper>
               <DecreaseBtn
                 type="button"
-                onClick={() => decreaseProductQuantity(item.productId)}
+                onClick={() => decreaseProductQuantity(item.sku.id)}
                 // quantity={item.quantity}
                 $case={(
                   item.quantity === 1 && item.quantity <= availableQuantity
@@ -141,7 +141,7 @@ export const CartProductItem = ({
               {item.quantity}
               <IncreaseBtn
                 type="button"
-                onClick={() => increaseProductQuantity(item.productId)}
+                onClick={() => increaseProductQuantity(item.sku.id)}
                 // quantity={item.quantity}
                 $case={(item.quantity >= availableQuantity).toString()}
               >

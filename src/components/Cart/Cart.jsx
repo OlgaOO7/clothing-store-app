@@ -101,6 +101,7 @@ export const Cart = () => {
       }
     };
 
+    console.log('cartData:', cartData);
     const fetchProductQuantity = async () => {
       try {
         if (cartData.items) {
@@ -122,11 +123,12 @@ export const Cart = () => {
     fetchProductQuantity();
   }, [cartData, dispatch]);
 
-  // console.log('cartData:', cartData);
+  console.log('cartData:', cartData);
+  console.log('cartProducts:', cartProducts);
 
-  const increaseProductQuantity = async productId => {
+  const increaseProductQuantity = async productSkuId => {
     const itemToUpdate = cartProducts.find(
-      item => item.productId === productId
+      item => item.sku.id === productSkuId
     );
     const quantityToIncrease = itemToUpdate.quantity + 1;
     const increasedItemQuantity = quantityToIncrease - itemToUpdate.quantity;
@@ -151,9 +153,9 @@ export const Cart = () => {
     }
   };
 
-  const decreaseProductQuantity = async productId => {
+  const decreaseProductQuantity = async productSkuId => {
     const itemToUpdate = cartProducts.find(
-      item => item.productId === productId
+      item => item.sku.id === productSkuId
     );
     const quantityToDecrease = itemToUpdate.quantity - 1;
     const decreasedItemQuantity = quantityToDecrease - itemToUpdate.quantity;
