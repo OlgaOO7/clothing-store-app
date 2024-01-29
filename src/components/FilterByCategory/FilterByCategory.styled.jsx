@@ -27,40 +27,49 @@ export const CatalogButtonList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 16px 14px;
+  align-items: center;
 
   @media (min-width: 768px) {
     gap: 14px;
   }
 `;
 export const CatalogButton = styled.button`
-  padding: 6px 18px;
+  padding: 3px 18px;
   background: transparent;
-  border: 1px solid #000000;
+  border: 1px solid #160b03;
+  text-transform: capitalize;
 
   font-size: 14px;
-  line-height: 16px;
-  color: #000000;
+  line-height: 20px;
+  color: #160b03;
+  transition: all 0.7s ease-out;
+
+  &:hover,
+  &:focus {
+    background: #160b03;
+    color: #fff;
+  }
 
   @media (min-width: 768px) {
-    padding: 8px 24px;
+    padding: 5px 18px;
 
-    font-size: 18px;
-    line-height: 21px;
+    font-size: 16px;
+    line-height: 22px;
   }
 `;
 export const SelectedCatalogButton = styled.button`
-  padding: 7px 18px;
-  background: #000000;
+  padding: 4px 18px;
+  background: #160b03;
   border: none;
 
   font-size: 14px;
-  line-height: 16px;
-  color: #ffffff;
+  line-height: 20px;
+  color: #fff;
 
   @media (min-width: 768px) {
-    padding: 10px 24px;
+    padding: 6px 18px;
 
-    font-size: 18px;
-    line-height: 21px;
+    font-size: 16px;
+    line-height: 22px;
   }
 `;

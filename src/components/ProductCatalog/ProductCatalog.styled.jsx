@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const Section = styled.section`
@@ -8,38 +8,50 @@ export const Section = styled.section`
     padding: 40px 0 81px;
   }
 `;
-
+export const NavSection = styled.section`
+  width: 100%;
+  padding: 105px 0 28px;
+  @media (min-width: 768px) {
+    padding: 155px 0 69px;
+  }
+`;
 export const NavWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 31px;
-  padding: 105px 28px 28px;
-  margin: 0;
+  padding: 0 28px;
+  margin: 0 auto;
   @media (min-width: 768px) {
     max-width: 1360px;
-    padding: 155px 40px 69px;
+    padding: 0 40px;
   }
 `;
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 78px;
-  padding-left: 28px;
-  padding-right: 28px;
+  padding: 0 28px;
   margin: 0 auto;
   @media (min-width: 768px) {
     gap: 112px;
     max-width: 1360px;
-    padding-left: 40px;
-    padding-right: 40px;
+    padding: 0 40px;
   }
 `;
 export const LinkTo = styled(Link)`
   font-family: Gill Sans;
   font-size: 18px;
   line-height: 21px;
-  color: #000000;
+  color: #160b03;
+  transition: all 150ms ease-out;
+  &:hover,
+  &:focus {
+    color: #3f3831;
+  }
+  &:last-child {
+    color: #3f3831;
+  }
 
   @media (min-width: 768px) {
     font-size: 22px;
@@ -54,6 +66,12 @@ export const List = styled.ul`
 
   @media (min-width: 768px) {
     gap: 58px 24px;
+  }
+`;
+export const ListItem = styled.li`
+  width: 144px;
+  @media (min-width: 768px) {
+    width: 322px;
   }
 `;
 export const ButtonsWrapper = styled.div`
@@ -73,21 +91,29 @@ export const Button = styled.button`
   border: none;
   background-color: transparent;
 
+  ${props =>
+    props.disabled &&
+    css`
+      display: none;
+    `}
+
   @media (min-width: 768px) {
     font-size: 18px;
     line-height: 21px;
   }
 `;
 export const Icon = styled.svg`
-  width: 11px;
-  height: 10px;
+  width: 24px;
+  height: 24px;
 `;
 export const Message = styled.p`
+  color: #160b03;
   text-align: center;
   font-size: 20px;
+  line-height: 140%;
 `;
 
 export const SearchWord = styled.span`
-  color: grey;
+  color: #3f3831;
   font-weight: 600;
 `;

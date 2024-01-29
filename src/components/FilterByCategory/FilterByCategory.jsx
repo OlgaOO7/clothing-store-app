@@ -1,11 +1,6 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { getCategories } from 'redux/category/operations';
-import { selectCategory } from 'redux/category/selectors';
-import {
-  getProductsFilterByCategory,
-  getProductsPagination,
-} from 'redux/products/operations';
 
 import { SortByPrice } from 'components/SortByPrice/SortByPrice';
 import {
@@ -15,15 +10,26 @@ import {
   SelectedCatalogButton,
   Wrapper,
 } from './FilterByCategory.styled';
+import {
+  getProductsFilterByCategory,
+  getProductsPagination,
+} from 'redux/products/operations';
 
-export const FilterByCategory = ({ page, categoryId, handlePageChange }) => {
+export const FilterByCategory = ({
+  categories,
+  categoryId,
+  handleCategoryChange,
+  handleSortChange,
+  setSelectedCategory,
+  selectedCategory,
+  selected,
+  page,
+}) => {
   const dispatch = useDispatch();
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const categories = useSelector(selectCategory) || [];
+
   useEffect(() => {
     dispatch(getCategories());
   }, [dispatch]);
-
   useEffect(() => {
     if (
       selectedCategory !== null &&
@@ -31,43 +37,81 @@ export const FilterByCategory = ({ page, categoryId, handlePageChange }) => {
       selectedCategory !== 0
     ) {
       dispatch(
-        getProductsFilterByCategory({ page, categoryId: selectedCategory })
+        getProductsFilterByCategory({
+          page,
+          categoryId: selectedCategory,
+          sort:
+            selected === 'Сортування за ціною: від нижчої до вищої'
+              ? 'price.value,asc'
+              : 'price.value,desc',
+        })
       );
     } else if (selectedCategory === 0) {
-      dispatch(getProductsPagination({ page: page }));
+      dispatch(
+        getProductsPagination({
+          page: page,
+          sort:
+            selected === 'Сортування за ціною: від нижчої до вищої'
+              ? 'price.value,asc'
+              : 'price.value,desc',
+        })
+      );
     } else if (
       categoryId !== null &&
       categoryId !== undefined &&
       categoryId !== 0
     ) {
       setSelectedCategory(categoryId);
-      dispatch(getProductsFilterByCategory({ page, categoryId }));
+      dispatch(
+        getProductsFilterByCategory({
+          page,
+          categoryId,
+          sort:
+            selected === 'Сортування за ціною: від нижчої до вищої'
+              ? 'price.value,asc'
+              : 'price.value,desc',
+        })
+      );
     } else {
       setSelectedCategory(0);
-      dispatch(getProductsPagination({ page }));
-    }
-  }, [dispatch, page, categoryId, selectedCategory]);
-
-  const handleCategoryChange = newCategoryId => {
-    if (newCategoryId !== selectedCategory) {
-      handlePageChange(0);
       dispatch(
-        getProductsFilterByCategory({ page, categoryId: newCategoryId })
+        getProductsPagination({
+          page,
+          sort:
+            selected === 'Сортування за ціною: від нижчої до вищої'
+              ? 'price.value,asc'
+              : 'price.value,desc',
+        })
       );
     }
+  }, [
+    dispatch,
+    page,
+    categoryId,
+    selectedCategory,
+    selected,
+    setSelectedCategory,
+  ]);
+
+  useEffect(() => {
+    setSelectedCategory(categoryId);
+  }, [categoryId, setSelectedCategory]);
+
+  const handleInternalCategoryChange = newCategoryId => {
+    setSelectedCategory(newCategoryId);
+    handleCategoryChange(newCategoryId);
   };
 
   return (
     <Section>
       <Wrapper>
         <CatalogButtonList>
-          {selectedCategory === 0 ? (
+          {selectedCategory === 0 || selectedCategory === null ? (
             <SelectedCatalogButton>Всі</SelectedCatalogButton>
           ) : (
             <CatalogButton
               onClick={() => {
-                setSelectedCategory(0);
-                handlePageChange(0);
+                handleInternalCategoryChange(0);
               }}
             >
               Всі
@@ -83,8 +127,7 @@ export const FilterByCategory = ({ page, categoryId, handlePageChange }) => {
                 ) : (
                   <CatalogButton
                     onClick={() => {
-                      handleCategoryChange(category.id);
-                      setSelectedCategory(category.id);
+                      handleInternalCategoryChange(category.id);
                     }}
                     key={category.id}
                   >
@@ -94,7 +137,7 @@ export const FilterByCategory = ({ page, categoryId, handlePageChange }) => {
               </li>
             ))}
         </CatalogButtonList>
-        <SortByPrice page={page} selectedCategory={selectedCategory} />
+        <SortByPrice handleSortChange={handleSortChange} selected={selected} />
       </Wrapper>
     </Section>
   );

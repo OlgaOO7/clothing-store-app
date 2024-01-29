@@ -192,23 +192,13 @@ export const Cart = () => {
       ) : cartTotalQuantity ? (
         <div>
           <TaglineWrapper>
-            {isMobileScreen && (
-              <DeleteCartBtnWrapp>
-                <DeleteCartBtn onClick={clearProductCart}>
-                  Очистити кошик
-                </DeleteCartBtn>
-              </DeleteCartBtnWrapp>
+            {!isMobileScreen && (
+              <TaglineSubWrapper>
+                <ProductText>Товар</ProductText>
+                <ProductQuantity>Кількість</ProductQuantity>
+                <p>Ціна</p>
+              </TaglineSubWrapper>
             )}
-            <TaglineSubWrapper>
-              <ProductText>Товар</ProductText>
-              <ProductQuantity>Кількість</ProductQuantity>
-              <p>Ціна</p>
-              {!isMobileScreen && (
-                <DeleteCartBtn onClick={clearProductCart}>
-                  Очистити кошик
-                </DeleteCartBtn>
-              )}
-            </TaglineSubWrapper>
             <ProductListWrapper>
               <ProductCartList>
                 {cartProducts?.length > 0 &&
@@ -229,6 +219,11 @@ export const Cart = () => {
               </ProductCartList>
             </ProductListWrapper>
           </TaglineWrapper>
+          <DeleteCartBtnWrapp>
+            <DeleteCartBtn onClick={clearProductCart}>
+              Очистити кошик
+            </DeleteCartBtn>
+          </DeleteCartBtnWrapp>
           <CartTotal
             data={cartData}
             unavailableProductQuantity={unavailableProductQuantity}

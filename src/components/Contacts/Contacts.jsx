@@ -9,7 +9,6 @@ import {
   Wrapper,
   MainSection,
   Title,
-  Logo,
   MainWrapper,
   ContactsWrapper,
   ContactTitle,
@@ -18,20 +17,22 @@ import {
   IconFacebook,
   IconsWrapper,
   ContactsContent,
+  NavSection,
 } from './Contacts.styled';
 
 export const Contacts = () => {
   return (
     <>
-      <NavWrapper>
-        <LinkTo to={'/'}>Головна</LinkTo>
-        <span>|</span>
-        <LinkTo to={'/contacts'}>Контакти</LinkTo>
-      </NavWrapper>
+      <NavSection>
+        <NavWrapper>
+          <LinkTo to={'/'}>Головна</LinkTo>
+          <span>|</span>
+          <LinkTo to={'/contacts'}>Контакти</LinkTo>
+        </NavWrapper>
+      </NavSection>
       <MainSection>
         <MainWrapper>
           <Title>Контакти</Title>
-          <Logo>Zatyshna</Logo>
         </MainWrapper>
       </MainSection>
       <Section>

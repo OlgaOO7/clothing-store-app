@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom';
 
-import noImage from '../../images/no-image.jpg';
-
 import {
   ProductDescription,
   ProductImage,
@@ -19,9 +17,9 @@ export const ProductComponent = ({ item, type, sectionType }) => {
     <Link to={`/catalog/${item.id}`}>
       <ProductWrapper type={type}>
         <ProductImage
-          src={`${item?.photos ? item?.photos[0]?.url : noImage}`}
           type={type}
           $sectionType={sectionType}
+          $image={`${item?.photos && item?.photos[0]?.url}`}
           loading="lazy"
         ></ProductImage>
         <ProductTextWrapper type={type}>

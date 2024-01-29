@@ -3,23 +3,29 @@ import styled from 'styled-components';
 
 export const Section = styled.section`
   width: 100%;
-  padding: 0 0 36px;
+  padding: 0 0 32px;
   @media (min-width: 768px) {
-    padding: 0 0 38px;
+    padding: 0 0 28px;
   }
 `;
-
+export const NavSection = styled.section`
+  width: 100%;
+  padding: 124px 0 52px;
+  @media (min-width: 768px) {
+    padding: 170px 0 64px;
+  }
+`;
 export const NavWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 18px;
-  padding: 105px 28px 41px;
-  margin: 0;
+  padding: 0 43px 0 30px;
+  margin: 0 auto;
   @media (min-width: 768px) {
     gap: 24px;
     max-width: 1360px;
-    padding: 155px 40px 80px;
+    padding: 0 40px;
   }
 `;
 export const Wrapper = styled.div`
@@ -42,15 +48,22 @@ export const Title = styled.h2`
     font-size: 32px;
     font-weight: 400;
     line-height: 45px;
-    margin-bottom: 41px;
+    margin-bottom: 28px;
   }
 `;
 export const LinkTo = styled(Link)`
   font-family: Gill Sans;
   font-size: 18px;
   line-height: 25px;
-  color: #000000;
-
+  color: #160b03;
+  transition: all 150ms ease-out;
+  &:hover,
+  &:focus {
+    color: #3f3831;
+  }
+  &:last-child {
+    color: #3f3831;
+  }
   @media (min-width: 768px) {
     font-size: 22px;
     line-height: 29px;
@@ -61,9 +74,9 @@ export const OrderWrapper = styled.div`
   overflow: auto;
   display: flex;
   flex-direction: column;
-  gap: 9px;
+  gap: 18px;
   @media (min-width: 768px) {
-    gap: 56px;
+    gap: 22px;
     max-height: 472px;
   }
 
@@ -96,55 +109,40 @@ export const OrderWrapper = styled.div`
   }
 `;
 export const OrderResultSection = styled.section`
-  padding: 14px 0 29px;
+  padding: 23px 0;
   width: 100%;
-  background: #f2f2f2;
+  background: #f4efeb;
   @media (min-width: 768px) {
-    padding: 38px 0;
-    background: transparent;
-    border-top: 1px solid #acacac;
-    border-bottom: 1px solid #acacac;
+    padding: 48px 0;
   }
 `;
 export const OrderResultTitle = styled.h3`
   font-size: 18px;
   font-weight: 400;
   line-height: 25px;
-  margin-bottom: 7px;
   @media (min-width: 768px) {
-    margin: 0;
     font-size: 32px;
     line-height: 45px;
-    color: #030516;
   }
 `;
-export const OrderResultDeliveryFirst = styled.p`
+export const OrderResultDelivery = styled.p`
   font-size: 12px;
-  line-height: 17px;
+  line-height: 16px;
   color: #00000066;
-  width: 64px;
+  width: 66px;
   @media (min-width: 768px) {
-    color: #030516;
-    width: auto;
-  }
-`;
-export const OrderResultDeliverySec = styled.p`
-  font-size: 12px;
-  line-height: 17px;
-  color: #00000066;
-  width: 87px;
-  text-align: end;
-  @media (min-width: 768px) {
-    color: #030516;
+    font-size: 16px;
+    line-height: 22px;
+    color: #9d9a97;
     width: auto;
   }
 `;
 export const OrderResultList = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
   @media (min-width: 768px) {
-    gap: 6px;
+    gap: 8px;
   }
 `;
 export const OrderResultListItem = styled.li`
@@ -153,20 +151,32 @@ export const OrderResultListItem = styled.li`
   align-items: center;
   &:nth-child(2) {
     margin-bottom: 6px;
+    @media (min-width: 768px) {
+      margin-bottom: 7px;
+    }
   }
 `;
 export const OrderResultTotal = styled.p`
   font-size: 14px;
   line-height: 20px;
   @media (min-width: 768px) {
+    font-size: 16px;
+    line-height: 22px;
+  }
+`;
+export const OrderResultTotalPrice = styled.p`
+  font-size: 14px;
+  line-height: 18px;
+  @media (min-width: 768px) {
     font-size: 18px;
-    line-height: 25px;
+    line-height: 23px;
   }
 `;
 export const OrderResultDestTotal = styled.p`
+  font-family: Inter;
+  font-size: 16px;
+  line-height: 21px;
   @media (min-width: 768px) {
-    display: block;
-    font-family: Inter;
     font-size: 22px;
     font-weight: 600;
     line-height: 29px;

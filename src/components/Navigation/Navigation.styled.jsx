@@ -92,7 +92,7 @@ export const NavList = styled.ul`
 export const BtnWrapper = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
 `;
 
 export const MenuBtn = styled.button`

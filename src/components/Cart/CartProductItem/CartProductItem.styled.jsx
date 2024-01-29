@@ -24,8 +24,8 @@ export const ProductImage = styled.img`
   height: 67px;
   max-width: none;
   @media (min-width: 768px) {
-    width: 160px;
-    height: 208px;
+    width: 206px;
+    height: 234px;
   }
 `;
 
