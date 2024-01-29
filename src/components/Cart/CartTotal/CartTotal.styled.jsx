@@ -17,10 +17,9 @@ export const TextWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 31px;
-  color: #757575;
+  color: #160b03;
   font-size: 14px;
   @media (min-width: 768px) {
-    color: #000;
     font-size: 18px;
   }
 `;
@@ -33,7 +32,7 @@ export const PriceWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 61px;
-  color: #000;
+  color: #160b03;
   font-size: 18px;
   font-weight: 600px;
   @media (min-width: 768px) {
@@ -54,10 +53,11 @@ export const OrderLink = styled(Link)`
   display: flex;
   justify-content: center;
   color: #fff;
-  background-color: #0e0e0e;
+  background-color: #160b03;
   font-size: 16px;
   padding: 10px 12px;
-  border: 1px solid #191919;
+  border: 1px solid #160b03;
+  border-radius: 1px;
   @media (min-width: 768px) {
     padding: 16px 64px;
     font-size: 22px;
@@ -67,10 +67,11 @@ export const OrderLink = styled(Link)`
 export const CatalogLink = styled(Link)`
   display: flex;
   justify-content: center;
-  color: #191919;
+  color: #160b03;
   font-size: 16px;
   padding: 10px 12px;
-  border: 1px solid #191919;
+  border: 1px solid #160b03;
+  border-radius: 1px;
   @media (min-width: 768px) {
     padding: 16px 64px;
     font-size: 22px;

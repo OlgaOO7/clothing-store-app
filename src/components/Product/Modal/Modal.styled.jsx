@@ -52,4 +52,5 @@ export const IconClose = styled.svg`
   stroke-width: 2px;
   width: 24px;
   height: 24px;
+  fill: #160b03;
 `;

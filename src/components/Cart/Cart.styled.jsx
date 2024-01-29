@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 export const CartWrapper = styled.div`
   /* display: flex;
   flex-direction: column; */
-  padding: 128px 28px 0 28px;
+  padding: 124px 28px 0 28px;
   margin-bottom: 80px;
   @media (min-width: 768px) {
-    padding: 174px 40px 0 40px;
+    padding: 170px 40px 0 40px;
     max-width: 1440px;
     box-sizing: border-box;
     margin: 0 auto 124px;
@@ -23,14 +23,20 @@ export const CartWrapper = styled.div`
 export const LinkWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 52px;
+  margin-bottom: 24px;
+  @media (min-width: 768px) {
+    margin-bottom: 52px;
+  }
 `;
 
 export const Divider = styled.div`
   width: 1px;
   height: 16px;
-  margin: 0 31px;
-  background-color: #000;
+  margin: 0 18px;
+  background-color: #160b03;
+  @media (min-width: 768px) {
+    margin: 0 24px;
+  }
 `;
 
 export const LinkTo = styled(Link)`
@@ -97,22 +103,25 @@ export const ProductQuantity = styled.p`
 `;
 
 export const ProductListWrapper = styled.div`
-  padding: 29px 0;
+  /* padding: 29px 0; */
   margin-bottom: 12px;
-  border-top: 1px solid #e3e0de;
+  /* border-top: 1px solid #e3e0de; */
   @media (min-width: 768px) {
     margin-bottom: 18px;
-    border-bottom: 1px solid #e3e0de;
+    /* border-bottom: 1px solid #e3e0de; */
   }
 `;
 
 export const ProductCartList = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: 37px;
-  max-height: 507px;
+  max-height: 465px;
   overflow-y: auto;
   flex-shrink: 0;
+  @media (min-width: 768px) {
+    max-height: 540px;
+  }
+
   /* -webkit-overflow-scrolling: touch; */
 
   /* IE and Edge: */
@@ -146,6 +155,19 @@ export const ProductCartList = styled.ul`
     background-color: #f1f1f1;
     border-radius: 6px;
   }
+`;
+
+export const ProductItem = styled.li`
+  padding: 24px 0;
+  /* margin-bottom: 12px; */
+  border-bottom: 1px solid #e3e0de;
+  &:first-child {
+    border-top: 1px solid #e3e0de;
+  }
+
+  /* @media (min-width: 768px) {
+    margin-bottom: 18px;
+  } */
 `;
 
 export const DeleteCartBtnWrapp = styled.div`

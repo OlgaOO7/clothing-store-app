@@ -4,7 +4,7 @@ import 'normalize.css';
 
 const GlobalStyle = createGlobalStyle`
 
-  body {
+body {
   margin: 0;
 }
 

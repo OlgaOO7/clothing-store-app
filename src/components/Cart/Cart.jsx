@@ -27,6 +27,7 @@ import {
   ProductQuantity,
   ProductListWrapper,
   ProductCartList,
+  ProductItem,
   DeleteCartBtnWrapp,
   DeleteCartBtn,
   EmptyCartWrapper,
@@ -44,7 +45,6 @@ export const Cart = () => {
   const location = useLocation();
 
   const userUid = localStorage.getItem('userUid');
-
   const cartData = useSelector(selectCart);
   const cartTotalQuantity = useSelector(selectTotalQunaity);
   const isLoading = useSelector(selectIsRefreshing);
@@ -52,6 +52,7 @@ export const Cart = () => {
   const unavailableProductQuantity =
     cartProducts &&
     cartProducts.some(item => productAvailableQuantity[item.productId] === 0);
+
   const invalidQuantity =
     cartProducts &&
     cartProducts.some(
@@ -118,11 +119,10 @@ export const Cart = () => {
         console.error(err);
       }
     };
-
     fetchProductQuantity();
   }, [cartData, dispatch]);
 
-  console.log('cartData:', cartData);
+  // console.log('cartData:', cartData);
 
   const increaseProductQuantity = async productId => {
     const itemToUpdate = cartProducts.find(
@@ -165,6 +165,7 @@ export const Cart = () => {
         quantity: decreasedItemQuantity,
         amount: itemToUpdate.price * decreasedItemQuantity,
       };
+      console.log(updatedProduct);
       try {
         await dispatch(createCart(updatedProduct));
         await fetchCart();
@@ -203,7 +204,7 @@ export const Cart = () => {
               <ProductCartList>
                 {cartProducts?.length > 0 &&
                   cartProducts.map(item => (
-                    <li key={item.sku.id}>
+                    <ProductItem key={item.sku.id}>
                       <CartProductItem
                         item={item}
                         increaseProductQuantity={increaseProductQuantity}
@@ -214,7 +215,7 @@ export const Cart = () => {
                         isLoading={isLoading}
                         initialLoad={initialLoad}
                       />
-                    </li>
+                    </ProductItem>
                   ))}
               </ProductCartList>
             </ProductListWrapper>

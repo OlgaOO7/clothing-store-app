@@ -71,4 +71,9 @@ export const ItemDeleteBtn = styled.button`
 export const DeleteIcon = styled.svg`
   width: 24px;
   height: 24px;
+  fill: #160b03;
+  &:hover,
+  &:focus {
+    fill: #3f3831;
+  }
 `;
