@@ -17,13 +17,13 @@ export const ModalContent = styled.div`
   position: relative;
   background: white;
 
-  padding: 36px 28.5px 34px;
+  padding: 36px 31px 32px 32px;
   min-width: 360px;
   min-height: 262px;
   text-align: center;
   box-sizing: border-box;
   @media (min-width: 1440px) {
-    padding: 99px 138.5px 80px;
+    padding: 98px 160px 76px 160px;
     width: 1130px;
     height: 612px;
   }

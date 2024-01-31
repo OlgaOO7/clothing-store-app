@@ -4,6 +4,7 @@ export const SizeOptions = ({
   sizesForSelectedColor,
   selectSize,
   activeSizeId,
+  messageSize,
 }) => {
   return (
     <div>
@@ -19,6 +20,7 @@ export const SizeOptions = ({
                       type="button"
                       className={activeSizeId === id ? 'active' : ''}
                       onClick={() => selectSize(id, skuId)}
+                      $error={messageSize}
                     >
                       {value}
                     </ButtonSize>

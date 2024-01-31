@@ -31,11 +31,11 @@ export const ColorOptions = ({
             >
               <Button
                 type="button"
-                color={color}
+                $value={color}
                 className={colorValue === color ? 'active' : ''}
               >
                 <ColorElips
-                  color={color}
+                  $value={color}
                   className={colorValue === color ? 'active' : ''}
                 />
               </Button>

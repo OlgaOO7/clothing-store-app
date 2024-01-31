@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle`
 
 body {
   margin: 0;
+  font-family: "Mulish", sans-serif;
 }
 
 body.modal-open {
@@ -57,6 +58,15 @@ a:visited {
   color: none;
 }
 
+.hidden {
+    opacity: 0;
+    overflow: hidden;
+    height: 0px;
+    width: 0px;
+    padding: 0px;
+    margin: 0px;
+    line-height: 0;
+}
 `;
 
 export default GlobalStyle;

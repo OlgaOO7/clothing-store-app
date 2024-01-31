@@ -56,6 +56,9 @@ export const StyledLink = styled(Link)`
       font-style: normal;
       font-weight: 400;
       line-height: 140%;
+      &:hover {
+        color: #3f3831;
+      }
       @media (min-width: 768px) {
         font-size: 16px;
       }

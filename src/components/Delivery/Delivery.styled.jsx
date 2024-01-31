@@ -34,7 +34,7 @@ export const ElipsRadio = styled.div`
 export const NameRadio = styled.p`
   color: #000;
   text-align: center;
-  font-family: Gill Sans;
+  font-family: 'Mulish', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -73,23 +73,23 @@ export const InputStyle = styled.input`
   display: flex;
   width: 100%;
   padding: 10px 16px;
-  border: 1px solid ${p => (p.$error ? 'red' : '#000')};
+  border: 1px solid ${p => (p.$error ? '#F24040' : '#000')};
   color: #000;
   font-size: 14px;
   line-height: 20px;
 
   &:focus {
     outline: none;
-    border: 2px solid #7c7d80; // вирішити з дизайнерати
+    border: 2px solid #7c7d80;
   }
   &::placeholder {
     font-size: 14px;
     line-height: 20px;
-    color: ${p => (p.$error ? 'red' : '#9D9A97')};
+    color: ${p => (p.$error ? '#F24040' : '#9D9A97')};
   }
   @media (min-width: 768px) {
     color: #160b03;
-    border: 1px solid ${p => (p.$error ? 'red' : '#160b03')};
+    border: 1px solid ${p => (p.$error ? '#F24040' : '#160b03')};
     max-width: 408px;
     padding: 12px 16px;
     font-size: 16px;
@@ -120,7 +120,7 @@ export const List = styled.ul`
 `;
 
 export const Item = styled.li`
-  font-family: Gill Sans;
+  font-family: 'Mulish', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -139,7 +139,7 @@ export const Item = styled.li`
 `;
 
 export const Text = styled.p`
-  font-family: Gill Sans;
+  font-family: 'Mulish', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -155,7 +155,7 @@ export const Text = styled.p`
 `;
 export const Message = styled.p`
   padding: 10px 16px;
-  color: ${p => (p.$error ? 'red' : 'black')};
+  color: ${p => (p.$error ? '#F24040' : 'black')};
 `;
 
 export const Icon = styled.svg`
