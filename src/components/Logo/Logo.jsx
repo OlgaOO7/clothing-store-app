@@ -6,7 +6,7 @@ export const Logo = ({ closeMobMenu }) => {
   };
   return (
     <LogoLink to="/" onClick={handlClick}>
-      ZATYSHNA
+      Zatyshna
     </LogoLink>
   );
 };
