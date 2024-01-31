@@ -6,6 +6,8 @@ import {
   TextWrapper,
   TariffText,
   PriceWrapper,
+  TotalText,
+  Price,
   LinkBtnWrapper,
   OrderLink,
   CatalogLink,
@@ -30,10 +32,10 @@ export const CartTotal = ({
         </TariffText>
       </TextWrapper>
       <PriceWrapper>
-        <p>Сума </p>
-        <p>
+        <TotalText>Разом </TotalText>
+        <Price>
           {formatPrice(data.totalAmount)} {data.currencyCode}
-        </p>
+        </Price>
       </PriceWrapper>
       <LinkBtnWrapper>
         {unavailableProductQuantity || invalidQuantity ? (
@@ -47,7 +49,7 @@ export const CartTotal = ({
           </OrderLink>
         )}
         <CatalogLink to={`/catalog`} state={{ from: location }}>
-          Продовжити покупку
+          Продовжити покупки
         </CatalogLink>
       </LinkBtnWrapper>
     </CartTotalWrapper>

@@ -18,13 +18,15 @@ import {
 
 import {
   CartWrapper,
+  Wrapper,
   LinkWrapper,
   Divider,
   LinkTo,
-  TaglineWrapper,
-  TaglineSubWrapper,
+  SectionWrapper,
+  HeaderWrapper,
   ProductText,
-  ProductQuantity,
+  TextWrapper,
+  QuantityText,
   ProductListWrapper,
   ProductCartList,
   ProductItem,
@@ -101,7 +103,6 @@ export const Cart = () => {
       }
     };
 
-    console.log('cartData:', cartData);
     const fetchProductQuantity = async () => {
       try {
         if (cartData.items) {
@@ -122,9 +123,6 @@ export const Cart = () => {
     };
     fetchProductQuantity();
   }, [cartData, dispatch]);
-
-  console.log('cartData:', cartData);
-  console.log('cartProducts:', cartProducts);
 
   const increaseProductQuantity = async productSkuId => {
     const itemToUpdate = cartProducts.find(
@@ -167,7 +165,6 @@ export const Cart = () => {
         quantity: decreasedItemQuantity,
         amount: itemToUpdate.price * decreasedItemQuantity,
       };
-      console.log(updatedProduct);
       try {
         await dispatch(createCart(updatedProduct));
         await fetchCart();
@@ -184,63 +181,77 @@ export const Cart = () => {
   };
 
   return (
-    <CartWrapper type="empty">
-      <LinkWrapper>
-        <LinkTo to="/">Головна</LinkTo>
-        <Divider></Divider>
-        <LinkTo to="/cart">Кошик</LinkTo>
-      </LinkWrapper>
-      {isLoading ? (
-        <Loader />
-      ) : cartTotalQuantity ? (
-        <div>
-          <TaglineWrapper>
+    <Wrapper>
+      <CartWrapper>
+        <LinkWrapper>
+          <LinkTo to="/">Головна</LinkTo>
+          <Divider></Divider>
+          <LinkTo to="/cart">Кошик</LinkTo>
+        </LinkWrapper>
+        {isLoading ? (
+          <Loader />
+        ) : cartTotalQuantity ? (
+          <div>
+            <SectionWrapper>
+              {!isMobileScreen && (
+                <HeaderWrapper>
+                  <ProductText>Товар</ProductText>
+                  <TextWrapper>
+                    <QuantityText>Кількість</QuantityText>
+                    <p>Ціна</p>
+                  </TextWrapper>
+                </HeaderWrapper>
+              )}
+              <ProductListWrapper>
+                <ProductCartList>
+                  {cartProducts?.length > 0 &&
+                    cartProducts.map(item => (
+                      <ProductItem key={item.sku.id}>
+                        <CartProductItem
+                          item={item}
+                          increaseProductQuantity={increaseProductQuantity}
+                          decreaseProductQuantity={decreaseProductQuantity}
+                          availableQuantity={
+                            productAvailableQuantity[item.productId]
+                          }
+                          isLoading={isLoading}
+                          initialLoad={initialLoad}
+                        />
+                      </ProductItem>
+                    ))}
+                </ProductCartList>
+              </ProductListWrapper>
+            </SectionWrapper>
+            <DeleteCartBtnWrapp>
+              <DeleteCartBtn onClick={clearProductCart}>
+                Очистити кошик
+              </DeleteCartBtn>
+            </DeleteCartBtnWrapp>
             {!isMobileScreen && (
-              <TaglineSubWrapper>
-                <ProductText>Товар</ProductText>
-                <ProductQuantity>Кількість</ProductQuantity>
-                <p>Ціна</p>
-              </TaglineSubWrapper>
+              <CartTotal
+                data={cartData}
+                unavailableProductQuantity={unavailableProductQuantity}
+                invalidQuantity={invalidQuantity}
+              />
             )}
-            <ProductListWrapper>
-              <ProductCartList>
-                {cartProducts?.length > 0 &&
-                  cartProducts.map(item => (
-                    <ProductItem key={item.sku.id}>
-                      <CartProductItem
-                        item={item}
-                        increaseProductQuantity={increaseProductQuantity}
-                        decreaseProductQuantity={decreaseProductQuantity}
-                        availableQuantity={
-                          productAvailableQuantity[item.productId]
-                        }
-                        isLoading={isLoading}
-                        initialLoad={initialLoad}
-                      />
-                    </ProductItem>
-                  ))}
-              </ProductCartList>
-            </ProductListWrapper>
-          </TaglineWrapper>
-          <DeleteCartBtnWrapp>
-            <DeleteCartBtn onClick={clearProductCart}>
-              Очистити кошик
-            </DeleteCartBtn>
-          </DeleteCartBtnWrapp>
-          <CartTotal
-            data={cartData}
-            unavailableProductQuantity={unavailableProductQuantity}
-            invalidQuantity={invalidQuantity}
-          />
-        </div>
-      ) : (
-        <EmptyCartWrapper>
-          <p>Ваш кошик порожній.</p>
-          <CatalogLink to={`/catalog`} state={{ from: location }}>
-            Повернутися до покупок
-          </CatalogLink>
-        </EmptyCartWrapper>
+          </div>
+        ) : (
+          <EmptyCartWrapper>
+            <p>Ваш кошик порожній.</p>
+            <CatalogLink to={`/catalog`} state={{ from: location }}>
+              Повернутися до покупок
+            </CatalogLink>
+          </EmptyCartWrapper>
+        )}
+      </CartWrapper>
+
+      {!isLoading && cartTotalQuantity > 0 && isMobileScreen && (
+        <CartTotal
+          data={cartData}
+          unavailableProductQuantity={unavailableProductQuantity}
+          invalidQuantity={invalidQuantity}
+        />
       )}
-    </CartWrapper>
+    </Wrapper>
   );
 };

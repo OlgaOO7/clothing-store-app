@@ -1,12 +1,23 @@
 import styled from 'styled-components';
 
+export const Container = styled.div`
+  @media (min-width: 1022px) {
+    padding-right: 115px;
+  }
+`;
+
 export const Wrapper = styled.div`
   @media (min-width: 768px) {
     display: flex;
-    align-items: center;
+    align-items: top;
     justify-content: space-between;
-    margin-right: 16px;
   }
+`;
+
+export const TextWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
 `;
 
 export const ProductText = styled.p`
@@ -55,16 +66,10 @@ export const ProductDescriptionWrapper = styled.div`
   justify-content: center;
   gap: 2px;
   width: 51px;
-  color: #000;
   text-align: left;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 300;
-  line-height: normal;
-  @media (min-width: 768px) {
-    width: 120px;
+  @media (min-width: 1022px) {
+    width: max-content;
     gap: 14px;
-    font-size: 24px;
   }
 `;
 
@@ -97,6 +102,10 @@ export const PriceQuantityWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  @media (min-width: 768px) {
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 
 export const QuantityWrapper = styled.div`
@@ -104,20 +113,12 @@ export const QuantityWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 8px 19px;
-  width: 112px;
-  height: 38px;
+  width: 74px;
   border: 1px solid #160b03;
   font-size: 18px;
   font-weight: 400;
   line-height: 140%;
 `;
-
-// export const QuantityChangeBtn = styled.span`
-//   padding: 0;
-//   background-color: transparent;
-//   border: none;
-//   fill: ${props => (props.case === true ? '#9D9A97' : '#160B03')};
-// `;
 
 export const DecreaseBtn = styled.span`
   padding: 0;
@@ -140,6 +141,11 @@ export const Icon = styled.svg`
   &:focus {
     fill: '#160B03';
   }
+`;
+
+export const PriceWrapper = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 export const Price = styled.p`
@@ -186,6 +192,6 @@ export const Wrapp = styled.div`
 
 export const AvailableQuantityWrapper = styled.div`
   display: flex;
-  /* flex-direction: column; */
   justify-content: space-between;
+  align-items: center;
 `;

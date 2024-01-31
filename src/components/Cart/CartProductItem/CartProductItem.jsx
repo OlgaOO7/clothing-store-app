@@ -9,7 +9,9 @@ import { useMedia } from 'hooks/useMedia';
 import Sprite from 'images/sprite.svg';
 
 import {
+  Container,
   Wrapper,
+  TextWrapper,
   ProductText,
   InfoProductWrapper,
   ItemWrapper,
@@ -23,6 +25,7 @@ import {
   DecreaseBtn,
   IncreaseBtn,
   Icon,
+  PriceWrapper,
   Price,
   ProductDeleteBtn,
   DeleteIcon,
@@ -38,7 +41,7 @@ export const CartProductItem = ({
   isLoading,
   initialLoad,
 }) => {
-  const { isMobileScreen } = useMedia();
+  const { isMobileScreen, isDesktopScreen } = useMedia();
   const dispatch = useDispatch();
   const location = useLocation();
 
@@ -51,48 +54,48 @@ export const CartProductItem = ({
   const isOneProductAvalable = availableQuantity === 1;
   const isMaxAvailableQunatity = availableQuantity === item.quantity;
   const exceededQuantity = item.quantity > availableQuantity;
-  // console.log('isMaxAvailableQunatity:', isMaxAvailableQunatity);
-  // console.log('isOneProductAvalable:', isOneProductAvalable);
 
   return (
-    <Wrapper>
-      {isMobileScreen && <ProductText $text="text">Товар</ProductText>}
-      <InfoProductWrapper>
-        <ItemWrapper>
-          <LinkWrapper>
-            <Link to={`/catalog/${item.productId}`} state={{ from: location }}>
-              <ProductImage
-                src={item.photoUrl}
-                alt={cuttedTitle(item.productTitle)}
-                loading="lazy"
-              />
-            </Link>
-            <ProductDescriptionWrapper>
+    <Container>
+      <Wrapper>
+        {isMobileScreen && <ProductText $text="text">Товар</ProductText>}
+        <InfoProductWrapper>
+          <ItemWrapper>
+            <LinkWrapper>
               <Link
                 to={`/catalog/${item.productId}`}
                 state={{ from: location }}
               >
-                {isMobileScreen ? (
-                  <ProductTitle>
-                    {cuttedTitle(item.productTitle, 8)}
-                  </ProductTitle>
-                ) : (
-                  <ProductTitle>
-                    {cuttedTitle(item.productTitle, 15)}
-                  </ProductTitle>
-                )}
+                <ProductImage
+                  src={item.photoUrl}
+                  alt={cuttedTitle(item.productTitle)}
+                  loading="lazy"
+                />
               </Link>
-              {item.sku.characteristics && (
-                <ItemCharacteristicWrapper>
-                  <p>{item.sku.characteristics[1].name}</p>
-                  <p>{item.sku.characteristics[0].name}</p>
-                </ItemCharacteristicWrapper>
-              )}
-            </ProductDescriptionWrapper>
-          </LinkWrapper>
-
-          {isMobileScreen && (
-            <div style={{ display: 'flex' }}>
+              <ProductDescriptionWrapper>
+                <Link
+                  to={`/catalog/${item.productId}`}
+                  state={{ from: location }}
+                >
+                  {!isDesktopScreen ? (
+                    <ProductTitle>
+                      {cuttedTitle(item.productTitle, 8)}
+                    </ProductTitle>
+                  ) : (
+                    <ProductTitle>
+                      {cuttedTitle(item.productTitle, 20)}
+                    </ProductTitle>
+                  )}
+                </Link>
+                {item.sku.characteristics && (
+                  <ItemCharacteristicWrapper>
+                    <p>{item.sku.characteristics[1].name}</p>
+                    <p>{item.sku.characteristics[0].name}</p>
+                  </ItemCharacteristicWrapper>
+                )}
+              </ProductDescriptionWrapper>
+            </LinkWrapper>
+            {isMobileScreen && (
               <ProductDeleteBtn
                 type="button"
                 onClick={() => deleteProduct(item.sku.id)}
@@ -101,110 +104,108 @@ export const CartProductItem = ({
                   <use href={`${Sprite}#icon-cross`} />
                 </DeleteIcon>
               </ProductDeleteBtn>
-            </div>
-          )}
-        </ItemWrapper>
-      </InfoProductWrapper>
-      {!isLoading && !initialLoad && !availableQuantity ? (
-        <Notification color="red" fontSize="24px">
-          Наразі товар відсутній
-        </Notification>
-      ) : null}
-      {isProductQuantityAvailable && (
-        <PriceQuantityWrapper>
-          {isMobileScreen && (
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                marginBottom: '12px',
-              }}
-            >
-              <ProductText>Кіль-ть</ProductText>
-              <ProductText>Ціна</ProductText>
-            </div>
-          )}
-          <AvailableQuantityWrapper>
-            <QuantityWrapper>
-              <DecreaseBtn
-                type="button"
-                onClick={() => decreaseProductQuantity(item.sku.id)}
-                // quantity={item.quantity}
-                $case={(
-                  item.quantity === 1 && item.quantity <= availableQuantity
-                ).toString()}
-              >
-                <Icon>
-                  <use href={`${Sprite}#icon-minus`} />
-                </Icon>
-              </DecreaseBtn>
-              {item.quantity}
-              <IncreaseBtn
-                type="button"
-                onClick={() => increaseProductQuantity(item.sku.id)}
-                // quantity={item.quantity}
-                $case={(item.quantity >= availableQuantity).toString()}
-              >
-                <Icon>
-                  <use href={`${Sprite}#icon-plus`} />
-                </Icon>
-              </IncreaseBtn>
-            </QuantityWrapper>
-            {isMobileScreen && (
-              <Price>
-                {formatPrice(item.amount)} {item.currencyCode}
-              </Price>
             )}
-          </AvailableQuantityWrapper>
-          {!isMobileScreen && (
-            <div>
-              {isMaxAvailableQunatity ||
-              isOneProductAvalable ||
-              exceededQuantity ? (
-                <Notification
-                  $paddingTop="6px"
-                  color="#4C4B4B"
-                  fontSize="12px"
-                  $mobFont
+          </ItemWrapper>
+        </InfoProductWrapper>
+        {!isLoading && !initialLoad && !availableQuantity ? (
+          <Notification color="red" fontSize="24px">
+            Наразі товар відсутній
+          </Notification>
+        ) : null}
+        {isProductQuantityAvailable && (
+          <PriceQuantityWrapper>
+            {isMobileScreen && (
+              <TextWrapper>
+                <ProductText>Кіль-ть</ProductText>
+                <ProductText>Ціна</ProductText>
+              </TextWrapper>
+            )}
+            <AvailableQuantityWrapper>
+              <QuantityWrapper>
+                <DecreaseBtn
+                  type="button"
+                  onClick={() => decreaseProductQuantity(item.sku.id)}
+                  // quantity={item.quantity}
+                  $case={(
+                    item.quantity === 1 && item.quantity <= availableQuantity
+                  ).toString()}
                 >
-                  Доступна кількість: {availableQuantity}
-                </Notification>
-              ) : null}
-            </div>
-          )}
-        </PriceQuantityWrapper>
-      )}
-      {!isMobileScreen && (
-        <Price>
-          {formatPrice(item.amount)} {item.currencyCode}
-        </Price>
-      )}
-      {isMobileScreen && (
-        <div>
-          {isMaxAvailableQunatity ||
-          isOneProductAvalable ||
-          exceededQuantity ? (
-            <Notification
-              $paddingTop="6px"
-              color="#4C4B4B"
-              fontSize="12px"
-              $mobFont
+                  <Icon>
+                    <use href={`${Sprite}#icon-minus`} />
+                  </Icon>
+                </DecreaseBtn>
+                {item.quantity}
+                <IncreaseBtn
+                  type="button"
+                  onClick={() => increaseProductQuantity(item.sku.id)}
+                  // quantity={item.quantity}
+                  $case={(item.quantity >= availableQuantity).toString()}
+                >
+                  <Icon>
+                    <use href={`${Sprite}#icon-plus`} />
+                  </Icon>
+                </IncreaseBtn>
+              </QuantityWrapper>
+              {isMobileScreen && (
+                <Price>
+                  {formatPrice(item.amount)} {item.currencyCode}
+                </Price>
+              )}
+            </AvailableQuantityWrapper>
+            {!isMobileScreen && (
+              <div>
+                {isMaxAvailableQunatity ||
+                isOneProductAvalable ||
+                exceededQuantity ? (
+                  <Notification
+                    $paddingTop="6px"
+                    color="#4C4B4B"
+                    fontSize="12px"
+                    $mobFont
+                  >
+                    Доступна кількість: {availableQuantity}
+                  </Notification>
+                ) : null}
+              </div>
+            )}
+          </PriceQuantityWrapper>
+        )}
+        {!isMobileScreen && (
+          <PriceWrapper>
+            <Price>
+              {formatPrice(item.amount)} {item.currencyCode}
+            </Price>
+          </PriceWrapper>
+        )}
+        {isMobileScreen && (
+          <div>
+            {isMaxAvailableQunatity ||
+            isOneProductAvalable ||
+            exceededQuantity ? (
+              <Notification
+                $paddingTop="6px"
+                color="#4C4B4B"
+                fontSize="12px"
+                $mobFont
+              >
+                Доступна кількість: {availableQuantity}
+              </Notification>
+            ) : null}
+          </div>
+        )}
+        {!isMobileScreen && (
+          <div>
+            <ProductDeleteBtn
+              type="button"
+              onClick={() => deleteProduct(item.sku.id)}
             >
-              Доступна кількість: {availableQuantity}
-            </Notification>
-          ) : null}
-        </div>
-      )}
-      {!isMobileScreen && (
-        <ProductDeleteBtn
-          type="button"
-          onClick={() => deleteProduct(item.sku.id)}
-        >
-          <DeleteIcon>
-            <use href={`${Sprite}#icon-cross`} />
-          </DeleteIcon>
-        </ProductDeleteBtn>
-      )}
-    </Wrapper>
+              <DeleteIcon>
+                <use href={`${Sprite}#icon-cross`} />
+              </DeleteIcon>
+            </ProductDeleteBtn>
+          </div>
+        )}
+      </Wrapper>
+    </Container>
   );
 };

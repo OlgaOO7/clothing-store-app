@@ -100,6 +100,11 @@ export const OrderLink = styled(Link)`
     font-size: 18px;
     font-weight: 400;
   }
+  &:hover,
+  focus {
+    background-color: #3f3831;
+    border-color: #3f3831;
+  }
 `;
 
 export const CatalogLink = styled(Link)`
@@ -116,14 +121,18 @@ export const CatalogLink = styled(Link)`
     font-size: 18px;
     font-weight: 400;
   }
+  &:hover,
+  focus {
+    color: #fff;
+    background-color: #160b03;
+    border-color: #160b03;
+  }
 `;
 
 export const CartTotalWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* max-width: max-content; */
-  /* gap: 71px; */
   padding: 24px 28.5px 0px;
   @media (min-width: 768px) {
     padding: 32px 64px 0px;
