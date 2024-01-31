@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  margin-top: 38px;
+  margin-top: 32px;
   @media (min-width: 1024px) {
-    margin-top: 58px;
+    margin-top: 40px;
   }
 `;
 export const Wrap = styled.div`
@@ -20,7 +20,7 @@ export const Wrap = styled.div`
 `;
 export const CharacteristicsProduct = styled.p`
   color: #160b03;
-  font-family: Gill Sans;
+  font-family: Mulish;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -58,7 +58,7 @@ export const Text = styled.p`
   margin-bottom: 14px;
   stroke: #160b03;
 
-  font-family: Gill Sans;
+  font-family: Mulish;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;

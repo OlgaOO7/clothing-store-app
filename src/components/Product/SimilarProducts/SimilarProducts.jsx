@@ -1,14 +1,15 @@
 import noImage from '../../../images/no-image.jpg';
 
 import {
-  Aside,
-  AsideItem,
-  AsideLink,
-  AsideList,
-  AsideTitle,
-  SimilarProductsIText,
-  SimilarProductsITitle,
-  SimilarProductsImg,
+  Wrap,
+  Item,
+  StyledLink,
+  List,
+  Title,
+  Price,
+  Name,
+  Img,
+  WramImg,
 } from './SimilarProducts.styled';
 
 export const SimilarProducts = ({
@@ -28,37 +29,36 @@ export const SimilarProducts = ({
     setMessageSize(false);
   };
   return (
-    <Aside>
-      <AsideTitle>Вам може сподобатись</AsideTitle>
+    <Wrap>
+      <Title>Вам може сподобатись</Title>
 
-      <AsideList>
+      <List>
         {limitedProducts.map(({ id, title, photos, price }) => (
-          <AsideItem key={id}>
-            <AsideLink to={`/catalog/${id}`} onClick={cleaningValues}>
-              {photos.length !== 0 ? (
-                <SimilarProductsImg
-                  src={photos[0].url}
-                  alt={title}
-                  width="322"
-                  height="402"
-                />
-              ) : (
-                <SimilarProductsImg
-                  src={noImage}
-                  alt="no image"
-                  width="322"
-                  height="402"
-                />
-              )}
+          <Item key={id}>
+            <article>
+              <StyledLink to={`/catalog/${id}`} onClick={cleaningValues}>
+                {photos.length !== 0 ? (
+                  <WramImg>
+                    <Img
+                      src={photos[0].url}
+                      alt={title}
+                      // width="322"
+                      // height="402"
+                    />
+                  </WramImg>
+                ) : (
+                  <Img src={noImage} alt="no image" width="322" height="402" />
+                )}
 
-              <SimilarProductsITitle>{title}</SimilarProductsITitle>
-              <SimilarProductsIText>
-                {price.value} {price.currency.code}
-              </SimilarProductsIText>
-            </AsideLink>
-          </AsideItem>
+                <Name>{title}</Name>
+                <Price>
+                  {price.value} {price.currency.code}
+                </Price>
+              </StyledLink>
+            </article>
+          </Item>
         ))}
-      </AsideList>
-    </Aside>
+      </List>
+    </Wrap>
   );
 };
