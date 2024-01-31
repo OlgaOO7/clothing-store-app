@@ -15,7 +15,7 @@ export const Wrap = styled.section`
 
 export const Title = styled.h2`
   color: #000;
-  font-family: Mulish;
+  font-family: 'Mulish', sans-serif;
   font-size: 22px;
   font-style: normal;
   font-weight: 400;
@@ -91,7 +91,7 @@ export const Img = styled.img`
 `;
 export const Name = styled.h3`
   color: #160b03;
-  font-family: Mulish;
+  font-family: 'Mulish', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -106,7 +106,7 @@ export const Name = styled.h3`
 export const Price = styled.span`
   color: #3f3831;
 
-  font-family: Mulish;
+  font-family: 'Mulish', sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;

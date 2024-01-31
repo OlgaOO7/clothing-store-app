@@ -10,7 +10,7 @@ export const Wrap = styled.div`
 
 export const TitleColor = styled.p`
   color: #000;
-  font-family: Mulish;
+  font-family: 'Mulish', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;

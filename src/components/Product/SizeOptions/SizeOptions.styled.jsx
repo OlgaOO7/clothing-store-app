@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const TitleSize = styled.p`
   color: #000000;
 
-  font-family: Mulish;
+  font-family: 'Mulish', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -31,7 +31,7 @@ export const ButtonSize = styled.button`
 
   margin: 0;
   padding: 4px 12px;
-  font-family: Mulish;
+  font-family: 'Mulish', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;

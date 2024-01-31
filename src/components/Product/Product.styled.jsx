@@ -48,7 +48,7 @@ export const InfoWrap = styled.div`
 export const Title = styled.h1`
   color: #000;
 
-  font-family: Mulish;
+  font-family: 'Mulish', sans-serif;
   font-size: 32px;
   font-style: normal;
   font-weight: 400;
@@ -61,7 +61,7 @@ export const Title = styled.h1`
 
 export const Money = styled.p`
   color: #000;
-  font-family: Mulish;
+  font-family: 'Mulish', sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -76,7 +76,7 @@ export const Money = styled.p`
 export const Text = styled.p`
   color: #000;
 
-  font-family: Mulish;
+  font-family: 'Mulish', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -107,7 +107,7 @@ export const SizeGridButton = styled.button`
   padding: 0;
   color: #000000;
 
-  font-family: Mulish;
+  font-family: 'Mulish', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -131,7 +131,7 @@ export const SizeGridButton = styled.button`
 export const TextQuantity = styled.p`
   color: #242424;
 
-  font-family: Mulish;
+  font-family: 'Mulish', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -145,7 +145,7 @@ export const TextQuantity = styled.p`
 `;
 export const InfoMessage = styled.p`
   position: absolute;
-  font-family: Mulish;
+  font-family: 'Mulish', sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -173,7 +173,7 @@ export const BuyButton = styled.button`
   color: #fff;
   border: 1px solid #160b03;
   border-radius: 1px;
-  font-family: Mulish;
+  font-family: 'Mulish', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;

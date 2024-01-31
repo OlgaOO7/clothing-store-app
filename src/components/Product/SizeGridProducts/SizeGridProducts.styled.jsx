@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const SizeGridTitle = styled.h3`
   color: #000;
-  font-family: Mulish;
+  font-family: 'Mulish', sans-serif;
   font-size: 22px;
   font-style: normal;
   font-weight: 400;
@@ -40,7 +40,7 @@ export const Table = styled.table`
     color: #000;
     border: 0.427px solid #000;
     background: #eaeaea;
-    font-family: Mulish;
+    font-family: 'Mulish', sans-serif;
     font-size: 10.25px;
     font-style: normal;
     font-weight: 600;
@@ -59,7 +59,7 @@ export const Table = styled.table`
   td {
     color: #000;
     border: 0.427px solid #000;
-    font-family: Mulish;
+    font-family: 'Mulish', sans-serif;
     font-size: 10.25px;
     font-style: normal;
     font-weight: 400;
@@ -78,7 +78,7 @@ export const Table = styled.table`
 export const SizeGridLogo = styled.p`
   color: #eaeaea;
   text-align: center;
-  font-family: Mulish;
+  font-family: 'Mulish', sans-serif;
   font-size: 22px;
   font-style: italic;
   font-weight: 700;

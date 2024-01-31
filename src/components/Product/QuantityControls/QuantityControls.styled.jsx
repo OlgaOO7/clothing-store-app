@@ -14,7 +14,7 @@ export const Wrap = styled.div`
   box-sizing: border-box;
   color: #160b03;
 
-  font-family: Mulish;
+  font-family: 'Mulish', sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -33,7 +33,7 @@ export const Button = styled.button`
   display: flex;
   fill: ${p => (p.value === false ? '#160b03' : '#9d9a97')};
   /* fill: #9d9a97; */
-  font-family: Mulish;
+  font-family: 'Mulish', sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;

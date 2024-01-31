@@ -34,7 +34,7 @@ export const ElipsRadio = styled.div`
 export const NameRadio = styled.p`
   color: #000;
   text-align: center;
-  font-family: Mulish;
+  font-family: 'Mulish', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -120,7 +120,7 @@ export const List = styled.ul`
 `;
 
 export const Item = styled.li`
-  font-family: Mulish;
+  font-family: 'Mulish', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -139,7 +139,7 @@ export const Item = styled.li`
 `;
 
 export const Text = styled.p`
-  font-family: Mulish;
+  font-family: 'Mulish', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;

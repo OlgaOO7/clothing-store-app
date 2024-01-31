@@ -20,7 +20,7 @@ export const Wrap = styled.div`
 `;
 export const CharacteristicsProduct = styled.p`
   color: #160b03;
-  font-family: Mulish;
+  font-family: 'Mulish', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -58,7 +58,7 @@ export const Text = styled.p`
   margin-bottom: 14px;
   stroke: #160b03;
 
-  font-family: Mulish;
+  font-family: 'Mulish', sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
