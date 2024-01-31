@@ -15,7 +15,7 @@ export const BreadcrumbsWrapper = styled.div`
     background: transparent;
     border: none;
     display: inline-block;
-    font-family: Gill Sans;
+    font-family: 'Mulish', sans-serif;
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
@@ -43,7 +43,7 @@ export const HorizontalLine = styled.div`
 `;
 
 export const StyleLink = styled(Link)`
-  font-family: Gill Sans;
+  font-family: 'Mulish', sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;

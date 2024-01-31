@@ -11,16 +11,19 @@ export const Breadcrumbs = ({ category }) => {
   const navigate = useNavigate();
 
   return (
-    <BreadcrumbsWrapper>
-      <StyleLink to={'/'}>Головна</StyleLink>
-      <HorizontalLine />
-      <StyleLink to={'/catalog'}>Каталог</StyleLink>
-      <HorizontalLine />
-      <button
-        onClick={() => navigate('/catalog', { state: { categoryId: id } })}
-      >
-        {title}
-      </button>
-    </BreadcrumbsWrapper>
+    <section>
+      <h2 className="hidden">Breadcrumbs</h2>
+      <BreadcrumbsWrapper>
+        <StyleLink to={'/'}>Головна</StyleLink>
+        <HorizontalLine />
+        <StyleLink to={'/catalog'}>Каталог</StyleLink>
+        <HorizontalLine />
+        <button
+          onClick={() => navigate('/catalog', { state: { categoryId: id } })}
+        >
+          {title}
+        </button>
+      </BreadcrumbsWrapper>
+    </section>
   );
 };

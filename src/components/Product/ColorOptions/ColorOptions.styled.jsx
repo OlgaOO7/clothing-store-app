@@ -1,22 +1,23 @@
 import styled from 'styled-components';
 
 export const Wrap = styled.div`
-  margin-top: 18px;
+  margin-top: 24px;
   user-select: none;
   @media (min-width: 1024px) {
-    margin-top: 26px;
+    margin-top: 32px;
   }
 `;
 
 export const TitleColor = styled.p`
   color: #000;
-  font-family: Gill Sans;
-  font-size: 18px;
+  font-family: 'Mulish', sans-serif;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 140%;
   margin-bottom: 8px;
   @media (min-width: 1024px) {
+    font-size: 18px;
     margin-bottom: 16px;
   }
 `;
@@ -48,21 +49,21 @@ export const Button = styled.button`
     border: 1px solid #000;
   }
 `;
-export const ColorElips = styled.div`
+export const ColorElips = styled.span`
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background: ${p => p.color && p.color};
+  background: ${p => p.$value && p.$value};
   width: 24px;
   height: 24px;
   border-radius: 12px;
-  border: 1px solid ${p => (p.color === '#FFFFFF' ? '#E3E0DE' : 'transparent')};
+  border: 1px solid ${p => (p.$value === '#FFFFFF' ? '#E3E0DE' : 'transparent')};
 
   &.active {
-    border-color: ${p => (p.color === '#FFFFFF' ? '#E3E0DE' : 'transparent')};
+    border-color: ${p => (p.$value === '#FFFFFF' ? '#E3E0DE' : 'transparent')};
   }
   &:hover,
   &:focus {
-    border-color: ${p => (p.color === '#FFFFFF' ? '#E3E0DE' : 'transparent')};
+    border-color: ${p => (p.$value === '#FFFFFF' ? '#E3E0DE' : 'transparent')};
   }
 `;

@@ -4,13 +4,13 @@ export const Container = styled.div`
   box-sizing: border-box;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 124px 28px 80px;
+  padding: 124px 28px 81px;
   @media (min-width: 1024px) {
     padding: 170px 40px 142px;
   }
 `;
 
-export const ProductWrap = styled.div`
+export const ProductWrap = styled.section`
   @media (min-width: 768px) {
     display: grid;
     grid-template-columns: 48% 52%;
@@ -28,7 +28,7 @@ export const ImageWrap = styled.div`
   }
 `;
 
-export const SliderList = styled.ul`
+export const SliderList = styled.div`
   margin-top: 11px;
   @media (min-width: 768px) {
     margin-top: 16px;
@@ -45,10 +45,10 @@ export const InfoWrap = styled.div`
   }
 `;
 
-export const Title = styled.h2`
+export const Title = styled.h1`
   color: #000;
 
-  font-family: Gill Sans;
+  font-family: 'Mulish', sans-serif;
   font-size: 32px;
   font-style: normal;
   font-weight: 400;
@@ -61,11 +61,11 @@ export const Title = styled.h2`
 
 export const Money = styled.p`
   color: #000;
-  font-family: Inter;
+  font-family: 'Mulish', sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
-  line-height: 130%;
+  line-height: 140%;
   margin-top: 12px;
   @media (min-width: 1024px) {
     font-size: 22px;
@@ -76,13 +76,16 @@ export const Money = styled.p`
 export const Text = styled.p`
   color: #000;
 
-  font-family: Gill Sans;
+  font-family: 'Mulish', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 140%;
-  margin-top: 18px;
+  margin-top: 16px;
   text-align: justify;
+  @media (min-width: 1024px) {
+    margin-top: 18px;
+  }
 `;
 
 export const SizeWrap = styled.div`
@@ -93,7 +96,7 @@ export const SizeWrap = styled.div`
   justify-content: space-between;
   align-items: flex-end;
   @media (min-width: 1024px) {
-    margin-top: 32px;
+    margin-top: 24px;
     align-items: center;
   }
 `;
@@ -104,10 +107,10 @@ export const SizeGridButton = styled.button`
   padding: 0;
   color: #000000;
 
-  font-family: Gill Sans;
+  font-family: 'Mulish', sans-serif;
   font-size: 16px;
   font-style: normal;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 130%;
   padding-bottom: 3px;
 
@@ -128,7 +131,7 @@ export const SizeGridButton = styled.button`
 export const TextQuantity = styled.p`
   color: #242424;
 
-  font-family: Gill Sans;
+  font-family: 'Mulish', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -142,12 +145,17 @@ export const TextQuantity = styled.p`
 `;
 export const InfoMessage = styled.p`
   position: absolute;
-  font-size: 10px;
+  font-family: 'Mulish', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
   bottom: -15px;
 
-  color: #ff0000;
+  color: #f24040;
   @media (min-width: 1024px) {
-    font-size: 18px;
+    font-size: 14px;
+    line-height: 140%;
     bottom: -25px;
   }
 `;
@@ -165,7 +173,7 @@ export const BuyButton = styled.button`
   color: #fff;
   border: 1px solid #160b03;
   border-radius: 1px;
-  font-family: Gill Sans;
+  font-family: 'Mulish', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -185,6 +193,6 @@ export const BuyButton = styled.button`
   @media (min-width: 1024px) {
     padding: 9px 46px;
     line-height: 140%;
-    margin-top: 46px;
+    margin-top: 40px;
   }
 `;

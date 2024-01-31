@@ -7,7 +7,7 @@ import 'swiper/css';
 
 import 'swiper/css/navigation';
 
-import { Image } from './ImageSlider.styled';
+import { WramImg, Image } from './ImageSlider.styled';
 
 export const ImageSlider = ({ photos, renderPhotos }) => {
   const { isMobileScreen } = useMedia();
@@ -26,7 +26,7 @@ export const ImageSlider = ({ photos, renderPhotos }) => {
     >
       {photos.map((item, index) => (
         <SwiperSlide key={index}>
-          <li>
+          <WramImg>
             <Image
               src={item.url}
               alt={item.color}
@@ -34,7 +34,7 @@ export const ImageSlider = ({ photos, renderPhotos }) => {
                 renderPhotos(index);
               }}
             />
-          </li>
+          </WramImg>
         </SwiperSlide>
       ))}
     </Swiper>

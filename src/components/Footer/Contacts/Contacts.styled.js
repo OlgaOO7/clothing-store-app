@@ -70,7 +70,7 @@ export const LinkWrapper = styled.div`
 `;
 export const LinkTel = styled.a`
   color: #160b03;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Mulish', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;

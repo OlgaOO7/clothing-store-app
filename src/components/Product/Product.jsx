@@ -266,8 +266,18 @@ export const Product = ({ productsId }) => {
                 sizesForSelectedColor={sizesForSelectedColor}
                 selectSize={selectSize}
                 activeSizeId={activeSizeId}
+                messageSize={messageSize}
               />
-              {messageSize && <InfoMessage>Виберіть розмір</InfoMessage>}
+              {/* <div style={{marginLeft:"8px"}}></div>
+              <SizeOptions
+                sizesForSelectedColor={sizesForSelectedColor}
+                selectSize={selectSize}
+                activeSizeId={activeSizeId}
+                messageSize={messageSize}
+              /> */}
+              {messageSize && (
+                <InfoMessage>Оберіть розмір, щоб додати в кошик</InfoMessage>
+              )}
 
               {/* відкрити модалку */}
               <SizeGridButton onClick={toggleModal}>
