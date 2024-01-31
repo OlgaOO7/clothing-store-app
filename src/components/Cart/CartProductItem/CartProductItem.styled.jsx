@@ -68,7 +68,8 @@ export const ProductDescriptionWrapper = styled.div`
   width: 51px;
   text-align: left;
   @media (min-width: 1022px) {
-    width: max-content;
+    /* width: max-content; */
+    width: 230px;
     gap: 14px;
   }
 `;

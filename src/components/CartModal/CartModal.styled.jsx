@@ -8,15 +8,15 @@ export const CartModalHeader = styled.p`
   font-size: 14px;
   line-height: 140%;
   @media (min-width: 768px) {
-    padding: 10px 38px;
+    padding: 10px 19px;
     font-size: 16px;
   }
 `;
 
 export const CartModalWrapper = styled.div`
-  padding: 11px 25px 38px 25px;
+  padding: 11px 24px 34px;
   @media (min-width: 768px) {
-    padding: 8px 38px 42px;
+    padding: 11px 28px 38px;
   }
 `;
 
@@ -87,18 +87,17 @@ export const LinkWrapper = styled.div`
 
 export const OrderLink = styled(Link)`
   display: flex;
-  padding: 8px 20px;
+  padding: 7px 16px;
   justify-content: center;
   color: #fff;
-  background-color: #0e0e0e;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 140%;
-  border: 1px solid #191919;
+  background-color: #160b03;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 130%;
   @media (min-width: 768px) {
     padding: 9px 28px;
-    font-size: 18px;
-    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
   }
   &:hover,
   focus {
@@ -109,17 +108,17 @@ export const OrderLink = styled(Link)`
 
 export const CatalogLink = styled(Link)`
   display: flex;
-  padding: 8px 20px;
+  padding: 7px 16px;
   justify-content: center;
-  color: #191919;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 140%;
-  border: 1px solid #191919;
+  color: #160b03;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 130%;
+  border: 1px solid #160b03;
   @media (min-width: 768px) {
     padding: 9px 28px;
     font-size: 18px;
-    font-weight: 400;
+    line-height: 140%;
   }
   &:hover,
   focus {
@@ -133,7 +132,7 @@ export const CartTotalWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 24px 28.5px 0px;
+  padding: 24px 18.5px 0px;
   @media (min-width: 768px) {
     padding: 32px 64px 0px;
   }
