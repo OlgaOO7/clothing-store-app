@@ -67,9 +67,8 @@ export const HeaderWrapper = styled.div`
 `;
 
 export const ProductText = styled.p`
-  margin-right: 36vw;
-  @media screen and (min-width: 1022px) and (max-width: 1439px) {
-    margin-right: 34vw;
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
+    margin-right: 32vw;
   }
   @media (min-width: 1440px) {
     margin-right: 555px;
@@ -86,7 +85,7 @@ export const TextWrapper = styled.div`
 
 export const QuantityText = styled.p`
   @media (min-width: 1440px) {
-    margin-right: 200px;
+    margin-right: 180px;
   }
 `;
 
