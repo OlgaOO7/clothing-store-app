@@ -7,13 +7,13 @@ export const LogoLink = styled(Link)`
   font-family: 'Mulish', sans-serif;
   font-size: 18px;
   font-style: italic;
-  font-weight: 700;
+  font-weight: 800;
   line-height: normal;
-  letter-spacing: 3.78px;
+  letter-spacing: 3.6px;
   text-align: center;
   text-transform: uppercase;
   @media (min-width: 768px) {
     font-size: 32px;
-    letter-spacing: 6.72px;
+    letter-spacing: 6.4px;
   }
 `;

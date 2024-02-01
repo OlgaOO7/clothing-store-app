@@ -41,7 +41,7 @@ export const Table = styled.table`
     border: 0.427px solid #000;
     background: #eaeaea;
     font-family: 'Mulish', sans-serif;
-    font-size: 10.25px;
+    font-size: 10px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
@@ -60,14 +60,14 @@ export const Table = styled.table`
     color: #000;
     border: 0.427px solid #000;
     font-family: 'Mulish', sans-serif;
-    font-size: 10.25px;
+    font-size: 10px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    padding: 6.833px 4.271px;
+    /* padding: 6.833px 4.271px; */
     @media (min-width: 768px) {
       font-size: 24px;
-      padding: 16px 8px;
+      /* padding: 16px 8px; */
     }
     @media (min-width: 1024px) {
       padding: 16px 10px;
