@@ -39,7 +39,7 @@ export const Table = styled.table`
     text-align: left;
     color: #000;
     border: 0.427px solid #000;
-    background: #eaeaea;
+    background: #e3e0de;
     font-family: 'Mulish', sans-serif;
     font-size: 10px;
     font-style: normal;
@@ -52,7 +52,6 @@ export const Table = styled.table`
       color: #160b03;
     }
     @media (min-width: 1024px) {
-      background: #e3e0de;
       padding: 14px 10px 14px 12px;
     }
   }
