@@ -16,7 +16,6 @@ export const HeaderWrapper = styled.header`
 
 export const NavigationContainer = styled.div`
   position: relative;
-  /* width: 100%; */
   max-width: 1360px;
   margin: 0 auto;
 `;
