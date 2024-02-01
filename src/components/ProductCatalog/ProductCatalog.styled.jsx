@@ -40,7 +40,6 @@ export const Wrapper = styled.div`
   }
 `;
 export const LinkTo = styled(Link)`
-  font-family: Gill Sans;
   font-size: 18px;
   line-height: 21px;
   color: #160b03;
@@ -83,7 +82,6 @@ export const ButtonsWrapper = styled.div`
   }
 `;
 export const Button = styled.button`
-  font-family: Gill Sans;
   font-size: 14px;
   line-height: 16px;
   color: #4c4b4b;

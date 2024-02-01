@@ -39,7 +39,6 @@ export const NavWrapper = styled.div`
   }
 `;
 export const LinkTo = styled(Link)`
-  font-family: Gill Sans;
   font-size: 18px;
   line-height: 21px;
   color: #160b03;
