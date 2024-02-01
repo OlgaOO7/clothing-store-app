@@ -68,14 +68,11 @@ export const Title = styled.h2`
 `;
 export const Logo = styled.span`
   font-size: 24px;
-  font-weight: 400;
   line-height: 29px;
-  letter-spacing: 1.92px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   @media (min-width: 768px) {
     font-size: 40px;
     line-height: 56px;
-    text-transform: capitalize;
   }
 `;
 export const Content = styled.div`
