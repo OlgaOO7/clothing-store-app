@@ -37,10 +37,11 @@ export const SliderList = styled.div`
 export const InfoWrap = styled.div`
   margin-top: 32px;
   @media (min-width: 768px) {
-    margin-top: 55px;
-    margin-left: 40px;
+    margin-left: 30px;
+    margin-top: 0;
   }
   @media (min-width: 1024px) {
+    margin-top: 55px;
     margin-left: 83px;
   }
 `;
@@ -93,11 +94,13 @@ export const SizeWrap = styled.div`
   position: relative;
   margin-top: 18px;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: flex-start;
   @media (min-width: 1024px) {
     margin-top: 24px;
-    align-items: center;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
   }
 `;
 export const SizeGridButton = styled.button`
@@ -115,7 +118,7 @@ export const SizeGridButton = styled.button`
   padding-bottom: 3px;
 
   border-bottom: 1px solid#000000;
-
+  margin-top: 18px;
   &:hover,
   &:focus {
     color: #3f3831;
@@ -123,6 +126,7 @@ export const SizeGridButton = styled.button`
   }
 
   @media (min-width: 1024px) {
+    margin-top: 0px;
     padding-bottom: 2px;
     line-height: 140%;
   }

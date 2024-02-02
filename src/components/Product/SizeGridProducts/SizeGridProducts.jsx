@@ -13,12 +13,12 @@ export const SizeGridProducts = () => {
       <WrapTable>
         <Table>
           <colgroup>
-            <col style={{ width: '30%' }} />
-            <col style={{ width: '14%' }} />
-            <col style={{ width: '14%' }} />
-            <col style={{ width: '14%' }} />
-            <col style={{ width: '14%' }} />
-            <col style={{ width: '14%' }} />
+            <col style={{ width: `30%` }} />
+            <col style={{ width: `13%` }} />
+            <col style={{ width: `13%` }} />
+            <col style={{ width: `13%` }} />
+            <col style={{ width: `13%` }} />
+            <col style={{ width: `14%` }} />
           </colgroup>
           <tbody>
             <tr>
