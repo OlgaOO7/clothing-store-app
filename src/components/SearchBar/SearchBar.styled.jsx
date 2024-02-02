@@ -4,7 +4,10 @@ import styled, { css } from 'styled-components';
 export const Wrapper = styled.div`
   position: relative;
   margin-right: 14px;
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) and (max-width: 999.9px) {
+    margin-right: 25px;
+  }
+  @media (min-width: 1000px) {
     margin-right: 29px;
   }
 `;
@@ -49,36 +52,25 @@ export const SearchBtn = styled.button`
   padding: 0px;
   width: 24px;
   height: 24px;
-  /* margin-right: 16px; */
   border: none;
   background-color: transparent;
-  /* @media (min-width: 1440px) {
-    margin-right: 16px;
-  } */
 `;
 
 export const SearchCloseBtn = styled.div`
   padding: 0px;
   margin-right: 16px;
   border: none;
-  /* background-color: transparent; */
 `;
 
 export const SearchIcon = styled.svg`
   @media screen and (min-width: 360px) {
     width: 24px;
     height: 24px;
-    /* fill: #160b03; */
-    fill: ${p => (p.type ? '#fff' : '#3f3831')};
+    fill: ${p => (p.type ? '#fff' : '#160b03')};
     &:hover,
     &:focus {
-      fill: ${p => (p.type ? '#fff' : '#3f3831')};
+      fill: ${p => (p.type ? '#fff' : '#9d9a97')};
     }
-    /* ${props =>
-      props.type === 'input' &&
-      css`
-        fill: #fff;
-      `} */
   }
 `;
 

@@ -57,7 +57,7 @@ export const Text = styled.p`
     `}
 `;
 export const LinkWrapper = styled.div`
-  margin-top: 6px;
+  margin-top: 10px;
 
   ${props =>
     props.$sectionType === 'footer' &&

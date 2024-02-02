@@ -20,7 +20,7 @@ export const MobNavContainer = styled.div`
 `;
 
 export const NavWrapper = styled.div`
-  padding: 32px 38px 54px;
+  padding: 38px 38px 54px;
   overflow: auto;
 `;
 
@@ -41,11 +41,15 @@ export const MobNavLinkItem = styled.li`
 
 export const StyledLink = styled(Link)`
   color: #160b03;
+  font-family: 'Mulish', sans-serif;
   font-size: 16px;
   font-weight: 400px;
-  line-height: 20.8px;
-  @media (min-width: 768px) {
-    line-height: 22.4px;
+  line-height: 20.6px;
+  &:hover {
+    color: #9d9a97;
+  }
+  @media screen and (min-width: 768px) and (max-width: 999.9px) {
+    font-size: 14px;
   }
 
   ${props =>
@@ -57,7 +61,7 @@ export const StyledLink = styled(Link)`
       font-weight: 400;
       line-height: 140%;
       &:hover {
-        color: #3f3831;
+        color: #9d9a97;
       }
       @media (min-width: 768px) {
         font-size: 16px;
@@ -83,6 +87,10 @@ export const NavList = styled.ul`
   display: flex;
   gap: 40px;
 
+  @media screen and (min-width: 768px) and (max-width: 999.9px) {
+    gap: 18px;
+  }
+
   ${props =>
     props.$sectionType === 'footer' &&
     css`
@@ -101,7 +109,7 @@ export const BtnWrapper = styled.div`
 export const MenuBtn = styled.button`
   width: 24px;
   height: 24px;
-  padding: 0px;
+  padding: 2px 0px 0px;
   border: none;
   background-color: transparent;
 `;
@@ -112,19 +120,7 @@ export const MenuIcon = styled.svg`
   fill: #160b03;
   &:hover,
   &:focus {
-    fill: #3f3831;
-  }
-`;
-
-export const CartIcon = styled.svg`
-  @media screen and (min-width: 360px) {
-    width: 24px;
-    height: 24px;
-    fill: #160b03;
-    &:hover,
-    &:focus {
-      fill: #3f3831;
-    }
+    fill: #9d9a97;
   }
 `;
 
@@ -132,10 +128,22 @@ export const TextContainer = styled.div`
   padding-top: 8px;
 `;
 
-export const CartWrapper = styled.div`
-  margin-right: 24px;
-  @media (min-width: 768px) {
-    margin-right: 0;
+export const CartIcon = styled.svg`
+  @media screen and (min-width: 360px) {
+    width: 24px;
+    height: 24px;
+    fill: #160b03;
+  }
+`;
+
+export const TextCart = styled.span`
+  color: #160b03;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.4px;
+  text-align: center;
+  @media screen and (min-width: 768px) and (max-width: 999.9px) {
+    font-size: 14px;
   }
 `;
 
@@ -143,6 +151,19 @@ export const CartLink = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
+  &:hover {
+    ${TextCart}, ${CartIcon} {
+      color: #9d9a97;
+      fill: #9d9a97;
+    }
+  }
+`;
+
+export const CartWrapper = styled.div`
+  margin-right: 24px;
+  @media (min-width: 768px) {
+    margin-right: 0;
+  }
 `;
 
 export const CartIconWrapper = styled.div`
@@ -177,15 +198,7 @@ export const CartProductQuantity = styled.span`
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   font-size: 12px;
-  line-height: 14.4px;
-`;
-
-export const TextCart = styled.span`
-  color: #160b03;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 22.4px;
-  text-align: center;
+  line-height: 15.6px;
 `;
 
 export const ButtonContainer = styled.div`
@@ -195,7 +208,7 @@ export const ButtonContainer = styled.div`
 `;
 
 export const SearchBtn = styled.button`
-  padding: 0px;
+  padding: 2px 0px 0px;
   width: 24px;
   height: 24px;
   margin-right: 24px;
@@ -210,7 +223,7 @@ export const SearchIcon = styled.svg`
     fill: #160b03;
     &:hover,
     &:focus {
-      fill: #3f3831;
+      fill: #9d9a97;
     }
   }
 `;

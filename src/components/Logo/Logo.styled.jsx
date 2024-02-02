@@ -9,7 +9,7 @@ export const LogoLink = styled(Link)`
   font-style: italic;
   font-weight: 800;
   line-height: 22.59px;
-  letter-spacing: 20%;
+  letter-spacing: 0.2em;
   text-align: center;
   text-transform: uppercase;
   @media (min-width: 768px) {
