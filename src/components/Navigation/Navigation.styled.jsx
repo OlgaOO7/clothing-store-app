@@ -72,7 +72,7 @@ export const Nav = styled.nav`
     props.$sectionType === 'footer' &&
     css`
       display: inline-block;
-      margin-top: 36px;
+      margin-top: 34px;
       @media (min-width: 768px) {
         margin-top: 0;
       }

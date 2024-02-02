@@ -9,10 +9,10 @@ export const IconWrapper = styled.div`
   ${props =>
     props.type === 'mobile' &&
     css`
-      margin-top: 40px;
+      margin-top: 38px;
       display: flex;
       align-items: center;
-      gap: 21px;
+      gap: 20px;
 
       @media (min-width: 768px) {
         display: none;
@@ -26,7 +26,7 @@ export const IconWrapper = styled.div`
         margin-top: 44px;
         display: flex;
         align-items: center;
-        gap: 14px;
+        gap: 20px;
       }
     `}
 `;
