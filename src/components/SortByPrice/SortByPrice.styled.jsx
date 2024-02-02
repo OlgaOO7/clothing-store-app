@@ -5,48 +5,20 @@ export const Button = styled.button`
   width: 100%;
   background: #f4efeb;
   border: none;
-  padding: 6px 34px 6px 18px;
+  padding: 6px 18px 6px 18px;
   font-size: 14px;
   line-height: 20px;
   text-align: start;
-  ${p =>
-    p.$isCategoriesShown
-      ? ` &::after {
-    right: 10px;
-    border-width: 5px 5px 0 5px;
-    border-color: #000 transparent transparent transparent;
-  }
-  @media (min-width: 768px) {
-    &::after {
-      right: 20px;
-    }
-  } 
-  `
-      : ` &::after {
-        right: 10px;
-        border-width: 0 5px 5px 5px;
-        border-color: transparent transparent #000 transparent;
-      }
-      @media (min-width: 768px) {
-        &::after {
-          right: 20px;
-        }
-      } `}
-  &::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 0;
-    height: 0;
-    border-style: solid;
-  }
 
   @media (min-width: 768px) {
     width: 387px;
     font-size: 16px;
     line-height: 22px;
-    padding: 6px 79px 6px 19px;
+    padding: 6px 19px 6px 19px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
   }
 `;
 export const List = styled.ul`
@@ -56,10 +28,10 @@ export const List = styled.ul`
   display: ${p => (p.$isCategoriesShown ? `flex` : `none`)};
 `;
 export const Item = styled.li`
-  padding: 6px 34px 6px 18px;
+  padding: 6px 18px 6px 18px;
   @media (min-width: 768px) {
     max-width: 387px;
-    padding: 6px 79px 6px 19px;
+    padding: 6px 19px 6px 19px;
   }
 `;
 export const Option = styled.button`
@@ -71,4 +43,26 @@ export const Option = styled.button`
     font-size: 16px;
     line-height: 22px;
   }
+`;
+export const Down = styled.div`
+  position: absolute;
+  top: 14px;
+  right: 19px;
+  border: solid black;
+  border-width: 0 1px 1px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+`;
+export const Up = styled.div`
+  position: absolute;
+  top: 17px;
+  right: 19px;
+  border: solid black;
+  border-width: 0 1px 1px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
 `;

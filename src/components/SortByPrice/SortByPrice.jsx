@@ -1,4 +1,4 @@
-import { Button, Item, List, Option } from './SortByPrice.styled';
+import { Button, Down, Item, List, Option, Up } from './SortByPrice.styled';
 import { Fragment, useState } from 'react';
 
 export const SortByPrice = ({ handleSortChange, selected }) => {
@@ -18,6 +18,7 @@ export const SortByPrice = ({ handleSortChange, selected }) => {
         $isCategoriesShown={isCategoriesShown}
       >
         {selected}
+        {!isCategoriesShown ? <Down /> : <Up />}
       </Button>
       <List $isCategoriesShown={isCategoriesShown}>
         {options.map((option, index) => (

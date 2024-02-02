@@ -108,19 +108,10 @@ export const Order = () => {
       <NavSection>
         <NavWrapper>
           <LinkTo to={'/'}>Головна</LinkTo>
-          {!isMobileScreen ? (
-            <>
-              <span>|</span>
-              <LinkTo to={'/cart'}>Кошик</LinkTo>
-              <span>|</span>
-              <LinkTo to={'/order'}>Оформлення замовлення</LinkTo>
-            </>
-          ) : (
-            <>
-              <span>|</span>
-              <LinkTo to={'/order'}>Оформлення замовлення</LinkTo>
-            </>
-          )}
+          <span>|</span>
+          <LinkTo to={'/cart'}>Кошик</LinkTo>
+          <span>|</span>
+          <LinkTo to={'/order'}>Оформлення</LinkTo>
         </NavWrapper>
       </NavSection>
       {formStatus === 'success' ? (

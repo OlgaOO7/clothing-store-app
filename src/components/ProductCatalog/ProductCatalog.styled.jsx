@@ -40,7 +40,6 @@ export const Wrapper = styled.div`
   }
 `;
 export const LinkTo = styled(Link)`
-  font-family: Gill Sans;
   font-size: 18px;
   line-height: 21px;
   color: #160b03;
@@ -61,11 +60,11 @@ export const LinkTo = styled(Link)`
 export const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  gap: 26px 15px;
+  gap: 25px 16px;
   justify-content: center;
 
   @media (min-width: 768px) {
-    gap: 58px 24px;
+    gap: 42px 24px;
   }
 `;
 export const ListItem = styled.li`
@@ -83,7 +82,6 @@ export const ButtonsWrapper = styled.div`
   }
 `;
 export const Button = styled.button`
-  font-family: Gill Sans;
   font-size: 14px;
   line-height: 16px;
   color: #4c4b4b;

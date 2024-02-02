@@ -22,6 +22,7 @@ export const NavWrapper = styled.div`
   gap: 18px;
   padding: 0 43px 0 30px;
   margin: 0 auto;
+  flex-wrap: wrap;
   @media (min-width: 768px) {
     gap: 24px;
     max-width: 1360px;
@@ -44,7 +45,6 @@ export const Title = styled.h2`
   display: none;
   @media (min-width: 768px) {
     display: block;
-    font-family: Gill Sans;
     font-size: 32px;
     font-weight: 400;
     line-height: 45px;
@@ -52,7 +52,6 @@ export const Title = styled.h2`
   }
 `;
 export const LinkTo = styled(Link)`
-  font-family: Gill Sans;
   font-size: 18px;
   line-height: 25px;
   color: #160b03;
