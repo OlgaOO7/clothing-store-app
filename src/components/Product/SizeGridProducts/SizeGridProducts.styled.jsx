@@ -23,7 +23,7 @@ export const WrapTable = styled.div`
 export const Table = styled.table`
   width: 303px;
   height: 103px;
-  border: 0.5px solid #000;
+  border: 1px solid #000;
   border-collapse: collapse;
   @media (max-width: 360px) {
     width: 303px;
@@ -42,7 +42,7 @@ export const Table = styled.table`
   th {
     text-align: left;
     color: #000;
-    border: 0.427px solid #000;
+    border: 1px solid #000;
     background: #e3e0de;
     font-family: 'Mulish', sans-serif;
     font-size: 10px;
@@ -60,7 +60,7 @@ export const Table = styled.table`
   }
   td {
     color: #000;
-    border: 0.427px solid #000;
+    border: 1px solid #000;
     font-family: 'Mulish', sans-serif;
     font-size: 10px;
     font-style: normal;
