@@ -30,6 +30,10 @@ export const List = styled.ul`
 `;
 export const Item = styled.li`
   padding: 6px 18px 6px 18px;
+  transition: all 0.5s ease-out;
+  &:hover {
+    background: #e3e0de;
+  }
   @media (min-width: 768px) {
     max-width: 387px;
     padding: 6px 19px 6px 19px;
