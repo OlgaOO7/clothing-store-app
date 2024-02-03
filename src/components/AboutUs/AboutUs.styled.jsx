@@ -45,10 +45,10 @@ export const LinkTo = styled(Link)`
   transition: all 150ms ease-out;
   &:hover,
   &:focus {
-    color: #3f3831;
+    color: #9d9a97;
   }
   &:last-child {
-    color: #3f3831;
+    color: #9d9a97;
   }
 
   @media (min-width: 768px) {

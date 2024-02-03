@@ -42,10 +42,11 @@ export const CategoryList = styled.ul`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: 35px 24px;
+  gap: 16px;
   justify-content: space-between;
   margin-bottom: 24px;
   @media (min-width: 768px) {
+    gap: 32px 25px;
     margin-bottom: 56px;
   }
 `;
@@ -79,7 +80,7 @@ export const CategoryTitle = styled.h3`
   }
 `;
 export const LinkTo = styled(Link)`
-width: calc(50% - 16px);
+width: calc(50% - 8px);
 & ${CategoryImage} {
   width: 100%;
 }
@@ -93,7 +94,7 @@ width: calc(50% - 16px);
 }
 
 @media (min-width: 768px) {
-  max-width: calc(100% / 3 - 16px);
+  max-width: calc(100% / 3 - 17px);
   &:nth-last-child(3) {
     flex-basis: auto;
     flex: none;
@@ -136,8 +137,8 @@ export const MoreLink = styled(Link)`
   transition: all 150ms ease-out;
   &:hover,
   &:focus {
-    color: #3f3831;
-    border-color: #3f3831;
+    color: #9d9a97;
+    border-color: #9d9a97;
   }
   @media (min-width: 768px) {
     font-size: 22px;
