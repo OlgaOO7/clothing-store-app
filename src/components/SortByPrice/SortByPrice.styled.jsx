@@ -9,6 +9,7 @@ export const Button = styled.button`
   font-size: 14px;
   line-height: 20px;
   text-align: start;
+  color: #160B03;
 
   @media (min-width: 768px) {
     width: 387px;
@@ -39,6 +40,7 @@ export const Option = styled.button`
   border: none;
   font-size: 14px;
   line-height: 20px;
+  color: #160b03;
   @media (min-width: 768px) {
     font-size: 16px;
     line-height: 22px;

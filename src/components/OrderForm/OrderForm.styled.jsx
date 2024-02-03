@@ -71,6 +71,7 @@ export const OrderBtn = styled.button`
   background: #160b03;
   color: #ffffff;
   border: none;
+  border-radius: 1px;
   &:hover,
   &:focus {
     background: #3f3831;
