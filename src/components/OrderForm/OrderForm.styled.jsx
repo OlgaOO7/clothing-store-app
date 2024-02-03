@@ -76,7 +76,7 @@ export const OrderBtn = styled.button`
     background: #3f3831;
   }
   @media (min-width: 768px) {
-    max-width: 249px;
+    max-width: 271px;
     padding: 9px 46px;
     font-size: 16px;
     line-height: 22px;
