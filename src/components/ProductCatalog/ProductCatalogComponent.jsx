@@ -71,7 +71,7 @@ export const ProductCatalogComponent = ({
   ) : (
     type === 'searchpage' &&
     data.length === 0 && (
-      <Message>
+      <Message type={type}>
         За запитом <SearchWord>"{searchQuery}"</SearchWord> нічого не знайдено
       </Message>
     )
