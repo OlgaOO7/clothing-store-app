@@ -4,7 +4,8 @@ export const Input = styled.input`
   font-size: 14px;
   line-height: 20px;
   padding: 13px 15px;
-  border: 1px solid #000000;
+  border: 1px solid #160b03;
+  border-radius: 1px;
   width: -webkit-fill-available;
   border-color: ${p => p.$errors && 'red'};
   &:focus {
@@ -16,7 +17,8 @@ export const Textarea = styled.textarea`
   font-size: 14px;
   line-height: 20px;
   padding: 18px 15px;
-  border: 1px solid #000000;
+  border: 1px solid #160b03;
+  border-radius: 1px;
   min-height: 118px;
   resize: none;
   width: -webkit-fill-available;

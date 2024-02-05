@@ -23,10 +23,13 @@ import {
   OrderSuccessSection,
   OrderSuccessContainer,
 } from './OrderForm.styled';
+import { selectIsRefreshing } from '../../redux/order/selectors';
+import { Loader } from 'components/Loader/Loader';
 
 export const OrderForm = ({ sessionId, setFormStatus, formStatus }) => {
   const dispatch = useDispatch();
   const orderSuccessful = useSelector(selectOrderSuccess);
+  const isLoading = useSelector(selectIsRefreshing);
 
   const {
     register,
@@ -71,20 +74,24 @@ export const OrderForm = ({ sessionId, setFormStatus, formStatus }) => {
   return (
     <>
       {formStatus === 'success' ? (
-        <OrderSuccessSection>
-          <OrderSuccessContainer>
-            <SuccessIcon>
-              <use href={`${Sprite}#icon-success-order`}></use>
-            </SuccessIcon>
-            <SuccessMessage>
-              Ваше замовлення №{orderSuccessful?.id} оформлено
-            </SuccessMessage>
-            <SuccessText>
-              Очікуйте лист з деталями замовлення на вашу електронну адресу.
-            </SuccessText>
-            <SuccessText>Дякуємо, що обираєте Zatyshna.</SuccessText>
-          </OrderSuccessContainer>
-        </OrderSuccessSection>
+        isLoading ? (
+          <Loader />
+        ) : (
+          <OrderSuccessSection>
+            <OrderSuccessContainer>
+              <SuccessIcon>
+                <use href={`${Sprite}#icon-success-order`}></use>
+              </SuccessIcon>
+              <SuccessMessage>
+                Ваше замовлення №{orderSuccessful?.id} оформлено
+              </SuccessMessage>
+              <SuccessText>
+                Очікуйте листа з деталями замовлення на вашу електронну адресу.
+              </SuccessText>
+              <SuccessText>Дякуємо, що обираєте Zatyshna.</SuccessText>
+            </OrderSuccessContainer>
+          </OrderSuccessSection>
+        )
       ) : formStatus === 'error' ? (
         <OrderSuccessSection>
           <OrderSuccessContainer>
@@ -113,7 +120,11 @@ export const OrderForm = ({ sessionId, setFormStatus, formStatus }) => {
               </div>
               <OrderBtn
                 type="submit"
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                onClick={() =>
+                  formStatus === 'success'
+                    ? window.scrollTo({ top: 0, behavior: 'smooth' })
+                    : null
+                }
               >
                 Оформити замовлення
               </OrderBtn>

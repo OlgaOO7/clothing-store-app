@@ -62,17 +62,16 @@ export const NavWrapper = styled.div`
   }
 `;
 export const LinkTo = styled(Link)`
-  font-family: Gill Sans;
   font-size: 18px;
   line-height: 21px;
   color: #160b03;
   transition: all 150ms ease-out;
   &:hover,
   &:focus {
-    color: #3f3831;
+    color: #9d9a97;
   }
   &:last-child {
-    color: #3f3831;
+    color: #9d9a97;
   }
   @media (min-width: 768px) {
     font-size: 22px;

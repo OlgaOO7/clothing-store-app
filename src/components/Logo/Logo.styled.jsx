@@ -9,11 +9,12 @@ export const LogoLink = styled(Link)`
   font-style: italic;
   font-weight: 800;
   line-height: 22.59px;
-  letter-spacing: 0.2em;
+  letter-spacing: 3.6px;
   text-align: center;
   text-transform: uppercase;
   @media (min-width: 768px) {
     font-size: 32px;
     line-height: 40.16px;
+    letter-spacing: 6.4px;
   }
 `;

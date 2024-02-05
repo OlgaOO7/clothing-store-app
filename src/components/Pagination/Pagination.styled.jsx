@@ -10,7 +10,6 @@ export const ListOfButtons = styled.ul`
 `;
 
 export const ButtonGray = styled.button`
-  font-family: Gill Sans;
   font-size: 14px;
   line-height: 18px;
   color: #9d9a97;
@@ -24,7 +23,6 @@ export const ButtonGray = styled.button`
   }
 `;
 export const Button = styled.button`
-  font-family: Gill Sans;
   font-size: 14px;
   line-height: 18px;
   color: #160b03;
