@@ -7,7 +7,6 @@ export const NavContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* box-sizing: border-box; */
 `;
 
 export const MobNavContainer = styled.div`
@@ -17,6 +16,9 @@ export const MobNavContainer = styled.div`
   top: 86px;
   right: 0;
   background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+    rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+    rgba(0, 0, 0, 0.09) 0px 32px 16px;
 `;
 
 export const NavWrapper = styled.div`
@@ -138,6 +140,7 @@ export const CartIcon = styled.svg`
 
 export const TextCart = styled.span`
   color: #160b03;
+  font-family: 'Mulish', sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 22.4px;

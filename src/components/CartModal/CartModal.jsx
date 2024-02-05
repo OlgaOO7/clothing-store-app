@@ -77,10 +77,15 @@ export const CartModal = ({ closeModal, toggleCartModal }) => {
                 <OrderLink
                   to={`/order`}
                   state={{ from: location, sessionId: cartData?.sessionId }}
+                  onClick={closeModal}
                 >
                   Оформити замовлення
                 </OrderLink>
-                <CatalogLink to={`/cart`} state={{ from: location }}>
+                <CatalogLink
+                  to={`/cart`}
+                  state={{ from: location }}
+                  onClick={closeModal}
+                >
                   Кошик
                 </CatalogLink>
               </LinkWrapper>
