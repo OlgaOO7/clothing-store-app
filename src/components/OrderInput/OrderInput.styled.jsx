@@ -38,6 +38,7 @@ export const InputStyle = styled.input`
   width: 100%;
   padding: 7.5px 16px;
   border: 1px solid #160b03;
+  border-radius: 1px;
   color: #160b03;
   font-size: 14px;
   line-height: 20px;
@@ -70,6 +71,7 @@ display: flex;
 width: 100%;
 padding: 8.5px 16px;
 border: 1px solid #000;
+border-radius: 1px;
 color: #000;
 font-size: 14px;
 line-height: 140%;

@@ -9,6 +9,7 @@ export const Button = styled.button`
   font-size: 14px;
   line-height: 20px;
   text-align: start;
+  color: #160B03;
 
   @media (min-width: 768px) {
     width: 387px;
@@ -29,6 +30,10 @@ export const List = styled.ul`
 `;
 export const Item = styled.li`
   padding: 6px 18px 6px 18px;
+  transition: all 0.5s ease-out;
+  &:hover {
+    background: #e3e0de;
+  }
   @media (min-width: 768px) {
     max-width: 387px;
     padding: 6px 19px 6px 19px;
@@ -39,6 +44,7 @@ export const Option = styled.button`
   border: none;
   font-size: 14px;
   line-height: 20px;
+  color: #160b03;
   @media (min-width: 768px) {
     font-size: 16px;
     line-height: 22px;

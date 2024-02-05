@@ -6,7 +6,7 @@ export const Scroll = styled.button`
   background-color: #000000;
   position: fixed;
   right: 20px;
-  top: 70%;
+  top: 90%;
   z-index: 999;
   border: none;
   transition: opacity 150ms ease-out;

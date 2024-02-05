@@ -72,9 +72,8 @@ export const Description = styled.p`
   }
 `;
 export const LinkTo = styled(Link)`
-  width: 100%;
-  max-width: 212px;
-  padding: 6px 0;
+  max-width: 238px;
+  padding: 6px 15px;
   margin-bottom: 27px;
   font-size: 16px;
   line-height: 21px;

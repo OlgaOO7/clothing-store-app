@@ -3,16 +3,16 @@ import { Link } from 'react-router-dom';
 
 export const Section = styled.section`
   width: 100%;
-  padding: 32px 0 65px;
+  padding: 26px 0 65px;
   @media (min-width: 768px) {
-    padding: 40px 0 81px;
+    padding: 26px 0 81px;
   }
 `;
 export const NavSection = styled.section`
   width: 100%;
-  padding: 105px 0 28px;
+  padding: 105px 0 26px;
   @media (min-width: 768px) {
-    padding: 155px 0 69px;
+    padding: 155px 0 46px;
   }
 `;
 export const NavWrapper = styled.div`
@@ -46,10 +46,10 @@ export const LinkTo = styled(Link)`
   transition: all 150ms ease-out;
   &:hover,
   &:focus {
-    color: #3f3831;
+    color: #9d9a97;
   }
   &:last-child {
-    color: #3f3831;
+    color: #9d9a97;
   }
 
   @media (min-width: 768px) {
