@@ -22,7 +22,7 @@ export const ModalWindow = styled.div`
   right: 10px;
   background-color: #fff;
   width: 296px;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 20px 29px 0px;
+  box-shadow: rgba(177, 177, 177, 0.2) 0px 6px 18px 0px;
   @media (min-width: 768px) {
     width: 437px;
     right: 10px;

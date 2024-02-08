@@ -84,12 +84,11 @@ export const SearchInputListWrapper = styled.div`
   z-index: 1100;
   background-color: #fff;
   width: 100%;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 20px 29px 0px;
+  box-shadow: rgba(177, 177, 177, 0.2) 0px 6px 18px 0px;
 `;
 
 export const SearchListWrapper = styled.div`
   padding: 15px 12px 8px;
-  /* box-shadow: rgba(0, 0, 0, 0.25) 0px 20px 29px 0px; */
   color: #4c4b4b;
   /* border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px; */
@@ -209,7 +208,7 @@ export const FormContainer = styled.div`
 export const SearchForm = styled.form`
   display: flex;
   align-items: center;
-  padding: 10px 16px;
+  padding: 14px 28px;
   background: #3f3831;
   border-radius: 2px 2px 0px 0px;
   ${props =>
@@ -217,6 +216,9 @@ export const SearchForm = styled.form`
     css`
       /* width: 100vw; */
     `}
+  @media (min-width: 768px) {
+    padding: 16px 14px;
+  }
 `;
 
 export const InfoText = styled.p`

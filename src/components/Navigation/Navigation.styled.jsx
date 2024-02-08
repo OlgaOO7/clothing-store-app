@@ -16,9 +16,7 @@ export const MobNavContainer = styled.div`
   top: 86px;
   right: 0;
   background: #fff;
-  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
-    rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
-    rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  box-shadow: rgba(177, 177, 177, 0.2) 0px 6px 18px 0px;
 `;
 
 export const NavWrapper = styled.div`
