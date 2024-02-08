@@ -37,10 +37,8 @@ import {
 export const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isEmpty, setIsEmpty] = useState(false);
-  // const [isCloseBtn, setIsCloseBtn] = useState(false);
   const [isSearchListVisible, setIsSearchListVisible] = useState(false);
   const [isShowSearch, setIsShowSearch] = useState(false);
-  // const [notFoundProduct, setNotFoundProduct] = useState(false);
   const [closeSearchBtn, setCloseSearchBtn] = useState(false);
 
   const location = useLocation();
@@ -49,54 +47,37 @@ export const SearchBar = () => {
   const previousLocation = useRef();
 
   const isLoading = useSelector(selectIsRefreshing);
-
   // FOR CLOSE OUTSIDE DIV
   const searchRef = useRef(null);
-
   const visibleProducts = useSelector(selectSearchedProducts) || [];
-
-  console.log('visibleProducts: ', visibleProducts);
-
   const notFound = searchQuery.length >= 3 && visibleProducts.length === 0;
 
   const toggleSearch = () => {
     setSearchQuery('');
     setIsShowSearch(!isShowSearch);
     setCloseSearchBtn(!closeSearchBtn);
-    console.log(closeSearchBtn);
   };
 
   const showSearchList = searchQuery && isSearchListVisible;
   const trimmedSearchQuerry = searchQuery.trim();
 
-  // if (visibleProducts.length === 0) {
-  //   console.log('The array is empty.');
-  // } else {
-  //   console.log('The array is not empty.');
-  // }
+  let inputValue;
+  let searchTimeout;
 
   useEffect(() => {
     if (searchQuery === '') {
       setSearchQuery('');
       return;
     }
-
     if (searchQuery.length < 3) {
-      // setNotFoundProduct(false);
       return;
     }
     // eslint-disable-next-line
-  }, [searchQuery, dispatch]);
-
-  // console.log(visibleProducts);
+  }, [searchQuery]);
 
   useEffect(() => {
     setIsSearchListVisible(false);
-    setIsEmpty(false);
-    // setNotFoundProduct(false);
     if (location.pathname !== '/search') {
-      setSearchQuery('');
-      // setIsCloseBtn(false);
       setIsShowSearch(false);
       previousLocation.current = location.pathname;
     }
@@ -111,8 +92,8 @@ export const SearchBar = () => {
 
   // FOR CLOSE OUTSIDE DIV
   useEffect(() => {
-    const handleClickOutside = event => {
-      if (searchRef.current && !searchRef.current.contains(event.target)) {
+    const handleClickOutside = e => {
+      if (searchRef.current && !searchRef.current.contains(e.target)) {
         setIsShowSearch(false);
       }
     };
@@ -124,11 +105,8 @@ export const SearchBar = () => {
   }, [searchRef, dispatch]);
 
   const clearSearchInput = () => {
-    // setIsCloseBtn(false);
     toggleSearch();
     setIsEmpty(false);
-    // console.log(isEmpty);
-    dispatch(resetSearchedProducts());
   };
 
   const handleSubmit = e => {
@@ -149,31 +127,34 @@ export const SearchBar = () => {
   };
 
   const handleSearchChange = e => {
-    console.log(searchQuery.length);
-    const inputValue = e.target.value.toLowerCase();
-    setSearchQuery(inputValue);
-    // setIsCloseBtn(inputValue.length > 0);
-    if (searchQuery) {
-      setIsEmpty(false);
-    }
+    clearTimeout(searchTimeout);
+    inputValue = e.target.value.toLowerCase();
 
-    if (inputValue.length < 3) {
-      setIsEmpty(false);
-    } else if (inputValue === '') {
-      setSearchQuery('');
-    }
-
-    if (inputValue.length >= 3) {
-      setIsSearchListVisible(true);
-      try {
-        dispatch(getSearchedProducts(inputValue));
-      } catch (error) {
-        console.log(error);
+    searchTimeout = setTimeout(async () => {
+      setSearchQuery(inputValue);
+      if (searchQuery) {
+        setIsEmpty(false);
       }
-      dispatch(setSearchedProducts(visibleProducts));
-    } else {
-      dispatch(resetSearchedProducts());
-    }
+
+      if (inputValue.length < 3) {
+        setIsEmpty(false);
+      } else if (inputValue === '') {
+        setSearchQuery('');
+      }
+      if (inputValue.length >= 3) {
+        // setIsSearchListVisible(false);
+        setSearchQuery(inputValue);
+        setIsSearchListVisible(true);
+        try {
+          dispatch(getSearchedProducts(inputValue));
+        } catch (error) {
+          console.log(error);
+        }
+        dispatch(setSearchedProducts(visibleProducts));
+      } else {
+        dispatch(resetSearchedProducts());
+      }
+    }, 300);
   };
 
   const searchHandler = e => {
@@ -182,8 +163,6 @@ export const SearchBar = () => {
       navigate(`/search?s=${encodeURIComponent(trimmedSearchQuerry)}`);
     }
   };
-
-  // Wrapper ref={searchRef} for close outside div
 
   return (
     <Wrapper ref={searchRef}>
@@ -208,24 +187,22 @@ export const SearchBar = () => {
               <SearchForm onSubmit={handleSubmit}>
                 <SearchInput
                   type="text"
-                  value={searchQuery}
+                  value={inputValue}
                   autoComplete="off"
                   autoFocus
                   placeholder="Шукати"
                   onChange={handleSearchChange}
                   onKeyUp={searchHandler}
                 />
-
                 <SearchBtn type="submit">
                   <SearchIcon width={24} height={24} type="input">
                     <use href={`${Sprite}#icon-search`} />
                   </SearchIcon>
                 </SearchBtn>
               </SearchForm>
-
               <SearchInputListWrapper>
                 {isEmpty && !searchQuery && (
-                  <SearchListWrapper $info="info">
+                  <SearchListWrapper>
                     <InfoText>Будь ласка, введіть назву товару</InfoText>
                   </SearchListWrapper>
                 )}
@@ -234,7 +211,7 @@ export const SearchBar = () => {
                 ) : (
                   <div>
                     {notFound && (
-                      <SearchListWrapper $info="info">
+                      <SearchListWrapper>
                         <InfoText>За запитом нічого не знайдено!</InfoText>
                       </SearchListWrapper>
                     )}

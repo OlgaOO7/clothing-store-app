@@ -1,5 +1,6 @@
 import { useCallback, useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import PropTypes from 'prop-types';
 
 // import Sprite from '../../images/sprite.svg';
 
@@ -49,4 +50,9 @@ export const Modal = ({ children, closeModal }) => {
     </Backdrop>,
     document.querySelector('#modal-root')
   );
+};
+
+Modal.propTypes = {
+  children: PropTypes.element.isRequired,
+  closeModal: PropTypes.func.isRequired,
 };

@@ -1,4 +1,5 @@
 import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { ProductComponent } from 'components/ProductComponent/ProductComponent';
 import { Pagination } from 'components/Pagination/Pagination';
@@ -76,4 +77,14 @@ export const ProductCatalogComponent = ({
       </Message>
     )
   );
+};
+
+ProductCatalogComponent.propTypes = {
+  data: PropTypes.array.isRequired,
+  type: PropTypes.string,
+  handleNextPage: PropTypes.func.isRequired,
+  page: PropTypes.number,
+  totalPage: PropTypes.number,
+  handlePageChange: PropTypes.func.isRequired,
+  handlePrevPage: PropTypes.func.isRequired,
 };

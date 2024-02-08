@@ -1,7 +1,8 @@
+import PropTypes from 'prop-types';
+
 import navigationLinks from '../../data/navigationLinks';
 import { Contacts } from '../Footer/Contacts/Contacts';
 import { SocialNetworks } from '../SocialNetworks/SocialNetworks';
-// import { Link } from 'react-router-dom';
 
 import {
   MobNavContainer,
@@ -12,7 +13,7 @@ import {
   NavWrapper,
 } from './Navigation.styled';
 
-export const MobNavigationMenu = ({ isMobile, closeMobMenu, sectionType }) => {
+export const MobNavigationMenu = ({ isMobile, closeMobMenu }) => {
   return (
     <MobNavContainer>
       <MobNav>
@@ -28,9 +29,14 @@ export const MobNavigationMenu = ({ isMobile, closeMobMenu, sectionType }) => {
             ))}
           </MobNavList>
           <Contacts closeMobMenu={closeMobMenu} />
-          <SocialNetworks $sectionType={sectionType} />
+          <SocialNetworks />
         </NavWrapper>
       </MobNav>
     </MobNavContainer>
   );
+};
+
+MobNavigationMenu.propTypes = {
+  isMobile: PropTypes.bool.isRequired,
+  closeMobMenu: PropTypes.func.isRequired,
 };

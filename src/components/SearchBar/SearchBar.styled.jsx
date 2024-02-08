@@ -84,11 +84,12 @@ export const SearchInputListWrapper = styled.div`
   z-index: 1100;
   background-color: #fff;
   width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 20px 29px 0px;
 `;
 
 export const SearchListWrapper = styled.div`
   padding: 15px 12px 8px;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 20px 29px 0px;
+  /* box-shadow: rgba(0, 0, 0, 0.25) 0px 20px 29px 0px; */
   color: #4c4b4b;
   /* border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px; */

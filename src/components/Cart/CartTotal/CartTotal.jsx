@@ -1,4 +1,5 @@
 import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { formatPrice } from 'utils/formatPrice';
 
 import {
@@ -54,4 +55,10 @@ export const CartTotal = ({
       </LinkBtnWrapper>
     </CartTotalWrapper>
   );
+};
+
+CartTotal.propTypes = {
+  data: PropTypes.object.isRequired,
+  unavailableProductQuantity: PropTypes.bool,
+  invalidQuantity: PropTypes.bool,
 };

@@ -1,5 +1,7 @@
 import navigationLinks from '../../data/navigationLinks';
 
+import PropTypes from 'prop-types';
+
 import { Nav, NavList, StyledLink } from './Navigation.styled';
 
 export const NavigationMenu = ({ sectionType }) => {
@@ -18,4 +20,8 @@ export const NavigationMenu = ({ sectionType }) => {
       </Nav>
     </div>
   );
+};
+
+NavigationMenu.propTypes = {
+  sectionType: PropTypes.string,
 };

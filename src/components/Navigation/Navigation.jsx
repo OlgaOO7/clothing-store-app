@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { Logo } from 'components/Logo/Logo';
 import { MobNavigationMenu } from './MobNavigationMenu';
@@ -123,12 +124,13 @@ export const Navigation = ({ sectionType, toggleShowSearch }) => {
         )}
       </BtnWrapper>
       {isMobileScreen && isShowMenu && (
-        <MobNavigationMenu
-          $sectionType={sectionType}
-          isMobile={true}
-          closeMobMenu={closeMobMenu}
-        />
+        <MobNavigationMenu isMobile={true} closeMobMenu={closeMobMenu} />
       )}
     </NavContainer>
   );
+};
+
+Navigation.propTypes = {
+  sectionType: PropTypes.string.isRequired,
+  toggleShowSearch: PropTypes.func.isRequired,
 };
