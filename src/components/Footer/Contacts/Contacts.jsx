@@ -6,10 +6,14 @@ import {
   StyleLink,
 } from './Contacts.styled';
 
-export const Contacts = ({ sectionType }) => {
+export const Contacts = ({ sectionType, closeMobMenu }) => {
   return (
     <ContactsWrapper $sectionType={sectionType}>
-      <StyleLink to="/contacts" $sectionType={sectionType}>
+      <StyleLink
+        to="/contacts"
+        $sectionType={sectionType}
+        onClick={closeMobMenu}
+      >
         Зв’язатися з нами
       </StyleLink>
       <Text $sectionType={sectionType}>

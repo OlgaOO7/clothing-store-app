@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { deleteProductFromCart, getCart } from 'redux/cart/operations';
 import { formatPrice } from 'utils/formatPrice';
@@ -45,6 +46,7 @@ export const CartProductItem = ({
   const dispatch = useDispatch();
   const location = useLocation();
 
+  console.log('availableQuantity', availableQuantity);
   const deleteProduct = async skuId => {
     await dispatch(deleteProductFromCart(skuId));
     await dispatch(getCart());
@@ -208,4 +210,13 @@ export const CartProductItem = ({
       </Wrapper>
     </Container>
   );
+};
+
+CartProductItem.propTypes = {
+  item: PropTypes.object.isRequired,
+  decreaseProductQuantity: PropTypes.func.isRequired,
+  increaseProductQuantity: PropTypes.func.isRequired,
+  availableQuantity: PropTypes.number,
+  isLoading: PropTypes.bool.isRequired,
+  initialLoad: PropTypes.bool.isRequired,
 };

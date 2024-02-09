@@ -109,6 +109,16 @@ export const Message = styled.p`
   text-align: center;
   font-size: 20px;
   line-height: 140%;
+
+  ${props =>
+    props.type === 'searchpage' &&
+    css`
+      font-size: 18px;
+
+      @media (min-width: 768px) {
+        font-size: 22px;
+      }
+    `}
 `;
 
 export const SearchWord = styled.span`

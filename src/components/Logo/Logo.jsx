@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { LogoLink } from './Logo.styled';
 
 export const Logo = ({ closeMobMenu }) => {
@@ -9,4 +10,8 @@ export const Logo = ({ closeMobMenu }) => {
       Zatyshna
     </LogoLink>
   );
+};
+
+Logo.propTypes = {
+  closeMobMenu: PropTypes.func,
 };

@@ -1,13 +1,14 @@
 import { useCallback, useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import PropTypes from 'prop-types';
 
-import Sprite from '../../images/sprite.svg';
+// import Sprite from '../../images/sprite.svg';
 
 import {
   Backdrop,
   ModalWindow,
-  ModalCloseBtn,
-  CloseIcon,
+  // ModalCloseBtn,
+  // CloseIcon,
 } from './Modal.styled';
 
 export const Modal = ({ children, closeModal }) => {
@@ -39,14 +40,19 @@ export const Modal = ({ children, closeModal }) => {
   return createPortal(
     <Backdrop onClick={handleBackdropClick}>
       <ModalWindow>
-        <ModalCloseBtn type="button" onClick={closeModal}>
+        {/* <ModalCloseBtn type="button" onClick={closeModal}>
           <CloseIcon width="24" height="24">
             <use href={`${Sprite}#icon-cross`} />
           </CloseIcon>
-        </ModalCloseBtn>
+        </ModalCloseBtn> */}
         <div>{children}</div>
       </ModalWindow>
     </Backdrop>,
     document.querySelector('#modal-root')
   );
+};
+
+Modal.propTypes = {
+  children: PropTypes.element.isRequired,
+  closeModal: PropTypes.func.isRequired,
 };

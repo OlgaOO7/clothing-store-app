@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { getSearchedProducts } from 'redux/products/operations';
 import {
@@ -189,7 +190,7 @@ export const SearchBarMob = ({
 
                 <SearchInputListWrapper>
                   {isEmpty && !searchQuery && (
-                    <SearchListWrapper $info="info">
+                    <SearchListWrapper>
                       <InfoText>Будь ласка, введіть назву товару</InfoText>
                     </SearchListWrapper>
                   )}
@@ -198,7 +199,7 @@ export const SearchBarMob = ({
                   ) : (
                     <div>
                       {notFound && (
-                        <SearchListWrapper $info="info">
+                        <SearchListWrapper>
                           <InfoText>За запитом нічого не знайдено!</InfoText>
                         </SearchListWrapper>
                       )}
@@ -243,4 +244,10 @@ export const SearchBarMob = ({
       </div>
     </SearchMobWrapper>
   );
+};
+
+SearchBarMob.propTypes = {
+  toggleShowSearch: PropTypes.func.isRequired,
+  isShowSearching: PropTypes.bool.isRequired,
+  sectionType: PropTypes.string.isRequired,
 };

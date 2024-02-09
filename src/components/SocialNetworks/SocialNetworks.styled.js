@@ -37,9 +37,13 @@ export const MenuIcon = styled.svg`
   width: 24px;
   height: 24px;
 
+  &:hover {
+    fill: #9d9a97;
+  }
+
   @media (min-width: 768px) {
     ${props =>
-      (props.type === 'mobile' && 'display: none;') ||
-      (props.type === 'desktop' && 'display: inline-block;')}
+    (props.type === 'mobile' && 'display: none;') ||
+    (props.type === 'desktop' && 'display: inline-block;')}
   }
 `;

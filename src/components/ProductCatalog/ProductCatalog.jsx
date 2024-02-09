@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 import {
   selectIsRefreshing,
   selectSearchedTotalPages,
@@ -151,4 +153,12 @@ export const ProductCatalog = ({
       </Section>
     </>
   );
+};
+
+ProductCatalog.propTypes = {
+  type: PropTypes.string,
+  data: PropTypes.array.isRequired,
+  categoryId: PropTypes.number,
+  page: PropTypes.number,
+  setCurrentPage: PropTypes.func,
 };

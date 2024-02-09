@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import {
   ProductDescription,
@@ -37,4 +38,10 @@ export const ProductComponent = ({ item, type, sectionType }) => {
       </ProductWrapper>
     </Link>
   );
+};
+
+ProductComponent.propTypes = {
+  item: PropTypes.object.isRequired,
+  type: PropTypes.string,
+  sectionType: PropTypes.string,
 };

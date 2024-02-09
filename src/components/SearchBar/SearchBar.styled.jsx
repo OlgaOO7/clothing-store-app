@@ -4,7 +4,10 @@ import styled, { css } from 'styled-components';
 export const Wrapper = styled.div`
   position: relative;
   margin-right: 14px;
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) and (max-width: 999.9px) {
+    margin-right: 25px;
+  }
+  @media (min-width: 1000px) {
     margin-right: 29px;
   }
 `;
@@ -22,10 +25,13 @@ export const SearchWrapper = styled.div`
 export const SearchMobWrapper = styled.div`
   position: absolute;
   z-index: 2000;
-  width: 100%;
+  /* width: 100%; */
+  width: 100vw;
   top: 0;
   /* top: 3rem; */
-  right: 1px;
+  /* right: 0; */
+  right: -28px;
+  /* right: 1px; */
   transition: top 0.3s ease;
   /* display: flex; */
   display: ${({ $isVisible }) => ($isVisible ? 'flex' : 'none')};
@@ -49,36 +55,25 @@ export const SearchBtn = styled.button`
   padding: 0px;
   width: 24px;
   height: 24px;
-  /* margin-right: 16px; */
   border: none;
   background-color: transparent;
-  /* @media (min-width: 1440px) {
-    margin-right: 16px;
-  } */
 `;
 
 export const SearchCloseBtn = styled.div`
   padding: 0px;
   margin-right: 16px;
   border: none;
-  /* background-color: transparent; */
 `;
 
 export const SearchIcon = styled.svg`
   @media screen and (min-width: 360px) {
     width: 24px;
     height: 24px;
-    /* fill: #160b03; */
-    fill: ${p => (p.type ? '#fff' : '#3f3831')};
+    fill: ${p => (p.type ? '#fff' : '#160b03')};
     &:hover,
     &:focus {
-      fill: ${p => (p.type ? '#fff' : '#3f3831')};
+      fill: ${p => (p.type ? '#fff' : '#9d9a97')};
     }
-    /* ${props =>
-      props.type === 'input' &&
-      css`
-        fill: #fff;
-      `} */
   }
 `;
 
@@ -89,11 +84,11 @@ export const SearchInputListWrapper = styled.div`
   z-index: 1100;
   background-color: #fff;
   width: 100%;
+  box-shadow: rgba(177, 177, 177, 0.2) 0px 6px 18px 0px;
 `;
 
 export const SearchListWrapper = styled.div`
   padding: 15px 12px 8px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   color: #4c4b4b;
   /* border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px; */
@@ -112,8 +107,15 @@ export const SearchInput = styled.input`
   border: none;
   background-color: transparent;
   color: #fff;
-  font-size: 16px;
-  line-height: 140%;
+  font-family: 'Mulish', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19.6px;
+
+  @media (min-width: 768px) {
+    font-size: 16px;
+    line-height: 22.4px;
+  }
   /* 
   ${props =>
     props.type === 'search' &&
@@ -161,12 +163,14 @@ export const LinkWrapper = styled.div`
 
 export const ProductsLink = styled(Link)`
   color: #fff;
+  font-family: 'Mulish', sans-serif;
+  font-weight: 400;
   font-size: 16px;
-  line-height: 130%;
+  line-height: 20.8px;
   text-align: center;
-
   @media (min-width: 768px) {
-    line-height: 140%;
+    font-size: 14px;
+    line-height: 22.4px;
   }
 `;
 
@@ -204,7 +208,7 @@ export const FormContainer = styled.div`
 export const SearchForm = styled.form`
   display: flex;
   align-items: center;
-  padding: 10px 16px;
+  padding: 14px 28px;
   background: #3f3831;
   border-radius: 2px 2px 0px 0px;
   ${props =>
@@ -212,14 +216,15 @@ export const SearchForm = styled.form`
     css`
       /* width: 100vw; */
     `}
+  @media (min-width: 768px) {
+    padding: 16px 14px;
+  }
 `;
 
 export const InfoText = styled.p`
   color: #3f3831;
-  font-size: 16px;
-  line-height: 140%;
-
-  @media (min-width: 768px) {
-    line-height: 130%;
-  }
+  font-family: 'Mulish', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19.6px;
 `;
