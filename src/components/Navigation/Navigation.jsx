@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
 
 import { Logo } from 'components/Logo/Logo';
 import { MobNavigationMenu } from './MobNavigationMenu';
@@ -32,7 +31,7 @@ import {
   ButtonContainer,
 } from './Navigation.styled';
 
-export const Navigation = ({ sectionType }) => {
+export const Navigation = () => {
   const [isShowMenu, setIsShowMenu] = useState(false);
   const [totalQuantity, setTotalQuantity] = useState(0);
   const { isMobileScreen } = useMedia();
@@ -71,13 +70,13 @@ export const Navigation = ({ sectionType }) => {
   return (
     <NavContainer>
       <Logo closeMobMenu={closeMobMenu} />
-      {!isMobileScreen && <NavigationMenu $sectionType={sectionType} />}
+      {!isMobileScreen && <NavigationMenu />}
       <BtnWrapper>
         <SearchBar />
         <CartWrapper>
           <CartLink to="/cart" state={{ from: location }}>
             <CartIconWrapper>
-              <CartIcon width={24} height={24}>
+              <CartIcon>
                 <use href={`${Sprite}#icon-cart`} />
               </CartIcon>
               <CartQuantityWrapper>
@@ -95,11 +94,11 @@ export const Navigation = ({ sectionType }) => {
           <ButtonContainer>
             <MenuBtn type="button" onClick={toggleMenu}>
               {isShowMenu ? (
-                <MenuIcon width={24} height={24}>
+                <MenuIcon>
                   <use href={`${Sprite}#icon-cross`} />
                 </MenuIcon>
               ) : (
-                <MenuIcon width={24} height={24}>
+                <MenuIcon>
                   <use href={`${Sprite}#icon-burger-menu`} />
                 </MenuIcon>
               )}
@@ -112,8 +111,4 @@ export const Navigation = ({ sectionType }) => {
       )}
     </NavContainer>
   );
-};
-
-Navigation.propTypes = {
-  sectionType: PropTypes.string.isRequired,
 };

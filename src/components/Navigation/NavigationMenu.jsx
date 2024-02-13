@@ -1,7 +1,6 @@
-import navigationLinks from '../../data/navigationLinks';
-
 import PropTypes from 'prop-types';
 
+import navigationLinks from '../../data/navigationLinks';
 import { Nav, NavList, StyledLink } from './Navigation.styled';
 
 export const NavigationMenu = ({ sectionType }) => {

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   position: relative;
-  margin-right: 14px;
+  margin-right: 24px;
   @media screen and (min-width: 768px) and (max-width: 999.9px) {
     margin-right: 25px;
   }
@@ -14,18 +14,6 @@ export const Wrapper = styled.div`
 
 export const SearchWrapper = styled.div`
   display: flex;
-`;
-
-export const SearchMobWrapper = styled.div`
-  position: absolute;
-  z-index: 2000;
-  width: 100vw;
-  top: 0;
-  right: -28px;
-  transition: top 0.3s ease;
-  display: ${({ $isVisible }) => ($isVisible ? 'flex' : 'none')};
-  justify-content: center;
-  align-items: center;
 `;
 
 export const SearchBtn = styled.button`
@@ -139,7 +127,7 @@ export const Container = styled.div`
   position: absolute;
   z-index: 1002;
   top: -8px;
-  right: -114px;
+  right: -124px;
   display: flex;
   justify-content: center;
   width: 100vw;
@@ -167,7 +155,7 @@ export const SearchForm = styled.form`
   background: #3f3831;
   border-radius: 2px 2px 0px 0px;
   @media (min-width: 768px) {
-    padding: 16px 14px;
+    padding: 14px 16px;
   }
 `;
 

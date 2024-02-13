@@ -170,15 +170,15 @@ export const SearchBar = () => {
           onClick={closeSearchBtn ? clearSearchInput : toggleSearch}
         >
           {isMobileScreen ? (
-            <SearchIcon width={24} height={24}>
+            <SearchIcon>
               <use href={`${Sprite}#icon-search`} />
             </SearchIcon>
           ) : isShowSearch ? (
-            <SearchIcon width={24} height={24}>
+            <SearchIcon>
               <use href={`${Sprite}#icon-cross`} />
             </SearchIcon>
           ) : (
-            <SearchIcon width={24} height={24}>
+            <SearchIcon>
               <use href={`${Sprite}#icon-search`} />
             </SearchIcon>
           )}
