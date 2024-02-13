@@ -23,7 +23,7 @@ export const ModalContent = styled.div`
   text-align: center;
   box-sizing: border-box;
   @media (min-width: 1440px) {
-    padding: 98px 160px 76px 160px;
+    padding: 98px 138px 76px;
     width: 1130px;
     height: 612px;
   }
@@ -53,4 +53,8 @@ export const IconClose = styled.svg`
   width: 24px;
   height: 24px;
   fill: #160b03;
+  &:hover,
+  &:focus {
+    fill: #9d9a97;
+  }
 `;
