@@ -16,7 +16,7 @@ export const CartWrapper = styled.div`
   }
 `;
 
-export const LinkWrapper = styled.div`
+export const LinkWrapper = styled.section`
   display: flex;
   align-items: center;
   margin-bottom: 24px;
@@ -64,28 +64,38 @@ export const HeaderWrapper = styled.div`
   font-size: 26px;
   font-weight: 400;
   line-height: 140%;
+  justify-content: space-between;
+
+  @media (min-width: 1022px) {
+    padding-right: 115px;
+  }
 `;
 
 export const ProductText = styled.p`
-  @media screen and (min-width: 768px) and (max-width: 1439px) {
-    margin-right: 32vw;
+  @media screen and (min-width: 768px) and (max-width: 1021.9px) {
+    width: 281px;
   }
-  @media (min-width: 1440px) {
-    margin-right: 555px;
-  }
-`;
 
-export const TextWrapper = styled.div`
-  display: flex;
-  @media screen and (min-width: 768px) and (max-width: 1439px) {
-    justify-content: space-around;
-    gap: 14vw;
+  @media (min-width: 1022px) {
+    width: 460px;
   }
 `;
 
 export const QuantityText = styled.p`
-  @media (min-width: 1440px) {
-    margin-right: 180px;
+  @media (min-width: 768px) {
+    width: 113px;
+  }
+`;
+
+export const PriceText = styled.p`
+  @media (min-width: 768px) {
+    width: 92px;
+  }
+`;
+
+export const TextBlock = styled.div`
+  @media (min-width: 768px) {
+    width: 24px;
   }
 `;
 
@@ -168,7 +178,7 @@ export const DeleteCartBtn = styled.button`
   }
 `;
 
-export const EmptyCartWrapper = styled.div`
+export const EmptyCartWrapper = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;

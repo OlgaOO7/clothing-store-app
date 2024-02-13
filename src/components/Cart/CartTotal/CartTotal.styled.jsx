@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const CartTotalWrapper = styled.div`
+export const CartTotalWrapper = styled.section`
   box-sizing: content-box;
   padding: 32px 70px 42px;
   margin-left: auto;

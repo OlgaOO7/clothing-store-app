@@ -50,17 +50,6 @@ export const ProductImage = styled.div`
         height: 64px;
       }
     `}
-
-  ${props =>
-    props.$sectionType === 'search' &&
-    css`
-      width: 48px;
-      height: 64px;
-      @media (min-width: 767px) {
-        width: 48px;
-        height: 64px;
-      }
-    `}
 `;
 export const ProductTitle = styled.h3`
   font-size: 16px;

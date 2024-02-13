@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-
 import axios from 'axios';
 
 import { createCart, getCart, clearCart } from 'redux/cart/operations';
@@ -25,8 +24,9 @@ import {
   SectionWrapper,
   HeaderWrapper,
   ProductText,
-  TextWrapper,
   QuantityText,
+  PriceText,
+  TextBlock,
   ProductListWrapper,
   ProductCartList,
   ProductItem,
@@ -42,10 +42,8 @@ export const Cart = () => {
   const [initialLoad, setInitialLoad] = useState(true);
 
   const { isMobileScreen } = useMedia();
-
   const dispatch = useDispatch();
   const location = useLocation();
-
   const userUid = localStorage.getItem('userUid');
   const cartData = useSelector(selectCart);
   const cartTotalQuantity = useSelector(selectTotalQunaity);
@@ -191,15 +189,14 @@ export const Cart = () => {
         {isLoading ? (
           <Loader />
         ) : cartTotalQuantity ? (
-          <div>
+          <section>
             <SectionWrapper>
               {!isMobileScreen && (
                 <HeaderWrapper>
                   <ProductText>Товар</ProductText>
-                  <TextWrapper>
-                    <QuantityText>Кількість</QuantityText>
-                    <p>Ціна</p>
-                  </TextWrapper>
+                  <QuantityText>Кількість</QuantityText>
+                  <PriceText>Ціна</PriceText>
+                  <TextBlock />
                 </HeaderWrapper>
               )}
               <ProductListWrapper>
@@ -234,7 +231,7 @@ export const Cart = () => {
                 invalidQuantity={invalidQuantity}
               />
             )}
-          </div>
+          </section>
         ) : (
           <EmptyCartWrapper>
             <p>Ваш кошик порожній.</p>

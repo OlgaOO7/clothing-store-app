@@ -14,14 +14,22 @@ export const Wrapper = styled.div`
 
 export const SearchWrapper = styled.div`
   display: flex;
+
+  @media (min-width: 768px) {
+    padding-bottom: 1px;
+  }
 `;
 
 export const SearchBtn = styled.button`
-  padding: 0px;
+  padding-top: 2px;
   width: 24px;
   height: 24px;
   border: none;
   background-color: transparent;
+
+  @media (min-width: 768px) {
+    padding: 0px;
+  }
 `;
 
 export const SearchCloseBtn = styled.div`

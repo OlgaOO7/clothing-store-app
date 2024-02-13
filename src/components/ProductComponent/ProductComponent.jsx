@@ -10,7 +10,7 @@ import {
 } from './ProductComponent.styled';
 import { formatPrice } from 'utils/formatPrice';
 
-export const ProductComponent = ({ item, type, sectionType }) => {
+export const ProductComponent = ({ item, type }) => {
   const { title, price } = item;
   const { value, currency } = price;
   const maxLength = 25;
@@ -19,7 +19,6 @@ export const ProductComponent = ({ item, type, sectionType }) => {
       <ProductWrapper type={type}>
         <ProductImage
           type={type}
-          $sectionType={sectionType}
           $image={`${item?.photos && item?.photos[0]?.url}`}
           loading="lazy"
         ></ProductImage>
@@ -43,5 +42,4 @@ export const ProductComponent = ({ item, type, sectionType }) => {
 ProductComponent.propTypes = {
   item: PropTypes.object.isRequired,
   type: PropTypes.string,
-  sectionType: PropTypes.string,
 };
