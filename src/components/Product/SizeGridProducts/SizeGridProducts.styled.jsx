@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const SizeGridTitle = styled.h3`
-  color: #000;
+  color: #160b03;
   font-family: 'Mulish', sans-serif;
   font-size: 22px;
   font-style: normal;
@@ -23,15 +23,13 @@ export const WrapTable = styled.div`
 export const Table = styled.table`
   width: 303px;
   height: 103px;
-  border: 1px solid #000;
+  border: 1px solid #160b03;
   border-collapse: collapse;
   @media (max-width: 360px) {
     width: 303px;
     height: 103px;
   }
-
   @media (min-width: 1024px) {
-    border-bottom: 1px solid #000;
     width: 853px;
     height: 240px;
   }
@@ -41,9 +39,9 @@ export const Table = styled.table`
   }
   th {
     text-align: left;
-    color: #000;
-    border: 1px solid #000;
-    background: #e3e0de;
+    color: #160b03;
+    border: 1px solid #160b03;
+    background: #f4efeb;
     font-family: 'Mulish', sans-serif;
     font-size: 10px;
     font-style: normal;
@@ -54,13 +52,11 @@ export const Table = styled.table`
     @media (min-width: 1024px) {
       padding: 14px 10px 14px 12px;
       font-size: 24px;
-
-      color: #160b03;
     }
   }
   td {
-    color: #000;
-    border: 1px solid #000;
+    color: #160b03;
+    border: 1px solid #160b03;
     font-family: 'Mulish', sans-serif;
     font-size: 10px;
     font-style: normal;
@@ -75,7 +71,7 @@ export const Table = styled.table`
 `;
 
 export const SizeGridLogo = styled.p`
-  color: #eaeaea;
+  color: #f4efeb;
   text-align: center;
   font-family: 'Mulish', sans-serif;
   font-size: 22px;
@@ -86,9 +82,8 @@ export const SizeGridLogo = styled.p`
   margin-top: 10px;
 
   @media (min-width: 1024px) {
-    color: #e3e0de;
     margin-top: 34px;
     font-size: 48px;
-    letter-spacing: 9.6px;
+    letter-spacing: 0.2em;
   }
 `;
