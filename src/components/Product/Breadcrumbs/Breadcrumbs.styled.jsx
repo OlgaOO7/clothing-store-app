@@ -20,7 +20,7 @@ export const BreadcrumbsWrapper = styled.div`
     font-style: normal;
     font-weight: 400;
     line-height: 140%;
-    color: #3f3831;
+    color: #9d9a97;
   }
 
   @media (min-width: 1024px) {
@@ -50,9 +50,10 @@ export const StyleLink = styled(Link)`
   line-height: 140%;
 
   color: #160b03;
+  transition: all 150ms ease-out;
   &:hover,
   &:focus {
-    color: #3f3831;
+    color: #9d9a97;
   }
   @media (min-width: 1024px) {
     font-size: 22px;

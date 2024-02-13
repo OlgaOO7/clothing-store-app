@@ -108,7 +108,7 @@ export const SizeGridButton = styled.button`
   border: none;
   margin: 0;
   padding: 0;
-  color: #000000;
+  color: #160b03;
 
   font-family: 'Mulish', sans-serif;
   font-size: 16px;
@@ -119,10 +119,11 @@ export const SizeGridButton = styled.button`
 
   border-bottom: 1px solid#000000;
   margin-top: 18px;
+  transition: all 150ms ease-out;
   &:hover,
   &:focus {
-    color: #3f3831;
-    border-bottom: 1px solid #3f3831;
+    color: #9d9a97;
+    border-bottom: 1px solid #9d9a97;
   }
 
   @media (min-width: 1024px) {
@@ -184,6 +185,7 @@ export const BuyButton = styled.button`
   line-height: 130%;
   margin-top: 32px;
   user-select: none;
+  transition: all 150ms ease-out;
   &:disabled {
     cursor: not-allowed;
     background: #3f3831;
