@@ -38,6 +38,7 @@ export const Button = styled.button`
   height: 30px;
   margin: 0;
   padding: 0;
+  transition: all 150ms ease-out;
   &.active {
     border-color: #000000;
     border: 1px solid #000;
@@ -58,7 +59,7 @@ export const ColorElips = styled.span`
   height: 24px;
   border-radius: 12px;
   border: 1px solid ${p => (p.$value === '#FFFFFF' ? '#E3E0DE' : 'transparent')};
-
+  transition: all 150ms ease-out;
   &.active {
     border-color: ${p => (p.$value === '#FFFFFF' ? '#E3E0DE' : 'transparent')};
   }

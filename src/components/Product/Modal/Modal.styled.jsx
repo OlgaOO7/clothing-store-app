@@ -53,6 +53,7 @@ export const IconClose = styled.svg`
   width: 24px;
   height: 24px;
   fill: #160b03;
+  transition: all 150ms ease-out;
   &:hover,
   &:focus {
     fill: #9d9a97;

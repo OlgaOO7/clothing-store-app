@@ -36,7 +36,7 @@ export const ButtonSize = styled.button`
   font-style: normal;
   font-weight: 400;
   line-height: 130%;
-
+  transition: all 150ms ease-out;
   &.active {
     /* color: #160b03; */
     border: 1px solid #000;

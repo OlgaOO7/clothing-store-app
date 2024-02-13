@@ -42,7 +42,7 @@ export const Button = styled.button`
   & svg {
     width: 12px;
     height: 23px;
-
+    transition: all 150ms ease-out;
     &:hover,
     &:focus {
       fill: #160b03;
