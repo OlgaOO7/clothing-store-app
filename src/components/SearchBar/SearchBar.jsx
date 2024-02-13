@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+import { useMedia } from 'hooks/useMedia';
 import { getSearchedProducts } from 'redux/products/operations';
 import {
   selectSearchedProducts,
@@ -13,7 +14,6 @@ import {
 } from 'redux/products/productsSlice';
 import { ProductComponent } from 'components/ProductComponent/ProductComponent.jsx';
 import { Loader } from 'components/Loader/Loader';
-
 import Sprite from '../../images/sprite.svg';
 
 import {
@@ -40,12 +40,11 @@ export const SearchBar = () => {
   const [isSearchListVisible, setIsSearchListVisible] = useState(false);
   const [isShowSearch, setIsShowSearch] = useState(false);
   const [closeSearchBtn, setCloseSearchBtn] = useState(false);
-
+  const { isMobileScreen } = useMedia();
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const previousLocation = useRef();
-
   const isLoading = useSelector(selectIsRefreshing);
   // FOR CLOSE OUTSIDE DIV
   const searchRef = useRef(null);
@@ -92,17 +91,18 @@ export const SearchBar = () => {
 
   // FOR CLOSE OUTSIDE DIV
   useEffect(() => {
-    const handleClickOutside = e => {
-      if (searchRef.current && !searchRef.current.contains(e.target)) {
-        setIsShowSearch(false);
-      }
-    };
-    document.addEventListener('click', handleClickOutside);
-
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, [searchRef, dispatch]);
+    if (!isMobileScreen) {
+      const handleClickOutside = e => {
+        if (searchRef.current && !searchRef.current.contains(e.target)) {
+          setIsShowSearch(false);
+        }
+      };
+      document.addEventListener('click', handleClickOutside);
+      return () => {
+        document.removeEventListener('click', handleClickOutside);
+      };
+    }
+  }, [isMobileScreen, searchRef, dispatch]);
 
   const clearSearchInput = () => {
     toggleSearch();
@@ -135,16 +135,13 @@ export const SearchBar = () => {
       if (searchQuery) {
         setIsEmpty(false);
       }
-
       if (inputValue.length < 3) {
         setIsEmpty(false);
       } else if (inputValue === '') {
         setSearchQuery('');
       }
       if (inputValue.length >= 3) {
-        // setIsSearchListVisible(false);
         setSearchQuery(inputValue);
-        setIsSearchListVisible(true);
         try {
           dispatch(getSearchedProducts(inputValue));
         } catch (error) {
@@ -154,6 +151,7 @@ export const SearchBar = () => {
       } else {
         dispatch(resetSearchedProducts());
       }
+      setIsSearchListVisible(true);
     }, 300);
   };
 
@@ -171,7 +169,11 @@ export const SearchBar = () => {
           type="button"
           onClick={closeSearchBtn ? clearSearchInput : toggleSearch}
         >
-          {isShowSearch ? (
+          {isMobileScreen ? (
+            <SearchIcon width={24} height={24}>
+              <use href={`${Sprite}#icon-search`} />
+            </SearchIcon>
+          ) : isShowSearch ? (
             <SearchIcon width={24} height={24}>
               <use href={`${Sprite}#icon-cross`} />
             </SearchIcon>
@@ -194,11 +196,19 @@ export const SearchBar = () => {
                   onChange={handleSearchChange}
                   onKeyUp={searchHandler}
                 />
-                <SearchBtn type="submit">
-                  <SearchIcon width={24} height={24} type="input">
-                    <use href={`${Sprite}#icon-search`} />
-                  </SearchIcon>
-                </SearchBtn>
+                {isMobileScreen ? (
+                  <SearchBtn type="button" onClick={clearSearchInput}>
+                    <SearchIcon type="input">
+                      <use href={`${Sprite}#icon-cross`} />
+                    </SearchIcon>
+                  </SearchBtn>
+                ) : (
+                  <SearchBtn type="submit">
+                    <SearchIcon type="input">
+                      <use href={`${Sprite}#icon-search`} />
+                    </SearchIcon>
+                  </SearchBtn>
+                )}
               </SearchForm>
               <SearchInputListWrapper>
                 {isEmpty && !searchQuery && (

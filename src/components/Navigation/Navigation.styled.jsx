@@ -207,24 +207,3 @@ export const ButtonContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
-
-export const SearchBtn = styled.button`
-  padding: 2px 0px 0px;
-  width: 24px;
-  height: 24px;
-  margin-right: 24px;
-  border: none;
-  background-color: transparent;
-`;
-
-export const SearchIcon = styled.svg`
-  @media screen and (min-width: 360px) {
-    width: 24px;
-    height: 24px;
-    fill: #160b03;
-    &:hover,
-    &:focus {
-      fill: #9d9a97;
-    }
-  }
-`;

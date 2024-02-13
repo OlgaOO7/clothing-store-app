@@ -14,7 +14,6 @@ import {
   selectCart,
 } from 'redux/cart/selectors';
 import { useMedia } from 'hooks/useMedia';
-
 import Sprite from '../../images/sprite.svg';
 
 import {
@@ -31,21 +30,24 @@ import {
   TextCart,
   CartProductQuantity,
   ButtonContainer,
-  SearchBtn,
-  SearchIcon,
 } from './Navigation.styled';
 
-export const Navigation = ({ sectionType, toggleShowSearch }) => {
+export const Navigation = ({ sectionType }) => {
   const [isShowMenu, setIsShowMenu] = useState(false);
   const [totalQuantity, setTotalQuantity] = useState(0);
   const { isMobileScreen } = useMedia();
-
   const dispatch = useDispatch();
   const location = useLocation();
 
   const isLoading = useSelector(selectIsRefreshing);
   const cartTotalQuantity = useSelector(selectTotalQunaity);
   const cart = useSelector(selectCart);
+
+  const closeMobMenu = () => setIsShowMenu(false);
+
+  const toggleMenu = () => {
+    setIsShowMenu(!isShowMenu);
+  };
 
   useEffect(() => {
     try {
@@ -66,30 +68,12 @@ export const Navigation = ({ sectionType, toggleShowSearch }) => {
     closeMobMenu();
   }, [location.pathname]);
 
-  const closeMobMenu = () => setIsShowMenu(false);
-
-  const toggleMenu = () => {
-    setIsShowMenu(!isShowMenu);
-  };
-
-  const handleSearchClick = () => {
-    toggleShowSearch();
-    closeMobMenu();
-  };
-
   return (
     <NavContainer>
       <Logo closeMobMenu={closeMobMenu} />
       {!isMobileScreen && <NavigationMenu $sectionType={sectionType} />}
       <BtnWrapper>
-        {!isMobileScreen && <SearchBar />}
-        {isMobileScreen && (
-          <SearchBtn type="button" onClick={handleSearchClick}>
-            <SearchIcon width={24} height={24}>
-              <use href={`${Sprite}#icon-search`} />
-            </SearchIcon>
-          </SearchBtn>
-        )}
+        <SearchBar />
         <CartWrapper>
           <CartLink to="/cart" state={{ from: location }}>
             <CartIconWrapper>
@@ -132,5 +116,4 @@ export const Navigation = ({ sectionType, toggleShowSearch }) => {
 
 Navigation.propTypes = {
   sectionType: PropTypes.string.isRequired,
-  toggleShowSearch: PropTypes.func.isRequired,
 };
