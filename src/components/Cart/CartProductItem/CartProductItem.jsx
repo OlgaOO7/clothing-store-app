@@ -46,7 +46,6 @@ export const CartProductItem = ({
   const dispatch = useDispatch();
   const location = useLocation();
 
-  console.log('availableQuantity', availableQuantity);
   const deleteProduct = async skuId => {
     await dispatch(deleteProductFromCart(skuId));
     await dispatch(getCart());
