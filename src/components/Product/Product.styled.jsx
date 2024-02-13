@@ -188,8 +188,13 @@ export const BuyButton = styled.button`
   transition: all 150ms ease-out;
   &:disabled {
     cursor: not-allowed;
-    background: #3f3831;
-    border: 1px solid #3f3831;
+    background: #9d9a97;
+    border: 1px solid #9d9a97;
+    &:hover,
+    &:focus {
+      background: #9d9a97;
+      border: 1px solid #9d9a97;
+    }
   }
   &:hover,
   &:focus {
