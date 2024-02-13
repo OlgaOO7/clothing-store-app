@@ -45,7 +45,7 @@ export const NewProductsSlider = () => {
           pagination={{
             clickable: true,
             renderBullet: function (index, className) {
-              return `<span class="${className}" style="border-radius: 0; height: 2px; background:#000000; margin: 0 5px;"></span>`;
+              return `<span class="${className}" style="border-radius: 20px; height: 2px; background:#000000; margin: 0 5px;"></span>`;
             },
           }}
           navigation={{

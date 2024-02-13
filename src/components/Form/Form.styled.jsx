@@ -39,6 +39,7 @@ export const FormButton = styled.button`
   background: #160b03;
   color: #ffffff;
   border: none;
+  border-radius: 1px;
   width: 100%;
   max-width: 187px;
   transition: all 0.5s ease-out;
@@ -157,6 +158,7 @@ export const SubscriptionFormInput = styled.input`
   width: 100%;
   padding: 9px 15px;
   border: 1px solid #160b03;
+  border-radius: 1px;
   font-size: 14px;
   line-height: 20px;
   color: #160b03;
@@ -175,6 +177,7 @@ export const SubscriptionFormInput = styled.input`
 `;
 export const SubscriptionFormButton = styled.button`
   border: none;
+  border-radius: 1px;
   padding: 7px 16px;
   background: #191919;
   font-size: 16px;

@@ -48,7 +48,6 @@ export const SearchedProduct = () => {
       data={searchedProducts}
       setCurrentPage={setCurrentPage}
       page={page}
-      // isLoading={isLoading}
     />
   );
 };

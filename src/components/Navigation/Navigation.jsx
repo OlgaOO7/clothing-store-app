@@ -13,7 +13,6 @@ import {
   selectCart,
 } from 'redux/cart/selectors';
 import { useMedia } from 'hooks/useMedia';
-
 import Sprite from '../../images/sprite.svg';
 
 import {
@@ -30,21 +29,24 @@ import {
   TextCart,
   CartProductQuantity,
   ButtonContainer,
-  SearchBtn,
-  SearchIcon,
 } from './Navigation.styled';
 
-export const Navigation = ({ sectionType, toggleShowSearch }) => {
+export const Navigation = () => {
   const [isShowMenu, setIsShowMenu] = useState(false);
   const [totalQuantity, setTotalQuantity] = useState(0);
   const { isMobileScreen } = useMedia();
-
   const dispatch = useDispatch();
   const location = useLocation();
 
   const isLoading = useSelector(selectIsRefreshing);
   const cartTotalQuantity = useSelector(selectTotalQunaity);
   const cart = useSelector(selectCart);
+
+  const closeMobMenu = () => setIsShowMenu(false);
+
+  const toggleMenu = () => {
+    setIsShowMenu(!isShowMenu);
+  };
 
   useEffect(() => {
     try {
@@ -65,34 +67,16 @@ export const Navigation = ({ sectionType, toggleShowSearch }) => {
     closeMobMenu();
   }, [location.pathname]);
 
-  const closeMobMenu = () => setIsShowMenu(false);
-
-  const toggleMenu = () => {
-    setIsShowMenu(!isShowMenu);
-  };
-
-  const handleSearchClick = () => {
-    toggleShowSearch();
-    closeMobMenu();
-  };
-
   return (
     <NavContainer>
       <Logo closeMobMenu={closeMobMenu} />
-      {!isMobileScreen && <NavigationMenu $sectionType={sectionType} />}
+      {!isMobileScreen && <NavigationMenu />}
       <BtnWrapper>
-        {!isMobileScreen && <SearchBar />}
-        {isMobileScreen && (
-          <SearchBtn type="button" onClick={handleSearchClick}>
-            <SearchIcon width={24} height={24}>
-              <use href={`${Sprite}#icon-search`} />
-            </SearchIcon>
-          </SearchBtn>
-        )}
+        <SearchBar />
         <CartWrapper>
           <CartLink to="/cart" state={{ from: location }}>
             <CartIconWrapper>
-              <CartIcon width={24} height={24}>
+              <CartIcon>
                 <use href={`${Sprite}#icon-cart`} />
               </CartIcon>
               <CartQuantityWrapper>
@@ -110,11 +94,11 @@ export const Navigation = ({ sectionType, toggleShowSearch }) => {
           <ButtonContainer>
             <MenuBtn type="button" onClick={toggleMenu}>
               {isShowMenu ? (
-                <MenuIcon width={24} height={24}>
+                <MenuIcon>
                   <use href={`${Sprite}#icon-cross`} />
                 </MenuIcon>
               ) : (
-                <MenuIcon width={24} height={24}>
+                <MenuIcon>
                   <use href={`${Sprite}#icon-burger-menu`} />
                 </MenuIcon>
               )}
@@ -123,11 +107,7 @@ export const Navigation = ({ sectionType, toggleShowSearch }) => {
         )}
       </BtnWrapper>
       {isMobileScreen && isShowMenu && (
-        <MobNavigationMenu
-          $sectionType={sectionType}
-          isMobile={true}
-          closeMobMenu={closeMobMenu}
-        />
+        <MobNavigationMenu isMobile={true} closeMobMenu={closeMobMenu} />
       )}
     </NavContainer>
   );

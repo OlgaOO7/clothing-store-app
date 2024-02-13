@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { formatPrice } from 'utils/formatPrice';
 import { cuttedTitle } from 'utils/cuttedTitle';
@@ -57,4 +58,8 @@ export const CartItem = ({ item }) => {
       </ItemDeleteBtn>
     </CartItemWrapper>
   );
+};
+
+CartItem.propTypes = {
+  item: PropTypes.object.isRequired,
 };

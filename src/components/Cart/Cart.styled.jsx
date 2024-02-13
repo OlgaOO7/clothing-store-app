@@ -41,10 +41,10 @@ export const LinkTo = styled(Link)`
   line-height: 140%;
   &:hover,
   &:focus {
-    color: #3f3831;
+    color: #9d9a97;
   }
   &:last-child {
-    color: #3f3831;
+    color: #9d9a97;
   }
   @media (min-width: 768px) {
     font-size: 22px;
@@ -170,25 +170,32 @@ export const DeleteCartBtn = styled.button`
 
 export const EmptyCartWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 4px;
   margin-top: 150px;
-  color: #191919;
+  color: #160b03;
   font-size: 18px;
+  line-height: 23.4px;
   @media (min-width: 768px) {
+    flex-direction: row;
     font-size: 22px;
+    line-height: 28.6px;
   }
 `;
 
 export const CatalogLink = styled(Link)`
-  color: #191919;
+  color: #160b03;
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 700;
+  line-height: 23.4px;
+
   &:hover {
     text-decoration: underline;
   }
   @media (min-width: 768px) {
     font-size: 22px;
+    line-height: 28.6px;
   }
 `;

@@ -20,6 +20,9 @@ export const StyleLink = styled(Link)`
   background-color: transparent;
 
   color: #160b03;
+  &:hover {
+    color: #9d9a97;
+  }
 
   font-style: normal;
   font-weight: 600;
@@ -57,7 +60,7 @@ export const Text = styled.p`
     `}
 `;
 export const LinkWrapper = styled.div`
-  margin-top: 6px;
+  margin-top: 10px;
 
   ${props =>
     props.$sectionType === 'footer' &&
@@ -75,6 +78,10 @@ export const LinkTel = styled.a`
   font-style: normal;
   font-weight: 400;
   line-height: 140%;
+
+  &:hover {
+    color: #9d9a97;
+  }
 
   ${props =>
     props.$sectionType === 'footer' &&

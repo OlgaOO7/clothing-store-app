@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { Modal } from 'components/Modal/Modal';
 import { CartItem } from './CartItem/CartItem';
@@ -77,10 +78,15 @@ export const CartModal = ({ closeModal, toggleCartModal }) => {
                 <OrderLink
                   to={`/order`}
                   state={{ from: location, sessionId: cartData?.sessionId }}
+                  onClick={closeModal}
                 >
                   Оформити замовлення
                 </OrderLink>
-                <CatalogLink to={`/cart`} state={{ from: location }}>
+                <CatalogLink
+                  to={`/cart`}
+                  state={{ from: location }}
+                  onClick={closeModal}
+                >
                   Кошик
                 </CatalogLink>
               </LinkWrapper>
@@ -94,4 +100,9 @@ export const CartModal = ({ closeModal, toggleCartModal }) => {
       )}
     </Modal>
   );
+};
+
+CartModal.propTypes = {
+  closeModal: PropTypes.func.isRequired,
+  toggleCartModal: PropTypes.func.isRequired,
 };
