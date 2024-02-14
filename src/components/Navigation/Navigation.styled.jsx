@@ -129,11 +129,9 @@ export const TextContainer = styled.div`
 `;
 
 export const CartIcon = styled.svg`
-  @media screen and (min-width: 360px) {
-    width: 24px;
-    height: 24px;
-    fill: #160b03;
-  }
+  width: 24px;
+  height: 24px;
+  fill: #160b03;
 `;
 
 export const TextCart = styled.span`
