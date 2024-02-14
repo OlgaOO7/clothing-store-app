@@ -109,7 +109,7 @@ export const BtnWrapper = styled.div`
 export const MenuBtn = styled.button`
   width: 24px;
   height: 24px;
-  padding: 2px 0px 0px;
+  padding: 0px;
   border: none;
   background-color: transparent;
 `;

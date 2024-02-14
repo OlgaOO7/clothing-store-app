@@ -21,7 +21,7 @@ export const SearchWrapper = styled.div`
 `;
 
 export const SearchBtn = styled.button`
-  padding-top: 2px;
+  padding-top: 2.5px;
   width: 24px;
   height: 24px;
   border: none;
