@@ -30,6 +30,7 @@ import {
   Price,
   ProductDeleteBtn,
   DeleteIcon,
+  NotificationWrapp,
   Notification,
   AvailableQuantityWrapper,
 } from './CartProductItem.styled';
@@ -40,7 +41,6 @@ export const CartProductItem = ({
   increaseProductQuantity,
   availableQuantity,
   isLoading,
-  initialLoad,
 }) => {
   const { isMobileScreen, isDesktopScreen } = useMedia();
   const dispatch = useDispatch();
@@ -59,7 +59,7 @@ export const CartProductItem = ({
   return (
     <Container>
       <Wrapper>
-        {isMobileScreen && <ProductText $text="text">Товар</ProductText>}
+        {isMobileScreen && <ProductText $text>Товар</ProductText>}
         <InfoProductWrapper>
           <ItemWrapper>
             <LinkWrapper>
@@ -108,10 +108,28 @@ export const CartProductItem = ({
             )}
           </ItemWrapper>
         </InfoProductWrapper>
-        {!isLoading && !initialLoad && !availableQuantity ? (
-          <Notification color="red" fontSize="24px">
-            Наразі товар відсутній
-          </Notification>
+        {!isLoading && !availableQuantity ? (
+          <NotificationWrapp>
+            <Notification color="#F24040" fontSize="16px">
+              Наразі товар відсутній
+            </Notification>
+            {!isMobileScreen && (
+              <div>
+                {isMaxAvailableQunatity ||
+                isOneProductAvalable ||
+                exceededQuantity ? (
+                  <Notification
+                    $paddingTop="6px"
+                    color="#4C4B4B"
+                    fontSize="12px"
+                    $mobFont
+                  >
+                    Доступна кількість: {availableQuantity}
+                  </Notification>
+                ) : null}
+              </div>
+            )}
+          </NotificationWrapp>
         ) : null}
         {isProductQuantityAvailable && (
           <PriceQuantityWrapper>
@@ -162,7 +180,6 @@ export const CartProductItem = ({
                     $paddingTop="6px"
                     color="#4C4B4B"
                     fontSize="12px"
-                    $mobFont
                   >
                     Доступна кількість: {availableQuantity}
                   </Notification>
@@ -217,5 +234,4 @@ CartProductItem.propTypes = {
   increaseProductQuantity: PropTypes.func.isRequired,
   availableQuantity: PropTypes.number,
   isLoading: PropTypes.bool.isRequired,
-  initialLoad: PropTypes.bool.isRequired,
 };

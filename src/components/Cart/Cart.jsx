@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import axios from 'axios';
 
 import { createCart, getCart, clearCart } from 'redux/cart/operations';
 import { CartProductItem } from './CartProductItem/CartProductItem';
@@ -38,9 +37,6 @@ import {
 
 export const Cart = () => {
   const [cartProducts, setCartProducts] = useState([]);
-  const [productAvailableQuantity, setProductAvailableQuantity] = useState({});
-  const [initialLoad, setInitialLoad] = useState(true);
-
   const { isMobileScreen } = useMedia();
   const dispatch = useDispatch();
   const location = useLocation();
@@ -50,14 +46,11 @@ export const Cart = () => {
   const isLoading = useSelector(selectIsRefreshing);
 
   const unavailableProductQuantity =
-    cartProducts &&
-    cartProducts.some(item => productAvailableQuantity[item.productId] === 0);
+    cartProducts && cartProducts.some(item => item.sku.availableQuantity === 0);
 
   const invalidQuantity =
     cartProducts &&
-    cartProducts.some(
-      item => productAvailableQuantity[item.productId] < item.quantity
-    );
+    cartProducts.some(item => item.sku.availableQuantity < item.quantity);
 
   const fetchCart = useCallback(() => {
     try {
@@ -73,64 +66,18 @@ export const Cart = () => {
 
   useEffect(() => {
     setCartProducts(cartData.items);
-
-    const fetchProductQuantityForItem = async productId => {
-      try {
-        const productResponse = await axios.get(`/products/${productId}`);
-        const cartItem = cartData.items.find(
-          item => item.productId === productId
-        );
-        if (cartItem) {
-          const matchingSku = productResponse.data.skuSet.find(
-            skuSet => skuSet.id === cartItem.sku.id
-          );
-          if (matchingSku) {
-            return {
-              productId,
-              availableQuantity: matchingSku.availableQuantity,
-            };
-          } else {
-            return {
-              productId,
-              availableQuantity: 0,
-            };
-          }
-        }
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    const fetchProductQuantity = async () => {
-      try {
-        if (cartData.items) {
-          const productPromises = cartData.items.map(async item => {
-            return fetchProductQuantityForItem(item.productId);
-          });
-          const productArray = await Promise.all(productPromises);
-          const productQuantity = productArray.reduce((map, product) => {
-            map[product.productId] = product.availableQuantity;
-            return map;
-          }, {});
-          setProductAvailableQuantity(productQuantity);
-          setInitialLoad(false);
-        }
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    fetchProductQuantity();
-  }, [cartData, dispatch]);
+  }, [cartData]);
 
   const increaseProductQuantity = async productSkuId => {
     const itemToUpdate = cartProducts.find(
       item => item.sku.id === productSkuId
     );
+
     const quantityToIncrease = itemToUpdate.quantity + 1;
     const increasedItemQuantity = quantityToIncrease - itemToUpdate.quantity;
-    const availableQuantityBySku =
-      productAvailableQuantity[itemToUpdate.productId];
-    if (itemToUpdate && quantityToIncrease <= availableQuantityBySku) {
+    const availableProductQuantity = itemToUpdate.sku.availableQuantity;
+
+    if (itemToUpdate && quantityToIncrease <= availableProductQuantity) {
       const updatedProduct = {
         sessionId: userUid,
         skuId: itemToUpdate.sku.id,
@@ -208,11 +155,8 @@ export const Cart = () => {
                           item={item}
                           increaseProductQuantity={increaseProductQuantity}
                           decreaseProductQuantity={decreaseProductQuantity}
-                          availableQuantity={
-                            productAvailableQuantity[item.productId]
-                          }
+                          availableQuantity={item.sku.availableQuantity}
                           isLoading={isLoading}
-                          initialLoad={initialLoad}
                         />
                       </ProductItem>
                     ))}
@@ -241,7 +185,6 @@ export const Cart = () => {
           </EmptyCartWrapper>
         )}
       </CartWrapper>
-
       {!isLoading && cartTotalQuantity > 0 && isMobileScreen && (
         <CartTotal
           data={cartData}

@@ -68,7 +68,6 @@ export const ProductDescriptionWrapper = styled.div`
   width: 51px;
   text-align: left;
   @media (min-width: 1022px) {
-    /* width: max-content; */
     width: 230px;
     gap: 14px;
   }
@@ -174,6 +173,15 @@ export const DeleteIcon = styled.svg`
   &:hover,
   &:focus {
     fill: #3f3831;
+  }
+`;
+
+export const NotificationWrapp = styled.div`
+  display: flex;
+  flex-direction: column;
+  @media (min-width: 768px) {
+    justify-content: center;
+    align-items: start;
   }
 `;
 
