@@ -39,7 +39,6 @@ export const CartProductItem = ({
   item,
   decreaseProductQuantity,
   increaseProductQuantity,
-  availableQuantity,
   isLoading,
 }) => {
   const { isMobileScreen, isDesktopScreen } = useMedia();
@@ -51,10 +50,20 @@ export const CartProductItem = ({
     await dispatch(getCart());
   };
 
+  const {
+    productId,
+    photoUrl,
+    productTitle,
+    quantity,
+    amount,
+    currencyCode,
+    sku: { availableQuantity, characteristics, id },
+  } = item;
+
   const isProductQuantityAvailable = availableQuantity > 0;
   const isOneProductAvalable = availableQuantity === 1;
-  const isMaxAvailableQunatity = availableQuantity === item.quantity;
-  const exceededQuantity = item.quantity > availableQuantity;
+  const isMaxAvailableQunatity = availableQuantity === quantity;
+  const exceededQuantity = quantity > availableQuantity;
 
   return (
     <Container>
@@ -63,44 +72,31 @@ export const CartProductItem = ({
         <InfoProductWrapper>
           <ItemWrapper>
             <LinkWrapper>
-              <Link
-                to={`/catalog/${item.productId}`}
-                state={{ from: location }}
-              >
+              <Link to={`/catalog/${productId}`} state={{ from: location }}>
                 <ProductImage
-                  src={item.photoUrl}
-                  alt={cuttedTitle(item.productTitle)}
+                  src={photoUrl}
+                  alt={cuttedTitle(productTitle)}
                   loading="lazy"
                 />
               </Link>
               <ProductDescriptionWrapper>
-                <Link
-                  to={`/catalog/${item.productId}`}
-                  state={{ from: location }}
-                >
+                <Link to={`/catalog/${productId}`} state={{ from: location }}>
                   {!isDesktopScreen ? (
-                    <ProductTitle>
-                      {cuttedTitle(item.productTitle, 8)}
-                    </ProductTitle>
+                    <ProductTitle>{cuttedTitle(productTitle, 8)}</ProductTitle>
                   ) : (
-                    <ProductTitle>
-                      {cuttedTitle(item.productTitle, 20)}
-                    </ProductTitle>
+                    <ProductTitle>{cuttedTitle(productTitle, 20)}</ProductTitle>
                   )}
                 </Link>
-                {item.sku.characteristics && (
+                {characteristics && (
                   <ItemCharacteristicWrapper>
-                    <p>{item.sku.characteristics[1].name}</p>
-                    <p>{item.sku.characteristics[0].name}</p>
+                    <p>{characteristics[1].name}</p>
+                    <p>{characteristics[0].name}</p>
                   </ItemCharacteristicWrapper>
                 )}
               </ProductDescriptionWrapper>
             </LinkWrapper>
             {isMobileScreen && (
-              <ProductDeleteBtn
-                type="button"
-                onClick={() => deleteProduct(item.sku.id)}
-              >
+              <ProductDeleteBtn type="button" onClick={() => deleteProduct(id)}>
                 <DeleteIcon>
                   <use href={`${Sprite}#icon-cross`} />
                 </DeleteIcon>
@@ -143,22 +139,22 @@ export const CartProductItem = ({
               <QuantityWrapper>
                 <DecreaseBtn
                   type="button"
-                  onClick={() => decreaseProductQuantity(item.sku.id)}
+                  onClick={() => decreaseProductQuantity(id)}
                   // quantity={item.quantity}
                   $case={(
-                    item.quantity === 1 && item.quantity <= availableQuantity
+                    quantity === 1 && quantity <= availableQuantity
                   ).toString()}
                 >
                   <Icon>
                     <use href={`${Sprite}#icon-minus`} />
                   </Icon>
                 </DecreaseBtn>
-                {item.quantity}
+                {quantity}
                 <IncreaseBtn
                   type="button"
-                  onClick={() => increaseProductQuantity(item.sku.id)}
+                  onClick={() => increaseProductQuantity(id)}
                   // quantity={item.quantity}
-                  $case={(item.quantity >= availableQuantity).toString()}
+                  $case={(quantity >= availableQuantity).toString()}
                 >
                   <Icon>
                     <use href={`${Sprite}#icon-plus`} />
@@ -167,7 +163,7 @@ export const CartProductItem = ({
               </QuantityWrapper>
               {isMobileScreen && (
                 <Price>
-                  {formatPrice(item.amount)} {item.currencyCode}
+                  {formatPrice(amount)} {currencyCode}
                 </Price>
               )}
             </AvailableQuantityWrapper>
@@ -191,7 +187,7 @@ export const CartProductItem = ({
         {!isMobileScreen && (
           <PriceWrapper>
             <Price>
-              {formatPrice(item.amount)} {item.currencyCode}
+              {formatPrice(amount)} {currencyCode}
             </Price>
           </PriceWrapper>
         )}
@@ -213,10 +209,7 @@ export const CartProductItem = ({
         )}
         {!isMobileScreen && (
           <div>
-            <ProductDeleteBtn
-              type="button"
-              onClick={() => deleteProduct(item.sku.id)}
-            >
+            <ProductDeleteBtn type="button" onClick={() => deleteProduct(id)}>
               <DeleteIcon>
                 <use href={`${Sprite}#icon-cross`} />
               </DeleteIcon>
@@ -232,6 +225,5 @@ CartProductItem.propTypes = {
   item: PropTypes.object.isRequired,
   decreaseProductQuantity: PropTypes.func.isRequired,
   increaseProductQuantity: PropTypes.func.isRequired,
-  availableQuantity: PropTypes.number,
   isLoading: PropTypes.bool.isRequired,
 };

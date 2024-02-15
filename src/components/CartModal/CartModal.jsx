@@ -34,6 +34,8 @@ export const CartModal = ({ closeModal, toggleCartModal }) => {
 
   const cartData = useSelector(selectCart);
   const isLoading = useSelector(selectIsRefreshing);
+  // const unavailableQunatity =
+  //   products && products.some(product => product.sku.availableQuantity === 0);
 
   useEffect(() => {
     try {
@@ -75,6 +77,17 @@ export const CartModal = ({ closeModal, toggleCartModal }) => {
                 </Amount>
               </AmountWrapper>
               <LinkWrapper>
+                {/* {unavailableQunatity ? (
+                  <OrderLink disabled>Оформити замовлення</OrderLink>
+                ) : (
+                  <OrderLink
+                    to={`/order`}
+                    state={{ from: location, sessionId: cartData?.sessionId }}
+                    onClick={closeModal}
+                  >
+                    Оформити замовлення
+                  </OrderLink>
+                )} */}
                 <OrderLink
                   to={`/order`}
                   state={{ from: location, sessionId: cartData?.sessionId }}

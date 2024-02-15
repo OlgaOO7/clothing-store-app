@@ -21,11 +21,10 @@ export const ModalWindow = styled.div`
   position: relative;
   right: 10px;
   background-color: #fff;
-  width: 296px;
+  max-width: 296px;
   box-shadow: rgba(177, 177, 177, 0.2) 0px 6px 18px 0px;
   @media (min-width: 768px) {
-    width: 437px;
-    right: 10px;
+    max-width: 437px;
   }
 `;
 

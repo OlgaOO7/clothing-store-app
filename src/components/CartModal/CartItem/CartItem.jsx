@@ -15,6 +15,7 @@ import {
   InfoTextWrapper,
   ItemTitle,
   ItemPrice,
+  // Notification,
   ItemDeleteBtn,
   DeleteIcon,
 } from './CartItem.styled';
@@ -23,6 +24,16 @@ export const CartItem = ({ item }) => {
   const location = useLocation();
   const dispatch = useDispatch();
 
+  const {
+    productId,
+    photoUrl,
+    productTitle,
+    sku: { characteristics, id },
+    quantity,
+    price,
+    currencyCode,
+  } = item;
+
   const deleteProduct = async skuId => {
     await dispatch(deleteProductFromCart(skuId));
     await dispatch(getCart());
@@ -30,28 +41,28 @@ export const CartItem = ({ item }) => {
   return (
     <CartItemWrapper>
       <ItemInfoWrapper>
-        <Link to={`/catalog/${item.productId}`} state={{ from: location }}>
-          <ImageProduct
-            src={item.photoUrl}
-            alt={cuttedTitle(item.productTitle, 15)}
-          />
+        <Link to={`/catalog/${productId}`} state={{ from: location }}>
+          <ImageProduct src={photoUrl} alt={cuttedTitle(productTitle, 15)} />
         </Link>
         <InfoTextWrapper>
           <Link
-            to={`/catalog/${item.productId}`}
+            to={`/catalog/${productId}`}
             state={{ from: location }}
             style={{ color: '#000' }}
           >
-            <ItemTitle>{cuttedTitle(item.productTitle, 15)}</ItemTitle>
+            <ItemTitle>{cuttedTitle(productTitle, 15)}</ItemTitle>
           </Link>
-          <p>{item.sku.characteristics[1].name}</p>
-          <p>{item.sku.characteristics[0].name}</p>
+          <p>{characteristics[1].name}</p>
+          <p>{characteristics[0].name}</p>
           <ItemPrice>
-            {item.quantity} x {formatPrice(item.price)} {item.currencyCode}
+            {quantity} x {formatPrice(price)} {currencyCode}
           </ItemPrice>
+          {/* {sku.availableQuantity === 0 && (
+            <Notification>Наразі товар відсутній</Notification>
+          )} */}
         </InfoTextWrapper>
       </ItemInfoWrapper>
-      <ItemDeleteBtn onClick={() => deleteProduct(item.sku.id)}>
+      <ItemDeleteBtn onClick={() => deleteProduct(id)}>
         <DeleteIcon width={13} height={13}>
           <use href={`${Sprite}#icon-cross`} />
         </DeleteIcon>

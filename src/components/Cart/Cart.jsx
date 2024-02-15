@@ -155,7 +155,6 @@ export const Cart = () => {
                           item={item}
                           increaseProductQuantity={increaseProductQuantity}
                           decreaseProductQuantity={decreaseProductQuantity}
-                          availableQuantity={item.sku.availableQuantity}
                           isLoading={isLoading}
                         />
                       </ProductItem>

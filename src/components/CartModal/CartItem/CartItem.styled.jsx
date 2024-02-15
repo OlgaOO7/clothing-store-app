@@ -57,6 +57,16 @@ export const ItemPrice = styled.p`
   }
 `;
 
+// export const Notification = styled.p`
+//   color: #f24040;
+//   font-weight: 400;
+//   font-size: 10px;
+
+//   @media (min-width: 768px) {
+//     font-size: 14px;
+//   }
+// `;
+
 export const ItemDeleteBtn = styled.button`
   width: 24px;
   height: 24px;
