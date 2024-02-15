@@ -103,15 +103,22 @@ export const NavList = styled.ul`
 export const BtnWrapper = styled.div`
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  /* align-items: flex-end; */
+  @media (min-width: 768px) {
+    align-items: flex-end;
+  }
 `;
 
 export const MenuBtn = styled.button`
-  width: 24px;
-  height: 24px;
-  padding: 0px;
+  padding: 12px;
   border: none;
   background-color: transparent;
+
+  @media (min-width: 768px) {
+    width: 24px;
+    height: 24px;
+    padding: 0px;
+  }
 `;
 
 export const MenuIcon = styled.svg`
@@ -150,19 +157,24 @@ export const CartLink = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 12px;
   &:hover {
     ${TextCart}, ${CartIcon} {
       color: #9d9a97;
       fill: #9d9a97;
     }
   }
+
+  @media (min-width: 768px) {
+    padding: 0;
+  }
 `;
 
 export const CartWrapper = styled.div`
-  margin-right: 24px;
+  /* margin-right: 24px;
   @media (min-width: 768px) {
     margin-right: 0;
-  }
+  } */
 `;
 
 export const CartIconWrapper = styled.div`
