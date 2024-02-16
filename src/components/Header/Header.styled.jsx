@@ -6,7 +6,7 @@ export const HeaderWrapper = styled.header`
   background-color: #fff;
   z-index: 1001;
   box-sizing: border-box;
-  padding: 46px 28px 19px;
+  padding: 34px 28px 19px;
   @media (min-width: 768px) {
     padding: 43px 40px 37px;
   }

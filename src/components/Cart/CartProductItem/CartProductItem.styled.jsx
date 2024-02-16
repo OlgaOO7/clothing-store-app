@@ -65,7 +65,7 @@ export const ProductDescriptionWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 2px;
-  width: 51px;
+  width: 54px;
   text-align: left;
   @media (min-width: 1022px) {
     width: 230px;
