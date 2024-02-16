@@ -96,7 +96,11 @@ export const CartProductItem = ({
               </ProductDescriptionWrapper>
             </LinkWrapper>
             {isMobileScreen && (
-              <ProductDeleteBtn type="button" onClick={() => deleteProduct(id)}>
+              <ProductDeleteBtn
+                type="button"
+                onClick={() => deleteProduct(id)}
+                $mobTap
+              >
                 <DeleteIcon>
                   <use href={`${Sprite}#icon-cross`} />
                 </DeleteIcon>

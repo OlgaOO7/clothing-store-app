@@ -65,8 +65,11 @@ export const ProductDescriptionWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 2px;
-  width: 51px;
+  width: 54px;
   text-align: left;
+  @media (min-width: 768px) {
+    width: inherit;
+  }
   @media (min-width: 1022px) {
     width: 230px;
     gap: 14px;
@@ -112,26 +115,40 @@ export const QuantityWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 19px;
-  width: 74px;
+  width: 112px;
   border: 1px solid #160b03;
   font-size: 18px;
   font-weight: 400;
   line-height: 140%;
+
+  @media (min-width: 768px) {
+    box-sizing: border-box;
+    padding: 5px 19px;
+  }
 `;
 
 export const DecreaseBtn = styled.span`
-  padding: 0;
+  padding: 6px 5px 2px 18px;
   background-color: transparent;
   border: none;
   fill: ${props => (props.$case === 'true' ? '#9D9A97' : '#160B03')};
+  cursor: pointer;
+
+  @media (min-width: 768px) {
+    padding: 0;
+  }
 `;
 
 export const IncreaseBtn = styled.span`
-  padding: 0;
+  padding: 6px 18px 2px 5px;
   background-color: transparent;
   border: none;
   fill: ${props => (props.$case === 'true' ? '#9D9A97' : '#160B03')};
+  cursor: pointer;
+
+  @media (min-width: 768px) {
+    padding: 0;
+  }
 `;
 
 export const Icon = styled.svg`
@@ -160,8 +177,8 @@ export const Price = styled.p`
 `;
 
 export const ProductDeleteBtn = styled.button`
-  width: 24px;
-  height: 24px;
+  width: ${props => (props.$mobTap ? '34px' : '24px')};
+  height: ${props => (props.$mobTap ? '34px' : '24px')};
   background-color: transparent;
   border: none;
 `;
