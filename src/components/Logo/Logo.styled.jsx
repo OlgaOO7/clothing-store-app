@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export const LogoLink = styled(Link)`
   color: #160b03;
   font-family: 'Mulish', sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   font-style: italic;
   font-weight: 800;
   line-height: 22.59px;
