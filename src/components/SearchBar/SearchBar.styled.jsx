@@ -3,31 +3,26 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   position: relative;
-  margin-right: 24px;
   @media screen and (min-width: 768px) and (max-width: 999.9px) {
     margin-right: 25px;
   }
   @media (min-width: 1000px) {
-    margin-right: 29px;
+    margin-right: 32px;
   }
 `;
 
 export const SearchWrapper = styled.div`
   display: flex;
-
-  @media (min-width: 768px) {
-    padding-bottom: 1px;
-  }
 `;
 
 export const SearchBtn = styled.button`
-  padding-top: 2.5px;
-  width: 24px;
-  height: 24px;
+  padding: ${p => (p.$padding ? '5px' : '14px 12px 10px')};
   border: none;
   background-color: transparent;
 
   @media (min-width: 768px) {
+    width: 24px;
+    height: 24px;
     padding: 0px;
   }
 `;
