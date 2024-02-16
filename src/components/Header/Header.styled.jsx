@@ -8,7 +8,8 @@ export const HeaderWrapper = styled.header`
   box-sizing: border-box;
   padding: 46px 28px 19px;
   @media (min-width: 768px) {
-    padding: 43px 40px 37px;
+    /* padding: 43px 40px 37px; */
+    padding: 34px 28px 6px;
   }
 `;
 

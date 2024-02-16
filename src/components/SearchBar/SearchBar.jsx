@@ -197,7 +197,7 @@ export const SearchBar = () => {
                   onKeyUp={searchHandler}
                 />
                 {isMobileScreen ? (
-                  <SearchBtn type="button" onClick={clearSearchInput}>
+                  <SearchBtn type="button" onClick={clearSearchInput} $padding>
                     <SearchIcon type="input">
                       <use href={`${Sprite}#icon-cross`} />
                     </SearchIcon>
