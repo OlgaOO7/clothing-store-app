@@ -52,7 +52,7 @@ export const Option = styled.button`
 `;
 export const Down = styled.div`
   position: absolute;
-  top: 14px;
+  top: 11px;
   right: 19px;
   border: solid black;
   border-width: 0 1px 1px 0;
@@ -60,10 +60,13 @@ export const Down = styled.div`
   padding: 3px;
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
+  @media (min-width: 768px) {
+    top: 14px;
+  }
 `;
 export const Up = styled.div`
   position: absolute;
-  top: 17px;
+  top: 15px;
   right: 19px;
   border: solid black;
   border-width: 0 1px 1px 0;
@@ -71,4 +74,7 @@ export const Up = styled.div`
   padding: 3px;
   transform: rotate(-135deg);
   -webkit-transform: rotate(-135deg);
+  @media (min-width: 768px) {
+    top: 17px;
+  }
 `;

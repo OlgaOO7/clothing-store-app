@@ -76,12 +76,14 @@ export const ListItem = styled.li`
 export const ButtonsWrapper = styled.div`
   display: flex;
   justify-content: center;
-  gap: 18px;
+  align-items: center;
   @media (min-width: 768px) {
     gap: 24px;
   }
 `;
 export const Button = styled.button`
+  width: 44px;
+  height: 44px;
   font-size: 14px;
   line-height: 16px;
   color: #4c4b4b;

@@ -5,21 +5,21 @@ import aboutUs2x from '../../images/about-us2x.jpg';
 
 export const Section = styled.section`
   width: 100%;
-  padding: 31px 0 139px;
+  padding: 28px 0 80px;
   color: #160b03;
   @media (min-width: 768px) {
-    padding: 34px 0 208px;
+    padding: 26px 0 112px;
   }
 `;
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 34px;
   padding-left: 28px;
   padding-right: 28px;
   margin: 0 auto;
+  gap: 32px;
   @media (min-width: 768px) {
-    gap: 82px;
+    gap: 72px;
     max-width: 1360px;
     padding-left: 40px;
     padding-right: 40px;
@@ -30,11 +30,11 @@ export const NavWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   gap: 31px;
-  padding: 115px 28px 31px;
+  padding: 115px 28px 28px;
   margin: 0;
   @media (min-width: 768px) {
     max-width: 1360px;
-    padding: 155px 40px 34px;
+    padding: 155px 40px 26px;
     margin: 0 auto;
   }
 `;
@@ -57,9 +57,7 @@ export const LinkTo = styled(Link)`
   }
 `;
 export const Title = styled.h2`
-  font-size: 24px;
   font-weight: 400;
-  line-height: 29px;
   text-align: center;
   @media (min-width: 768px) {
     font-size: 40px;
@@ -92,11 +90,10 @@ export const ContentTitle = styled.h3`
   font-size: 18px;
   font-weight: 400;
   line-height: 25px;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   @media (min-width: 768px) {
     font-size: 26px;
     line-height: 36px;
-    margin-bottom: 16px;
   }
 `;
 export const ContentText = styled.p`
@@ -137,7 +134,7 @@ export const TextContent = styled.div`
   gap: 24px;
   @media (min-width: 768px) {
     width: 100%;
-    gap: 52px;
+    gap: 42px;
     max-width: 626px;
   }
 `;

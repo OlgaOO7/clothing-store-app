@@ -11,7 +11,7 @@ export const ListOfButtons = styled.ul`
 
 export const ButtonGray = styled.button`
   font-size: 14px;
-  line-height: 18px;
+  line-height: 20px;
   color: #9d9a97;
 
   border: none;
@@ -24,7 +24,7 @@ export const ButtonGray = styled.button`
 `;
 export const Button = styled.button`
   font-size: 14px;
-  line-height: 18px;
+  line-height: 20px;
   color: #160b03;
 
   border: none;
