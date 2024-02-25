@@ -79,7 +79,6 @@ export const Delivery = ({ register, setValue, errors, formStatus }) => {
 
       if (data.success) {
         const addresses = data.data[0].Addresses;
-
         setSearchCities(addresses);
       } else {
         setSearchCities([]);
@@ -180,10 +179,6 @@ export const Delivery = ({ register, setValue, errors, formStatus }) => {
     setSearchCityName(`${city}`);
     setWarehouseSearchType(deliveryCity);
     setValue('city', city);
-
-    if (deliveryCity && city) {
-      handleWarehousesChange();
-    }
   };
 
   const handleSearchTextChangeWarehose = throttle(e => {
