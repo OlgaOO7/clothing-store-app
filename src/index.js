@@ -10,7 +10,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
       {/* <PersistGate loading={<h1>Loading...</h1>} persistor={persistor}> */}
-      <BrowserRouter basename="clothing-store-app">
+      <BrowserRouter>
         <App />
       </BrowserRouter>
       {/* </PersistGate> */}
